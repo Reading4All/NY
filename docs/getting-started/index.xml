@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Goldydocs – Getting Started</title>
+    <title>NY Reading Data – Getting Started</title>
     <link>https://reading4all.github.io/NewYork/docs/getting-started/</link>
-    <description>Recent content in Getting Started on Goldydocs</description>
+    <description>Recent content in Getting Started on NY Reading Data</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="https://reading4all.github.io/NewYork/docs/getting-started/index.xml" rel="self" type="application/rss+xml" />

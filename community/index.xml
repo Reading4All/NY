@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Goldydocs – Community</title>
+    <title>NY Reading Data – Community</title>
     <link>https://reading4all.github.io/NewYork/community/</link>
-    <description>Recent content in Community on Goldydocs</description>
+    <description>Recent content in Community on NY Reading Data</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="https://reading4all.github.io/NewYork/community/index.xml" rel="self" type="application/rss+xml" />
