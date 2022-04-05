@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NY Reading Data – About Goldydocs</title>
+    <link>https://reading4all.github.io/NewYork/about/</link>
+    <description>Recent content in About Goldydocs on NY Reading Data</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://reading4all.github.io/NewYork/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>
