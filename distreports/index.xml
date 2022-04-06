@@ -39,7 +39,7 @@
     }
   &lt;/script&gt;  
 
-&lt;iframe id=&#34;iframe-id&#34; src=&#34;https://reading4all.github.io/NewYork/NewYork/grade3/index.html&#34; width=&#34;100%&#34; name=&#34;iframe-name&#34; style=&#34;min-height:98vh; border:none;&#34; onload=&#34;resizeIframe(this)&#34; referrerpolicy=&#34;no-referrer&#34;&gt;
+&lt;iframe id=&#34;iframe-id&#34; src=&#34;https://reading4all.github.io/NewYork/NewYork/grade3/index.html&#34; width=&#34;400&#34; name=&#34;iframe-name&#34; style=&#34;min-height:98vh; border:none;&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; onload=&#34;resizeIframe(this)&#34; referrerpolicy=&#34;no-referrer&#34;&gt;
   &lt;p&gt;Your browser can not display embedded frames. You can access the embedded page via the following link: &lt;a href=&#34;https://reading4all.github.io/NewYork/NewYork/grade3/index.html&#34;&gt;/NewYork/grade3/index.html&lt;/a&gt;&lt;/p&gt;
 &lt;/iframe&gt;
 
@@ -74,7 +74,7 @@
     }
   &lt;/script&gt;  
 
-&lt;iframe id=&#34;iframe-id&#34; src=&#34;https://reading4all.github.io/NewYork/NewYork/districtgrowth/index.html&#34; width=&#34;100%&#34; name=&#34;iframe-name&#34; style=&#34;min-height:98vh; border:none;&#34; onload=&#34;resizeIframe(this)&#34; referrerpolicy=&#34;no-referrer&#34;&gt;
+&lt;iframe id=&#34;iframe-id&#34; src=&#34;https://reading4all.github.io/NewYork/NewYork/districtgrowth/index.html&#34; width=&#34;400&#34; name=&#34;iframe-name&#34; style=&#34;min-height:98vh; border:none;&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; onload=&#34;resizeIframe(this)&#34; referrerpolicy=&#34;no-referrer&#34;&gt;
   &lt;p&gt;Your browser can not display embedded frames. You can access the embedded page via the following link: &lt;a href=&#34;https://reading4all.github.io/NewYork/NewYork/districtgrowth/index.html&#34;&gt;/NewYork/districtgrowth/index.html&lt;/a&gt;&lt;/p&gt;
 &lt;/iframe&gt;
 
