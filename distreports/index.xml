@@ -22,7 +22,7 @@
       <description>
         
         
-        
+        &lt;h1 id=&#34;hahahugoshortcode-s0-hbhb&#34;&gt;
 
 
 
@@ -41,6 +41,28 @@
 
 &lt;iframe id=&#34;iframe-id&#34; src=&#34;https://reading4all.github.io/NewYork/plotly/grade3.html&#34; width=&#34;800&#34; name=&#34;iframe-name&#34; style=&#34;min-height:98vh; border:none;&#34; onload=&#34;resizeIframe(this)&#34; referrerpolicy=&#34;no-referrer&#34;&gt;
   &lt;p&gt;Your browser can not display embedded frames. You can access the embedded page via the following link: &lt;a href=&#34;https://reading4all.github.io/NewYork/plotly/grade3.html&#34;&gt;/plotly/grade3.html&lt;/a&gt;&lt;/p&gt;
+&lt;/iframe&gt;
+
+&lt;/h1&gt;
+
+
+
+
+
+
+
+
+
+
+
+  &lt;script type=&#34;text/javascript&#34;&gt;
+    function resizeIframe(iframe) {
+      iframe.height = iframe.contentWindow.document.body.scrollHeight + &#34;px&#34;;
+    }
+  &lt;/script&gt;  
+
+&lt;iframe id=&#34;iframe-id&#34; src=&#34;https://Reading4All.github.io/NewYork/plotly/grade3.html&#34; width=&#34;100%&#34; name=&#34;iframe-name&#34; style=&#34;min-height:98vh; border:none;&#34; onload=&#34;resizeIframe(this)&#34; referrerpolicy=&#34;no-referrer&#34;&gt;
+  &lt;p&gt;Your browser can not display embedded frames. You can access the embedded page via the following link: &lt;a href=&#34;https://Reading4All.github.io/NewYork/plotly/grade3.html&#34;&gt;https://Reading4All.github.io/NewYork/plotly/grade3.html&lt;/a&gt;&lt;/p&gt;
 &lt;/iframe&gt;
 
 
@@ -74,8 +96,8 @@
     }
   &lt;/script&gt;  
 
-&lt;iframe id=&#34;iframe-id&#34; src=&#34;https://reading4all.github.io/NewYork/plotly/districtgrowth.html&#34; width=&#34;800&#34; name=&#34;iframe-name&#34; style=&#34;min-height:98vh; border:none;&#34; onload=&#34;resizeIframe(this)&#34; referrerpolicy=&#34;no-referrer&#34;&gt;
-  &lt;p&gt;Your browser can not display embedded frames. You can access the embedded page via the following link: &lt;a href=&#34;https://reading4all.github.io/NewYork/plotly/districtgrowth.html&#34;&gt;/plotly/districtgrowth.html&lt;/a&gt;&lt;/p&gt;
+&lt;iframe id=&#34;iframe-id&#34; src=&#34;https://Reading4All.github.io/NewYork/plotly/districtgrowth.html&#34; width=&#34;100%&#34; name=&#34;iframe-name&#34; style=&#34;min-height:98vh; border:none;&#34; onload=&#34;resizeIframe(this)&#34; referrerpolicy=&#34;no-referrer&#34;&gt;
+  &lt;p&gt;Your browser can not display embedded frames. You can access the embedded page via the following link: &lt;a href=&#34;https://Reading4All.github.io/NewYork/plotly/districtgrowth.html&#34;&gt;https://Reading4All.github.io/NewYork/plotly/districtgrowth.html&lt;/a&gt;&lt;/p&gt;
 &lt;/iframe&gt;
 
 
