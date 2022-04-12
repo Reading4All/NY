@@ -15,6 +15,123 @@
     
     <item>
       <title>Countyreports: Albany County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/albany/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/albany/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Albany.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Albany.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Albany County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/albany/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/albany/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Albany.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Albany.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Albany County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/albany/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/albany/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Albany.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Albany.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Albany County</title>
       <link>https://reading4all.github.io/NewYork/countyreports/2019/albany/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -83,6 +200,123 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 window.onload = function() {
 
 var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Albany.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Allegany County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/allegany/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/allegany/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Allegany.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Allegany.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Allegany County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/allegany/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/allegany/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Allegany.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Allegany.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Allegany County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/allegany/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/allegany/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Allegany.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Allegany.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -171,6 +405,123 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Broome County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/broome/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/broome/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Broome.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Broome.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Broome County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/broome/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/broome/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Broome.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Broome.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Broome County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/broome/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/broome/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Broome.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Broome.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Broome County</title>
       <link>https://reading4all.github.io/NewYork/countyreports/2019/broome/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -239,6 +590,123 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 window.onload = function() {
 
 var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Broome.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Cattaraugus County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/cattaraugus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/cattaraugus/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Cattaraugus.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cattaraugus.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Cattaraugus County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/cattaraugus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/cattaraugus/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Cattaraugus.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cattaraugus.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Cattaraugus County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/cattaraugus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/cattaraugus/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Cattaraugus.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cattaraugus.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -327,6 +795,123 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Cayuga County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/cayuga/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/cayuga/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Cayuga.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cayuga.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Cayuga County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/cayuga/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/cayuga/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Cayuga.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cayuga.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Cayuga County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/cayuga/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/cayuga/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Cayuga.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cayuga.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Cayuga County</title>
       <link>https://reading4all.github.io/NewYork/countyreports/2019/cayuga/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -395,6 +980,123 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 window.onload = function() {
 
 var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cayuga.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Chautauqua County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/chautauqua/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/chautauqua/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Chautauqua.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chautauqua.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Chautauqua County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/chautauqua/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/chautauqua/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Chautauqua.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chautauqua.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Chautauqua County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/chautauqua/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/chautauqua/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Chautauqua.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chautauqua.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -483,6 +1185,123 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Chemung County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/chemung/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/chemung/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Chemung.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chemung.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Chemung County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/chemung/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/chemung/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Chemung.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chemung.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Chemung County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/chemung/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/chemung/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Chemung.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chemung.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Chemung County</title>
       <link>https://reading4all.github.io/NewYork/countyreports/2019/chemung/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -551,6 +1370,123 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 window.onload = function() {
 
 var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chemung.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Chenango County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/chenango/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/chenango/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Chenango.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chenango.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Chenango County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/chenango/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/chenango/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Chenango.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chenango.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Chenango County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/chenango/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/chenango/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Chenango.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chenango.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -639,6 +1575,123 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Clinton County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/clinton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/clinton/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Clinton.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Clinton.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Clinton County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/clinton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/clinton/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Clinton.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Clinton.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Clinton County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/clinton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/clinton/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Clinton.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Clinton.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Clinton County</title>
       <link>https://reading4all.github.io/NewYork/countyreports/2019/clinton/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -717,6 +1770,123 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Columbia County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2016/columbia/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2016/columbia/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Columbia.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Columbia.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Columbia County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2017/columbia/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2017/columbia/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Columbia.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Columbia.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Columbia County</title>
+      <link>https://reading4all.github.io/NewYork/countyreports/2018/columbia/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://reading4all.github.io/NewYork/countyreports/2018/columbia/</guid>
+      <description>
+        
+        
+        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
+    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
+    adobeDCView.previewFile({
+      content:{ location:
+        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
+		{ url: &#39;..\/CountyReport_Columbia.pdf&#39;}},
+      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
+	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
+    },
+    {
+      embedMode: &#34;IN_LINE&#34;
+    });
+  });
+&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+window.onload = function() {
+
+var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Columbia.pdf&#39;;
+
+
+&lt;/script&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Countyreports: Columbia County</title>
       <link>https://reading4all.github.io/NewYork/countyreports/2019/columbia/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -785,1176 +1955,6 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 window.onload = function() {
 
 var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Columbia.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Cortland County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/cortland/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/cortland/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Cortland.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cortland.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Cortland County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/cortland/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/cortland/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Cortland.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cortland.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Delaware County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/delaware/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/delaware/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Delaware.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Delaware.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Delaware County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/delaware/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/delaware/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Delaware.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Delaware.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Dutchess County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/dutchess/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/dutchess/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Dutchess.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Dutchess.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Dutchess County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/dutchess/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/dutchess/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Dutchess.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Dutchess.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Erie County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/erie/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/erie/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_D_Erie.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_D_Erie.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Erie County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/erie/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/erie/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_D_Erie.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_D_Erie.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Essex County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/essex/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/essex/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Essex.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Essex.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Essex County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/essex/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/essex/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Essex.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Essex.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Franklin County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/franklin/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/franklin/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Franklin.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Franklin.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Franklin County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/franklin/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/franklin/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Franklin.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Franklin.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Fulton County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/fulton/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/fulton/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Fulton.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Fulton.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Fulton County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/fulton/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/fulton/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Fulton.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Fulton.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Genesee County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/genesee/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/genesee/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Genesee.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Genesee.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Genesee County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/genesee/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/genesee/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Genesee.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Genesee.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Greene County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/greene/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/greene/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Greene.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Greene.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Greene County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/greene/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/greene/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Greene.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Greene.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Hamilton County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/hamilton/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/hamilton/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Hamilton.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Hamilton.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Hamilton County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/hamilton/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/hamilton/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Hamilton.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Hamilton.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Herkimer County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/herkimer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/herkimer/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Lewis.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Herkimer County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/herkimer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/herkimer/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Lewis.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Jefferson County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/jefferson/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/jefferson/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Lewis.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Jefferson County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/jefferson/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/jefferson/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Lewis.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Lewis County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/lewis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/lewis/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Lewis.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Lewis County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/lewis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/lewis/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Lewis.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Livingston County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/livingston/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/livingston/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Livingston.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Livingston.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Livingston County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/livingston/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/livingston/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Livingston.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Livingston.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Madison County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2019/madison/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2019/madison/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Madison.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Madison.pdf&#39;;
-
-
-&lt;/script&gt;
-
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Countyreports: Madison County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/2021/madison/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://reading4all.github.io/NewYork/countyreports/2021/madison/</guid>
-      <description>
-        
-        
-        &lt;div id=&#34;adobe-dc-view&#34; style=&#34;height: 800px;&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;https://documentcloud.adobe.com/view-sdk/main.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-  document.addEventListener(&#34;adobe_dc_view_sdk.ready&#34;, function(){
-    var adobeDCView = new AdobeDC.View({clientId: &#34;c7101b6ae8604318b3b4cc7ad89ca523&#34;, divId: &#34;adobe-dc-view&#34;});
-    adobeDCView.previewFile({
-      content:{ location:
-        &lt;!-- { url: &#34;../CountyReport_Albany.pdf&#34;}}, --&gt;
-		{ url: &#39;..\/CountyReport_Madison.pdf&#39;}},
-      &lt;!-- metaData:{fileName: &#34;CountyReport_Albany.pdf&#34;} --&gt;
-	    metaData:{fileName: &#34;CountyReport.pdf&#34;}
-    },
-    {
-      embedMode: &#34;IN_LINE&#34;
-    });
-  });
-&lt;/script&gt;
-
-&lt;script type=&#34;text/javascript&#34;&gt;
-window.onload = function() {
-
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Madison.pdf&#39;;
 
 
 &lt;/script&gt;
