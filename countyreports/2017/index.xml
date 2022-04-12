@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>NY Reading Data – County Reports - 2019</title>
+    <title>NY Reading Data – County Reports - 2017</title>
     <link>https://reading4all.github.io/NewYork/countyreports/2017/</link>
-    <description>Recent content in County Reports - 2019 on NY Reading Data</description>
+    <description>Recent content in County Reports - 2017 on NY Reading Data</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="https://reading4all.github.io/NewYork/countyreports/2017/index.xml" rel="self" type="application/rss+xml" />
