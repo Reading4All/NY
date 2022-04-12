@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NY Reading Data – NYReadingData</title>
-    <link>/</link>
+    <link>https://reading4all.github.io/NewYork/</link>
     <description>Recent content in NYReadingData on NY Reading Data</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://reading4all.github.io/NewYork/index.xml" rel="self" type="application/rss+xml" />
     
     
       
