@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NY Reading Data – ShinyApp1</title>
+    <link>https://reading4all.github.io/NY/shinyapp1/</link>
+    <description>Recent content in ShinyApp1 on NY Reading Data</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://reading4all.github.io/NY/shinyapp1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>
