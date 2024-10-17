@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NY Reading Data – County Reports - Econ Disadvantaged - 2019</title>
-    <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/</link>
+    <link>https://reading4all.github.io/NY/countyreports/econdis/2019/</link>
     <description>Recent content in County Reports - Econ Disadvantaged - 2019 on NY Reading Data</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://reading4all.github.io/NewYork/countyreports/econdis/2019/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://reading4all.github.io/NY/countyreports/econdis/2019/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Countyreports: Albany County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/albany/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/albany/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/albany/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/albany/</guid>
       <description>
         
         
@@ -43,7 +43,7 @@
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Albany.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Albany.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -54,10 +54,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Allegany County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/allegany/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/allegany/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/allegany/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/allegany/</guid>
       <description>
         
         
@@ -82,7 +82,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Allegany.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Allegany.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -93,10 +93,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Broome County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/broome/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/broome/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/broome/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/broome/</guid>
       <description>
         
         
@@ -121,7 +121,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Broome.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Broome.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -132,10 +132,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Cattaraugus County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/cattaraugus/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/cattaraugus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/cattaraugus/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/cattaraugus/</guid>
       <description>
         
         
@@ -160,7 +160,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cattaraugus.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Cattaraugus.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -171,10 +171,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Cayuga County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/cayuga/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/cayuga/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/cayuga/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/cayuga/</guid>
       <description>
         
         
@@ -199,7 +199,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cayuga.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Cayuga.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -210,10 +210,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Chautauqua County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/chautauqua/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/chautauqua/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/chautauqua/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/chautauqua/</guid>
       <description>
         
         
@@ -238,7 +238,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chautauqua.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Chautauqua.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -249,10 +249,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Chemung County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/chemung/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/chemung/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/chemung/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/chemung/</guid>
       <description>
         
         
@@ -277,7 +277,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chemung.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Chemung.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -288,10 +288,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Chenango County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/chenango/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/chenango/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/chenango/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/chenango/</guid>
       <description>
         
         
@@ -316,7 +316,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Chenango.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Chenango.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -327,10 +327,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Clinton County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/clinton/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/clinton/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/clinton/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/clinton/</guid>
       <description>
         
         
@@ -355,7 +355,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Clinton.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Clinton.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -366,10 +366,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Columbia County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/columbia/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/columbia/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/columbia/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/columbia/</guid>
       <description>
         
         
@@ -394,7 +394,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Columbia.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Columbia.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -405,10 +405,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Cortland County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/cortland/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/cortland/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/cortland/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/cortland/</guid>
       <description>
         
         
@@ -433,7 +433,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Cortland.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Cortland.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -444,10 +444,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Delaware County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/delaware/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/delaware/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/delaware/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/delaware/</guid>
       <description>
         
         
@@ -472,7 +472,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Delaware.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Delaware.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -483,10 +483,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Dutchess County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/dutchess/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/dutchess/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/dutchess/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/dutchess/</guid>
       <description>
         
         
@@ -511,7 +511,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Dutchess.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Dutchess.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -522,10 +522,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Erie County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/erie/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/erie/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/erie/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/erie/</guid>
       <description>
         
         
@@ -550,7 +550,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_D_Erie.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_D_Erie.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -561,10 +561,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Essex County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/essex/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/essex/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/essex/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/essex/</guid>
       <description>
         
         
@@ -589,7 +589,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Essex.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Essex.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -600,10 +600,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Franklin County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/franklin/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/franklin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/franklin/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/franklin/</guid>
       <description>
         
         
@@ -628,7 +628,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Franklin.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Franklin.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -639,10 +639,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Fulton County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/fulton/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/fulton/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/fulton/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/fulton/</guid>
       <description>
         
         
@@ -667,7 +667,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Fulton.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Fulton.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -678,10 +678,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Genesee County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/genesee/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/genesee/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/genesee/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/genesee/</guid>
       <description>
         
         
@@ -706,7 +706,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Genesee.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Genesee.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -717,10 +717,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Greene County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/greene/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/greene/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/greene/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/greene/</guid>
       <description>
         
         
@@ -745,7 +745,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Greene.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Greene.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -756,10 +756,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Hamilton County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/hamilton/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/hamilton/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/hamilton/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/hamilton/</guid>
       <description>
         
         
@@ -784,7 +784,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Hamilton.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Hamilton.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -795,10 +795,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Herkimer County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/herkimer/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/herkimer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/herkimer/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/herkimer/</guid>
       <description>
         
         
@@ -823,7 +823,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -834,10 +834,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Jefferson County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/jefferson/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/jefferson/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/jefferson/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/jefferson/</guid>
       <description>
         
         
@@ -862,7 +862,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -873,10 +873,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Lewis County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/lewis/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/lewis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/lewis/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/lewis/</guid>
       <description>
         
         
@@ -901,7 +901,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Lewis.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -912,10 +912,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Livingston County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/livingston/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/livingston/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/livingston/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/livingston/</guid>
       <description>
         
         
@@ -940,7 +940,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Livingston.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Livingston.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -951,10 +951,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Madison County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/madison/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/madison/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/madison/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/madison/</guid>
       <description>
         
         
@@ -979,7 +979,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Madison.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Madison.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -990,10 +990,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Monroe County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/monroe/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/monroe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/monroe/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/monroe/</guid>
       <description>
         
         
@@ -1018,7 +1018,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_D_Monroe.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_D_Monroe.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1029,10 +1029,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Montgomery County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/montgomery/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/montgomery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/montgomery/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/montgomery/</guid>
       <description>
         
         
@@ -1057,7 +1057,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Montgomery.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Montgomery.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1068,10 +1068,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Nassau County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/nassau/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/nassau/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/nassau/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/nassau/</guid>
       <description>
         
         
@@ -1096,7 +1096,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_D_Nassau.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_D_Nassau.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1107,10 +1107,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Niagara County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/niagara/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/niagara/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/niagara/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/niagara/</guid>
       <description>
         
         
@@ -1135,7 +1135,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Niagara.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Niagara.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1146,10 +1146,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Oneida County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/oneida/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/oneida/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/oneida/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/oneida/</guid>
       <description>
         
         
@@ -1174,7 +1174,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Oneida.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Oneida.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1185,10 +1185,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Onondaga County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/onondaga/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/onondaga/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/onondaga/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/onondaga/</guid>
       <description>
         
         
@@ -1213,7 +1213,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_D_Onondaga.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_D_Onondaga.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1224,10 +1224,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Ontario County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/ontario/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/ontario/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/ontario/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/ontario/</guid>
       <description>
         
         
@@ -1252,7 +1252,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Ontario.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Ontario.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1263,10 +1263,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Orange County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/orange/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/orange/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/orange/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/orange/</guid>
       <description>
         
         
@@ -1291,7 +1291,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Orange.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Orange.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1302,10 +1302,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Orleans County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/orleans/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/orleans/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/orleans/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/orleans/</guid>
       <description>
         
         
@@ -1330,7 +1330,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Orleans.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Orleans.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1341,10 +1341,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Oswego County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/oswego/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/oswego/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/oswego/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/oswego/</guid>
       <description>
         
         
@@ -1369,7 +1369,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Oswego.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Oswego.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1380,10 +1380,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Otsego County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/otsego/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/otsego/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/otsego/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/otsego/</guid>
       <description>
         
         
@@ -1408,7 +1408,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Otsego.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Otsego.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1419,10 +1419,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Putnam County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/putnam/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/putnam/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/putnam/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/putnam/</guid>
       <description>
         
         
@@ -1447,7 +1447,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Putnam.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Putnam.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1458,10 +1458,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Rensselaer County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/rensselaer/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/rensselaer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/rensselaer/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/rensselaer/</guid>
       <description>
         
         
@@ -1486,7 +1486,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Rensselaer.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Rensselaer.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1497,10 +1497,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Rockland County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/rockland/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/rockland/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/rockland/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/rockland/</guid>
       <description>
         
         
@@ -1525,7 +1525,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Rockland.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Rockland.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1536,10 +1536,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Saint Lawrence County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/saint-lawrence/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/saint-lawrence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/saint-lawrence/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/saint-lawrence/</guid>
       <description>
         
         
@@ -1564,7 +1564,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Saint Lawrence.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Saint Lawrence.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1575,10 +1575,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Saratoga County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/saratoga/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/saratoga/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/saratoga/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/saratoga/</guid>
       <description>
         
         
@@ -1603,7 +1603,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Saratoga.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Saratoga.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1614,10 +1614,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Schenectady County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/schenectady/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/schenectady/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/schenectady/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/schenectady/</guid>
       <description>
         
         
@@ -1642,7 +1642,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Schenectady.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Schenectady.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1653,10 +1653,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Schoharie County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/schoharie/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/schoharie/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/schoharie/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/schoharie/</guid>
       <description>
         
         
@@ -1681,7 +1681,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Schoharie.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Schoharie.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1692,10 +1692,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Schuyler County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/schuyler/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/schuyler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/schuyler/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/schuyler/</guid>
       <description>
         
         
@@ -1720,7 +1720,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Schuyler.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Schuyler.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1731,10 +1731,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Seneca County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/seneca/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/seneca/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/seneca/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/seneca/</guid>
       <description>
         
         
@@ -1759,7 +1759,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Seneca.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Seneca.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1770,10 +1770,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Steuben County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/steuben/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/steuben/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/steuben/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/steuben/</guid>
       <description>
         
         
@@ -1798,7 +1798,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Steuben.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Steuben.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1809,10 +1809,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Suffolk County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/suffolk/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/suffolk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/suffolk/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/suffolk/</guid>
       <description>
         
         
@@ -1837,7 +1837,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_D_Suffolk.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_D_Suffolk.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1848,10 +1848,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Sullivan County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/sullivan/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/sullivan/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/sullivan/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/sullivan/</guid>
       <description>
         
         
@@ -1876,7 +1876,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Sullivan.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Sullivan.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1887,10 +1887,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Tioga County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/tioga/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/tioga/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/tioga/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/tioga/</guid>
       <description>
         
         
@@ -1915,7 +1915,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Tioga.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Tioga.pdf&#39;;
 
 
 &lt;/script&gt;
@@ -1926,10 +1926,10 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
     
     <item>
       <title>Countyreports: Tompkins County</title>
-      <link>https://reading4all.github.io/NewYork/countyreports/econdis/2019/tompkins/</link>
+      <link>https://reading4all.github.io/NY/countyreports/econdis/2019/tompkins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://reading4all.github.io/NewYork/countyreports/econdis/2019/tompkins/</guid>
+      <guid>https://reading4all.github.io/NY/countyreports/econdis/2019/tompkins/</guid>
       <description>
         
         
@@ -1954,7 +1954,7 @@ var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/County
 &lt;script type=&#34;text/javascript&#34;&gt;
 window.onload = function() {
 
-var url = &#34;https:\/\/reading4all.github.io\/NewYork\/&#34; + &#39;..\/CountyReport_Tompkins.pdf&#39;;
+var url = &#34;https:\/\/reading4all.github.io\/NY\/&#34; + &#39;..\/CountyReport_Tompkins.pdf&#39;;
 
 
 &lt;/script&gt;

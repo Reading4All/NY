@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "C:/Hugo/NewYork_Reading",
+	"sourceRoot": "C:/Hugo/NY-NEWSITE/NY-LocalHUGO",
 	"sources": [
 		"themes/docsy/assets/scss/main.scss",
 		"themes/docsy/assets/scss/support/_functions.scss",

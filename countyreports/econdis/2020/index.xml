@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NY Reading Data – 2020 (N/A due to Covid)</title>
-    <link>https://reading4all.github.io/NewYork/countyreports/econdis/2020/</link>
+    <link>https://reading4all.github.io/NY/countyreports/econdis/2020/</link>
     <description>Recent content in 2020 (N/A due to Covid) on NY Reading Data</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://reading4all.github.io/NewYork/countyreports/econdis/2020/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://reading4all.github.io/NY/countyreports/econdis/2020/index.xml" rel="self" type="application/rss+xml" />
     
     
       

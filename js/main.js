@@ -145,7 +145,7 @@ limitations under the License.
                     }
 
                     var query = $(this).val();
-                    var searchPage = "https://reading4all.github.io/NewYork/search/?q=" + query;
+                    var searchPage = "https://reading4all.github.io/NY/search/?q=" + query;
                     document.location = searchPage;
 
                     return false;
