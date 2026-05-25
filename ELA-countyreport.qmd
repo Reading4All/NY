@@ -6,10 +6,7 @@ format:
     orientation: columns
 ---
 
-## Column {width="35%"}
-
-COLUMN 1 STUFF HERE
-
+## Column {width="100%"}
 ```{r, load packages}
 #| echo: false
 #| include: false
@@ -19,18 +16,37 @@ conflicts_prefer(dplyr::lag)
 conflicts_prefer(dplyr::filter)
 ```
 
-```{r, display df}
+```{r, read csv}
+
 head(starwars)
 ```
 
-## Column {width="65%"}
-COLUMN 2 STUFF HERE
+```{r, send DF to ojs}
+#|echo: false
+#|include: false
+ojs_define(starwars_to_js = starwars) #send this exising df to js and name it
+
+```
+
 
 ### Row {height="10%"}
-Row1, col2 STUFF HERE
+```{ojs}
+//| expandable: false
 
-### Row {height="70%"}
-Row2, col2 STUFF HERE
+// Get the data from R and make it usable (transpose it) in JS 
+starwars_js = transpose(starwars_to_js)
 
-### Row {height="20%"}
-Row3, col2 STUFF HERE
+// Create dropdown of starwars charactors
+viewof charDropdown = Inputs.select(
+  starwars_js.map(d => d.name),
+  {
+    label: "Choose a character: ",
+    unique: true
+  }
+)
+
+```
+
+### Row {height="90%"}
+PUT STUFF HERE
+
