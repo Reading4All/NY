@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  title: "NY"
+  sidebar:
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: ELA-countyreport.qmd
+        text: ELA-County
+
+format:
+  html:
+    theme: [minty, custom.scss]
+    toc: true
+
+
+

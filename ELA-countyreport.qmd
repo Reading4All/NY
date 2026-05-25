@@ -1,0 +1,36 @@
+---
+title: "Reading Proficiency - County Report"
+format: 
+  dashboard: 
+    logo: "images/logo.png"
+    orientation: columns
+---
+
+## Column {width="35%"}
+
+COLUMN 1 STUFF HERE
+
+```{r, load packages}
+#| echo: false
+#| include: false
+library(tidyverse)
+library(conflicted)
+conflicts_prefer(dplyr::lag)
+conflicts_prefer(dplyr::filter)
+```
+
+```{r, display df}
+head(starwars)
+```
+
+## Column {width="65%"}
+COLUMN 2 STUFF HERE
+
+### Row {height="10%"}
+Row1, col2 STUFF HERE
+
+### Row {height="70%"}
+Row2, col2 STUFF HERE
+
+### Row {height="20%"}
+Row3, col2 STUFF HERE
