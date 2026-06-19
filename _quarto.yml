@@ -7,8 +7,8 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - href: /plots/ELAcountyreport-2025.qmd
-        text: ELA-County
+      - href: ELAcountyreport-2025.qmd
+        text: ELA-ReadingData-ByCounty
 
 format:
   html:
