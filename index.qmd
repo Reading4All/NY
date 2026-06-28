@@ -1,7 +1,0 @@
----
-title: "Open School Data (NY)"
----
-
-Welcome. This site contains plots based on publical school data.
-
-To learn about this project visit: openschooldata.com

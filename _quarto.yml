@@ -5,7 +5,7 @@ website:
   title: "NY"
   sidebar:
     contents:
-      - href: index.qmd
+      - href: ELAcountyreport-2025-tabs.qmd
         text: Home
       - href: ELAcountyreport-2025.qmd
         text: ELA-ReadingData-ByCounty
