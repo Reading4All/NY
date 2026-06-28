@@ -24,7 +24,7 @@ YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
 
 ###### read csv data
 ## locally:
-csv_file <- paste0("C:\\Users\\srene\\Documents\\ADVOCACY\\My_work\\NYSED-REPORTS\\SOURCE_DATA\\NYSED_DBs\\CLEANED_Data\\SOURCEDATA_ALL-SPRING-", YEAR, ".csv")
+csv_file <- paste0("C:\\Users\\srene\\Documents\\ADVOCACY\\My_work\\NYSED-REPORTS\\SOURCE_DATA\\NYSED_DBs\\CLEANED_Data\\SOURCEDATA_ELA-SPRING-", YEAR, ".csv")
 ## or from Github:
 ## csv_file <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SOURCEDATA_ELA-SPRING-", YEAR, ".csv")
 
@@ -36,6 +36,30 @@ shared_data <- read.csv(csv_file)
 shared_data<-shared_data[(shared_data$ENTITY_TYPE == "DISTRICT"),]
 ## Only Keep Spring (year-end) Data
 shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
+
+# Calculate and create new col 'Prof_Gap' for SWD and Econ.Dis rows (%prof SWD or EconDis - %prof GenEd or NotEconDis)
+shared_data <- shared_data %>%
+  left_join(
+    shared_data %>%
+      filter(SUBGROUP_NAME == "General Education Students") %>%
+      select(ENTITY_NAME, ASSESSMENT_NAME, Gen_Ed_Pct = Prof_Pct),
+    by = c("ENTITY_NAME", "ASSESSMENT_NAME")
+  ) %>%
+  left_join(
+    shared_data %>%
+      filter(SUBGROUP_NAME == "Not Economically Disadvantaged") %>%
+      select(ENTITY_NAME, ASSESSMENT_NAME, Not_EconDis_Pct = Prof_Pct),
+    by = c("ENTITY_NAME", "ASSESSMENT_NAME")
+  ) %>%
+  mutate(
+    Prof_Gap = case_when(
+      SUBGROUP_NAME == "Students with Disabilities"    ~ Gen_Ed_Pct - Prof_Pct,
+      SUBGROUP_NAME == "Economically Disadvantaged"    ~ Not_EconDis_Pct - Prof_Pct,
+      TRUE                                             ~ NA_real_
+    )
+  ) %>%
+  select(-Gen_Ed_Pct, -Not_EconDis_Pct)  # drop helper columns
+
 # Get rid of NA Prof rates, and sort by Prof rate
 shared_data <- shared_data %>% 
   filter(!is.na(Prof_Pct)) %>% 
@@ -121,7 +145,7 @@ function guard(fn, options = {}) {
 // save unique Counties so I can use these in select popup
 uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC));
 ```
-## User Inputs {.sidebar id="my-static-sidebar"}
+## User Inputs {.sidebar}
 ```{ojs}
 
 viewof inputSels = guard(
@@ -174,11 +198,21 @@ _autoSubmit = {
 ```{ojs}
 //| output: false
 cohortPlot1 = inputSels.cohort == "SWD" ? "General Education Students" : "Not Economically Disadvantaged"
+cohortPlot1_short = inputSels.cohort == "SWD" ? "no IEP (Gen Ed)" : "Not EconDis."
+
 ```
 
 ```{ojs}
 //| output: false
 cohortPlot2 = inputSels.cohort == "SWD" ? "Students with Disabilities" : "Economically Disadvantaged"
+cohortPlot2_short = inputSels.cohort == "SWD" ? "IEP (SWD)" : "EconDis."
+```
+
+```{ojs}
+//| output: false
+
+// Plot3 (Gap) uses SWD or Econ Dis rows (which have calculated prof_gap col values)
+cohortPlot3 = inputSels.cohort == "SWD" ? "Students with Disabilities" : "Economically Disadvantaged"
 ```
 
 ```{ojs}
@@ -198,128 +232,18 @@ shared_dataFiltered2 = shared_data.filter(d =>
   cohortPlot2      == d.SUBGROUP_NAME
 )
 ```
-## Plot1 Column 
+
 ```{ojs}
-
-fig1 = {
-  const width = 1000;
-  const barHeight = 24;
-  const height = 150 + shared_dataFiltered1.length * barHeight;
-
-  // Build stacked segments for each row
-  const proficient = shared_dataFiltered1.map(d => ({
-    entity: d.ENTITY_NAME,
-    x1: 0,
-    x2: d.Prof_Pct,
-    category: "Proficient",
-    label: String(d.Prof_Count),
-    color: "rgba(3,129,179,1)"
-  }));
-
-  const notProficient = shared_dataFiltered1.map(d => ({
-    entity: d.ENTITY_NAME,
-    x1: d.Prof_Pct,
-    x2: d.Prof_Pct + d.NotProf_Pct,
-    category: "Not Proficient",
-    label: String(d.NotProf_Count),
-    color: "rgba(170,74,68,1)"
-  }));
-
-  const notTested = shared_dataFiltered1.map(d => ({
-    entity: d.ENTITY_NAME,
-    x1: d.Prof_Pct + d.NotProf_Pct,
-    x2: d.Prof_Pct + d.NotProf_Pct + d.NotTested_Pct,
-    category: "Not Tested",
-    label: String(d.NOT_TESTED),
-    color: "rgba(209,209,209,1)"
-  }));
-
-  const segments = [...proficient, ...notProficient, ...notTested];
-
-  const entityOrder = shared_dataFiltered1.map(d => d.ENTITY_NAME).reverse();
-
-  return Plot.plot({
-    width,
-    height,
-    marginLeft: 175,   // adjust to fit longest entity name
-    marginRight: 60,
-    marginTop: 15,
-    marginBottom: 60,
-    
-    style: {
-      fontSize: "14px" // Changes all plot text sizes
-    },
-    
-    title: cohortPlot1,
-    subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
-    caption: html`Data Source (downloadable): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a><br>
-              Data Source (website): <a href="https://data.nysed.gov/essa.php">NYSED Report Card - website</a>`,
-              
-    x: {
-      label: "% of Students",
-      labelAnchor: "center",
-      labelArrow: "none",
-      domain: [0, 100]
-    },
-    y: {
-      label: null,
-      domain: entityOrder,   // preserves original row order
-      tickSize: 0
-    },
-    color: {
-      domain: ["Proficient", "Not Proficient", "Not Tested"],
-      range: ["rgba(3,129,179,1)", "rgba(170,74,68,1)", "rgba(209,209,209,1)"],
-      legend: true
-    },
-
-    marks: [
-      // Stacked bars drawn as rects
-      Plot.barX(segments, {
-        x1: d => d.x1,
-        x2: d => d.x2,
-        y: d => d.entity,
-        fill: d => d.color,
-        stroke: "black",
-        strokeWidth: 0.5
-      }),
-
-      // Count labels inside each bar segment
-      Plot.text(segments, {
-//        x: d => d.x1 + (d.x2 - d.x1) / 2,  // center of each segment
-        x: d => d.x1 + 1,  // start of each segment
-        y: d => d.entity,
-        text: d => d.x2 - d.x1 > 2 ? d.label : "",  // hide label if segment too narrow
-        fill: "black",
-        textAnchor: "start"
-      }),
-
-      // Total count label to the right of each bar
-      Plot.text(shared_dataFiltered1, {
-        x: 100,
-        y: d => d.ENTITY_NAME,
-        text: d => `(${d.TOTAL_COUNT})`,
-        fill: "black",
-        textAnchor: "start",
-        dx: 5
-      }),
-
-      // Vertical reference line at 95%
-      Plot.ruleX([95], {
-        stroke: "black",
-        strokeWidth: 1,
-        strokeDasharray: "4,3"
-      }),
-
-      // Annotation label at top of the 95% line
-      Plot.text([">95% CAN!    "], {
-        frameAnchor: "top-right", 
-        dy: -12 // Adjust vertical offset to move it slightly
-    }),
-    ]
-  });
-}
+//| output: false
+shared_dataFiltered3 = shared_data.filter(d =>
+  inputSels.county.toUpperCase() == d.COUNTY_DESC &&
+  inputSels.grade  == d.ASSESSMENT_NAME &&
+  cohortPlot3      == d.SUBGROUP_NAME
+)
 ```
-## Plot2 Column
+## Plots
+::: {.panel-tabset}
+### ${cohortPlot2_short}
 ```{ojs}
 
 fig2 = {
@@ -374,7 +298,7 @@ fig2 = {
     title: cohortPlot2,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
     caption: html`Data Source (downloadable): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a><br>
-              Data Source (website): <a href="https://data.nysed.gov/essa.php">NYSED Report Card - website</a>`,
+              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card - website</a>`,
 
     x: {
       label: "% of Students",
@@ -440,3 +364,202 @@ fig2 = {
   });
 }
 ```
+### ${cohortPlot1_short}
+```{ojs}
+
+fig1 = {
+  const width = 1000;
+  const barHeight = 24;
+  const height = 150 + shared_dataFiltered1.length * barHeight;
+
+  // Build stacked segments for each row
+  const proficient = shared_dataFiltered1.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: 0,
+    x2: d.Prof_Pct,
+    category: "Proficient",
+    label: String(d.Prof_Count),
+    color: "rgba(3,129,179,1)"
+  }));
+
+  const notProficient = shared_dataFiltered1.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: d.Prof_Pct,
+    x2: d.Prof_Pct + d.NotProf_Pct,
+    category: "Not Proficient",
+    label: String(d.NotProf_Count),
+    color: "rgba(170,74,68,1)"
+  }));
+
+  const notTested = shared_dataFiltered1.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: d.Prof_Pct + d.NotProf_Pct,
+    x2: d.Prof_Pct + d.NotProf_Pct + d.NotTested_Pct,
+    category: "Not Tested",
+    label: String(d.NOT_TESTED),
+    color: "rgba(209,209,209,1)"
+  }));
+
+  const segments = [...proficient, ...notProficient, ...notTested];
+
+  const entityOrder = shared_dataFiltered1.map(d => d.ENTITY_NAME).reverse();
+
+  return Plot.plot({
+    width,
+    height,
+    marginLeft: 175,   // adjust to fit longest entity name
+    marginRight: 60,
+    marginTop: 15,
+    marginBottom: 60,
+    
+    style: {
+      fontSize: "14px" // Changes all plot text sizes
+    },
+    
+    title: cohortPlot1,
+    subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
+    caption: html`Data Source (downloadable): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a><br>
+              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card - website</a>`,
+              
+    x: {
+      label: "% of Students",
+      labelAnchor: "center",
+      labelArrow: "none",
+      domain: [0, 100]
+    },
+    y: {
+      label: null,
+      domain: entityOrder,   // preserves original row order
+      tickSize: 0
+    },
+    color: {
+      domain: ["Proficient", "Not Proficient", "Not Tested"],
+      range: ["rgba(3,129,179,1)", "rgba(170,74,68,1)", "rgba(209,209,209,1)"],
+      legend: true
+    },
+
+    marks: [
+      // Stacked bars drawn as rects
+      Plot.barX(segments, {
+        x1: d => d.x1,
+        x2: d => d.x2,
+        y: d => d.entity,
+        fill: d => d.color,
+        stroke: "black",
+        strokeWidth: 0.5
+      }),
+
+      // Count labels inside each bar segment
+      Plot.text(segments, {
+//        x: d => d.x1 + (d.x2 - d.x1) / 2,  // center of each segment
+        x: d => d.x1 + 1,  // start of each segment
+        y: d => d.entity,
+        text: d => d.x2 - d.x1 > 2 ? d.label : "",  // hide label if segment too narrow
+        fill: "black",
+        textAnchor: "start"
+      }),
+
+      // Total count label to the right of each bar
+      Plot.text(shared_dataFiltered1, {
+        x: 100,
+        y: d => d.ENTITY_NAME,
+        text: d => `(${d.TOTAL_COUNT})`,
+        fill: "black",
+        textAnchor: "start",
+        dx: 5
+      }),
+
+      // Vertical reference line at 95%
+      Plot.ruleX([95], {
+        stroke: "black",
+        strokeWidth: 1,
+        strokeDasharray: "4,3"
+      }),
+
+      // Annotation label at top of the 95% line
+      Plot.text([">95% CAN!    "], {
+        frameAnchor: "top-right", 
+        dy: -12 // Adjust vertical offset to move it slightly
+    }),
+    ]
+  });
+}
+```
+### GAP
+```{ojs}
+fig3 = {
+  const width = 1000;
+  const barHeight = 24;
+  const height = 150 + shared_dataFiltered3.length * barHeight;
+
+  // Build stacked segments for each row
+  const proficient = shared_dataFiltered3.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: 0,
+    x2: d.Prof_Gap,
+    category: "Proficiency Gap",
+    color: "rgba(3,129,179,1)"
+  }));
+
+  const segments = [...proficient];
+
+  const entityOrder = shared_dataFiltered3.map(d => d.ENTITY_NAME).reverse();
+
+  return Plot.plot({
+    width,
+    height,
+    marginLeft: 175,   // adjust to fit longest entity name
+    marginRight: 60,
+    marginTop: 15,
+    marginBottom: 60,
+    
+    style: {
+      fontSize: "14px" // Changes all plot text sizes
+    },
+    
+    title: `Equity GAP: ${cohortPlot1} vs. ${cohortPlot2}`,
+    subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
+    caption: html`Gap = %Proficient(SWD or Econ.Dis) - %Proficient(Not SWD or Not Econ.Dis)<br>
+          Data Source (downloadable): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a>`,
+              
+    x: {
+      label: "% Profiency Gap",
+      labelAnchor: "center",
+      labelArrow: "none",
+      domain: [0, 100]
+    },
+    y: {
+      label: null,
+      domain: entityOrder,   // preserves original row order
+      tickSize: 0
+    },
+    color: {
+      domain: ["Proficient"],
+      range: ["rgba(3,129,179,1)"],
+      legend: false
+    },
+
+    marks: [
+      // Stacked bars drawn as rects
+      Plot.barX(segments, {
+        x1: d => d.x1,
+        x2: d => d.x2,
+        y: d => d.entity,
+        fill: d => d.color,
+        stroke: "black",
+        strokeWidth: 0.5
+      }),
+
+      // Count labels inside each bar segment
+      Plot.text(segments, {
+        x: d => d.x1 + 1,  // start of each segment
+        y: d => d.entity,
+        text: d => d.x2 - d.x1 > 2 ? d.label : "",  // hide label if segment too narrow
+        fill: "black",
+        textAnchor: "start"
+      })
+    ]
+  });
+}
+```
+:::
