@@ -23,10 +23,7 @@ library(tidyr)
 YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
 
 ###### read csv data
-## locally:
-csv_file <- paste0("C:\\Users\\srene\\Documents\\ADVOCACY\\My_work\\NYSED-REPORTS\\SOURCE_DATA\\NYSED_DBs\\CLEANED_Data\\SOURCEDATA_ELA-SPRING-", YEAR, ".csv")
-## or from Github:
-## csv_file <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SOURCEDATA_ELA-SPRING-", YEAR, ".csv")
+csv_file <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SOURCEDATA_ELA-SPRING-", YEAR, ".csv")
 
 shared_data <- read.csv(csv_file)
 
