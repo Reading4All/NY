@@ -1,3 +1,35 @@
 /*-- scss:defaults --*/
 
+/* Remove margins and padding from the container */
+.html-fill-container.bslib-grid {
+  padding: 0 !important;
+  margin: 0 !important;
+}
 
+/* Remove fill item spacing */
+.html-fill-item {
+//  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Remove specific bslib bottom spacing if applicable */
+.html-fill-container > .html-fill-item.bslib-mb-spacing {
+  margin-bottom: 0 !important;
+}
+
+.btn.btn-quarto {
+  background-color: #78c2ad; /* Replace with your desired color */
+  border-color: #78c2ad;      /* Optional: keep border the same color as background */
+//  color: #ffffff;             /* Optional: change text color for readability */
+}
+
+/* Optional: handle hover and active states */
+.btn.btn-quarto:hover {
+  background-color: #a6d7c9;
+  border-color: #a6d7c9;
+}
+
+.btn.btn-quarto:disabled {
+  background-color: #a6d7c9;
+  border-color: #a6d7c9;
+}

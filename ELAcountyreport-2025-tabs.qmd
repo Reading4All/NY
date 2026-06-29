@@ -3,12 +3,8 @@
 format: 
   dashboard: 
     orientation: columns
-    expandable: true
+    expandable: false
     scrolling: false
-#    logo: "images/OSD-favicon.png"
-#    nav-buttons:
-#        - icon: github
-#          href: https://github.com/Reading4All/NY
 ---
 
 
@@ -116,12 +112,25 @@ function guard(fn, options = {}) {
   };
   
   const submit = htl.html`<button ${{disabled: !resubmit && !required, onclick: onSubmit}}>${submitLabel}`;
-  const reset = htl.html`<button ${{disabled: true, onclick: onReset}}>${resetLabel}`;
-  const footer = htl.html`<div><hr style="padding:0;margin:10px 0"><div style="display:flex;gap:1ch;justify-content:${justify}">${submit} ${reset}`;
+  
+//not actually going to show/use reset button but keeping logic in case we want
+  const reset = htl.html`<button ${{disabled: true, onclick: onReset}}>${resetLabel}`; 
+//  const footer = htl.html`<div><hr style="padding:0;margin:10px 0"><div style="display:flex;gap:1ch;justify-content:${justify}">${submit} ${reset}`;
 
-  const template = inputs => htl.html`<div>${
-    Array.isArray(inputs) ? inputs : Object.values(inputs)
-  }${footer}`;
+// which buttons to show and space around them, center submit button
+  const footer = htl.html`<div><hr style="padding:0;margin:10px 0"><div style="display:flex;gap:1ch;justify-content:${justify}">${submit}`;
+  
+//  const template = inputs => htl.html`<div>${
+//    Array.isArray(inputs) ? inputs : Object.values(inputs)
+//  }${footer}`;
+
+//const template = inputs => htl.html`<div>${
+//  (Array.isArray(inputs) ? inputs : Object.values(inputs)).map(input => htl.html`<span style="display:inline-block;margin:4px;">${input}</span>`)
+//}${footer}`;
+
+const template = inputs => htl.html`<div style="max-width:100%;white-space:normal;">${
+  (Array.isArray(inputs) ? inputs : Object.values(inputs)).map(input => htl.html`<span style="display:inline-block;margin:4px;">${input}</span>`)
+}${footer}`;
   
   const input = fn({submit, reset, footer, template, onSubmit, onReset});
   let invalid = !!input.querySelector(":invalid");
@@ -142,7 +151,7 @@ function guard(fn, options = {}) {
 // save unique Counties so I can use these in select popup
 uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC));
 ```
-## User Inputs {.sidebar}
+## User Inputs {.toolbar}
 ```{ojs}
 
 viewof inputSels = guard(
@@ -156,22 +165,22 @@ viewof inputSels = guard(
         unique: true,
         validate: v => shared_data.map(d => d.COUNTY_DESC).includes(v.value.toUpperCase()),
         sort: true,
-        required: true,
-        width: 75
+        required: true
+//        width: 75
         }),
       grade: Inputs.select(new Map([ ["Grade 3", "ELA3"], ["Grade 4", "ELA4"], ["Grade 5", "ELA5"], ["Grade 6", "ELA6"], ["Grade 7", "ELA7"], ["Grade 8", "ELA8"], ["All Grades (3-8)", "ELA3_8"] ]), {
         value: "ELA3", 
         label: "Grade:",
         sort: true,
-        required: true,
-        width: 75
+        required: true
+//        width: 75
       }),
       
-      cohort: Inputs.select(new Map([ ["IEP / no IEP", "SWD"], ["Economically Disadvantaged / not", "Econ"] ]), {
+      cohort: Inputs.select(new Map([ ["IEP / no IEP", "SWD"], ["Econ.Disadvantaged / not", "Econ"] ]), {
         value: "SWD",   // ← was "SWD", which doesn't exist in the map
-        label: "Cohorts to compare:",
-        required: true,
-        width: 75
+        label: "Cohorts:",
+        required: true
+//        width: 75
       })
     },
     { template }
@@ -238,10 +247,12 @@ shared_dataFiltered3 = shared_data.filter(d =>
   cohortPlot3      == d.SUBGROUP_NAME
 )
 ```
-## Plots
+::: {.column-screen}
+## Plots {.flow}
 ::: {.panel-tabset}
 ### ${cohortPlot2_short}
 ```{ojs}
+//| column: screen
 
 fig2 = {
   const width = 1000;
@@ -363,6 +374,7 @@ fig2 = {
 ```
 ### ${cohortPlot1_short}
 ```{ojs}
+//| column: screen
 
 fig1 = {
   const width = 1000;
@@ -484,6 +496,8 @@ fig1 = {
 ```
 ### GAP
 ```{ojs}
+//| column: screen
+
 fig3 = {
   const width = 1000;
   const barHeight = 24;
@@ -523,7 +537,7 @@ fig3 = {
       label: "% Profiency Gap",
       labelAnchor: "center",
       labelArrow: "none",
-      domain: [0, 100]
+      domain: [-80, 80]
     },
     y: {
       label: null,
@@ -559,4 +573,5 @@ fig3 = {
   });
 }
 ```
+:::
 :::
