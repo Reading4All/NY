@@ -98,25 +98,21 @@ function guard(fn, options = {}) {
   const footer = htl.html`<div><hr style="padding:0;margin:10px 0"><div style="display:flex;gap:1ch;justify-content:${justify}">${submit}`;
 
 // format the input toolbar, remove the extra inside <div>s commented to not stack them, but flex wrapping not working
-
- <!-- const template = inputs => htl.html` -->
- <!--  <div style="display: flex; flex-wrap: wrap; gap: 12px; width: 100%;"> -->
- <!--  <!-- <div> --> -->
- <!--    ${(Array.isArray(inputs) ? inputs : Object.values(inputs)).map( -->
- <!--      input => htl.html` -->
- <!--        <div style="flex: 1 1 200px; flex-wrap: wrap; min-width: 0;"> -->
- <!--          <span style="display: block; width: 100%;">${input}</span> -->
- <!--        </div> -->
- <!--      ` )} -->
- <!--  <!-- </div> --> -->
- <!--  </div> -->
- <!--  ${footer} -->
- <!-- `; -->
-
-  const template = inputs => htl.html`<div>${
-    Array.isArray(inputs) ? inputs : Object.values(inputs)
-  }${footer}`;
-
+const template = inputs => htl.html`
+  <div style="display: flex; flex-wrap: wrap; gap: 12px; width: 100%;">
+  <div>
+    ${(Array.isArray(inputs) ? inputs : Object.values(inputs)).map(
+      input => htl.html`
+        <div style="flex: 1 1 200px; flex-wrap: wrap; min-width: 0;">
+          <span style="display: block; width: 100%;">${input}</span>
+        </div>
+      `
+    )}
+  </div>
+  </div>
+  ${footer}
+`;
+  
   const input = fn({submit, reset, footer, template, onSubmit, onReset});
   let invalid = !!input.querySelector(":invalid");
   submit.disabled = !resubmit || invalid;
@@ -136,7 +132,7 @@ function guard(fn, options = {}) {
 // save unique Counties so I can use these in select popup
 uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC));
 ```
-## {.sidebar}
+## {.toolbar}
 ```{ojs}
 
 viewof inputSels = guard(
@@ -216,8 +212,9 @@ shared_dataFiltered2 = shared_data.filter(d =>
   cohortPlot2      == d.SUBGROUP_NAME
 )
 ```
-::: {.column-screen .flow}
-## Plots
+::: {.column-screen}
+## Plots {.flow}
+::: {.column-screen}
 ::: {.panel-tabset}
 ### ${cohortPlot2_short}
 ```{ojs}
@@ -274,8 +271,8 @@ fig2 = {
     
     title: cohortPlot2,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
-    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a><br>
-              Data Source: <a href="https://data.nysed.gov/">NYSED Report Card - Website</a>`,
+    caption: html`Data Source (downloadable): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a><br>
+              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card - website</a>`,
 
     x: {
       label: "% of Students",
@@ -396,8 +393,8 @@ fig1 = {
     
     title: cohortPlot1,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
-    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a><br>
-              Data Source: <a href="https://data.nysed.gov/">NYSED Report Card - Website</a>`,
+    caption: html`Data Source (downloadable): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a><br>
+              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card - website</a>`,
               
     x: {
       label: "% of Students",
@@ -463,5 +460,6 @@ fig1 = {
   });
 }
 ```
+:::
 :::
 :::

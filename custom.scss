@@ -1,18 +1,5 @@
 /*-- scss:defaults --*/
 
-form {
-  display: flex !important;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: flex-end;
-  max-width: 600px; /* or whatever fits your layout — forces wrapping sooner */
-}
-
-form > div {
-  flex: 0 1 auto;
-  min-width: 0; /* lets fields shrink instead of forcing overflow */
-}
-
 /* Remove margins and padding from the container */
 .html-fill-container.bslib-grid {
   padding: 0 !important;
