@@ -271,8 +271,8 @@ fig2 = {
     
     title: cohortPlot2,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
-    caption: html`Data Source (downloadable): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a><br>
-              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card - website</a>`,
+    caption: html`Data Source (download files): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card </a><br>
+              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card </a>`,
 
     x: {
       label: "% of Students",
@@ -312,11 +312,12 @@ fig2 = {
         textAnchor: "start"
       }),
 
-      // Total count label to the right of each bar
+      // text in () to the right of each bar
       Plot.text(shared_dataFiltered2, {
         x: 100,
         y: d => d.ENTITY_NAME,
-        text: d => `(${d.TOTAL_COUNT})`,
+        // text: d => `(${d.TOTAL_COUNT})`,
+        text: d =>`(${d.Prof_Pct.toFixed(1)}%)`,
         fill: "black",
         textAnchor: "start",
         dx: 5
@@ -330,9 +331,10 @@ fig2 = {
       }),
 
       // Annotation label at top of the 95% line
-      Plot.text([">95% CAN!    "], {
+      Plot.text([">95%, nearly everyone CAN!"], {
         frameAnchor: "top-right", 
-        dy: -12 // Adjust vertical offset to move it slightly
+        dy: -12, // Adjust vertical offset to move it slightly
+        dx: +50 // Adjust horizontal offset to move it slightly
     }),
     ]
   });
@@ -393,8 +395,8 @@ fig1 = {
     
     title: cohortPlot1,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
-    caption: html`Data Source (downloadable): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card - downloadable</a><br>
-              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card - website</a>`,
+    caption: html`Data Source (download files): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card </a><br>
+              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card</a>`,
               
     x: {
       label: "% of Students",
@@ -434,11 +436,12 @@ fig1 = {
         textAnchor: "start"
       }),
 
-      // Total count label to the right of each bar
+      // Text in () to the right of each bar
       Plot.text(shared_dataFiltered1, {
         x: 100,
         y: d => d.ENTITY_NAME,
-        text: d => `(${d.TOTAL_COUNT})`,
+        // text: d => `(${d.TOTAL_COUNT})`,
+        text: d =>`(${d.Prof_Pct.toFixed(1)}%)`,
         fill: "black",
         textAnchor: "start",
         dx: 5
@@ -452,9 +455,10 @@ fig1 = {
       }),
 
       // Annotation label at top of the 95% line
-      Plot.text([">95% CAN!    "], {
+      Plot.text([">95%, nearly everyone CAN!"], {
         frameAnchor: "top-right", 
-        dy: -12 // Adjust vertical offset to move it slightly
+        dy: -12, // Adjust vertical offset to move it slightly
+        dx: +50 // Adjust horizontal offset to move it slightly
     }),
     ]
   });
