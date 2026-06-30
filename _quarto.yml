@@ -4,6 +4,7 @@ project:
 website:
   title: "NY"
   sidebar:
+    pinned: true
     contents:
       - href: ELAcountyreport-2025-tabs.qmd
         text: Home
