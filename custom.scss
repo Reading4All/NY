@@ -33,3 +33,9 @@
   background-color: #a6d7c9;
   border-color: #a6d7c9;
 }
+
+@media print {
+  .code-tools-menu, .navbar-tools, .toolbar {
+    display: none !important;
+  }
+} 

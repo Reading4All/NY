@@ -271,7 +271,8 @@ fig2 = {
     
     title: cohortPlot2,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
-    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a>,
+    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
+    (xx%) = % Proficient`,
               
     x: {
       label: "% of Students",
@@ -285,7 +286,7 @@ fig2 = {
       tickSize: 0
     },
     color: {
-      domain: ["Proficient", "Not Proficient", "Not Tested"],
+      domain: ["#Proficient", "#Not Proficient", "#Not Tested"],
       range: ["rgba(3,129,179,1)", "rgba(170,74,68,1)", "rgba(209,209,209,1)"],
       legend: true
     },
@@ -394,8 +395,9 @@ fig1 = {
     
     title: cohortPlot1,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
-    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a>,
-              
+    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
+    (xx%) = % Proficient`,
+    
     x: {
       label: "% of Students",
       labelAnchor: "center",
@@ -408,7 +410,7 @@ fig1 = {
       tickSize: 0
     },
     color: {
-      domain: ["Proficient", "Not Proficient", "Not Tested"],
+      domain: ["#Proficient", "#Not Proficient", "#Not Tested"],
       range: ["rgba(3,129,179,1)", "rgba(170,74,68,1)", "rgba(209,209,209,1)"],
       legend: true
     },
