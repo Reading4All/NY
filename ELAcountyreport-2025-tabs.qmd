@@ -271,9 +271,8 @@ fig2 = {
     
     title: cohortPlot2,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
-    caption: html`Data Source (download files): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card </a><br>
-              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card </a>`,
-
+    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a>,
+              
     x: {
       label: "% of Students",
       labelAnchor: "center",
@@ -395,8 +394,7 @@ fig1 = {
     
     title: cohortPlot1,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
-    caption: html`Data Source (download files): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card </a><br>
-              Data Source (website): <a href="https://data.nysed.gov/">NYSED Report Card</a>`,
+    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a>,
               
     x: {
       label: "% of Students",
