@@ -6,6 +6,8 @@ project:
 website:
   title: "NY"
   sidebar:
+    logo: images/OSD-favicon.png
+    title: false
     contents:
       - href: ELAcountyreport-2025.qmd
         text: ELA-Proficiency Plot, by County

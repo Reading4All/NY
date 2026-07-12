@@ -1,14 +1,12 @@
 ---
-title: "Data homepage"
+title: "Open School Data (NY)"
 format:
   html:
     page-layout: article  # Options: article (default), full, or custom
-    toc: true               # Show Table of Contents
-    toc-location: right     # Options: right, left, or body
 ---
 
-This repo hosts data and quarto plots, to visualize public data related to student literacy outcomes in our NY public schools.  
+<br> This website contains plots and visualizations of public data related to student literacy outcomes in our NY public schools.  
 
-The plots in this repo are hosted in this repo, seperately from the main website, where they are embedded (NY-website repo). 
+These plots are used on [OpenSchoolData.com](openschooldata.com), a website to help identify issues contributing to inequitable students outcomes and overspending in our schools.
 
-
+If you care about improving the outcomes of all students in our public schools, over profiting off of them, your ideas and contributions are welcome!
