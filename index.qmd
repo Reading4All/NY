@@ -9,4 +9,4 @@ format:
 
 These plots are used on [OpenSchoolData.com](openschooldata.com), a website to help identify issues contributing to inequitable students outcomes and overspending in our schools.
 
-If you care more about improving the outcomes of all students in our public schools than profiting from them, your ideas and contributions are welcome!
+If you care about improving the outcomes of all students in our public schools over profiting from them, your ideas and contributions are welcome!
