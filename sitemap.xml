@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Reading4All.github.io/NY/ELAcountyreport-2025.html</loc>
-    <lastmod>2026-07-01T22:13:06.560Z</lastmod>
+    <loc>https://data.openschooldata.com/ELAcountyreport-2025.html</loc>
+    <lastmod>2026-07-12T18:20:39.862Z</lastmod>
   </url>
   <url>
-    <loc>https://Reading4All.github.io/NY/ELAcountyreport-2025-tabs.html</loc>
-    <lastmod>2026-07-01T22:13:06.560Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Reading4All.github.io/NY/about.html</loc>
-    <lastmod>2026-07-01T22:13:06.560Z</lastmod>
+    <loc>https://data.openschooldata.com/about.html</loc>
+    <lastmod>2026-07-12T18:20:39.862Z</lastmod>
   </url>
 </urlset>
