@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data homepage",
+    "section": "",
+    "text": "This repo hosts data and quarto plots, to visualize public data related to student literacy outcomes in our NY public schools.\nThe plots in this repo are hosted in this repo, seperately from the main website, where they are embedded (NY-website repo)."
+  }
+]
