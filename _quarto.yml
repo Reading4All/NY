@@ -7,10 +7,8 @@ website:
   title: "NY"
   sidebar:
     contents:
-      - href: ELAcountyreport-2025-tabs.qmd
-        text: Home
       - href: ELAcountyreport-2025.qmd
-        text: ELA-ReadingData-ByCounty
+        text: ELA-Proficiency Plot, by County
 
 format:
   html:

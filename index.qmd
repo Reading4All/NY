@@ -1,5 +1,10 @@
 ---
-title: "About"
+title: "Data homepage"
+format:
+  html:
+    page-layout: article  # Options: article (default), full, or custom
+    toc: true               # Show Table of Contents
+    toc-location: right     # Options: right, left, or body
 ---
 
 This repo hosts data and quarto plots, to visualize public data related to student literacy outcomes in our NY public schools.  
