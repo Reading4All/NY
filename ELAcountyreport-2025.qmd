@@ -6,7 +6,39 @@ format:
     expandable: false
     scrolling: false
 ---
+<style>
+@media (min-width: 768px) {
+  /* 1. Hide the tab buttons entirely on desktop */
+  .panel-tabset > .nav-tabs {
+    display: none !important;
+  }
+  
+  /* 2. Turn the container into a strict 2-column Grid */
+  .panel-tabset > .tab-content {
+    display: grid !important;
+    /* This establishes exactly 2 equal columns side-by-side */
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 30px !important; /* Forces a safe horizontal gutter between columns */
+    width: 100% !important;
+  }
+  
+  /* 3. Force both sections to show up in their assigned columns */
+  .panel-tabset > .tab-content > .tab-pane {
+    display: block !important; 
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 
+  /* 4. Force the underlying OJS elements to stay within their grid lanes */
+  .panel-tabset .tab-pane div, 
+  .panel-tabset .tab-pane svg,
+  .panel-tabset .tab-pane canvas {
+    max-width: 100% !important;
+  }
+}
+</style>
 
 ```{r}
 #| echo: false
@@ -216,7 +248,7 @@ shared_dataFiltered2 = shared_data.filter(d =>
 ## Plots {.flow}
 ::: {.column-screen}
 ::: {.panel-tabset}
-### ${cohortPlot2_short}
+## ${cohortPlot2_short}
 ```{ojs}
 //| column: screen
 
@@ -261,7 +293,7 @@ fig2 = {
   const entityOrder = shared_dataFiltered2.map(d => d.ENTITY_NAME).reverse();
 
   return Plot.plot({
-    width,
+    width: width,
     height,
     marginLeft: 175,   // adjust to fit longest entity name
     marginRight: 60,
@@ -344,7 +376,7 @@ fig2 = {
   });
 }
 ```
-### ${cohortPlot1_short}
+## ${cohortPlot1_short}
 ```{ojs}
 //| column: screen
 
@@ -389,7 +421,7 @@ fig1 = {
   const entityOrder = shared_dataFiltered1.map(d => d.ENTITY_NAME).reverse();
 
   return Plot.plot({
-    width,
+    width: width,
     height,
     marginLeft: 175,   // adjust to fit longest entity name
     marginRight: 60,
