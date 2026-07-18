@@ -232,7 +232,8 @@ fig2 = {
     x2: d.Prof_Pct,
     category: "Proficient",
     label: String(d.Prof_Count),
-    color: "rgba(3,129,179,1)"
+    color: "#2F7F73",
+    fill: "#white"
   }));
 
   const notProficient = shared_dataFiltered2.map(d => ({
@@ -241,7 +242,8 @@ fig2 = {
     x2: d.Prof_Pct + d.NotProf_Pct,
     category: "Not Proficient",
     label: String(d.NotProf_Count),
-    color: "rgba(170,74,68,1)"
+    color: "#D95C5C",
+    fill: "#white"
   }));
 
   const notTested = shared_dataFiltered2.map(d => ({
@@ -250,7 +252,8 @@ fig2 = {
     x2: d.Prof_Pct + d.NotProf_Pct + d.NotTested_Pct,
     category: "Not Tested",
     label: String(d.NOT_TESTED),
-    color: "rgba(209,209,209,1)"
+    color: "#B7BDC4",
+    fill: "#333333"
   }));
 
   const segments = [...proficient, ...notProficient, ...notTested];
@@ -270,7 +273,7 @@ fig2 = {
     },
     
     title: cohortPlot2,
-    subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
+        subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
     caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
     (xx%) = % Proficient`,
               
@@ -287,12 +290,12 @@ fig2 = {
     },
     color: {
       domain: ["#Proficient", "#Not Proficient", "#Not Tested"],
-      range: ["rgba(3,129,179,1)", "rgba(170,74,68,1)", "rgba(209,209,209,1)"],
+      range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
       legend: true
     },
 
     marks: [
-      // Stacked bars drawn as rects
+      // Stacked bars
       Plot.barX(segments, {
         x1: d => d.x1,
         x2: d => d.x2,
@@ -302,13 +305,12 @@ fig2 = {
         strokeWidth: 0.5
       }),
 
-      // Count labels inside each bar segment
+      // Counts labels inside each bar segment
       Plot.text(segments, {
 //        x: d => d.x1 + (d.x2 - d.x1) / 2,  // center of each segment
         x: d => d.x1 + 1,  // start of each segment
         y: d => d.entity,
         text: d => d.x2 - d.x1 > 2 ? d.label : "",  // hide label if segment too narrow
-        fill: "black",
         textAnchor: "start"
       }),
 
@@ -318,7 +320,8 @@ fig2 = {
         y: d => d.ENTITY_NAME,
         // text: d => `(${d.TOTAL_COUNT})`,
         text: d =>`(${d.Prof_Pct.toFixed(1)}%)`,
-        fill: "black",
+        fill: "#2F7F73",
+        fontSize: "10px", 
         textAnchor: "start",
         dx: 5
       }),
@@ -334,7 +337,8 @@ fig2 = {
       Plot.text([">95%, nearly everyone CAN!"], {
         frameAnchor: "top-right", 
         dy: -12, // Adjust vertical offset to move it slightly
-        dx: +50 // Adjust horizontal offset to move it slightly
+        dx: +50, // Adjust horizontal offset to move it slightly
+        fill: "#2F7F73"
     }),
     ]
   });
@@ -356,7 +360,8 @@ fig1 = {
     x2: d.Prof_Pct,
     category: "Proficient",
     label: String(d.Prof_Count),
-    color: "rgba(3,129,179,1)"
+    color: "#2F7F73",
+    fill: "#white"
   }));
 
   const notProficient = shared_dataFiltered1.map(d => ({
@@ -365,7 +370,8 @@ fig1 = {
     x2: d.Prof_Pct + d.NotProf_Pct,
     category: "Not Proficient",
     label: String(d.NotProf_Count),
-    color: "rgba(170,74,68,1)"
+    color: "#D95C5C",
+    fill: "white"
   }));
 
   const notTested = shared_dataFiltered1.map(d => ({
@@ -374,7 +380,8 @@ fig1 = {
     x2: d.Prof_Pct + d.NotProf_Pct + d.NotTested_Pct,
     category: "Not Tested",
     label: String(d.NOT_TESTED),
-    color: "rgba(209,209,209,1)"
+    color: "#B7BDC4",
+    fill: "#333333"
   }));
 
   const segments = [...proficient, ...notProficient, ...notTested];
@@ -394,7 +401,7 @@ fig1 = {
     },
     
     title: cohortPlot1,
-    subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade}`,
+    subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
     caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
     (xx%) = % Proficient`,
     
@@ -411,12 +418,12 @@ fig1 = {
     },
     color: {
       domain: ["#Proficient", "#Not Proficient", "#Not Tested"],
-      range: ["rgba(3,129,179,1)", "rgba(170,74,68,1)", "rgba(209,209,209,1)"],
+      range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
       legend: true
     },
 
     marks: [
-      // Stacked bars drawn as rects
+      // Stacked bars
       Plot.barX(segments, {
         x1: d => d.x1,
         x2: d => d.x2,
@@ -432,7 +439,6 @@ fig1 = {
         x: d => d.x1 + 1,  // start of each segment
         y: d => d.entity,
         text: d => d.x2 - d.x1 > 2 ? d.label : "",  // hide label if segment too narrow
-        fill: "black",
         textAnchor: "start"
       }),
 
@@ -442,7 +448,8 @@ fig1 = {
         y: d => d.ENTITY_NAME,
         // text: d => `(${d.TOTAL_COUNT})`,
         text: d =>`(${d.Prof_Pct.toFixed(1)}%)`,
-        fill: "black",
+        fontSize: "10px",
+        fill: "#2F7F73",
         textAnchor: "start",
         dx: 5
       }),
@@ -458,7 +465,8 @@ fig1 = {
       Plot.text([">95%, nearly everyone CAN!"], {
         frameAnchor: "top-right", 
         dy: -12, // Adjust vertical offset to move it slightly
-        dx: +50 // Adjust horizontal offset to move it slightly
+        dx: +50, // Adjust horizontal offset to move it slightly
+        fill: "#2F7F73"
     }),
     ]
   });

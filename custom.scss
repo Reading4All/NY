@@ -18,20 +18,20 @@
 }
 
 .btn.btn-quarto {
-  background-color: #78c2ad; /* Replace with your desired color */
-  border-color: #78c2ad;      /* Optional: keep border the same color as background */
-//  color: #ffffff;             /* Optional: change text color for readability */
+  background-color: #5a5a5a; /* #78c2ad; was green color */
+  border-color: #5a5a5a;/* #78c2ad; border, the same color as background */
+  color: #ffffff; /* text color for readability */
 }
 
 /* Optional: handle hover and active states */
 .btn.btn-quarto:hover {
-  background-color: #a6d7c9;
-  border-color: #a6d7c9;
+  background-color: #a6a6a6; /* was lite green #a6d7c9; */
+  border-color: #a6a6a6; /* was lite green #a6d7c9; */
 }
 
 .btn.btn-quarto:disabled {
-  background-color: #a6d7c9;
-  border-color: #a6d7c9;
+  background-color:#a6a6a6; /* was same lite green #a6d7c9; */
+  border-color: #a6a6a6; /* was same lite green #a6d7c9; */ 
 }
 
 @media print {
