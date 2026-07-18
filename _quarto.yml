@@ -10,7 +10,7 @@ website:
     title: false
     contents:
       - href: ELAcountyreport-2025.qmd
-        text: ELA-Proficiency Plot, by County
+        text: ELA Proficiency
 
 format:
   html:

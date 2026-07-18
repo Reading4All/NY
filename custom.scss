@@ -34,29 +34,37 @@
   border-color: #a6a6a6; /* was same lite green #a6d7c9; */ 
 }
 
-@media print {
-  /* Hide everything by default */
-  body * {
-    visibility: hidden;
+
+/*-- scss:rules --*/
+// custom layouts and responsive styles
+
+@media (min-width: 768px) {
+  /* 1. Hide the tab buttons entirely on desktop */
+  body .panel-tabset > .nav-tabs {
+    display: none !important;
+  }
+  
+  /* 2. Turn the container into a strict 2-column Grid */
+  body .panel-tabset > .tab-content {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 30px !important;
+    width: 100% !important;
+  }
+  
+  /* 3. Force both sections to show up in their assigned columns */
+  body .panel-tabset > .tab-content > .tab-pane {
+    display: block !important; 
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
-  /* Show only the target section and its contents */
-  .plot-d6a7b5-figure, 
-  .plot-d6a7b5-figure * {
-    visibility: visible;
-  }
-   /* Force major layout containers to fill absolute margins */
-  html,
-  body, 
-  .quarto-dashboard-content, 
-  main,
-  .main {
-    display: block !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
+  /* 4. Force the underlying OJS elements to stay within their grid lanes */
+  body .panel-tabset .tab-pane div, 
+  body .panel-tabset .tab-pane svg,
+  body .panel-tabset .tab-pane canvas {
     max-width: 100% !important;
-    background: none !important;
   }
 }
