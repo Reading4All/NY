@@ -13,13 +13,10 @@ website:
     search: true
     contents:
       - href: index.qmd
-        text: Reports
+        text: Reports / Plots
       - href: ELAcountyreport-2025.qmd
         text: ELA Proficiency - 2025
         icon: file-bar-graph
-    tools:
-      - href: github.com
-        icon: gitbub
 
 format:
   html:
