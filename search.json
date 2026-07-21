@@ -1,12 +1,19 @@
 [
   {
+    "objectID": "data/ELA/ABOUT-SOURCEDATA_ELA-SPRING.html",
+    "href": "data/ELA/ABOUT-SOURCEDATA_ELA-SPRING.html",
+    "title": "NY",
+    "section": "",
+    "text": "SOURCE DATA: SOURCEDATA_ELA-SPRING-YYYY\nSOURCE DATA Location: https://data.nysed.gov/downloads.php\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Open School Data (NY)",
     "section": "",
     "text": "This website contains plots and visualizations of public data related to student literacy outcomes in our NY public schools.\nThese plots are used on OpenSchoolData.com, a website to help identify issues contributing to inequitable students outcomes and overspending in our schools.\nIf you’d like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!",
     "crumbs": [
-      "Reports"
+      "Reports / Plots"
     ]
   }
 ]
