@@ -5,16 +5,25 @@ project:
 
 website:
   title: "NY"
+  site-url: "https://data.openschooldata.com/"
+  open-graph: true
   sidebar:
+    style: floating
     logo: images/OSD-favicon.png
-    title: false
+    search: true
     contents:
+      - href: index.qmd
+        text: Reports
       - href: ELAcountyreport-2025.qmd
-        text: ELA Proficiency
+        text: ELA Proficiency - 2025
+        icon: file-bar-graph
+    tools:
+      - href: github.com
+        icon: gitbub
 
 format:
   html:
-    page-layout: custom
+    page-layout: full
     theme: [minty, custom.scss]
     toc: false
 

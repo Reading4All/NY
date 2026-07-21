@@ -1,12 +1,10 @@
 ---
 title: "Open School Data (NY)"
-format:
-  html:
-    page-layout: article  # Options: article (default), full, or custom
+page-layout: article  # article (default), full, or custom
 ---
 
 <br> This website contains plots and visualizations of public data related to student literacy outcomes in our NY public schools.  
 
 These plots are used on [OpenSchoolData.com](openschooldata.com), a website to help identify issues contributing to inequitable students outcomes and overspending in our schools.
 
-If you care about improving the outcomes of all students in our public schools over profiting from them, your ideas and contributions are welcome!
+If you'd like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!

@@ -3,7 +3,7 @@
 format: 
   dashboard: 
     orientation: columns
-    expandable: false
+    expandable: true
     scrolling: false
 ---
 
@@ -231,8 +231,7 @@ fig2 = {
     x2: d.Prof_Pct,
     category: "Proficient",
     label: String(d.Prof_Count),
-    color: "#2F7F73",
-    fill: "#white"
+    color: "#2F7F73"
   }));
 
   const notProficient = shared_dataFiltered2.map(d => ({
@@ -241,8 +240,7 @@ fig2 = {
     x2: d.Prof_Pct + d.NotProf_Pct,
     category: "Not Proficient",
     label: String(d.NotProf_Count),
-    color: "#D95C5C",
-    fill: "#white"
+    color: "#D95C5C"
   }));
 
   const notTested = shared_dataFiltered2.map(d => ({
@@ -251,8 +249,7 @@ fig2 = {
     x2: d.Prof_Pct + d.NotProf_Pct + d.NotTested_Pct,
     category: "Not Tested",
     label: String(d.NOT_TESTED),
-    color: "#B7BDC4",
-    fill: "#333333"
+    color: "#B7BDC4"
   }));
 
   const segments = [...proficient, ...notProficient, ...notTested];
@@ -274,7 +271,7 @@ fig2 = {
     title: cohortPlot2,
         subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
     caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
-    (xx%) = % Proficient`,
+    (x%) = % Proficient = (#Proficient/# in Cohort)*100`,
               
     x: {
       label: "% of Students",
@@ -304,16 +301,19 @@ fig2 = {
         strokeWidth: 0.5
       }),
 
-      // Counts labels inside each bar segment
+    // Text (#s) inside each bar segment
       Plot.text(segments, {
-//        x: d => d.x1 + (d.x2 - d.x1) / 2,  // center of each segment
+        // x: d => d.x1 + (d.x2 - d.x1) / 2,  // center of each segment
         x: d => d.x1 + 1,  // start of each segment
         y: d => d.entity,
-        text: d => d.x2 - d.x1 > 2 ? d.label : "",  // hide label if segment too narrow
-        textAnchor: "start"
+        text: d => {
+          return d.x2 - d.x1 > 2 ? d.label : ""; // hide label if segment too narrow
+          },
+        textAnchor: "start",
+         fill: (d, i) => d.category === "Not Tested" ? "#333333" : "#FFFFFF"  // text font white but dark for "last bar"Not Tested" segment
       }),
 
-      // text in () to the right of each bar
+      // %Prof at end in ()
       Plot.text(shared_dataFiltered2, {
         x: 100,
         y: d => d.ENTITY_NAME,
@@ -360,7 +360,7 @@ fig1 = {
     category: "Proficient",
     label: String(d.Prof_Count),
     color: "#2F7F73",
-    fill: "#white"
+    fill: "#FFFFFF"
   }));
 
   const notProficient = shared_dataFiltered1.map(d => ({
@@ -379,8 +379,7 @@ fig1 = {
     x2: d.Prof_Pct + d.NotProf_Pct + d.NotTested_Pct,
     category: "Not Tested",
     label: String(d.NOT_TESTED),
-    color: "#B7BDC4",
-    fill: "#333333"
+    color: "#B7BDC4"
   }));
 
   const segments = [...proficient, ...notProficient, ...notTested];
@@ -402,7 +401,7 @@ fig1 = {
     title: cohortPlot1,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
     caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
-    (xx%) = % Proficient`,
+    (x%) = % Proficient = (#Proficient/# in Cohort)*100`,
     
     x: {
       label: "% of Students",
@@ -432,16 +431,19 @@ fig1 = {
         strokeWidth: 0.5
       }),
 
-      // Count labels inside each bar segment
+      // Text (#s) inside each bar segment
       Plot.text(segments, {
-//        x: d => d.x1 + (d.x2 - d.x1) / 2,  // center of each segment
+        // x: d => d.x1 + (d.x2 - d.x1) / 2,  // center of each segment
         x: d => d.x1 + 1,  // start of each segment
         y: d => d.entity,
-        text: d => d.x2 - d.x1 > 2 ? d.label : "",  // hide label if segment too narrow
-        textAnchor: "start"
+        text: d => {
+          return d.x2 - d.x1 > 2 ? d.label : ""; // hide label if segment too narrow
+          },
+        textAnchor: "start",
+        fill: (d, i) => d.category === "Not Tested" ? "#333333" : "#FFFFFF"  // text font white but dark for "last bar"Not Tested" segment
       }),
 
-      // Text in () to the right of each bar
+      // %Prof at end in ()
       Plot.text(shared_dataFiltered1, {
         x: 100,
         y: d => d.ENTITY_NAME,
