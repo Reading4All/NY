@@ -72,6 +72,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<meta property="og:title" content="Open School Data (NY) – NY">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="NY">
 </head>
 
 <body class="nav-sidebar floating fullcontent quarto-light">
@@ -83,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Open School Data (NY)</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Reports</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -101,6 +104,9 @@ ul.task-list li input[type="checkbox"] {
       <img src="./images/OSD-favicon.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
       <img src="./images/OSD-favicon.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
+      <div class="sidebar-tools-main">
+    <a href="./github.com" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-gitbub"></i></a>
+</div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -111,8 +117,15 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ELAcountyreport-2025.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ELA Proficiency</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Reports</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ELAcountyreport-2025.html" class="sidebar-item-text sidebar-link"><i class="bi bi-file-bar-graph" role="img">
+</i> 
+ <span class="menu-text">ELA Proficiency - 2025</span></a>
   </div>
 </li>
     </ul>
@@ -145,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 <p><br> This website contains plots and visualizations of public data related to student literacy outcomes in our NY public schools.</p>
 <p>These plots are used on <a href="openschooldata.com">OpenSchoolData.com</a>, a website to help identify issues contributing to inequitable students outcomes and overspending in our schools.</p>
-<p>If you care about improving the outcomes of all students in our public schools over profiting from them, your ideas and contributions are welcome!</p>
+<p>If you’d like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!</p>
 
 
 
@@ -223,7 +236,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/data\.openschooldata\.com");
+        var filterRegex = new RegExp("https:\/\/data\.openschooldata\.com\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
