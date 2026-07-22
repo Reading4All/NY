@@ -1,10 +1,10 @@
 ---
-#title: "NY Reading Proficiency - County Report"
 format: 
   dashboard: 
     orientation: columns
     expandable: true
     scrolling: false
+    css: [custom.scss, ELAcountyreport.css]
 ---
 
 ```{r}
@@ -18,7 +18,7 @@ library(tidyr)
 YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
 
 ###### read csv data
-csv_file <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/SOURCEDATA_ELA-SPRING-", YEAR, ".csv")
+csv_file <- paste0("https://github.com/Reading4All/NY/blob/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
 
 shared_data <- read.csv(csv_file)
 
@@ -185,6 +185,7 @@ _autoSubmit = {
 //| output: false
 cohortPlot1 = inputSels.cohort == "SWD" ? "General Education Students" : "Not Economically Disadvantaged"
 cohortPlot1_short = inputSels.cohort == "SWD" ? "no IEP (Gen Ed)" : "Not EconDis."
+cohortPlot1_shortshort = inputSels.cohort == "SWD" ? "no IEP" : "Not EconDis."
 
 ```
 
@@ -192,6 +193,8 @@ cohortPlot1_short = inputSels.cohort == "SWD" ? "no IEP (Gen Ed)" : "Not EconDis
 //| output: false
 cohortPlot2 = inputSels.cohort == "SWD" ? "Students with Disabilities" : "Economically Disadvantaged"
 cohortPlot2_short = inputSels.cohort == "SWD" ? "IEP (SWD)" : "EconDis."
+cohortPlot2_shortshort = inputSels.cohort == "SWD" ? "IEP" : "EconDis."
+
 ```
 
 ```{ojs}
@@ -210,6 +213,22 @@ shared_dataFiltered2 = shared_data.filter(d =>
   inputSels.grade  == d.ASSESSMENT_NAME &&
   cohortPlot2      == d.SUBGROUP_NAME
 )
+```
+
+```{ojs}
+//| output: false
+gapData = shared_dataFiltered1
+  .map(d1 => {
+    const d2 = shared_dataFiltered2.find(x => x.ENTITY_NAME === d1.ENTITY_NAME);
+    if (!d2) return null; // district missing from SWD cohort — skip rather than crash
+    return {
+      entity: d1.ENTITY_NAME,
+      gap: d1.Prof_Pct - d2.Prof_Pct,
+      optOutPct: Math.min(100, Math.max(0, d2.NotTested_Pct)) // clamp to [0,100] against rounding/data issues
+    };
+  })
+  .filter(d => d !== null)
+  .sort((a, b) => b.gap - a.gap);
 ```
 ::: {.column-screen}
 ## Plots {.flow}
@@ -469,6 +488,63 @@ fig1 = {
         dx: +50, // Adjust horizontal offset to move it slightly
         fill: "#2F7F73"
     }),
+    ]
+  });
+}
+```
+## Equity Gap
+```{ojs}
+//| column: screen
+fig3 = {
+  const width = 1000;
+  const barHeight = 24;
+  const height = 150 + gapData.length * barHeight;
+  const entityOrder = gapData.map(d => d.entity).reverse();
+
+  return Plot.plot({
+    width, height,
+    marginLeft: 175,
+    marginRight: 90,
+    marginTop: 15,
+    marginBottom: 40,
+    style: { fontSize: "14px" },
+    title: `Equity Gap, %Proficient (${cohortPlot2_shortshort} - ${cohortPlot1_shortshort})`,
+    subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
+    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
+      Bar opacity reflects ${cohortPlot2_short} test participation — lighter bar = higher opt-out rate`,
+    x: { label: "Percentage point gap", labelAnchor: "center", labelArrow: "none" },
+    y: { label: null, domain: entityOrder, tickSize: 0 },
+    marks: [
+      Plot.ruleX([0], { stroke: "black", strokeWidth: 1 }),
+      Plot.barX(gapData, {
+        x1: 0,
+        x2: d => d.gap,
+        y: d => d.entity,
+        fill: d => d.gap >= 0 ? "#D95C5C" : "#2F7F73",
+        fillOpacity: d => Math.max(0.15, 0.35 + 0.65 * ((100 - d.optOutPct) / 100)),
+        stroke: "black",
+        strokeWidth: 0.5
+      })
+      <!-- , -->
+      <!-- Plot.text(gapData, { -->
+      <!--   x: d => d.gap, -->
+      <!--   y: d => d.entity, -->
+      <!--   text: d => `${d.gap.toFixed(1)}pp`, -->
+      <!--   textAnchor: d => d.gap >= 0 ? "start" : "end", -->
+      <!--   dx: d => d.gap >= 0 ? 5 : -5, -->
+      <!--   fontSize: "11px", -->
+      <!--   fill: "#333333" -->
+      <!-- }), -->
+      <!-- Plot.text(gapData, { -->
+      <!--   x: 100, -->
+      <!--   y: d => d.entity, -->
+      <!--   text: d => `${d.optOutPct.toFixed(1)}% not tested`, -->
+      <!--   fontSize: "10px", -->
+      <!--   fill: "#B7BDC4", -->
+      <!--   textAnchor: "start", -->
+      <!--   dx: 5 -->
+      <!-- } -->
+      <!-- ) -->
     ]
   });
 }
