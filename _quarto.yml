@@ -17,9 +17,6 @@ website:
       - href: ELAcountyreport-2025.qmd
         text: ELA Proficiency - 2025
         icon: file-bar-graph
-      - href: StudentEducatorGrowth-2025.qmd
-        text: Student,Educator - Growth
-        icon: file-bar-graph
         
 
 format:
