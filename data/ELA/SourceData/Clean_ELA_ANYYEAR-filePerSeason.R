@@ -33,7 +33,7 @@ library(readxl)
 ##     DIRECTIONS:
 ##
 ## 1 - Enter your working directory (replace what's in the quotes): 
-       w_dir <- "/Users/srene/Documents/ADVOCACY/My_work/NYSED-REPORTS/SOURCE_DATA/NYSED_DBs/"
+       w_dir <- "/Users/XXX/"
 ##
 ## 2a - Download one year's NYSED Access Database from: https://data.nysed.gov/downloads.php, to:
 ##     and save it to folder in your working directory called: "SRCXXXX" (where X is the year, same as DBYEAR below)
