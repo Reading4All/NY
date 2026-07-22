@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "data/ELA/ABOUT-SOURCEDATA_ELA-SPRING.html",
-    "href": "data/ELA/ABOUT-SOURCEDATA_ELA-SPRING.html",
+    "objectID": "data/Students,Teachers/ABOUT-DATA_Students,Teachers.html",
+    "href": "data/Students,Teachers/ABOUT-DATA_Students,Teachers.html",
     "title": "NY",
     "section": "",
-    "text": "SOURCE DATA: SOURCEDATA_ELA-SPRING-YYYY\nSOURCE DATA Location: https://data.nysed.gov/downloads.php\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
+    "text": "Cleaned DATA file: DATA_Students,Teachers.csv\nSOURCE DATA, Steps to Clean and Create the Clean DATA file:\n1 - Download the Source Data:\na) “YYYY-YY_Admin_Comp_Data.xlsx” from: (has #admins and salaries) b) XXX.xlsx, from https://www.p12.nysed.gov/irs/pmf/ or expenditures (has #teachers)\nc) ReportCardDatabase-Expenditures per pupil (has #students, and matches the report card data info used to calculated perPupil info)\nor dis_by_county2025.xlsx (has #student with disabilities and classifications\n2 - Update and Run this R Script, in the same directory: Clean_Students,Teachers.R"
   },
   {
     "objectID": "index.html",
@@ -15,5 +15,12 @@
     "crumbs": [
       "Reports / Plots"
     ]
+  },
+  {
+    "objectID": "data/ELA/ABOUT-DATA_ELA-SPRING.html",
+    "href": "data/ELA/ABOUT-DATA_ELA-SPRING.html",
+    "title": "NY",
+    "section": "",
+    "text": "Cleaned DATA file: DATA_ELA-SPRING-YYYY.csv\nSOURCE DATA, Steps to Clean and Create the Clean DATA file:\n1 - Download the Source Data, the “Report Card Database” from here: https://data.nysed.gov/downloads.php, into a folder named: SRCYYYY\n2 - Update and Run this R Script, in the same directory: Clean_ELA_ANYYEAR-filePerSeason.R"
   }
 ]

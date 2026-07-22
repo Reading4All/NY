@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://data.openschooldata.com/data/ELA/ABOUT-SOURCEDATA_ELA-SPRING.html</loc>
-    <lastmod>2026-07-21T18:42:23.294Z</lastmod>
-  </url>
-  <url>
-    <loc>https://data.openschooldata.com/ELAcountyreport-2025.html</loc>
-    <lastmod>2026-07-21T18:42:23.293Z</lastmod>
+    <loc>https://data.openschooldata.com/data/Students,Teachers/ABOUT-DATA_Students,Teachers.html</loc>
+    <lastmod>2026-07-22T17:32:31.571Z</lastmod>
   </url>
   <url>
     <loc>https://data.openschooldata.com/index.html</loc>
-    <lastmod>2026-07-21T18:42:23.497Z</lastmod>
+    <lastmod>2026-07-22T17:32:31.572Z</lastmod>
+  </url>
+  <url>
+    <loc>https://data.openschooldata.com/ELAcountyreport-2025.html</loc>
+    <lastmod>2026-07-22T17:32:31.368Z</lastmod>
+  </url>
+  <url>
+    <loc>https://data.openschooldata.com/data/ELA/ABOUT-DATA_ELA-SPRING.html</loc>
+    <lastmod>2026-07-22T17:32:31.369Z</lastmod>
   </url>
 </urlset>
