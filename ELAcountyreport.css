@@ -32,11 +32,11 @@
   }
 
   /* 5. Center the 3rd plot on the second row at normal width */
-  body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
-    grid-column: 1 / span 2 !important; /* Spans the full row width container */
-/*    justify-self: center !important;  */    /* Centers the plot horizontally */
-/*    max-width: 50% !important;    */      /* Keeps width identical to a single grid column */
-  }
+body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
+  grid-column: 1 / span 2 !important;   /* lets it center across the row */
+  justify-self: center !important;       /* centers it horizontally */
+  max-width: calc(50% - 15px) !important; /* matches ONE column's actual width (half the gap subtracted) */
+}
 
 @media print {
   /* 1. COLLAPSE FIXED HEADERS & INTERACTIVE MENUS TO ZERO PIXELS */
