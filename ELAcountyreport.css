@@ -39,9 +39,16 @@ body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
 }
 
 @media print {
+  /* 0. FORCE DEFAULT BROWSER PRINT LAYOUT TO LANDSCAPE */
+  @page {
+    size: landscape;
+    margin: 0.5in; /* Gives your plots a clean border on the paper */
+  }
+
   /* 1. COLLAPSE FIXED HEADERS & INTERACTIVE MENUS TO ZERO PIXELS */
   header, 
   #quarto-header, 
+  .toolbar html-fill-container, 
   .navbar, 
   .quarto-dashboard-header,
   .sidebar,
@@ -55,31 +62,13 @@ body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
     margin: 0 !important;
   }
 
-  /* 2. HIDE EVERYTHING ELSE (Keeps their structural space active to render charts safely) */
+  /* 2. HIDE EVERYTHING ELSE SEAMLESSLY */
   body * {
     visibility: hidden !important;
   }
   
-  /* 3. WHITELIST THE PLOTS, IDS, AND ALL THEIR CHILD ELEMENTS */
-  .plot-d6a7b5-figure, 
-  .plot-d6a7b5-figure *,
-  #tabset-1-1,
-  #tabset-1-1 *,
-  #tabset-1-2,
-  #tabset-1-2 * {
-    visibility: visible !important;
-  }
-  
-  /* 4. FORCE BOOTSTRAP TO NATIVELY RENDER HIDDEN TAB CONTENTS */
-  #tabset-1-1,
-  #tabset-1-2 {
-    display: block !important;
-    opacity: 1 !important;
-    margin-bottom: 25px !important; /* Forces a gap instead of a full page break */
-    break-inside: avoid !important; /* Prevents a plot from snapping awkwardly in half */
-  }
-
-  /* 5. STRIP CONTAINER PADDINGS & FIXED VIEWPORTS (Collapses the blank Page 1) */
+  /* 2.5 FORCE PARENT CONTAINER WRAPPERS TO BE VISIBLE AND CALCULATE HEIGHT */
+  /* Without this section, the browser refuses to recognize page breaks inside the tabs */
   html, body, main, .main, 
   .quarto-dashboard, 
   .dashboard-page, 
@@ -89,7 +78,9 @@ body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
   .page-layout-custom,
   .card,
   .card-body,
-  .bslib-card {
+  .bslib-card,
+  .panel-tabset,
+  .tab-content { 
     display: block !important;
     visibility: visible !important;
     position: static !important;
@@ -104,6 +95,45 @@ body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
     top: auto !important;
     left: auto !important;
     transform: none !important;
+    overflow: visible !important; /* Critical to prevent layout text clipping */
+  }
+
+  /* 3. WHITELIST THE PLOTS, IDS, AND ALL THEIR CHILD ELEMENTS */
+  .plot-d6a7b5-figure, 
+  .plot-d6a7b5-figure *,
+  #tabset-1-1,
+  #tabset-1-1 *,
+  #tabset-1-2,
+  #tabset-1-2 *,
+  #tabset-1-3,
+  #tabset-1-3 * {
+    visibility: visible !important;
+  }
+  
+  /* 4. FORCE BOOTSTRAP TO NATIVELY RENDER HIDDEN TAB CONTENTS & FORCE PAGE BREAKS */
+  /* Overrides hidden states, allowing them to stack cleanly */
+  #tabset-1-1,
+  #tabset-1-2,
+  #tabset-1-3 {
+    display: block !important;
+    opacity: 1 !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Force a page break AFTER Plot 1 and AFTER Plot 2 */
+  #tabset-1-1,
+  #tabset-1-2 {
+    page-break-after: always !important; /* Legacy support */
+    break-after: page !important;        /* Modern standard */
+  }
+
+  /* Strictly prevent an accidental blank page after Plot 3 */
+  #tabset-1-3 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
   
   /* Document size layout reset */
