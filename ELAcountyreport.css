@@ -34,15 +34,16 @@
   /* 5. Center the 3rd plot on the second row at normal width */
 body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
   grid-column: 1 / span 2 !important;   /* lets it center across the row */
-  justify-self: center !important;       /* centers it horizontally */
+  justify-self: left !important;       /* centers it horizontally */
   max-width: calc(50% - 15px) !important; /* matches ONE column's actual width (half the gap subtracted) */
+  }
 }
 
-@media print {
-  /* 0. FORCE DEFAULT BROWSER PRINT LAYOUT TO LANDSCAPE */
-  @page {
-    size: landscape;
-    margin: 0.5in; /* Gives your plots a clean border on the paper */
+@media print { 
+  /* 0. FORCE DEFAULT BROWSER PRINT LAYOUT TO PORTRAIT */ 
+  @page { 
+    size: portrait; 
+    margin-left: 0.5in; /* Gives your plots a clean border on the paper */ 
   }
 
   /* 1. COLLAPSE FIXED HEADERS & INTERACTIVE MENUS TO ZERO PIXELS */
@@ -62,12 +63,17 @@ body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
     margin: 0 !important;
   }
 
-  /* 2. HIDE EVERYTHING ELSE SEAMLESSLY */
+  /* 2. HIDE EVERYTHING ELSE */
   body * {
     visibility: hidden !important;
   }
   
-  /* 2.5 FORCE PARENT CONTAINER WRAPPERS TO BE VISIBLE AND CALCULATE HEIGHT */
+   /* SET THE PRINT SCALE TO 0.57 */
+  body {
+    zoom: 0.57 !important;
+  }
+  
+  /* FORCE PARENT CONTAINER WRAPPERS TO BE VISIBLE AND CALCULATE HEIGHT */
   /* Without this section, the browser refuses to recognize page breaks inside the tabs */
   html, body, main, .main, 
   .quarto-dashboard, 
@@ -124,7 +130,7 @@ body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
   }
 
   /* Force a page break AFTER Plot 1 and AFTER Plot 2 */
-  #tabset-1-1,
+  #tabset-1-2,
   #tabset-1-2 {
     page-break-after: always !important; /* Legacy support */
     break-after: page !important;        /* Modern standard */

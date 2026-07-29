@@ -2,7 +2,7 @@
 format: 
   dashboard: 
     orientation: columns
-    expandable: true
+    expandable: false
     scrolling: false
     css: [custom.scss, ELAcountyreport.css]
 ---
@@ -224,7 +224,9 @@ gapData = shared_dataFiltered1
     return {
       entity: d1.ENTITY_NAME,
       gap: d1.Prof_Pct - d2.Prof_Pct,
-      optOutPct: Math.min(100, Math.max(0, d2.NotTested_Pct)) // clamp to [0,100] against rounding/data issues
+      optOutPct: Math.min(100, Math.max(0, d2.NotTested_Pct)), // clamp to [0,100] against rounding/data issues
+      Perc_prof_plot1: d1.Prof_Pct, //GenEd or Not EconDis 
+      Perc_prof_plot2: d2.Prof_Pct  //SWD or Econ Dis
     };
   })
   .filter(d => d !== null)
@@ -289,8 +291,11 @@ fig2 = {
     
     title: cohortPlot2,
         subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
-    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
-    (x%) = % Proficient = (#Proficient/# in Cohort)*100`,
+
+    caption: html`
+    - Data Source (download): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card</a><br>
+    - Data Source (webpage): <a href="https://data.nysed.gov/lists.php?type=district">NYSED Report Card</a><br>
+    - (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort`,
               
     x: {
       label: "% of Students",
@@ -419,8 +424,11 @@ fig1 = {
     
     title: cohortPlot1,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
-    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
-    (x%) = % Proficient = (#Proficient/# in Cohort)*100`,
+
+    caption: html`
+    - Data Source (download): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card</a><br>
+    - Data Source (webpage): <a href="https://data.nysed.gov/lists.php?type=district">NYSED Report Card</a><br>
+    - (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort`,
     
     x: {
       label: "% of Students",
@@ -495,6 +503,12 @@ fig1 = {
 ## Equity Gap
 ```{ojs}
 //| column: screen
+html`
+  <div>
+    <div style="break-after: page; page-break-after: always;"></div>
+  </div>
+`
+
 fig3 = {
   const width = 1000;
   const barHeight = 24;
@@ -508,14 +522,21 @@ fig3 = {
     marginTop: 15,
     marginBottom: 40,
     style: { fontSize: "14px" },
-    title: `Equity Gap, %Proficient (${cohortPlot2_shortshort} - ${cohortPlot1_shortshort})`,
+    title: `Equity Gap, %Proficient (${cohortPlot1_shortshort} - ${cohortPlot2_shortshort})`,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
-    caption: html`Data Source: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card Database</a><br>
-      Bar opacity reflects ${cohortPlot2_short} test participation — lighter bar = higher opt-out rate`,
-    x: { label: "Percentage point gap", labelAnchor: "center", labelArrow: "none" },
+
+    caption: html`
+    - Data Source (download): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card</a><br>
+    - Data Source (webpage): <a href="https://data.nysed.gov/lists.php?type=district">NYSED Report Card</a><br>
+    - (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort <br>
+    - Bar opacity reflects ${cohortPlot2_short} test participation — lighter bar = higher opt-out rate`,
+    
+    x: { label: "Percent Proficient Gap", labelAnchor: "center", labelArrow: "none", domain: [-40, 80] },
     y: { label: null, domain: entityOrder, tickSize: 0 },
+    
     marks: [
       Plot.ruleX([0], { stroke: "black", strokeWidth: 1 }),
+      
       Plot.barX(gapData, {
         x1: 0,
         x2: d => d.gap,
@@ -523,31 +544,33 @@ fig3 = {
         fill: d => d.gap >= 0 ? "#D95C5C" : "#2F7F73",
         fillOpacity: d => Math.max(0.15, 0.35 + 0.65 * ((100 - d.optOutPct) / 100)),
         stroke: "black",
-        strokeWidth: 0.5
+        strokeWidth: 0.5}),
+
+// Text in bar, %Gap
+      Plot.text(gapData, {
+        x: d => d.gap >= 0 ? 3 : -3,
+        y: d => d.entity,
+        text: d => `${d.gap.toFixed(1)}%`,
+        textAnchor: d => d.gap >= 0 ? "start" : "end",
+        fontSize: "11px",
+        fill: "white"
+      }),
+      
+// Text at end of bar, % Prof (SWD, or low econ)
+      Plot.text(gapData, {
+        x: d => d.gap,
+        y: d => d.entity,
+        text: d => `(${d.Perc_prof_plot1.toFixed(0)}%-${d.Perc_prof_plot2.toFixed(0)}%)`,
+        fontSize: "10px",
+        fill: "#333333",
+        textAnchor: d => d.gap >= 0 ? "start" : "end",
+        dx: 28
       })
-      <!-- , -->
-      <!-- Plot.text(gapData, { -->
-      <!--   x: d => d.gap, -->
-      <!--   y: d => d.entity, -->
-      <!--   text: d => `${d.gap.toFixed(1)}pp`, -->
-      <!--   textAnchor: d => d.gap >= 0 ? "start" : "end", -->
-      <!--   dx: d => d.gap >= 0 ? 5 : -5, -->
-      <!--   fontSize: "11px", -->
-      <!--   fill: "#333333" -->
-      <!-- }), -->
-      <!-- Plot.text(gapData, { -->
-      <!--   x: 100, -->
-      <!--   y: d => d.entity, -->
-      <!--   text: d => `${d.optOutPct.toFixed(1)}% not tested`, -->
-      <!--   fontSize: "10px", -->
-      <!--   fill: "#B7BDC4", -->
-      <!--   textAnchor: "start", -->
-      <!--   dx: 5 -->
-      <!-- } -->
-      <!-- ) -->
-    ]
-  });
+      
+    ] 
+  }); 
 }
+
 ```
 :::
 :::
