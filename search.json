@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "data/Students,Teachers/ABOUT-DATA_Students,Teachers.html",
-    "href": "data/Students,Teachers/ABOUT-DATA_Students,Teachers.html",
+    "objectID": "data/SPENDING/ABOUT-DATA_Students,Teachers.html",
+    "href": "data/SPENDING/ABOUT-DATA_Students,Teachers.html",
     "title": "NY",
     "section": "",
     "text": "Cleaned DATA file: DATA_Students,Teachers.csv\nSOURCE DATA, Steps to Clean and Create the Clean DATA file:\n1 - Download the Source Data:\na) “YYYY-YY_Admin_Comp_Data.xlsx” from: (has #admins and salaries) b) XXX.xlsx, from https://www.p12.nysed.gov/irs/pmf/ or expenditures (has #teachers)\nc) ReportCardDatabase-Expenditures per pupil (has #students, and matches the report card data info used to calculated perPupil info)\nor dis_by_county2025.xlsx (has #student with disabilities and classifications\n2 - Update and Run this R Script, in the same directory: Clean_Students,Teachers.R"
+  },
+  {
+    "objectID": "data/ELA/ABOUT--DATA_ELA-SPRING.html",
+    "href": "data/ELA/ABOUT--DATA_ELA-SPRING.html",
+    "title": "NY",
+    "section": "",
+    "text": "Cleaned DATA files: DATA_ELA-SPRING-YYYY.csv\nSOURCE DATA, Steps to Clean and Create the Clean DATA file: * Source Data, “Report Card Database” from: https://data.nysed.gov/downloads.php * R Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
   },
   {
     "objectID": "index.html",
@@ -17,10 +24,10 @@
     ]
   },
   {
-    "objectID": "data/ELA/ABOUT-DATA_ELA-SPRING.html",
-    "href": "data/ELA/ABOUT-DATA_ELA-SPRING.html",
+    "objectID": "data/MATH/ABOUT--DATA_ELA-MATH.html",
+    "href": "data/MATH/ABOUT--DATA_ELA-MATH.html",
     "title": "NY",
     "section": "",
-    "text": "Cleaned DATA file: DATA_ELA-SPRING-YYYY.csv\nSOURCE DATA, Steps to Clean and Create the Clean DATA file:\n1 - Download the Source Data, the “Report Card Database” from here: https://data.nysed.gov/downloads.php, into a folder named: SRCYYYY\n2 - Update and Run this R Script, in the same directory: Clean_ELA_ANYYEAR-filePerSeason.R"
+    "text": "Cleaned DATA files: DATA_MATH-SPRING-YYYY.csv\nSOURCE DATA, Steps to Clean and Create the Clean DATA file: * Source Data: “Report Card Database” (from: https://data.nysed.gov/downloads.php) ** versions used (latest, as of cleaning the data): *** SRC2025_Group1.mdb *** SRC2024_Group5.mdb *** SRC2023_Group5.mdb *** SRC2022_GroupIV.mdb *** SRC2021_GroupII.mdb *** Description of Data (.pdf cookbook) available for each (at same url ending with: SRC20XXReadMe_GroupXX.pdf)\n\ntable used: “Annual EM ELA”\n\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
   }
 ]

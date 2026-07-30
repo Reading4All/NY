@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://data.openschooldata.com/data/Students,Teachers/ABOUT-DATA_Students,Teachers.html</loc>
-    <lastmod>2026-07-29T21:05:47.008Z</lastmod>
+    <loc>https://data.openschooldata.com/data/SPENDING/ABOUT-DATA_Students,Teachers.html</loc>
+    <lastmod>2026-07-30T17:18:56.987Z</lastmod>
   </url>
   <url>
-    <loc>https://data.openschooldata.com/index.html</loc>
-    <lastmod>2026-07-29T21:05:47.009Z</lastmod>
+    <loc>https://data.openschooldata.com/data/ELA/ABOUT--DATA_ELA-SPRING.html</loc>
+    <lastmod>2026-07-30T17:18:56.755Z</lastmod>
   </url>
   <url>
     <loc>https://data.openschooldata.com/ELAcountyreport-2025.html</loc>
-    <lastmod>2026-07-29T21:05:46.806Z</lastmod>
+    <lastmod>2026-07-30T17:18:56.753Z</lastmod>
   </url>
   <url>
-    <loc>https://data.openschooldata.com/data/ELA/ABOUT-DATA_ELA-SPRING.html</loc>
-    <lastmod>2026-07-29T21:05:46.806Z</lastmod>
+    <loc>https://data.openschooldata.com/index.html</loc>
+    <lastmod>2026-07-30T17:18:56.988Z</lastmod>
+  </url>
+  <url>
+    <loc>https://data.openschooldata.com/data/MATH/ABOUT--DATA_ELA-MATH.html</loc>
+    <lastmod>2026-07-30T17:18:56.987Z</lastmod>
   </url>
 </urlset>
