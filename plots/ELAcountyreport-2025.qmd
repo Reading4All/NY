@@ -4,7 +4,7 @@ format:
     orientation: columns
     expandable: false
     scrolling: false
-    css: [custom.scss, ELAcountyreport.css]
+    css: [../custom.scss, ELAcountyreport.css]
 ---
 
 ```{r}

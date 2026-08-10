@@ -14,8 +14,11 @@ website:
     contents:
       - href: index.qmd
         text: Reports / Plots
-      - href: ELAcountyreport-2025.qmd
-        text: ELA Proficiency - 2025
+      - href: plots/ELAcountyreport-2025.qmd
+        text: ELA Proficiency, by County- 2025
+        icon: file-bar-graph
+      - href: plots/DistrictELAGrowth.Rmd.qmd
+        text: ELA Proficiency, district Year-Year
         icon: file-bar-graph
         
 
