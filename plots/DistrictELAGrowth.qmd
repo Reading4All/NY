@@ -164,17 +164,15 @@ function guard(fn, options = {}) {
 // format the input toolbar, remove the extra inside <div>s commented to not stack them, but flex wrapping not working
 const template = inputs => htl.html`
   <div style="display: flex; flex-wrap: wrap; gap: 12px; width: 100%;">
+  <div>
     ${(Array.isArray(inputs) ? inputs : Object.values(inputs)).map(
       input => htl.html`
-        <div style="flex: 1 1 200px; min-width: 150px; max-width: 100%;">
-          <style>
-            /* Force the native OJS form element to become flexible */
-            .oi-3f6v9 { max-width: 100% !important; min-width: 0 !important; width: 100% !important; }
-            form { max-width: 100% !important; width: 100% !important; display: flex; flex-wrap: wrap; }
-          </style>
+        <div style="flex: 1 1 200px; flex-wrap: wrap; min-width: 0;">
           <span style="display: block; width: 100%;">${input}</span>
-        </div>`
+        </div>
+      `
     )}
+  </div>
   </div>
   ${footer}
 `;
@@ -198,6 +196,7 @@ const template = inputs => htl.html`
 ## {.toolbar}
 ```{ojs}
 //| output: true
+//| layout-ncol: 1
 viewof county = Inputs.text({
   value: "SUFFOLK",
   label: "County: ",
@@ -213,13 +212,13 @@ viewof county = Inputs.text({
 viewof inputSels = guard(
   ({ template }) => Inputs.form(
     {
-      district: Inputs.text({ 
+      district: Inputs.select(districtsInCounty, { 
         value: districtDefault,
         label: "District: ",
-        placeholder: "Enter District…",
-        datalist: districtsInCounty,
-        unique: true,
-        validate: v => [...districtsInCounty].map(d => d.toUpperCase()).includes(v.value.toUpperCase()), 
+ //       placeholder: "Enter District…",
+ //       datalist: districtsInCounty,
+  //      unique: true,
+  //      validate: v => [...districtsInCounty].map(d => d.toUpperCase()).includes(v.value.toUpperCase()), 
         sort: true,
         required: true
 //        width: 75
@@ -414,7 +413,7 @@ fig2 = {
   return stackedBarChart(subgroupRows("Students with Disabilities"), width, height, `Students with Disabilities`);
 }
 ```
-## Not Economically Disadvantaged vs. not
+## Economically Disadvantaged vs. not
 ```{ojs}
 //| column: screen
 
