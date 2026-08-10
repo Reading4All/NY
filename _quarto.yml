@@ -9,7 +9,7 @@ website:
   open-graph: true
   sidebar:
     style: floating
-    logo: images/OSD-favicon.png
+    logo: images/favicon.png
     search: true
     contents:
       - href: index.qmd
