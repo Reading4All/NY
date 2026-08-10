@@ -392,7 +392,7 @@ function subgroupRows(subgroupName) {
 
 ::: {.column-screen}
 ::: {.panel-tabset}
-## General Education
+## General Education vs. not
 ```{ojs}
 //| column: screen
 //| output: true
@@ -403,7 +403,7 @@ fig1 = {
 }
 
 ```
-## Students with Disabilities
+
 ```{ojs}
 //| column: screen
 
@@ -414,7 +414,7 @@ fig2 = {
   return stackedBarChart(subgroupRows("Students with Disabilities"), width, height, `Students with Disabilities`);
 }
 ```
-## Not Economically Disadvantaged
+## Not Economically Disadvantaged vs. not
 ```{ojs}
 //| column: screen
 
@@ -425,7 +425,7 @@ fig3 = {
   return stackedBarChart(subgroupRows("Not Economically Disadvantaged"), width, height, `Not Economically Disadvantaged`);
 }
 ```
-## Economically Disadvantaged
+
 ```{ojs}
 //| column: screen
 
