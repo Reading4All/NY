@@ -1,17 +1,24 @@
 [
   {
-    "objectID": "data/SPENDING/ABOUT-DATA_Students,Teachers.html",
-    "href": "data/SPENDING/ABOUT-DATA_Students,Teachers.html",
+    "objectID": "data/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "href": "data/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
     "title": "NY",
-    "section": "",
-    "text": "Cleaned DATA file: DATA_Students,Teachers.csv\nSOURCE DATA, Steps to Clean and Create the Clean DATA file:\n1 - Download the Source Data:\na) “YYYY-YY_Admin_Comp_Data.xlsx” from: (has #admins and salaries) b) XXX.xlsx, from https://www.p12.nysed.gov/irs/pmf/ or expenditures (has #teachers)\nc) ReportCardDatabase-Expenditures per pupil (has #students, and matches the report card data info used to calculated perPupil info)\nor dis_by_county2025.xlsx (has #student with disabilities and classifications\n2 - Update and Run this R Script, in the same directory: Clean_Students,Teachers.R"
+    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
+    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_MATH_ANYYEAR-filePerSeason.R"
   },
   {
-    "objectID": "data/ELA/ABOUT--DATA_ELA-SPRING.html",
-    "href": "data/ELA/ABOUT--DATA_ELA-SPRING.html",
+    "objectID": "data/SPENDING,ENROLLMENT/SPED/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "href": "data/SPENDING,ENROLLMENT/SPED/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "title": "NY",
+    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
+    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data: “slfs_financial_data.xlsx” (2024 on), “essa-financial-data.xlsx” (2023 and prior)\n\n\nBoth from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting\n\n\nR Script to merge/clean them: slfs_essa_financial_merge.R"
+  },
+  {
+    "objectID": "data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
+    "href": "data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
     "title": "NY",
     "section": "",
-    "text": "Cleaned DATA files: DATA_ELA-SPRING-YYYY.csv\nSOURCE DATA, Steps to Clean and Create the Clean DATA file: * Source Data, “Report Card Database” from: https://data.nysed.gov/downloads.php * R Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
+    "text": "**Cleaned DATA file: enrollment-by-district-of-residence-nonpublic.csv * with school years (ending): 2021-2025\n**SOURCE DATA, and Steps to Clean:\n* Source Data: annual “enrollment-by-districts-of-residence-and-attendance-nonpublic-20XX-XX.xlsx” files, from: https://www.p12.nysed.gov/irs/statistics/nonpublic/home.html\n* R Script to clean and merge them: enrollment-by-districts-of-residence-nonpublic–MergeClean.R"
   },
   {
     "objectID": "index.html",
@@ -24,10 +31,17 @@
     ]
   },
   {
-    "objectID": "data/MATH/ABOUT--DATA_ELA-MATH.html",
-    "href": "data/MATH/ABOUT--DATA_ELA-MATH.html",
+    "objectID": "data/SPENDING,ENROLLMENT/PERSONELL/ABOUT-DATA_Personell,Salaries.html",
+    "href": "data/SPENDING,ENROLLMENT/PERSONELL/ABOUT-DATA_Personell,Salaries.html",
     "title": "NY",
     "section": "",
-    "text": "Cleaned DATA files: DATA_MATH-SPRING-YYYY.csv\nSOURCE DATA, Steps to Clean and Create the Clean DATA file: * Source Data: “Report Card Database” (from: https://data.nysed.gov/downloads.php) ** versions used (latest, as of cleaning the data): *** SRC2025_Group1.mdb *** SRC2024_Group5.mdb *** SRC2023_Group5.mdb *** SRC2022_GroupIV.mdb *** SRC2021_GroupII.mdb *** Description of Data (.pdf cookbook) available for each (at same url ending with: SRC20XXReadMe_GroupXX.pdf)\n\ntable used: “Annual EM ELA”\n\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
+    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file: * Source Data: annual “YYYY-YY_Admin_Comp_Data.xlsx” files, from https://www.p12.nysed.gov/irs/pmf/ * or expenditures (has #teachers)\n* ReportCardDatabase-Expenditures per pupil (has #students, and matches the report card data info used to calculated perPupil info)\n* or dis_by_county2025.xlsx (has #student with disabilities and classifications\n** Update and Run this R Script, in the same directory: TBD.R"
+  },
+  {
+    "objectID": "data/ELA/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "href": "data/ELA/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "title": "NY",
+    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
+    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
   }
 ]

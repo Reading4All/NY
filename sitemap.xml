@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://data.openschooldata.com/data/SPENDING/ABOUT-DATA_Students,Teachers.html</loc>
-    <lastmod>2026-07-30T17:18:56.987Z</lastmod>
+    <loc>https://data.openschooldata.com/data/MATH/SOURCEDATA-MATH.html</loc>
+    <lastmod>2026-08-10T16:43:08.803Z</lastmod>
   </url>
   <url>
-    <loc>https://data.openschooldata.com/data/ELA/ABOUT--DATA_ELA-SPRING.html</loc>
-    <lastmod>2026-07-30T17:18:56.755Z</lastmod>
+    <loc>https://data.openschooldata.com/data/SPENDING,ENROLLMENT/SPED/SOURCEDATA-ELA.html</loc>
+    <lastmod>2026-08-10T16:43:08.804Z</lastmod>
   </url>
   <url>
-    <loc>https://data.openschooldata.com/ELAcountyreport-2025.html</loc>
-    <lastmod>2026-07-30T17:18:56.753Z</lastmod>
+    <loc>https://data.openschooldata.com/data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html</loc>
+    <lastmod>2026-08-10T16:43:08.788Z</lastmod>
+  </url>
+  <url>
+    <loc>https://data.openschooldata.com/plots/ELAcountyreport-2025.html</loc>
+    <lastmod>2026-08-10T16:43:08.820Z</lastmod>
+  </url>
+  <url>
+    <loc>https://data.openschooldata.com/plots/DistrictELAGrowth.html</loc>
+    <lastmod>2026-08-10T16:43:08.807Z</lastmod>
   </url>
   <url>
     <loc>https://data.openschooldata.com/index.html</loc>
-    <lastmod>2026-07-30T17:18:56.988Z</lastmod>
+    <lastmod>2026-08-10T16:43:08.807Z</lastmod>
   </url>
   <url>
-    <loc>https://data.openschooldata.com/data/MATH/ABOUT--DATA_ELA-MATH.html</loc>
-    <lastmod>2026-07-30T17:18:56.987Z</lastmod>
+    <loc>https://data.openschooldata.com/data/SPENDING,ENROLLMENT/PERSONELL/ABOUT-DATA_Personell,Salaries.html</loc>
+    <lastmod>2026-08-10T16:43:08.804Z</lastmod>
+  </url>
+  <url>
+    <loc>https://data.openschooldata.com/data/ELA/SOURCEDATA-ELA.html</loc>
+    <lastmod>2026-08-10T16:43:08.781Z</lastmod>
   </url>
 </urlset>
