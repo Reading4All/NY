@@ -275,7 +275,11 @@ console.log("stackedBarChart called with chartTitle:", chartTitle);
     title: chartTitle,
     x: { label: null, domain: [...new Set(longData.map(d => d.label))] },
     y: { label: "# Students", grid: true },
-//    color: { ...barColors, legend: true },
+    color: {
+      domain: ["Proficient", "Not Proficient", "Not Tested"],
+      range: ["rgba(126,161,87,1)", "red", "rgba(236,212,155,1)"],
+      legend: true
+    },
     marks: [
       Plot.ruleY([0]),
       Plot.barY(longData, Plot.stackY({
@@ -323,14 +327,6 @@ shared_dataFiltered = {
   );
 }
 ```
-
-<!-- ```{ojs} -->
-<!-- //| output: true -->
-<!-- barColors = ({ -->
-<!--   domain: ["Proficient", "Not Proficient", "Not Tested"], -->
-<!--   range: ["rgba(126,161,87,1)", "red", "rgba(236,212,155,1)"] -->
-<!-- }) -->
-<!-- ``` -->
 
 ```{ojs}
 //| output: false
