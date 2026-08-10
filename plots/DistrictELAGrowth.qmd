@@ -2,9 +2,9 @@
 format: 
   dashboard: 
     orientation: columns
-    expandable: true #to change back to false
+    expandable: false
     scrolling: true #to change back to false
-    css: [../custom.scss, ELAcountyreport.css]
+    css: [../custom.scss, DistrictELAGrowth.css]
 ---
 ```{r}
 #| echo: false
@@ -92,7 +92,7 @@ shared_data = transpose(df_to_js)
 ```
 
 ```{ojs}
-//| output: true
+//| output: false
 uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC)); //for popup
 // save unique districts (based on unique BEDSCODE)
 districtsInCounty = new Set(
@@ -116,7 +116,7 @@ districtDefault = {
 ```
 
 ```{ojs}
-//| output: true
+//| output: false
 // guard function
 // makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit
 
@@ -164,15 +164,17 @@ function guard(fn, options = {}) {
 // format the input toolbar, remove the extra inside <div>s commented to not stack them, but flex wrapping not working
 const template = inputs => htl.html`
   <div style="display: flex; flex-wrap: wrap; gap: 12px; width: 100%;">
-  <div>
     ${(Array.isArray(inputs) ? inputs : Object.values(inputs)).map(
       input => htl.html`
-        <div style="flex: 1 1 200px; flex-wrap: wrap; min-width: 0;">
+        <div style="flex: 1 1 200px; min-width: 150px; max-width: 100%;">
+          <style>
+            /* Force the native OJS form element to become flexible */
+            .oi-3f6v9 { max-width: 100% !important; min-width: 0 !important; width: 100% !important; }
+            form { max-width: 100% !important; width: 100% !important; display: flex; flex-wrap: wrap; }
+          </style>
           <span style="display: block; width: 100%;">${input}</span>
-        </div>
-      `
+        </div>`
     )}
-  </div>
   </div>
   ${footer}
 `;
@@ -257,8 +259,14 @@ baseYear = 2025
 ```
 
 ```{ojs}
-//| output: true
+//| output: false
 function stackedBarChart(longData, width, height, chartTitle) {
+
+console.log("stackedBarChart called with longData:", longData);
+console.log("stackedBarChart called with width", width);
+console.log("stackedBarChart called with  height", height);
+console.log("stackedBarChart called with chartTitle:", chartTitle);
+
   return Plot.plot({
     width,
     height,
@@ -333,7 +341,7 @@ gradeLabel = assessment => assessment === "ELA3_8"
 ```
 
 ```{ojs}
-//| output: true
+//| output: false
 function subgroupRows(subgroupName) {
   console.log("subgroupRows called with subgroupName:", subgroupName);
   console.log("gradeSequence:", gradeSequence);
@@ -370,7 +378,7 @@ function subgroupRows(subgroupName) {
       };
     });
 
-  console.log("byYear result:", byYear);
+  console.log("subgroupRows - byYear:", byYear);
 
   const result = byYear.flatMap(d => [
     { label: d.label, YEAR: d.YEAR, category: "Proficient", count: d.Prof_Count, pct: d.Prof_Pct },
@@ -378,7 +386,7 @@ function subgroupRows(subgroupName) {
     { label: d.label, YEAR: d.YEAR, category: "Not Tested", count: d.NOT_TESTED, pct: null }
   ]);
 
-  console.log("subgroupRows final output:", result);
+  console.log("subgroupRows flatMap - result:", result);
 
   return result;
 }
@@ -388,51 +396,50 @@ function subgroupRows(subgroupName) {
 
 ::: {.column-screen}
 ::: {.panel-tabset}
-## PLOT1 - General Education
+## General Education
 ```{ojs}
 //| column: screen
 //| output: true
 fig1 = {
   const width = 1000;
-  const height = 420; // fixed height works well for a 4-year x 3-category stacked bar
-
-  stackedBarChart(subgroupRows("General Education Students"), width, height, `General Education`);
+  const height = 420; //works well for a 4-year x 3-category stacked bar
+  return stackedBarChart(subgroupRows("General Education Students"), width, height, `General Education`);
 }
 
 ```
-<!-- ## PLOT2 - Students with Disabilities -->
-<!-- ```{ojs} -->
-<!-- //| column: screen -->
+## Students with Disabilities
+```{ojs}
+//| column: screen
 
-<!-- fig2 = { -->
-<!--   const width = 1000; -->
-<!--   const height = 420; -->
+fig2 = {
+  const width = 1000;
+  const height = 420;
 
-<!--   stackedBarChart(subgroupRows("Students with Disabilities"), width, height, `Students with Disabilities`); -->
-<!-- } -->
-<!-- ``` -->
-<!-- ## PLOT3 - Not Economically Disadvantaged -->
-<!-- ```{ojs} -->
-<!-- //| column: screen -->
+  return stackedBarChart(subgroupRows("Students with Disabilities"), width, height, `Students with Disabilities`);
+}
+```
+## Not Economically Disadvantaged
+```{ojs}
+//| column: screen
 
-<!-- fig3 = { -->
-<!--   const width = 1000; -->
-<!--   const height = 420; -->
+fig3 = {
+  const width = 1000;
+  const height = 420;
 
-<!--   stackedBarChart(subgroupRows("Not Economically Disadvantaged"), width, height, `Not Economically Disadvantaged`); -->
-<!-- } -->
-<!-- ``` -->
-<!-- ## PLOT4 - Economically Disadvantaged -->
-<!-- ```{ojs} -->
-<!-- //| column: screen -->
+  return stackedBarChart(subgroupRows("Not Economically Disadvantaged"), width, height, `Not Economically Disadvantaged`);
+}
+```
+## Economically Disadvantaged
+```{ojs}
+//| column: screen
 
-<!-- fig4 = { -->
-<!--   const width = 1000; -->
-<!--   const height = 420; -->
+fig4 = {
+  const width = 1000;
+  const height = 420;
 
-<!--   stackedBarChart(subgroupRows("Economically Disadvantaged"), width, height, `Economically Disadvantaged`); -->
-<!-- } -->
-<!-- ``` -->
+  return stackedBarChart(subgroupRows("Economically Disadvantaged"), width, height, `Economically Disadvantaged`);
+}
+```
 :::
 :::
 :::
