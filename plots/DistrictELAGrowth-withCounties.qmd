@@ -273,6 +273,7 @@ console.log("stackedBarChart called with chartTitle:", chartTitle);
 ```
 
 ```{ojs}
+//| output: false
 // Turn the "Grade" selection into a YEAR -> ASSESSMENT_NAME sequence.
 // If "All Grades (3-8)" was picked, every year uses ELA3_8.
 // If a single grade was picked, the newest year (2025) uses that grade,
