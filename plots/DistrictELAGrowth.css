@@ -8,22 +8,27 @@
   body .panel-tabset > .tab-content {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    grid-auto-rows: min-content !important; /* Prevents vertical overlapping */
+    grid-auto-rows: min-content !important;
     gap: 30px !important;
     width: 100% !important;
   }
-  
-  /* 3. Force all sections to show up in their assigned columns */
+
+  /* 3. Flatten the tab-panes so their child figures become the actual grid items */
   body .panel-tabset > .tab-content > .tab-pane {
-    display: block !important; 
+    display: contents !important;
+  }
+
+  /* 4. Style the individual figure cells (now direct grid children) */
+  body .panel-tabset .tab-pane > * {
+    display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     width: 100% !important;
     max-width: 100% !important;
-    height: auto !important; /* Allows row to grow with plot height */
+    height: auto !important;
   }
 
-  /* 4. Force the underlying OJS elements to stay within their grid lanes */
+  /* 5. Force the underlying OJS elements to stay within their grid lanes */
   body .panel-tabset .tab-pane div, 
   body .panel-tabset .tab-pane svg,
   body .panel-tabset .tab-pane canvas {

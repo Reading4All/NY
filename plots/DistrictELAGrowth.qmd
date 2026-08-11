@@ -4,7 +4,8 @@ format:
     orientation: columns
     expandable: false
     scrolling: true #to change back to false
-    css: [../custom.scss, DistrictELAGrowth.css]
+    theme: ../custom.scss
+    css: DistrictELAGrowth.css
 ---
 ```{r}
 #| echo: false
@@ -12,7 +13,7 @@ format:
 library(tidyverse)
 library(tidyr)
 
-### READ, KEEP DATA NEEDED FOR ALL THE PLOTS #####
+### READ, KEEP DATA NEEDED FOR ALL THE PLOTS, for all user inputs #####
 
 ###### {r, read csv, format df}
 YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
@@ -108,7 +109,7 @@ districtDefault = {
   const state = this || { initialized: false };
   if (!state.initialized) {
     state.initialized = true;
-    return "Wyandanch UFSD";
+    return "Ardsley UFSD";
   }
   return "";
 }
@@ -198,7 +199,7 @@ const template = inputs => htl.html`
 //| output: true
 //| layout-ncol: 1
 viewof county = Inputs.text({
-  value: "SUFFOLK",
+  value: "WESTCHESTER",
   label: "County: ",
 //  placeholder: "Enter County…",
   datalist: uniqueCounties,
@@ -227,7 +228,7 @@ viewof inputSels = guard(
 // grade to trend in latest year (2025)        
       grade: Inputs.select(new Map([ ["Grade 6", 6], ["Grade 7", 7], ["Grade 8", 8], ["All Grades (3-8)", "ELA3_8"] ]), {
         value: 6, 
-        label: "Grade: ",
+        label: "Grade, in May2025: ",
         sort: true,
         required: true
 //        width: 75
@@ -440,5 +441,5 @@ fig4 = {
 :::
 
 ### References, Notes
-* SOURCEDATA: [NYSED Report Card Database](https://data.nysed.gov/downloads.php)
-* ELA data from table: "Annual EM ELA", spring (year-end)
+* SOURCEDATA: [NYSED Report Card DB](https://data.nysed.gov/downloads.php), table: "Annual EM ELA", spring data
+* SOURCEDATA (website): [NYSED Report Card](https://data.nysed.gov/essa.php?instid=800000081568&year=2025&createreport=1&38ELA=1)
