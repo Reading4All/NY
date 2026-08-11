@@ -438,8 +438,7 @@ fig4 = {
 ```
 :::
 :::
-:::
-
-### References, Notes
+## References, Notes
 * SOURCEDATA: [NYSED Report Card DB](https://data.nysed.gov/downloads.php), table: "Annual EM ELA", spring data
-* SOURCEDATA (website): [NYSED Report Card](https://data.nysed.gov/essa.php?instid=800000081568&year=2025&createreport=1&38ELA=1)
+* SOURCEDATA (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
+:::
