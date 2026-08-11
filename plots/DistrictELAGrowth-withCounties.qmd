@@ -29,10 +29,10 @@ df1 <- read.csv(csv_file1)
 df2 <- read.csv(csv_file2)
 df3 <- read.csv(csv_file3)
 df4 <- read.csv(csv_file4)
-# shared_data5 <- read.csv(csv_file5)
+df5 <- read.csv(csv_file5)
 
 # combine
-shared_data <- rbind(df1, df2, df3, df4)
+shared_data <- rbind(df1, df2, df3, df4, df5)
 
 ###### {r, Filter to keep all data we made need regardless of which year is selected}
 ## Only Keep District Data
@@ -273,21 +273,25 @@ console.log("stackedBarChart called with chartTitle:", chartTitle);
 ```
 
 ```{ojs}
-//| output: false
 // Turn the "Grade" selection into a YEAR -> ASSESSMENT_NAME sequence.
 // If "All Grades (3-8)" was picked, every year uses ELA3_8.
 // If a single grade was picked, the newest year (2025) uses that grade,
 //   and each earlier year steps back one grade (2024 = grade-1, 2023 = grade-2,
-//   2022 = grade-4) so we're following the SAME cohort of students back in time
+//   2022 = grade-4) so we're following the SAME cohort of students back in time.
+// Grade 3 is the youngest tested grade, so any offset that would push the
+//   cohort below Grade 3 (e.g. Grade 2, Grade 1) is dropped entirely -
+//   that data will never exist.
 gradeSequence = {
   // inputSels is undefined until the form is first Submitted - bail out with
   // an empty sequence rather than throwing
   if (!inputSels) return [];
   const g = inputSels.grade;
-  return [0, 1, 2, 3, 4].map(offset => ({
-    year: baseYear - offset,
-    assessment: g === "ELA3_8" ? "ELA3_8" : `ELA${g - offset}`
-  }));
+  return [0, 1, 2, 3, 4]
+    .filter(offset => g === "ELA3_8" || (g - offset) >= 3)
+    .map(offset => ({
+      year: baseYear - offset,
+      assessment: g === "ELA3_8" ? "ELA3_8" : `ELA${g - offset}`
+    }));
 }
 ```
 
