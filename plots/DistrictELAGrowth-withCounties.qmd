@@ -23,7 +23,7 @@ csv_file1 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads
 csv_file2 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-1, ".csv")
 csv_file3 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-2, ".csv")
 csv_file4 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-3, ".csv")
-#csv_file5 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-4, ".csv")
+csv_file5 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-4, ".csv")
 
 df1 <- read.csv(csv_file1)
 df2 <- read.csv(csv_file2)
@@ -55,26 +55,6 @@ shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
 ## Create Proficiency count columns (based on ALL students, including those who opted out)
 shared_data$Prof_Count <- with(shared_data, LEVEL3_COUNT + LEVEL4_COUNT)
 shared_data$NotProf_Count <- with(shared_data, NUM_TESTED - Prof_Count)
-
-
-## Edit -  ENTITY_NAME if needed: check if any ENTITY_CD (district) has more than 1 ENYITY_NAME value (different spelling) - if so, use the longer spelling
-# Build canonical lookup: longest ENTITY_NAME per ENTITY_CD
-canonical_names <- shared_data %>%
-  distinct(ENTITY_CD, ENTITY_NAME) %>%
-  group_by(ENTITY_CD) %>%
-  slice_max(nchar(ENTITY_NAME), n = 1, with_ties = FALSE) %>%
-  ungroup() %>%
-  select(ENTITY_CD, ENTITY_NAME_CLEAN = ENTITY_NAME)
-# Join back and overwrite
-shared_data <- shared_data %>%
-  left_join(canonical_names, by = "ENTITY_CD") %>%
-  mutate(ENTITY_NAME = ENTITY_NAME_CLEAN) %>%
-  select(-ENTITY_NAME_CLEAN)
-# # Check to show that every ENTITY_CD now maps to exactly one ENTITY_NAME
-# shared_data %>%
-#   group_by(ENTITY_CD) %>%
-#   summarise(n_names = n_distinct(ENTITY_NAME)) %>%
-#   filter(n_names > 1)   # should return 0 rows
 
 
 #### make df available to OJS chunk
@@ -224,7 +204,7 @@ viewof inputSels = guard(
         }),
 
 // grade to trend in latest year (2025)        
-      grade: Inputs.select(new Map([ ["Grade 6", 6], ["Grade 7", 7], ["Grade 8", 8], ["All Grades (3-8)", "ELA3_8"] ]), {
+      grade: Inputs.select(new Map([ ["Grade 5", 5], ["Grade 6", 6], ["Grade 7", 7], ["Grade 8", 8], ["All Grades (3-8)", "ELA3_8"] ]), {
         value: 6, 
         label: "Grade, in May2025: ",
         sort: true,
@@ -298,13 +278,13 @@ console.log("stackedBarChart called with chartTitle:", chartTitle);
 // If "All Grades (3-8)" was picked, every year uses ELA3_8.
 // If a single grade was picked, the newest year (2025) uses that grade,
 //   and each earlier year steps back one grade (2024 = grade-1, 2023 = grade-2,
-//   2022 = grade-3) so we're following the SAME cohort of students back in time
+//   2022 = grade-4) so we're following the SAME cohort of students back in time
 gradeSequence = {
   // inputSels is undefined until the form is first Submitted - bail out with
   // an empty sequence rather than throwing
   if (!inputSels) return [];
   const g = inputSels.grade;
-  return [0, 1, 2, 3].map(offset => ({
+  return [0, 1, 2, 3, 4].map(offset => ({
     year: baseYear - offset,
     assessment: g === "ELA3_8" ? "ELA3_8" : `ELA${g - offset}`
   }));
