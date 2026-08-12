@@ -37,133 +37,203 @@
   }
 }
 
-@media print { 
-  /* 0. FORCE DEFAULT BROWSER PRINT LAYOUT TO PORTRAIT */ 
-  @page { 
-    size: landscape; 
-    margin-left: 0.5in;
-  }
-  /* 1. COLLAPSE FIXED HEADERS & INTERACTIVE MENUS TO ZERO PIXELS */
-  header, 
-  #quarto-header, 
-  .toolbar html-fill-container, 
-  .navbar, 
-  .quarto-dashboard-header,
-  .sidebar,
-  #quarto-sidebar,
-  .nav-tabs,
-  .quarto-dashboard-toggle,
-  .toolbar {
+@media screen and (min-width: 768px) {
+  /* 1. Hide the tab buttons entirely on desktop */
+  body .panel-tabset > .nav-tabs {
     display: none !important;
-    height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-  /* 2. HIDE EVERYTHING ELSE */
-  body * {
-    visibility: hidden !important;
   }
   
-  /* SET THE PRINT SCALE TO 0.57 */
-  body {
-    zoom: 0.57 !important;
-  }
-  
-  /* FORCE PARENT CONTAINER WRAPPERS TO BE VISIBLE AND CALCULATE HEIGHT */
-  html, body, main, .main, 
-  .quarto-dashboard, 
-  .dashboard-page, 
-  .quarto-dashboard-content,
-  .bslib-grid,
-  .bslib-page-fill,
-  .page-layout-custom,
-  .card,
-  .card-body,
-  .bslib-card,
-  .panel-tabset { 
-    display: block !important;
-    visibility: visible !important;
-    position: static !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    overflow: visible !important;
-  }
-
-  /* 2b. TURN THE TAB CONTAINER INTO A STRICT 2x2 GRID */
-  .panel-tabset > .tab-content {
+  /* 2. Turn the container into a strict 2-column Grid */
+  body .panel-tabset > .tab-content {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    grid-template-rows: repeat(2, min-content) !important;
-    gap: 0.3in !important;
-    visibility: visible !important;
-    position: static !important;
-    height: auto !important;
-    overflow: visible !important;
+    grid-auto-rows: min-content !important;
+    gap: 30px !important;
+    width: 100% !important;
   }
 
-  /* 2c. FLATTEN EACH TAB-PANE SO ITS FIGURES BECOME DIRECT GRID ITEMS */
-  .panel-tabset > .tab-content > .tab-pane {
+  /* 3. Flatten the tab-panes so their child figures become the actual grid items */
+  body .panel-tabset > .tab-content > .tab-pane {
     display: contents !important;
   }
 
-  /* 2d. PIN EACH FIGURE TO AN EXACT GRID CELL (immune to order/auto-flow issues) */
-  #tabset-1-1 { grid-column: 1 !important; grid-row: 1 !important; }
-  #tabset-1-2 { grid-column: 2 !important; grid-row: 1 !important; }
-  #tabset-1-3 { grid-column: 1 !important; grid-row: 2 !important; }
-  #tabset-1-4 { grid-column: 2 !important; grid-row: 2 !important; }
-
-  /* 3. WHITELIST THE PLOTS, IDS, AND ALL THEIR CHILD ELEMENTS to be printed */
-  .plot-d6a7b5-figure, 
-  .plot-d6a7b5-figure *,
-  #tabset-1-1,
-  #tabset-1-1 *,
-  #tabset-1-2,
-  #tabset-1-2 *,
-  #tabset-1-3,
-  #tabset-1-3 *,
-  #tabset-1-4,
-  #tabset-1-4 *,
-  .card-body.html-fill-item.html-fill-container,
-  .card-body.html-fill-item.html-fill-container * {
-    visibility: visible !important;
-  }
-  
-  /* 4. FORCE BOOTSTRAP TO NATIVELY RENDER HIDDEN TAB CONTENTS & FORCE PAGE BREAKS */
-  #tabset-1-1,
-  #tabset-1-2,
-  #tabset-1-3,
-  #tabset-1-4{
+  /* 4. Style the individual figure cells (now direct grid children) */
+  body .panel-tabset .tab-pane > * {
     display: block !important;
     opacity: 1 !important;
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
-  /* Force a page break AFTER row 1 (fig1/fig2) */
-  #tabset-1-2 {
-    page-break-after: always !important;
-    break-after: page !important;
-  }
-  /* Strictly prevent an accidental blank page after row 2 (fig3/fig4) */
-  #tabset-1-4 {
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-  }
-  
-  /* Document size layout reset */
-  html, body {
+    visibility: visible !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* 5. Force the underlying OJS elements to stay within their grid lanes */
+  body .panel-tabset .tab-pane div, 
+  body .panel-tabset .tab-pane svg,
+  body .panel-tabset .tab-pane canvas {
+    max-width: 100% !important;
+    height: auto !important; 
+  }
+}
+
+@media print {
+
+  /* --- Show ALL tabs, not just the currently active one ---
+     Bootstrap tabsets hide inactive .tab-pane elements on screen;
+     for print we need every tab's content visible and stacked.
+     Forcing block display (instead of bslib's flex/grid fill layout)
+     also matters below - page breaks are unreliable inside flex/grid
+     containers, so everything from .tab-content down needs to be
+     plain block flow for print. */
+  .panel-tabset .tab-content,
+  .panel-tabset .tab-content > .tab-pane,
+  .panel-tabset .tab-pane .card,
+  .panel-tabset .tab-pane .bslib-card,
+  .panel-tabset .tab-pane .card-body,
+  .panel-tabset .tab-pane .html-fill-container {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important;
+  }
+
+  /* --- Flatten every ancestor of the tabset too ---
+     Quarto dashboards (bslib) lay out the WHOLE page with nested
+     flex/grid "fillable" containers (.bslib-grid, .bslib-gap-spacing,
+     .html-fill-container, .html-fill-item, .quarto-dashboard content
+     wrappers, .column-screen, .column-page, etc). break-before/after/
+     inside are only honored inside a normal block flow: if ANY
+     ancestor between the page root and .tab-pane is still flex or
+     grid, the whole subtree is treated as one unbreakable unit and
+     page breaks are silently ignored, even though .tab-content and
+     .tab-pane themselves are already block above. So reset the
+     ancestor chain too, not just the tabset's own internals. */
+  body,
+  .quarto-dashboard,
+  .quarto-dashboard-content,
+  main.quarto-dashboard-content,
+  .dashboard-page,
+  .dashboard-row,
+  .dashboard-column,
+  .bslib-grid,
+  .bslib-gap-spacing,
+  .html-fill-container,
+  .html-fill-item,
+  .column-screen,
+  .column-page,
+  .panel-tabset {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
     overflow: visible !important;
-  } 
+  }
+
+  /* Tab navigation isn't usable on paper, so hide it when printing */
+  .panel-tabset .nav-tabs {
+    display: none !important;
+  }
+
+  /* --- Hide the county/district/grade input toolbar when printing ---
+     It's interactive-only and not meaningful on paper. */
+  #print-hide-toolbar,
+  div.toolbar.html-fill-container {
+    display: none !important;
+  }
+
+  /* --- One tab (its 2 plots) per printed page --- */
+  .panel-tabset .tab-pane {
+    break-after: page !important;      /* modern property */
+    page-break-after: always !important; /* legacy fallback for older print engines */
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  /* Don't force a blank page after the very last tab */
+  .panel-tabset .tab-pane:last-child {
+    break-after: auto !important;
+    page-break-after: auto !important;
+  }
+  /* Belt-and-suspenders: also force a break BEFORE every tab-pane
+     except the first. break-before on the element itself is often
+     honored more reliably than break-after on the sibling before it,
+     especially once margins/whitespace are involved. */
+  .panel-tabset .tab-pane:not(:first-child) {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  /* Keep each plot (and its title/legend) from splitting across pages */
+  .panel-tabset .tab-pane figure,
+  .panel-tabset .tab-pane .observablehq,
+  .panel-tabset .tab-pane svg {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* --- Re-hide OJS source code ---
+     The broad "unhide everything" rules above (targeting .card,
+     .bslib-card, .card-body, .html-fill-container, etc.) also
+     reverse the display:none that Quarto normally uses to hide
+     each OJS cell's source code (shown/toggled via a code-fold
+     control). Explicitly re-hide it here, after the unhide rules,
+     so this wins the cascade and code stays hidden in print. */
+  .panel-tabset .tab-pane .cell-code,
+  .panel-tabset .tab-pane .sourceCode,
+  .panel-tabset .tab-pane pre.sourceCode,
+  .panel-tabset .tab-pane details.code-fold {
+    display: none !important;
+  }
+
+  /* --- Strip the visible "card" chrome (border/shadow/header bar) ---
+     Quarto dashboards wrap each plot, each tab-pane, and each
+     section (like References) in a Bootstrap/bslib "card" for the
+     on-screen boxed/light-box look. For print we want just the
+     content, no boxes. This removes the chrome but keeps spacing. */
+  .card,
+  .bslib-card,
+  .panel-tabset .card,
+  #print-footer.card,
+  #print-footer .card {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  .card-header,
+  .bslib-card .card-header {
+    display: none !important; /* remove the little title bar above each plot box */
+  }
+  .card-body,
+  .bslib-card .card-body {
+    padding: 0 !important;
+  }
+
+  /* --- Repeat "References, Notes" on every page ---
+     position: fixed elements re-render on every printed page in
+     Chrome/Edge. (Firefox and Safari print engines don't reliably
+     support this; see note below the code block.) */
+  #print-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    font-size: 9pt;
+    line-height: 1.2;
+    padding: 4pt 12pt;
+    border-top: 0.5pt solid #ccc;
+  }
+  #print-footer h2 {
+    font-size: 9pt;
+    margin: 0 0 2pt 0;
+  }
+  #print-footer ul {
+    margin: 0;
+    padding-left: 14pt;
+  }
+
+  /* Reserve space at the bottom of every page so plot content
+     doesn't get hidden behind the fixed footer */
+  @page {
+    margin-bottom: 0.9in;
+  }
 }
