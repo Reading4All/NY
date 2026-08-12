@@ -358,7 +358,7 @@ function subgroupRows(subgroupName) {
       };
     });
 
-  console.log("subgroupRows - byYear:", byYear);
+  // console.log("subgroupRows - byYear:", byYear);
 
   const result = byYear.flatMap(d => [
     { label: d.label, YEAR: d.YEAR, category: "Proficient", count: d.Prof_Count, pct: d.Prof_Pct },
@@ -366,15 +366,24 @@ function subgroupRows(subgroupName) {
     { label: d.label, YEAR: d.YEAR, category: "Not Tested", count: d.NOT_TESTED, pct: null }
   ]);
 
-  console.log("subgroupRows flatMap - result:", result);
+  // console.log("subgroupRows flatMap - result:", result);
 
   return result;
 }
 ```
 ::: {.column-screen}
 ## Plots {.flow}
-
 ::: {.column-screen}
+### Print District Selected
+```{ojs}
+//| echo: false
+
+// print the district name 
+md`## NYS ELA (Reading Proficiency) Scores - ${inputSels ? inputSels.district : ""}`
+
+// print the district name and grad
+<!-- md`## ${inputSels ? inputSels.district : ""}${inputSels && inputSels.grade !== undefined ? ` — ${gradeLabel(inputSels.grade === "ELA3_8" ? "ELA3_8" : `ELA${inputSels.grade}`)}` : ""}` -->
+```
 ::: {.panel-tabset}
 ## General Education vs. not
 ```{ojs}
