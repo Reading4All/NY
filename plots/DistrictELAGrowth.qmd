@@ -205,7 +205,7 @@ viewof inputSels = guard(
 
 // grade to trend in latest year (2025)        
       grade: Inputs.select(new Map([ ["Grade 5", 5], ["Grade 6", 6], ["Grade 7", 7], ["Grade 8", 8], ["All Grades (3-8)", "ELA3_8"] ]), {
-        value: 6, 
+        value: 8, 
         label: "Grade, in May2025: ",
         sort: true,
         required: true
