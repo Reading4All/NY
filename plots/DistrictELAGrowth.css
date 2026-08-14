@@ -172,10 +172,10 @@ h2 {
      each OJS cell's source code (shown/toggled via a code-fold
      control). Explicitly re-hide it here, after the unhide rules,
      so this wins the cascade and code stays hidden in print. */
-  .panel-tabset .tab-pane .cell-code,
-  .panel-tabset .tab-pane .sourceCode,
-  .panel-tabset .tab-pane pre.sourceCode,
-  .panel-tabset .tab-pane details.code-fold {
+  .cell-code,
+  .sourceCode,
+  pre.sourceCode,
+  details.code-fold {
     display: none !important;
   }
 
