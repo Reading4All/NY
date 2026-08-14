@@ -3,6 +3,12 @@ h2 {
   margin-top: 0 !important;
 }
 
+/* font in the reference notes sections */
+.card-body.html-fill-item.html-fill-container {
+  color: #5a5a5a;
+  font-size: .8rem;
+}
+
 /* hide tabsets on desktop - DISABLED for now, rehide by deleting DISABLED in line below */
 @media DISABLED (min-width: 768px) {
   /* 1. Hide the tab buttons entirely on desktop */
@@ -166,10 +172,10 @@ h2 {
      each OJS cell's source code (shown/toggled via a code-fold
      control). Explicitly re-hide it here, after the unhide rules,
      so this wins the cascade and code stays hidden in print. */
-  .panel-tabset .tab-pane .cell-code,
-  .panel-tabset .tab-pane .sourceCode,
-  .panel-tabset .tab-pane pre.sourceCode,
-  .panel-tabset .tab-pane details.code-fold {
+  .cell-code,
+  .sourceCode,
+  pre.sourceCode,
+  details.code-fold {
     display: none !important;
   }
 
