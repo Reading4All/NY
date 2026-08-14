@@ -3,7 +3,8 @@ h2 {
   margin-top: 0 !important;
 }
 
-@media (min-width: 768px) {
+/* hide tabsets on desktop - DISABLED for now, rehide by deleting DISABLED in line below */
+@media DISABLED (min-width: 768px) {
   /* 1. Hide the tab buttons entirely on desktop */
   body .panel-tabset > .nav-tabs {
     display: none !important;
@@ -42,42 +43,25 @@ h2 {
   }
 }
 
-@media screen and (min-width: 768px) {
-  /* 1. Hide the tab buttons entirely on desktop */
-  body .panel-tabset > .nav-tabs {
-    display: none !important;
-  }
-  
-  /* 2. Turn the container into a strict 2-column Grid */
-  body .panel-tabset > .tab-content {
+/* NOT DISABLing this one, being used */
+/* Put plots side-by-side on desktop */
+@media (min-width: 768px) {
+  .panel-tabset .tab-pane.active {
     display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    grid-auto-rows: min-content !important;
-    gap: 30px !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .panel-tabset .tab-pane.active > .cell {
     width: 100% !important;
+    max-width: none !important;
   }
+}
 
-  /* 3. Flatten the tab-panes so their child figures become the actual grid items */
-  body .panel-tabset > .tab-content > .tab-pane {
-    display: contents !important;
-  }
-
-  /* 4. Style the individual figure cells (now direct grid children) */
-  body .panel-tabset .tab-pane > * {
+/* Stack on smaller screens */
+@media (max-width: 767px) {
+  .panel-tabset .tab-pane.active {
     display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* 5. Force the underlying OJS elements to stay within their grid lanes */
-  body .panel-tabset .tab-pane div, 
-  body .panel-tabset .tab-pane svg,
-  body .panel-tabset .tab-pane canvas {
-    max-width: 100% !important;
-    height: auto !important; 
   }
 }
 

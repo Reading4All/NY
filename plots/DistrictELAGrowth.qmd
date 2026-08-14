@@ -47,13 +47,21 @@ shared_data <- shared_data[
   shared_data$ENTITY_TYPE == "COUNTY",
 ]
 
-# Counry row updates
-## Populate count_desc of county rows with it's entity name
+# County row updates
+## Populate count_desc of county rows with it's entity name (uppercase)
 shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
-  shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"]
-## Rename County entity_name to 'ALL-COUNTY'
+  toupper(shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
+### then remove ' County'
+shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
+  sub(" COUNTY$", "", shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"])
+
+## Rename County row entity_name's to 'ALL - COUNTY'
 shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   paste0("ALL - ", shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
+### then change ' County' to " Districts'
+shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
+  sub(" County$", " Districts", shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
+
 
 # Get rid of NA Prof rates, and sort by Prof rate
 shared_data <- shared_data %>% 
