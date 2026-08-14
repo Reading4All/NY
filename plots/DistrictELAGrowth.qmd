@@ -211,7 +211,7 @@ const template = inputs => htl.html`
 //| layout-ncol: 1
 viewof county = Inputs.text({
   value: "BRONX",
-  label: "County (or `NYC PUBLIC SCHOOLS`): ",
+  label: "Enter County (or `NYC PUBLIC SCHOOLS`): ",
 //  placeholder: "Enter County…",
   datalist: uniqueCounties,
   unique: true,
@@ -238,7 +238,7 @@ viewof inputSels = guard(
 
 // grade to trend in latest year (2025)        
       grade: Inputs.select(new Map([ ["Grade 5", 5], ["Grade 6", 6], ["Grade 7", 7], ["Grade 8", 8], ["All Grades (3-8)", "ELA3_8"] ]), {
-        value: 7, 
+        value: 8, 
         label: "Grade, in May2025: ",
         sort: true,
         required: true
@@ -302,7 +302,7 @@ console.log("stackedBarChart called with chartTitle:", chartTitle);
         y: "count",
         fill: "category",
         tip: true,
-        title: d => `${d.category}: ${d.count} ${d.pct != null ? ` (${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% excluding opt-outs)` : ""}`
+        title: d => `${d.category}: ${d.count} ${d.pct != null ? ` (${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% of Tested only)` : ""}`
       }))
     ]
   });
