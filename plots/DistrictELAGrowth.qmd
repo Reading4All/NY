@@ -39,6 +39,14 @@ shared_data <- rbind(df1, df2, df3, df4, df5)
 ## Only Keep Spring (year-end) Data
 shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
 
+## Only Keep Subgroups to be used
+shared_data<-shared_data[(shared_data$SUBGROUP_NAME == "Students with Disabilities" |
+                          shared_data$SUBGROUP_NAME == "General Education Students" |
+                          shared_data$SUBGROUP_NAME == "Economically Disadvantaged" |  
+                          shared_data$SUBGROUP_NAME == "Not Economically Disadvantaged" |
+                          shared_data$SUBGROUP_NAME == "All Students"
+                          ),]
+
 # Keep District and County Data
 ## (old) Only Keep District Data
 ## shared_data<-shared_data[(shared_data$ENTITY_TYPE == "DISTRICT"),]
@@ -47,13 +55,15 @@ shared_data <- shared_data[
   shared_data$ENTITY_TYPE == "COUNTY",
 ]
 
-# County row updates
+# County row - formatting County descriptions, to work and look good on user input filters
 ## Populate count_desc of county rows with it's entity name (uppercase)
 shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   toupper(shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
 ### then remove ' County'
 shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   sub(" COUNTY$", "", shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"])
+## Rename count_desc of 'NEW York' to New York (Manhattan) so it's less confusing
+shared_data$COUNTY_DESC[shared_data$COUNTY_DESC == "NEW YORK"] <- "NEW YORK (Manhattan)"
 
 ## Rename County row entity_name's to 'ALL - COUNTY'
 shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
@@ -110,7 +120,7 @@ districtDefault = {
   const state = this || { initialized: false };
   if (!state.initialized) {
     state.initialized = true;
-    return "Ardsley UFSD";
+    return "ALL - BRONX DISTRICTS";
   }
   return "";
 }
@@ -200,8 +210,8 @@ const template = inputs => htl.html`
 //| output: true
 //| layout-ncol: 1
 viewof county = Inputs.text({
-  value: "WESTCHESTER",
-  label: "County: ",
+  value: "BRONX",
+  label: "County (or `NYC PUBLIC SCHOOLS`): ",
 //  placeholder: "Enter County…",
   datalist: uniqueCounties,
   unique: true,
@@ -228,7 +238,7 @@ viewof inputSels = guard(
 
 // grade to trend in latest year (2025)        
       grade: Inputs.select(new Map([ ["Grade 5", 5], ["Grade 6", 6], ["Grade 7", 7], ["Grade 8", 8], ["All Grades (3-8)", "ELA3_8"] ]), {
-        value: 8, 
+        value: 7, 
         label: "Grade, in May2025: ",
         sort: true,
         required: true
@@ -292,7 +302,7 @@ console.log("stackedBarChart called with chartTitle:", chartTitle);
         y: "count",
         fill: "category",
         tip: true,
-        title: d => `${d.category}: ${d.count}\n${d.pct != null ? ` (${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% excluding opt-outs)` : ""}`
+        title: d => `${d.category}: ${d.count} ${d.pct != null ? ` (${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% excluding opt-outs)` : ""}`
       }))
     ]
   });
@@ -450,6 +460,18 @@ fig4 = {
   return stackedBarChart(subgroupRows("Economically Disadvantaged"), width, height, `Economically Disadvantaged`);
 }
 ```
+
+## All Students
+```{ojs}
+//| column: screen
+fig5 = {
+  const width = 1000;
+  const height = 420;
+
+  return stackedBarChart(subgroupRows("All Students"), width, height, `All Students`);
+}
+```
+
 :::
 :::
 ## References, Notes {#print-footer}
