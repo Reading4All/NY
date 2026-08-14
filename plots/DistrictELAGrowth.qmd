@@ -35,10 +35,25 @@ df5 <- read.csv(csv_file5)
 shared_data <- rbind(df1, df2, df3, df4, df5)
 
 ###### {r, Filter to keep all data we made need regardless of which year is selected}
-## Only Keep District Data
-shared_data<-shared_data[(shared_data$ENTITY_TYPE == "DISTRICT"),]
+
 ## Only Keep Spring (year-end) Data
 shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
+
+# Keep District and County Data
+## (old) Only Keep District Data
+## shared_data<-shared_data[(shared_data$ENTITY_TYPE == "DISTRICT"),]
+shared_data <- shared_data[
+  shared_data$ENTITY_TYPE == "DISTRICT" |
+  shared_data$ENTITY_TYPE == "COUNTY",
+]
+
+# Counry row updates
+## Populate count_desc of county rows with it's entity name
+shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
+  shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"]
+## Rename County entity_name to 'ALL-COUNTY'
+shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
+  paste0("ALL - ", shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
 
 # Get rid of NA Prof rates, and sort by Prof rate
 shared_data <- shared_data %>% 
@@ -246,16 +261,20 @@ console.log("stackedBarChart called with  height", height);
 console.log("stackedBarChart called with chartTitle:", chartTitle);
 
   return Plot.plot({
+    className: "ELAgrowth-plot",
+        
     width,
     height,
     marginLeft: 60,
     marginBottom: 50,
     title: chartTitle,
-    x: { label: null, domain: [...new Set(longData.map(d => d.label))] },
-    y: { label: "# Students", grid: true },
+    
+    x: { label: null, domain: [...new Set(longData.map(d => d.label))]},
+    y: { label: "# Students", grid: true, labelArrow: false,
+  labelAnchor: "center"},
     color: {
       domain: ["Proficient", "Not Proficient", "Not Tested"],
-      range: ["rgba(126,161,87,1)", "red", "rgba(236,212,155,1)"],
+      range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
       legend: true
     },
     marks: [
@@ -265,7 +284,7 @@ console.log("stackedBarChart called with chartTitle:", chartTitle);
         y: "count",
         fill: "category",
         tip: true,
-        title: d => `${d.category}: ${d.count}${d.pct != null ? ` (${Math.round(d.pct)}%)` : ""}`
+        title: d => `${d.category}: ${d.count}\n${d.pct != null ? ` (${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% excluding opt-outs)` : ""}`
       }))
     ]
   });
@@ -323,9 +342,9 @@ gradeLabel = assessment => assessment === "ELA3_8"
 ```{ojs}
 //| output: false
 function subgroupRows(subgroupName) {
-  console.log("subgroupRows called with subgroupName:", subgroupName);
-  console.log("gradeSequence:", gradeSequence);
-  console.log("shared_dataFiltered length:", shared_dataFiltered.length);
+  // console.log("subgroupRows called with subgroupName:", subgroupName);
+  // console.log("gradeSequence:", gradeSequence);
+  // console.log("shared_dataFiltered length:", shared_dataFiltered.length);
 
   const byYear = [...gradeSequence]
     .sort((a, b) => a.year - b.year)
@@ -336,16 +355,17 @@ function subgroupRows(subgroupName) {
         d.SUBGROUP_NAME === subgroupName
       );
 
-      if (!row) {
-        console.log(
-          `No matching row for year=${year}, assessment=${assessment}, subgroup=${subgroupName}`
-        );
-      } else {
-        console.log(
-          `Match found for year=${year}, assessment=${assessment}, subgroup=${subgroupName}:`,
-          row
-        );
-      }
+// Console Logs to troubleshoot
+      <!-- if (!row) { -->
+      <!--   console.log( -->
+      <!--     `No matching row for year=${year}, assessment=${assessment}, subgroup=${subgroupName}` -->
+      <!--   ); -->
+      <!-- } else { -->
+      <!--   console.log( -->
+      <!--     `Match found for year=${year}, assessment=${assessment}, subgroup=${subgroupName}:`, -->
+      <!--     row -->
+      <!--   ); -->
+      <!-- } -->
 
       return {
         YEAR: year,
@@ -354,15 +374,16 @@ function subgroupRows(subgroupName) {
         NotProf_Count: row ? +row.NotProf_Count : 0,
         NOT_TESTED: row ? +row.NOT_TESTED : 0,
         Prof_Pct: row ? +row.Prof_Pct : null,
-        NotProf_Pct: row ? +row.NotProf_Pct : null
+        NotProf_Pct: row ? +row.NotProf_Pct : null,
+        PER_PROF: row ? +row.PER_PROF : null
       };
     });
 
   // console.log("subgroupRows - byYear:", byYear);
 
   const result = byYear.flatMap(d => [
-    { label: d.label, YEAR: d.YEAR, category: "Proficient", count: d.Prof_Count, pct: d.Prof_Pct },
-    { label: d.label, YEAR: d.YEAR, category: "Not Proficient", count: d.NotProf_Count, pct: d.NotProf_Pct },
+    { label: d.label, YEAR: d.YEAR, category: "Proficient", count: d.Prof_Count, pct: d.Prof_Pct, pct2: d.PER_PROF },
+    { label: d.label, YEAR: d.YEAR, category: "Not Proficient", count: d.NotProf_Count, pct: null },
     { label: d.label, YEAR: d.YEAR, category: "Not Tested", count: d.NOT_TESTED, pct: null }
   ]);
 
@@ -377,15 +398,11 @@ function subgroupRows(subgroupName) {
 ### Print District Selected
 ```{ojs}
 //| echo: false
+md`<span class="ela-score-title">ELA Scores - ${inputSels ? inputSels.district : ""}</span>`
 
-// print the district name 
-md`## NYS ELA (Reading Proficiency) Scores - ${inputSels ? inputSels.district : ""}`
-
-// print the district name and grad
-<!-- md`## ${inputSels ? inputSels.district : ""}${inputSels && inputSels.grade !== undefined ? ` — ${gradeLabel(inputSels.grade === "ELA3_8" ? "ELA3_8" : `ELA${inputSels.grade}`)}` : ""}` -->
 ```
-::: {.panel-tabset}
-## General Education vs. not
+::: {.panel-tabset .tabset-primary}
+## Students with Disabilities (IEP)
 ```{ojs}
 //| column: screen
 fig1 = {
@@ -405,7 +422,7 @@ fig2 = {
   return stackedBarChart(subgroupRows("Students with Disabilities"), width, height, `Students with Disabilities (IEP)`);
 }
 ```
-## Economically Disadvantaged vs. not
+## Economically Disadvantaged
 ```{ojs}
 //| column: screen
 fig3 = {

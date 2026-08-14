@@ -8,7 +8,7 @@
 
 /* Remove fill item spacing */
 .html-fill-item {
-//  padding: 0 !important;
+  // padding: 0 !important;
   margin: 0 !important;
 }
 
@@ -19,22 +19,99 @@
 
 .btn.btn-quarto {
   background-color: #5a5a5a; /* #78c2ad; was green color */
-  border-color: #5a5a5a;/* #78c2ad; border, the same color as background */
+  border-color: #5a5a5a; /* #78c2ad; border, same color as background */
   color: #ffffff; /* text color for readability */
 }
 
 /* Optional: handle hover and active states */
 .btn.btn-quarto:hover {
-  background-color: #a6a6a6; /* was lite green #a6d7c9; */
-  border-color: #a6a6a6; /* was lite green #a6d7c9; */
+  background-color: #a6a6a6; /* was light green #a6d7c9 */
+  border-color: #a6a6a6; /* was light green #a6d7c9 */
 }
 
 .btn.btn-quarto:disabled {
-  background-color:#a6a6a6; /* was same lite green #a6d7c9; */
-  border-color: #a6a6a6; /* was same lite green #a6d7c9; */ 
+  background-color: #a6a6a6; /* was same light green #a6d7c9 */
+  border-color: #a6a6a6; /* was same light green #a6d7c9 */
 }
 
+$h2-font-size: 1.1rem;
+
+// title above plot - size and spacing
+.ela-score-title {
+  font-size: 1.1rem;
+  font-weight: 625;
+  color: #2c3e50;
+  display: block;
+  margin: 0 !important;
+}
+
+.ela-score-title + * {
+  margin-top: 0 !important;
+}
+
+.panel-tabset {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+// border around chunk for title above plot
+html-fill-item.html-fill-container.bslib-card,
+.card.html-fill-item.html-fill-container.bslib-card {
+  border: none !important;
+}
+
+/* Corrected selector */
+.card-body.html-fill-item.html-fill-container {
+  border: none !important;
+  padding-bottom: 0 !important;
+}
+
+// shadow around chunk for title above plot
+html-fill-item.html-fill-container.bslib-card,
+.card.html-fill-item.html-fill-container.bslib-card {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+// font for ELAGrowth plot
+.ELAgrowth-plot {
+  // General plot text
+  font-size: 16px;
+
+  // Axis tick labels
+  .x-axis text,
+  .y-axis text {
+    font-size: 16px;
+  }
+
+  // Axis titles
+  .x-axis .label,
+  .y-axis .label {
+    font-size: 18px;
+  }
+
+  // Legend
+  .plot-legend,
+  [aria-label="legend"] {
+    font-size: 16px;
+  }
+}
+
+/* tabsets */
+.tabset-primary .nav-tabs .nav-link.active {
+  background-color: #5a5a5a;
+  color: white;
+  border-color: #5a5a5a;
+  font-size: 12px;
+}
+
+/* inactive tabs */
+.tabset-primary .nav-tabs .nav-link {
+  background-color: #ecf0f1;
+  color: #5a5a5a;
+  border-color: #dcdcdc;
+  font-size: 12px;
+}
 
 /*-- scss:rules --*/
 // custom layouts and responsive styles
-
