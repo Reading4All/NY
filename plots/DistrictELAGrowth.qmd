@@ -211,7 +211,7 @@ const template = inputs => htl.html`
 //| layout-ncol: 1
 viewof county = Inputs.text({
   value: "BRONX",
-  label: "Enter County (or `NYC PUBLIC SCHOOLS`): ",
+  label: "County (or `NYC PUBLIC SCHOOLS`): ",
 //  placeholder: "Enter County…",
   datalist: uniqueCounties,
   unique: true,
