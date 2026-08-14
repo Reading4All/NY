@@ -74,27 +74,24 @@ html-fill-item.html-fill-container.bslib-card,
 }
 
 // font for ELAGrowth plot
-.ELAgrowth-plot {
-  // General plot text
-  font-size: 16px;
+// ELAGrowth OJS plot
+// ELAGrowth OJS plot
+svg.ELAgrowth-plot {
+  font-size: 1.1rem;
 
   // Axis tick labels
-  .x-axis text,
-  .y-axis text {
-    font-size: 16px;
-  }
+ // .tick text {
+ //   font-size: 1rem;
+ // }
 
-  // Axis titles
-  .x-axis .label,
-  .y-axis .label {
-    font-size: 18px;
-  }
+  // Axis labels
+ // .label {
+ //   font-size: 1.5rem;
+ // }
+}
 
-  // Legend
-  .plot-legend,
-  [aria-label="legend"] {
-    font-size: 16px;
-  }
+.ELAgrowth-plot-swatches.ELAgrowth-plot-swatches-wrap  {
+    font-size: 0.7rem;
 }
 
 /* tabsets */
