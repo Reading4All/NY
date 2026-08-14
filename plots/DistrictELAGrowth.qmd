@@ -211,7 +211,7 @@ const template = inputs => htl.html`
 //| layout-ncol: 1
 viewof county = Inputs.text({
   value: "BRONX",
-  label: "County (or `NYC PUBLIC SCHOOLS`): ",
+  label: "County: ",
 //  placeholder: "Enter County…",
   datalist: uniqueCounties,
   unique: true,
@@ -283,13 +283,13 @@ console.log("stackedBarChart called with chartTitle:", chartTitle);
         
     width,
     height,
-    marginLeft: 60,
+    marginLeft: 80,
     marginBottom: 50,
     title: chartTitle,
     
     x: { label: null, domain: [...new Set(longData.map(d => d.label))]},
     y: { label: "# Students", grid: true, labelArrow: false,
-  labelAnchor: "center"},
+  labelAnchor: "center", dx: 100},
     color: {
       domain: ["Proficient", "Not Proficient", "Not Tested"],
       range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
