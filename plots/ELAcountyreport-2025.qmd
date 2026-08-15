@@ -293,7 +293,7 @@ fig2 = {
         subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
 
     caption: html`
-    - Data Source (download): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card</a><br>
+    - Data Source (download): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card DB, "Annual EM ELA", spring data</a><br>
     - Data Source (webpage): <a href="https://data.nysed.gov/lists.php?type=district">NYSED Report Card</a><br>
     - (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort`,
               
