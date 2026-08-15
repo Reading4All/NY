@@ -62,15 +62,18 @@ shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <-
 ### then remove ' County'
 shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   sub(" COUNTY$", "", shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"])
-## Rename count_desc of 'NEW York' to New York (Manhattan) so it's less confusing
-shared_data$COUNTY_DESC[shared_data$COUNTY_DESC == "NEW YORK"] <- "NEW YORK (Manhattan)"
+
+## Rename count_desc of 'NEW York' to New York (Manhattan) (uppercase) so it's less confusing
+shared_data$COUNTY_DESC[shared_data$COUNTY_DESC == "NEW YORK"] <- "NEW YORK (MANHATTAN)"
 
 ## Rename County row entity_name's to 'ALL - COUNTY'
 shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   paste0("ALL - ", shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
-### then change ' County' to " Districts'
+### then change ' County' text to " Districts'
 shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   sub(" County$", " Districts", shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
+### change 'ALL - New York Districts' text to " All - Manhattan Districts'
+shared_data$ENTITY_NAME[shared_data$ENTITY_NAME == "ALL - New York Districts"] <- "ALL - Manhatten Districts"
 
 
 # Get rid of NA Prof rates, and sort by Prof rate
@@ -117,11 +120,11 @@ districtsInCounty = new Set(
 districtDefault = {
   county; // Triggers when county changes
   // Create a persistent state object attached to the cell's execution context
-  const state = this || { initialized: false };
-  if (!state.initialized) {
-    state.initialized = true;
-    return "ALL - BRONX DISTRICTS";
-  }
+//  const state = this || { initialized: false };
+//  if (!state.initialized) {
+ //   state.initialized = true;
+ //   return "ALL - BRONX DISTRICTS";
+//  }
   return "";
 }
 
