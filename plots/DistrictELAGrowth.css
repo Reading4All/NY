@@ -1,6 +1,7 @@
 /* gets rid of too much whitespace above plots */
 h2 {
   margin-top: 0 !important;
+  font-size: 1.1rem;
 }
 
 /* font in the reference notes sections */
