@@ -430,7 +430,7 @@ md`<span class="ela-score-title">ELA Scores - ${inputSels ? inputSels.district :
 fig1 = {
   const width = 1000;
   const height = 420; //works well for a 4-year x 3-category stacked bar
-  return stackedBarChart(subgroupRows("General Education Students"), width, height, `General Education Students (no IEP)`);
+  return stackedBarChart(subgroupRows("General Education Students"), width, height, `Gen Ed Students (no IEP)`);
 }
 
 ```
