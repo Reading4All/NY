@@ -1,5 +1,5 @@
 ---
-title: District ELA scores - Year-to-Year Growth
+title: "District ELA scores - 2025"
 format: 
   dashboard: 
     orientation: columns

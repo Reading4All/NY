@@ -1,5 +1,5 @@
 ---
-title: District ELA scores 2025 - by County
+title: "District ELA scores - Year to Year Growth"
 format: 
   dashboard: 
     orientation: columns

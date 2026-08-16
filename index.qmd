@@ -12,7 +12,7 @@ listing:
 about:
   template: jolla
   image: "images/favicon.png"
-  image-width: 200px
+  image-width: 250px
   image-shape: rectangle
   links:
     - icon: envelope
