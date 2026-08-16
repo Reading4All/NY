@@ -133,7 +133,9 @@ const template = inputs => htl.html`
 // save unique Counties so I can use these in select popup
 uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC));
 ```
+
 ## {.toolbar}
+
 ```{ojs}
 
 viewof inputSels = guard(
@@ -234,11 +236,17 @@ gapData = shared_dataFiltered1
   .filter(d => d !== null)
   .sort((a, b) => b.gap - a.gap);
 ```
+
 ::: {.column-screen}
+
 ## Plots {.flow}
+
 ::: {.column-screen}
+
 ::: {.panel-tabset .tabset-primary}
+
 ## ${cohortPlot2_short}
+
 ```{ojs}
 //| column: screen
 
@@ -369,7 +377,9 @@ fig2 = {
   });
 }
 ```
+
 ## ${cohortPlot1_short}
+
 ```{ojs}
 //| column: screen
 
@@ -502,7 +512,9 @@ fig1 = {
   });
 }
 ```
+
 ## Equity Gap
+
 ```{ojs}
 //| column: screen
 html`
@@ -574,6 +586,7 @@ fig3 = {
 }
 
 ```
+
 :::
 :::
 :::

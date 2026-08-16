@@ -6,7 +6,7 @@ listing:
   sort-ui: false
   fields: [title]
   table-hover: true
-  table-striped: true
+  table-striped: false
   categories: false
   sort: title
 about:
@@ -33,6 +33,6 @@ about:
 
 This website contains free, printable plots and visualizations of public data related to student literacy outcomes in our NY public schools.
 
-Parents, teachers, and community members are welcome to use them and work together to support each other and advocate for needed change - so all students learn to read and right, and teachers are supported to do so. 
+We encourage parents, teachers, and community members to support each other, to help make needed change so all students learn to read and right in our public schools.
 
 If you'd like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!
