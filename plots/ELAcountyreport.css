@@ -7,13 +7,26 @@ h3 {
   font-size: 1.1rem;
 }
 
+html {
+  font-size: 16px; /* usually the default anyway */
+}
+
+figcaption {
+  font-size: .8rem;
+/*  line-height: 1.5;
+  color: #555555;
+  margin-top: 8px; */
+}
+
+/* desktops screens */
 @media (min-width: 768px) {
-  /* 1. Hide the tab buttons entirely on desktop */
+  
+  /* Hide the tab buttons entirely on desktop */
   body .panel-tabset > .nav-tabs {
     display: none !important;
   }
   
-  /* 2. Turn the container into a strict 2-column Grid */
+  /* Turn the container into a strict 2-column Grid */
   body .panel-tabset > .tab-content {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -22,7 +35,7 @@ h3 {
     width: 100% !important;
   }
   
-  /* 3. Force all sections to show up in their assigned columns */
+  /* Force all sections to show up in their assigned columns */
   body .panel-tabset > .tab-content > .tab-pane {
     display: block !important; 
     opacity: 1 !important;
@@ -32,7 +45,7 @@ h3 {
     height: auto !important; /* Allows row to grow with plot height */
   }
 
-  /* 4. Force the underlying OJS elements to stay within their grid lanes */
+  /* Force the underlying OJS elements to stay within their grid lanes */
   body .panel-tabset .tab-pane div, 
   body .panel-tabset .tab-pane svg,
   body .panel-tabset .tab-pane canvas {
@@ -40,11 +53,11 @@ h3 {
     height: auto !important; 
   }
 
-  /* 5. Center the 3rd plot on the second row at normal width */
-body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
-  grid-column: 1 / span 2 !important;   /* lets it center across the row */
-  justify-self: left !important;       /* centers it horizontally */
-  max-width: calc(50% - 15px) !important; /* matches ONE column's actual width (half the gap subtracted) */
+  /* Center the 3rd plot on the second row at normal width */
+  body .panel-tabset > .tab-content > .tab-pane:nth-child(3) {
+    grid-column: 1 / span 2 !important;   /* lets it center across the row */
+    justify-self: left !important;       /* centers it horizontally */
+    max-width: calc(50% - 15px) !important; /* matches ONE column's actual width (half the gap subtracted) */
   }
 }
 
