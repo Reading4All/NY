@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "NY",
     "section": "",
-    "text": "This website contains plots and visualizations of public data related to student literacy outcomes in our NY public schools.\nUse these free, printable resources to better understand how school districts are performing, operating, and spending. Teachers, parents, and community members can work together to ask better questions and advocate for needed change – so all students learn to read and right, and teachers are supported to do so.\nIf you’d like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!\n\nimport { fig3 } from \"./plots/ELAcountyreport-2025.qmd\"\nfig3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\n\n\n\n\nDistrict ELA scores - 2025\n\n\n\n\nDistrict ELA scores - Year to Year Growth\n\n\n\n\nNo matching items",
+    "text": "This website contains plots and visualizations of public data related to student literacy outcomes in our NY public schools.\nUse these free, printable resources to better understand how school districts are performing, operating, and spending. Teachers, parents, and community members can work together to ask better questions and advocate for needed change – so all students learn to read and right, and teachers are supported to do so.\nIf you’d like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\n\n\n\n\nDistrict ELA scores - 2025\n\n\n\n\nDistrict ELA scores - Year to Year Growth\n\n\n\n\nNo matching items",
     "crumbs": [
       "Reports / Plots"
     ]
