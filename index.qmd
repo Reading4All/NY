@@ -17,7 +17,7 @@ about:
   links:
     - icon: envelope
       text: Email
-      href: mailto:advocate4literacyusa@gmail.com
+      href: mailto:support@openschooldata.com
     - icon: substack
       text: Substack
       href: https://open.substack.com/pub/openschooldata
@@ -33,6 +33,6 @@ about:
 
 This website contains plots and visualizations of public data related to student literacy outcomes in our NY public schools.  
 
-Browse the plots to help understand how our district are operating and spending, and issues contributing to inequitable students outcomes and overspending in our schools. Print them to help advocate for change.
+Use them to help understand how our districts are spending and performing, and to help identify issues contributing to inequitable students outcomes and overspending in our schools. Print them to help advocate for change.
 
 If you'd like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!
