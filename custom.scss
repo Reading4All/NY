@@ -1,5 +1,10 @@
 /*-- scss:defaults --*/
 
+/* remove title header */
+#quarto-dashboard-header {
+  display: none;
+}
+
 /* Remove margins and padding from the container */
 .html-fill-container.bslib-grid {
   padding: 0 !important;
