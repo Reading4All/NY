@@ -1,10 +1,38 @@
 ---
-title: "Open School Data (NY)"
-page-layout: article  # article (default), full, or custom
+sidebar: false
+listing:
+  contents: "plots/*.qmd"
+  type: table
+  sort-ui: false
+  fields: [title]
+  table-hover: true
+  table-striped: true
+  categories: false
+  sort: title
+about:
+  template: jolla
+  image: "images/favicon.png"
+  image-width: 200px
+  image-shape: rectangle
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:advocate4literacyusa@gmail.com
+    - icon: substack
+      text: Substack
+      href: https://open.substack.com/pub/openschooldata
 ---
+```{=html}
+<style>
+.quarto-listing-table th,
+.quarto-listing-table td {
+  text-align: left !important;
+}
+</style>
+```
 
-<br> This website contains plots and visualizations of public data related to student literacy outcomes in our NY public schools.  
+This website contains plots and visualizations of public data related to student literacy outcomes in our NY public schools.  
 
-These plots are used on [OpenSchoolData.com](openschooldata.com), a website to help identify issues contributing to inequitable students outcomes and overspending in our schools.
+Browse the plots to help understand how our district are operating and spending, and issues contributing to inequitable students outcomes and overspending in our schools. Print them to help advocate for change.
 
 If you'd like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!
