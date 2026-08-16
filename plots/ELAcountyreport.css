@@ -1,3 +1,12 @@
+h2 {
+  margin-top: 0 !important;
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
 @media (min-width: 768px) {
   /* 1. Hide the tab buttons entirely on desktop */
   body .panel-tabset > .nav-tabs {

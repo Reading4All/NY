@@ -5,7 +5,8 @@ format:
     orientation: columns
     expandable: false
     scrolling: false
-    css: [../custom.scss, ELAcountyreport.css]
+    theme: ../custom.scss
+    css: ELAcountyreport.css
 ---
 
 ```{r}
@@ -236,7 +237,7 @@ gapData = shared_dataFiltered1
 ::: {.column-screen}
 ## Plots {.flow}
 ::: {.column-screen}
-::: {.panel-tabset}
+::: {.panel-tabset .tabset-primary}
 ## ${cohortPlot2_short}
 ```{ojs}
 //| column: screen
