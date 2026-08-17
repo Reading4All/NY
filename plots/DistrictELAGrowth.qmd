@@ -70,6 +70,8 @@ shared_data <- shared_data %>%
 ## Remove all columns not used - lessen load to frontend/users, reduce html output size
 shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, NotProf_Pct, NotTested_Pct, SEASON, TOTAL_COUNT))
 
+## Remove NYC districts for this plot - because HMTL is already to large (NYC county/all will still be available), plus as it it will fail because it's $COUNTY_DESC is null)
+shared_data <- shared_data[!startsWith(tolower(shared_data$ENTITY_NAME), "nyc geo"), ]
 
 
 ###### FORMATTING
