@@ -51,7 +51,7 @@ shared_data <- shared_data %>%
   dplyr::arrange(Prof_Pct, NotProf_Pct)
 
 ## Remove all columns not used - lessen load to frontend/users, reduce html output size
-shared_data <- shared_data %>% select(-c(LEVEL3_COUNT, LEVEL4_COUNT, PCT_NOT_TESTED, SEASON))
+shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, SEASON))
 
 # sort by Prof rate
 ## rownames don't exist when using read_csv (into a tibble instead of a df)

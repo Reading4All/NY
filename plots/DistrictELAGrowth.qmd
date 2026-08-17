@@ -68,7 +68,7 @@ shared_data <- shared_data %>%
   dplyr::arrange(Prof_Pct, NotProf_Pct)
 
 ## Remove all columns not used - lessen load to frontend/users, reduce html output size
-shared_data <- shared_data %>% select(-c(LEVEL3_COUNT, LEVEL4_COUNT, PCT_NOT_TESTED, NotProf_Pct, NotTested_Pct, SEASON, TOTAL_COUNT))
+shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, NotProf_Pct, NotTested_Pct, SEASON, TOTAL_COUNT))
 
 
 
