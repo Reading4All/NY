@@ -40,10 +40,11 @@ shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
 shared_data <- shared_data %>% 
   filter(!is.na(Prof_Pct)) %>% 
   dplyr::arrange(Prof_Pct, NotProf_Pct)
+## rownames don't exist when using read_csv (into a tibble instead of a df)
 # Reindex the df, so the plot order will stay as we want:
-if (nrow(shared_data) > 0){
-rownames(shared_data) <- 1:nrow(shared_data)
-}
+#if (nrow(shared_data) > 0){
+#rownames(shared_data) <- 1:nrow(shared_data)
+#}
 
 ######################################################
 
