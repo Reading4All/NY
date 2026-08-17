@@ -29,22 +29,37 @@ csv_file <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/
 
 shared_data <- read_csv(csv_file)
 
-###### {r, Filter to keep all data we made need regardless of which year is selected}
+
+###### KEEP ONLY NEEDED Data
 
 ## Only Keep District Data
 shared_data<-shared_data[(shared_data$ENTITY_TYPE == "DISTRICT"),]
 ## Only Keep Spring (year-end) Data
 shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
 
-# Get rid of NA Prof rates, and sort by Prof rate
+## Only Keep Subgroups to be used
+shared_data<-shared_data[(shared_data$SUBGROUP_NAME == "Students with Disabilities" |
+                          shared_data$SUBGROUP_NAME == "General Education Students" |
+                          shared_data$SUBGROUP_NAME == "Economically Disadvantaged" |  
+                          shared_data$SUBGROUP_NAME == "Not Economically Disadvantaged" |
+                          shared_data$SUBGROUP_NAME == "All Students"
+                          ),]
+
+## Get rid of rows with NA Prof_Pct rates (to prevent rows with missing counts from being included but NA on plots)
 shared_data <- shared_data %>% 
   filter(!is.na(Prof_Pct)) %>% 
   dplyr::arrange(Prof_Pct, NotProf_Pct)
+
+## Remove all columns not used - lessen load to frontend/users, reduce html output size
+shared_data <- shared_data %>% select(-c(LEVEL3_COUNT, LEVEL4_COUNT, PCT_NOT_TESTED, SEASON))
+
+# sort by Prof rate
 ## rownames don't exist when using read_csv (into a tibble instead of a df)
-# Reindex the df, so the plot order will stay as we want:
+## Reindex the df, so the plot order will stay as we want:
 #if (nrow(shared_data) > 0){
 #rownames(shared_data) <- 1:nrow(shared_data)
 #}
+
 
 ######################################################
 

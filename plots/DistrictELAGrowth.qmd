@@ -40,7 +40,8 @@ df5 <- read_csv(csv_file5)
 # combine
 shared_data <- rbind(df1, df2, df3, df4, df5)
 
-###### {r, Filter to keep all data we made need regardless of which year is selected}
+
+###### KEEP ONLY NEEDED Data
 
 ## Only Keep Spring (year-end) Data
 shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
@@ -60,6 +61,18 @@ shared_data <- shared_data[
   shared_data$ENTITY_TYPE == "DISTRICT" |
   shared_data$ENTITY_TYPE == "COUNTY",
 ]
+
+## Remove rows with NA Prof_Pct rates (to prevent rows with missing counts from being included but NA on plots)
+shared_data <- shared_data %>% 
+  filter(!is.na(Prof_Pct)) %>% 
+  dplyr::arrange(Prof_Pct, NotProf_Pct)
+
+## Remove all columns not used - lessen load to frontend/users, reduce html output size
+shared_data <- shared_data %>% select(-c(LEVEL3_COUNT, LEVEL4_COUNT, PCT_NOT_TESTED, NotProf_Pct, NotTested_Pct, SEASON, TOTAL_COUNT))
+
+
+
+###### FORMATTING
 
 # County row - formatting County descriptions, to work and look good on user input filters
 ## Populate count_desc of county rows with it's entity name (uppercase)
@@ -81,26 +94,18 @@ shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <-
 ### change 'ALL - New York Districts' text to " All - Manhattan Districts'
 shared_data$ENTITY_NAME[shared_data$ENTITY_NAME == "ALL New York Districts"] <- "ALL Manhatten Districts"
 
+# format ENTITY_CD
+shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
 
-# Get rid of NA Prof rates, and sort by Prof rate
-shared_data <- shared_data %>% 
-  filter(!is.na(Prof_Pct)) %>% 
-  dplyr::arrange(Prof_Pct, NotProf_Pct)
+# sort by Prof rate
 ## rownames don't exist when using read_csv (into a tibble instead of a df)
 # Reindex the df, so the plot order will stay as we want:
 #if (nrow(shared_data) > 0){
 #rownames(shared_data) <- 1:nrow(shared_data)
 #}
 
-#format
-shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
 
-## Create Proficiency count columns (based on ALL students, including those who opted out)
-shared_data$Prof_Count <- with(shared_data, LEVEL3_COUNT + LEVEL4_COUNT)
-shared_data$NotProf_Count <- with(shared_data, NUM_TESTED - Prof_Count)
-
-
-#### make df available to OJS chunk
+##### Make df available to OJS chunk
 # df to ojs
 ojs_define(df_to_js = shared_data) 
 
