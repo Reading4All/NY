@@ -27,7 +27,7 @@ YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
 ###### read csv data
 csv_file <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
 
-shared_data <- read.csv(csv_file)
+shared_data <- read_csv(csv_file)
 
 ###### {r, Filter to keep all data we made need regardless of which year is selected}
 

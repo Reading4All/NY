@@ -31,11 +31,11 @@ csv_file3 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads
 csv_file4 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-3, ".csv")
 csv_file5 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-4, ".csv")
 
-df1 <- read.csv(csv_file1)
-df2 <- read.csv(csv_file2)
-df3 <- read.csv(csv_file3)
-df4 <- read.csv(csv_file4)
-df5 <- read.csv(csv_file5)
+df1 <- read_csv(csv_file1)
+df2 <- read_csv(csv_file2)
+df3 <- read_csv(csv_file3)
+df4 <- read_csv(csv_file4)
+df5 <- read_csv(csv_file5)
 
 # combine
 shared_data <- rbind(df1, df2, df3, df4, df5)
