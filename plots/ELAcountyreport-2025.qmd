@@ -1,12 +1,17 @@
 ---
-title: "District ELA scores - 2025"
+title: "ELA scores, by County - 2025"
 format: 
   dashboard: 
     orientation: columns
     expandable: false
     scrolling: false
-    theme: ../custom.scss
+    theme: 
+      - minty
+      - ../custom.scss
     css: ELAcountyreport.css
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: index.html
 ---
 
 ```{r}

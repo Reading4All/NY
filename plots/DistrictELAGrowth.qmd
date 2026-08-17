@@ -1,12 +1,17 @@
 ---
-title: "District ELA scores - Year to Year Growth"
+title: "ELA scores, District Growth"
 format: 
   dashboard: 
     orientation: columns
     expandable: false
-    scrolling: true #to change back to false
-    theme: ../custom.scss
+    scrolling: true
+    theme: 
+      - minty
+      - ../custom.scss
     css: DistrictELAGrowth.css
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: index.html
 ---
 ```{r}
 #| echo: false

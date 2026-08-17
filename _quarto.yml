@@ -27,7 +27,9 @@ website:
 format:
   html:
     page-layout: full
-    theme: [minty, custom.scss]
+    theme: 
+      - minty
+      - custom.scss
     toc: false
 
 

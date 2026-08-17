@@ -1,10 +1,5 @@
 /*-- scss:defaults --*/
 
-/* remove title header */
-#quarto-dashboard-header {
-  display: none;
-}
-
 /* Remove margins and padding from the container */
 .html-fill-container.bslib-grid {
   padding: 0 !important;
@@ -118,4 +113,25 @@ svg.ELAgrowth-plot {
 
 
 /*-- scss:rules --*/
-// custom layouts and responsive styles
+
+#quarto-dashboard-header,
+#quarto-dashboard-header .navbar {
+  background-color: #5a5a5a !important;
+}
+
+/* make the back arrow in header not wrap */
+#quarto-dashboard-header .navbar-container {
+  flex-wrap: nowrap !important;
+  align-items: center; /* keeps icon vertically centered even if title grows to 2+ lines */
+}
+#quarto-dashboard-header .navbar-brand-container {
+  min-width: 0; /* still needed so this can shrink and force text to wrap */
+  white-space: normal; /* was nowrap — this is the actual change: let text wrap */
+  overflow: visible; /* was hidden — no longer truncating, so no need to clip */
+  text-overflow: unset; /* remove the ellipsis behavior */
+}
+.quarto-dashboard-links {
+  flex-shrink: 0;
+  margin-left: auto;
+  align-self: center; /* keeps the icon anchored center-right even as the title bar gets taller */
+}
