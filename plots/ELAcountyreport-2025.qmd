@@ -53,6 +53,14 @@ shared_data <- shared_data %>%
 ## Remove all columns not used - lessen load to frontend/users, reduce html output size
 shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, SEASON))
 
+###### formating - Add county_desc for NYC districts (aka, when ENTITY_NAME starts with NYC Geog)
+shared_data$COUNTY_DESC[grepl("^nyc geog", tolower(shared_data$ENTITY_NAME))] <- 
+  shared_data$ENTITY_NAME[grepl("^nyc geog", tolower(shared_data$ENTITY_NAME))]
+## then format the text - to just say the county name 
+shared_data$COUNTY_DESC <- gsub("^Nyc Geog.* - ", "", shared_data$COUNTY_DESC)
+## capitalize them all, others are already
+shared_data$COUNTY_DESC <- toupper(shared_data$COUNTY_DESC)
+
 # sort by Prof rate
 ## rownames don't exist when using read_csv (into a tibble instead of a df)
 ## Reindex the df, so the plot order will stay as we want:
@@ -163,8 +171,8 @@ viewof inputSels = guard(
   ({ template }) => Inputs.form(
     {
       county: Inputs.text({ 
-        value: "NASSAU",
-        label: "County, outside NYC:",
+        value: "BRONX",
+        label: "County:",
  //       placeholder: "Enter County…",
         datalist: uniqueCounties,
         unique: true,
