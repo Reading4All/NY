@@ -11,7 +11,7 @@ format:
     css: ELAcountyreport.css
     nav-buttons:
       - icon: arrow-left-circle-fill
-        href: index.html
+        href: ../
 ---
 
 ```{r}

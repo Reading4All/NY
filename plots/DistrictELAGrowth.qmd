@@ -11,7 +11,7 @@ format:
     css: DistrictELAGrowth.css
     nav-buttons:
       - icon: arrow-left-circle-fill
-        href: index.html
+        href: ../
 ---
 ```{r}
 #| echo: false
