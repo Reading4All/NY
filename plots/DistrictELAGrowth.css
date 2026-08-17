@@ -10,47 +10,6 @@ h2 {
   font-size: .8rem;
 }
 
-/* hide tabsets on desktop - DISABLED for now, rehide by deleting DISABLED in line below */
-@media DISABLED (min-width: 768px) {
-  /* 1. Hide the tab buttons entirely on desktop */
-  body .panel-tabset > .nav-tabs {
-    display: none !important;
-  }
-  
-  /* 2. Turn the container into a strict 2-column Grid */
-  body .panel-tabset > .tab-content {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    grid-auto-rows: min-content !important;
-    gap: 30px !important;
-    width: 100% !important;
-  }
-
-  /* 3. Flatten the tab-panes so their child figures become the actual grid items */
-  body .panel-tabset > .tab-content > .tab-pane {
-    display: contents !important;
-  }
-
-  /* 4. Style the individual figure cells (now direct grid children) */
-  body .panel-tabset .tab-pane > * {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* 5. Force the underlying OJS elements to stay within their grid lanes */
-  body .panel-tabset .tab-pane div, 
-  body .panel-tabset .tab-pane svg,
-  body .panel-tabset .tab-pane canvas {
-    max-width: 100% !important;
-    height: auto !important; 
-  }
-}
-
-/* NOT DISABLing this one, being used */
 /* Put plots side-by-side on desktop */
 @media (min-width: 768px) {
   .panel-tabset .tab-pane.active {
@@ -73,6 +32,12 @@ h2 {
 }
 
 @media print {
+
+  /* 0. FORCE DEFAULT BROWSER PRINT LAYOUT TO PORTRAIT */ 
+  @page { 
+    size: portrait; 
+    margin-left: 0.5in; /* Gives your plots a clean border on the paper */ 
+  }
 
   /* --- Show ALL tabs, not just the currently active one ---
      Bootstrap tabsets hide inactive .tab-pane elements on screen;
@@ -130,10 +95,15 @@ h2 {
     display: none !important;
   }
 
-  /* --- Hide the county/district/grade input toolbar when printing ---
-     It's interactive-only and not meaningful on paper. */
+  /* --- Hide the county/district/grade input toolbar when printing */
   #print-hide-toolbar,
   div.toolbar.html-fill-container {
+    display: none !important;
+  }
+  
+  /* --- Hide the website header when printing */
+  #quarto-dashboard-header,
+  div.navbar-container {
     display: none !important;
   }
 

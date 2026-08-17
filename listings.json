@@ -2,8 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/plots/ELAcountyreport-2025.html",
-      "/plots/DistrictELAGrowth.html"
+      "/plots/DistrictELAGrowth.html",
+      "/plots/ELAcountyreport-2025.html"
     ]
   }
 ]
