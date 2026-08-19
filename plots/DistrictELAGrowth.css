@@ -17,17 +17,11 @@ h2 {
 }
 
 .input-toolbar > form {
-  min-width: 0;
   width: 100%;
-  margin: 0;
+  min-width: 0;
+  margin: 0 !important;
   padding: 0;
   box-sizing: border-box;
-  align-self: start;
-}
-
-.input-toolbar > form > label {
-  margin: 0;
-  padding: 0;
 }
 
 .input-toolbar input,
@@ -46,9 +40,10 @@ h2 {
 @media (max-width: 550px) {
   .input-toolbar {
     grid-template-columns: 1fr;
-    row-gap: 2px;
+    row-gap: 4px;
   }
 }
+
 /* end of input boxes - formatting */
 
 /* remove scrollbar under input header */
