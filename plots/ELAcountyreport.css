@@ -18,6 +18,47 @@ figcaption {
   margin-top: 8px; */
 }
 
+/* input boxes - formatting so they wrap when screen size decreased */
+.input-toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 4px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+.input-toolbar > form {
+  width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.input-toolbar input,
+.input-toolbar select {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 850px) {
+  .input-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .input-toolbar {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+  }
+}
+/* end of input boxes - formatting */
+
 /* desktops screens */
 @media (min-width: 768px) {
   

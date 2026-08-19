@@ -13,32 +13,38 @@ h2 {
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
+  align-items: start;
 }
 
 .input-toolbar > form {
+  width: 100%;
   min-width: 0;
-  max-width: 100%;
+  margin: 0 !important;
+  padding: 0;
   box-sizing: border-box;
-  margin: 0;
 }
 
 .input-toolbar input,
 .input-toolbar select {
   max-width: 100%;
+  min-width: 0;
   box-sizing: border-box;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
   .input-toolbar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 550px) {
   .input-toolbar {
     grid-template-columns: 1fr;
+    row-gap: 4px;
   }
 }
+
+
 /* end of input boxes - formatting */
 
 /* remove scrollbar under input header */
