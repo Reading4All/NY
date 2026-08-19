@@ -149,16 +149,14 @@ districtDefault = {
 // guard function
 // makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit
 
-function guard(fn, options = {}) {
+function guard(fn, options = {}, countyView) {
   const {
     submitLabel = "Submit",
     resetLabel = "Reset",
     required = false,
     resubmit = true,
-    width = "fit-content", 
-//    width = "min-content",
-    justify = "start",
-    valid = input => !input.querySelector(":invalid"),
+    width = "100%",
+    justify = "start"
   } = options;
 
   const onSubmit = () => {
@@ -167,65 +165,93 @@ function guard(fn, options = {}) {
     reset.disabled = true;
     wrapper.dispatchEvent(new Event("input", { bubbles: true }));
   };
+
   const onReset = () => {
     input.value = value;
     submit.disabled = !resubmit || invalid;
     reset.disabled = true;
   };
+
   const onInnerInputCapture = () => {
     invalid = true;
     submit.disabled = true;
   };
+
   const onInnerInput = e => {
     e.stopPropagation();
     submit.disabled = false;
     reset.disabled = false;
   };
-  const submit = htl.html`<button ${{disabled: !resubmit && !required, onclick: onSubmit}}>${submitLabel}`;
-  
-//not actually going to show/use reset button but keeping logic in case we want
-  const reset = htl.html`<button ${{disabled: true, onclick: onReset}}>${resetLabel}`; 
-//  const footer = htl.html`<div><hr style="padding:0;margin:10px 0"><div style="display:flex;gap:1ch;justify-content:${justify}">${submit} ${reset}`;
 
-// which buttons to show and space around them, center submit button
-  const footer = htl.html`<div><hr style="padding:0;margin:10px 0"><div style="display:flex;gap:1ch;justify-content:${justify}">${submit}`;
+  const submit = htl.html`
+    <button ${{disabled: !resubmit && !required, onclick: onSubmit}}>
+      ${submitLabel}
+  `;
 
-// format the input toolbar, remove the extra inside <div>s commented to not stack them, but flex wrapping not working
-const template = inputs => htl.html`
-  <div style="display: flex; flex-wrap: wrap; gap: 12px; width: 100%;">
-  <div>
-    ${(Array.isArray(inputs) ? inputs : Object.values(inputs)).map(
-      input => htl.html`
-        <div style="flex: 1 1 200px; flex-wrap: wrap; min-width: 0;">
-          <span style="display: block; width: 100%;">${input}</span>
-        </div>
-      `
-    )}
-  </div>
-  </div>
-  ${footer}
-`;
-  
-  const input = fn({submit, reset, footer, template, onSubmit, onReset});
+  const reset = htl.html`
+    <button ${{disabled: true, onclick: onReset}}>
+      ${resetLabel}
+  `;
+
+  const footer = htl.html`
+    <div>
+      <hr style="padding:0;margin:10px 0">
+      <div style="display:flex;gap:1ch;justify-content:${justify}">
+        ${submit}
+      </div>
+    </div>
+  `;
+
+const template = inputs => {
+  const row = document.createElement("div");
+  row.className = "input-toolbar";
+
+  row.append(countyView);
+
+  (Array.isArray(inputs) ? inputs : Object.values(inputs))
+    .forEach(input => row.append(input));
+
+  const container = document.createElement("div");
+  container.style.cssText =
+    "width:100%;max-width:100%;min-width:0;box-sizing:border-box";
+
+  container.append(row, footer);
+
+  return container;
+};
+
+  const input = fn({
+    submit,
+    reset,
+    footer,
+    template,
+    onSubmit,
+    onReset
+  });
+
   let invalid = !!input.querySelector(":invalid");
   submit.disabled = !resubmit || invalid;
 
   input.addEventListener("input", onInnerInputCapture, {capture: true});
   input.addEventListener("input", onInnerInput);
+
   let value = required ? undefined : input.value;
+
   const wrapper = htl.html`<div style="width:${width}">${input}`;
-  //const wrapper = htl.html`<div>${input}`;
+
   wrapper.addEventListener("submit", onSubmit);
+
   return Object.defineProperty(wrapper, "value", {
     get: () => value,
-    set: (v) => { input.value = v },
+    set: v => { input.value = v }
   });
 }
 ```
 ## {.toolbar #print-hide-toolbar}
 ```{ojs}
-//| output: true
-//| layout-ncol: 1
+//| output: false
+// County stays a standalone, live (non-gated) input so districtsInCounty
+// can react to it immediately as the user types/selects.
 viewof county = Inputs.text({
   value: "BRONX",
   label: "County: ",
@@ -237,6 +263,14 @@ viewof county = Inputs.text({
   required: true
 //  width: 75
 });
+```
+
+```{ojs}
+//| output: true
+// county's live input is woven into this form's template (see guard()
+// above), so this single cell renders the whole toolbar: county,
+// district, and grade in one row, with Submit below on the left.
+//| output: true
 
 viewof inputSels = guard(
   ({ template }) => Inputs.form(
@@ -244,29 +278,34 @@ viewof inputSels = guard(
       district: Inputs.select(districtsInCounty, { 
         value: districtDefault,
         label: "District: ",
- //       placeholder: "Enter District…",
- //       datalist: districtsInCounty,
-  //      unique: true,
-  //      validate: v => [...districtsInCounty].map(d => d.toUpperCase()).includes(v.value.toUpperCase()), 
         sort: true,
         required: true
-//        width: 75
-        }),
+      }),
 
-// grade to trend in latest year (2025)        
-      grade: Inputs.select(new Map([ ["Grade 5", 5], ["Grade 6", 6], ["Grade 7", 7], ["Grade 8", 8], ["All Grades (3-8)", "ELA3_8"] ]), {
-        value: 8, 
-        label: "Grade, in May2025: ",
-        sort: true,
-        required: true
-//        width: 75
-      })
-      
+      grade: Inputs.select(
+        new Map([
+          ["Grade 5", 5],
+          ["Grade 6", 6],
+          ["Grade 7", 7],
+          ["Grade 8", 8],
+          ["All Grades (3-8)", "ELA3_8"]
+        ]),
+        {
+          value: 8,
+          label: "Grade, in May2025: ",
+          sort: true,
+          required: true
+        }
+      )
     },
     { template }
   ),
-  // Options. Override the label of the reset button, require inputs pass validation
-  { resetLabel: "Reset", required: true }
+  {
+    resetLabel: "Reset",
+    required: true,
+    width: "100%"
+  },
+  viewof county
 );
 ```
 

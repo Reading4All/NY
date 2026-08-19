@@ -4,6 +4,48 @@ h2 {
   font-size: 1.1rem;
 }
 
+/* input boxes - formatting so they wrap when screen size decreased */
+.input-toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 4px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.input-toolbar > form {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.input-toolbar input,
+.input-toolbar select {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+  .input-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 450px) {
+  .input-toolbar {
+    grid-template-columns: 1fr;
+  }
+}
+/* end of input boxes - formatting */
+
+/* remove scrollbar under input header */
+.cell-output.cell-output-display {
+  overflow-x: hidden;
+}
+
 /* font in the reference notes sections */
 .card-body.html-fill-item.html-fill-container {
   color: #5a5a5a;
