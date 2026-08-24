@@ -53,21 +53,25 @@ shared_data <- shared_data %>%
 ## Remove all columns not used - lessen load to frontend/users, reduce html output size
 shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, SEASON))
 
-###### formating - Create county_desc for NYC districts from it's entity name
+###### formatting
+
+### COUNTY_DESC of NYC districts: copy it's ENTITY_NAME to COUNTY_DESC
 shared_data$COUNTY_DESC[grepl("^nyc geog", tolower(shared_data$ENTITY_NAME))] <- 
   shared_data$ENTITY_NAME[grepl("^nyc geog", tolower(shared_data$ENTITY_NAME))]
-## then format the text - to just say the county name 
+## format the text - to just say the county name 
 shared_data$COUNTY_DESC <- gsub("^Nyc Geog.* - ", "", shared_data$COUNTY_DESC)
 ## capitalize them all, others are already
 shared_data$COUNTY_DESC <- toupper(shared_data$COUNTY_DESC)
 ## Change entity names with 'nyc Goeog Dist #' 'NYC Dist NEW YORK(Manhattan), to match other ELA plot
+
+### ENTITY_NAME of NYC Districts - format text to take up less space (characters)
 shared_data$ENTITY_NAME <- sub(
   "^nyc geog dist #",
   "NYC Geog.Dist#",
   shared_data$ENTITY_NAME,
   ignore.case = TRUE
 )
-## then get rid of their ending " - county" also
+## and get rid of the ending (" - county")
 shared_data$ENTITY_NAME <- ifelse(
   grepl("^NYC Geog.Dist#", shared_data$ENTITY_NAME),
   sub(" - .*$", "", shared_data$ENTITY_NAME),

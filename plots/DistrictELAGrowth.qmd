@@ -76,35 +76,27 @@ shared_data <- shared_data[!startsWith(tolower(shared_data$ENTITY_NAME), "nyc ge
 
 ###### FORMATTING
 
-# County row - formatting County descriptions, to work and look good on user input filters
-## Populate count_desc of county rows with it's entity name (uppercase)
+### County rows - format COUNTY_DESCs, to work and look good on user input filters
+## Populate COUNTY_DESC of county rows with it's ENTITY_TYPE
 shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   toupper(shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
-### then remove ' County'
+## then remove ' County'
 shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   sub(" COUNTY$", "", shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"])
-
-## Rename count_desc of 'NEW York' to New York (Manhattan) (uppercase) so it's less confusing
+## Rename COUNTY_DESC of 'NEW York' to New York (Manhattan) (uppercase) so it's less confusing
 shared_data$COUNTY_DESC[shared_data$COUNTY_DESC == "NEW YORK"] <- "NEW YORK (MANHATTAN)"
 
-## Rename County row entity_name's to 'ALL - COUNTY'
+### County rows - format ENTITY_NAMEs to 'ALL - COUNTY'
 shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   paste0("ALL ", shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
-### then change ' County' text to " Districts'
+## change ' County' text to " Districts'
 shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
   sub(" County$", " Districts", shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
-### change 'ALL - New York Districts' text to " All - Manhattan Districts'
+## change 'ALL - New York Districts' text to " All - Manhattan Districts'
 shared_data$ENTITY_NAME[shared_data$ENTITY_NAME == "ALL New York Districts"] <- "ALL Manhatten Districts"
 
-# format ENTITY_CD
+### format ENTITY_CD
 shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
-
-# sort by Prof rate
-## rownames don't exist when using read_csv (into a tibble instead of a df)
-# Reindex the df, so the plot order will stay as we want:
-#if (nrow(shared_data) > 0){
-#rownames(shared_data) <- 1:nrow(shared_data)
-#}
 
 
 ##### Make df available to OJS chunk
