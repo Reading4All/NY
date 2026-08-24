@@ -162,8 +162,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 
 <div class="cell hidden bslib-grid-item html-fill-item">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="117" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 116;"><span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co">// Get the data from R and make it usable (transpose it) in JS </span></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>shared_data <span class="op">=</span> <span class="fu">transpose</span>(df_to_js)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="109" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 108;"><span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="co">// Get the data from R and make it usable (transpose it) in JS </span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>shared_data <span class="op">=</span> <span class="fu">transpose</span>(df_to_js)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -171,25 +171,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden bslib-grid-item html-fill-item">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="125" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 124;"><span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>uniqueCounties <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(shared_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span>))<span class="op">;</span> <span class="co">//for popup</span></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="co">// save unique districts (based on unique BEDSCODE)</span></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>districtsInCounty <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(</span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>  shared_data</span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span><span class="op">.</span><span class="fu">toUpperCase</span>() <span class="op">===</span> county<span class="op">.</span><span class="fu">toUpperCase</span>())</span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">ENTITY_NAME</span>)</span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="co">// Set Plot district when page initially loads and after user inputs county</span></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>districtDefault <span class="op">=</span> {</span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>  county<span class="op">;</span> <span class="co">// Triggers when county changes</span></span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create a persistent state object attached to the cell's execution context</span></span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a><span class="co">//  const state = this || { initialized: false };</span></span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="co">//  if (!state.initialized) {</span></span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a> <span class="co">//   state.initialized = true;</span></span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a> <span class="co">//   return "ALL - BRONX DISTRICTS";</span></span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="co">//  }</span></span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="st">""</span><span class="op">;</span></span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="117" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 116;"><span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>uniqueCounties <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(shared_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span>))<span class="op">;</span> <span class="co">//for popup</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="co">// save unique districts (based on unique BEDSCODE)</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>districtsInCounty <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>  shared_data</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span><span class="op">.</span><span class="fu">toUpperCase</span>() <span class="op">===</span> county<span class="op">.</span><span class="fu">toUpperCase</span>())</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">ENTITY_NAME</span>)</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="co">// Set Plot district when page initially loads and after user inputs county</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>districtDefault <span class="op">=</span> {</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  county<span class="op">;</span> <span class="co">// Triggers when county changes</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create a persistent state object attached to the cell's execution context</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="co">//  const state = this || { initialized: false };</span></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="co">//  if (!state.initialized) {</span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a> <span class="co">//   state.initialized = true;</span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a> <span class="co">//   return "ALL - BRONX DISTRICTS";</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="co">//  }</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="st">""</span><span class="op">;</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -213,106 +213,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden bslib-grid-item html-fill-item">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="148" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 147;"><span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a><span class="co">// guard function</span></span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a><span class="co">// makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit</span></span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">guard</span>(fn<span class="op">,</span> options <span class="op">=</span> {}<span class="op">,</span> countyView) {</span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> {</span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>    submitLabel <span class="op">=</span> <span class="st">"Submit"</span><span class="op">,</span></span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>    resetLabel <span class="op">=</span> <span class="st">"Reset"</span><span class="op">,</span></span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>    required <span class="op">=</span> <span class="kw">false</span><span class="op">,</span></span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>    resubmit <span class="op">=</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> <span class="st">"100%"</span><span class="op">,</span></span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>    justify <span class="op">=</span> <span class="st">"start"</span></span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>  } <span class="op">=</span> options<span class="op">;</span></span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onSubmit <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> input<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> { <span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span> }))<span class="op">;</span></span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onReset <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>    input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onInnerInputCapture <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>    invalid <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onInnerInput <span class="op">=</span> e <span class="kw">=&gt;</span> {</span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">stopPropagation</span>()<span class="op">;</span></span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> submit <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;button </span><span class="sc">${</span>{<span class="dt">disabled</span><span class="op">:</span> <span class="op">!</span>resubmit <span class="op">&amp;&amp;</span> <span class="op">!</span>required<span class="op">,</span> <span class="dt">onclick</span><span class="op">:</span> onSubmit}<span class="sc">}</span><span class="vs">&gt;</span></span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>submitLabel<span class="sc">}</span></span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> reset <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;button </span><span class="sc">${</span>{<span class="dt">disabled</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">onclick</span><span class="op">:</span> onReset}<span class="sc">}</span><span class="vs">&gt;</span></span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>resetLabel<span class="sc">}</span></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> footer <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div&gt;</span></span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;hr style="padding:0;margin:10px 0"&gt;</span></span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div style="display:flex;gap:1ch;justify-content:</span><span class="sc">${</span>justify<span class="sc">}</span><span class="vs">"&gt;</span></span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>submit<span class="sc">}</span></span>
-<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
-<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> template <span class="op">=</span> inputs <span class="kw">=&gt;</span> {</span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> row <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
-<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>  row<span class="op">.</span><span class="at">className</span> <span class="op">=</span> <span class="st">"input-toolbar"</span><span class="op">;</span></span>
-<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>  row<span class="op">.</span><span class="fu">append</span>(countyView)<span class="op">;</span></span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>  (<span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(inputs) <span class="op">?</span> inputs <span class="op">:</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(inputs))</span>
-<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">forEach</span>(input <span class="kw">=&gt;</span> row<span class="op">.</span><span class="fu">append</span>(input))<span class="op">;</span></span>
-<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
-<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">cssText</span> <span class="op">=</span></span>
-<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>    <span class="st">"width:100%;max-width:100%;min-width:0;box-sizing:border-box"</span><span class="op">;</span></span>
-<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">append</span>(row<span class="op">,</span> footer)<span class="op">;</span></span>
-<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
-<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> input <span class="op">=</span> <span class="fu">fn</span>({</span>
-<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">,</span></span>
-<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">,</span></span>
-<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>    footer<span class="op">,</span></span>
-<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>    template<span class="op">,</span></span>
-<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>    onSubmit<span class="op">,</span></span>
-<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>    onReset</span>
-<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="140" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 139;"><span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="co">// guard function</span></span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a><span class="co">// makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit</span></span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">guard</span>(fn<span class="op">,</span> options <span class="op">=</span> {}<span class="op">,</span> countyView) {</span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> {</span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>    submitLabel <span class="op">=</span> <span class="st">"Submit"</span><span class="op">,</span></span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>    resetLabel <span class="op">=</span> <span class="st">"Reset"</span><span class="op">,</span></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>    required <span class="op">=</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>    resubmit <span class="op">=</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> <span class="st">"100%"</span><span class="op">,</span></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>    justify <span class="op">=</span> <span class="st">"start"</span></span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>  } <span class="op">=</span> options<span class="op">;</span></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onSubmit <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> input<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> { <span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span> }))<span class="op">;</span></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onReset <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>    input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onInnerInputCapture <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>    invalid <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onInnerInput <span class="op">=</span> e <span class="kw">=&gt;</span> {</span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">stopPropagation</span>()<span class="op">;</span></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> submit <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;button </span><span class="sc">${</span>{<span class="dt">disabled</span><span class="op">:</span> <span class="op">!</span>resubmit <span class="op">&amp;&amp;</span> <span class="op">!</span>required<span class="op">,</span> <span class="dt">onclick</span><span class="op">:</span> onSubmit}<span class="sc">}</span><span class="vs">&gt;</span></span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>submitLabel<span class="sc">}</span></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> reset <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;button </span><span class="sc">${</span>{<span class="dt">disabled</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">onclick</span><span class="op">:</span> onReset}<span class="sc">}</span><span class="vs">&gt;</span></span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>resetLabel<span class="sc">}</span></span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> footer <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div&gt;</span></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;hr style="padding:0;margin:10px 0"&gt;</span></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div style="display:flex;gap:1ch;justify-content:</span><span class="sc">${</span>justify<span class="sc">}</span><span class="vs">"&gt;</span></span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>submit<span class="sc">}</span></span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> template <span class="op">=</span> inputs <span class="kw">=&gt;</span> {</span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> row <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>  row<span class="op">.</span><span class="at">className</span> <span class="op">=</span> <span class="st">"input-toolbar"</span><span class="op">;</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>  row<span class="op">.</span><span class="fu">append</span>(countyView)<span class="op">;</span></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>  (<span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(inputs) <span class="op">?</span> inputs <span class="op">:</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(inputs))</span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">forEach</span>(input <span class="kw">=&gt;</span> row<span class="op">.</span><span class="fu">append</span>(input))<span class="op">;</span></span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">cssText</span> <span class="op">=</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>    <span class="st">"width:100%;max-width:100%;min-width:0;box-sizing:border-box"</span><span class="op">;</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">append</span>(row<span class="op">,</span> footer)<span class="op">;</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> input <span class="op">=</span> <span class="fu">fn</span>({</span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">,</span></span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">,</span></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>    footer<span class="op">,</span></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>    template<span class="op">,</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>    onSubmit<span class="op">,</span></span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>    onReset</span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> invalid <span class="op">=</span> <span class="op">!!</span>input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">":invalid"</span>)<span class="op">;</span></span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>  submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"input"</span><span class="op">,</span> onInnerInputCapture<span class="op">,</span> {<span class="dt">capture</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">;</span></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"input"</span><span class="op">,</span> onInnerInput)<span class="op">;</span></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> value <span class="op">=</span> required <span class="op">?</span> <span class="kw">undefined</span> <span class="op">:</span> input<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
 <span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> invalid <span class="op">=</span> <span class="op">!!</span>input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">":invalid"</span>)<span class="op">;</span></span>
-<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>  submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
-<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"input"</span><span class="op">,</span> onInnerInputCapture<span class="op">,</span> {<span class="dt">capture</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">;</span></span>
-<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"input"</span><span class="op">,</span> onInnerInput)<span class="op">;</span></span>
-<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> value <span class="op">=</span> required <span class="op">?</span> <span class="kw">undefined</span> <span class="op">:</span> input<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
-<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;div style="width:</span><span class="sc">${</span>width<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>input<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>  wrapper<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"submit"</span><span class="op">,</span> onSubmit)<span class="op">;</span></span>
-<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">defineProperty</span>(wrapper<span class="op">,</span> <span class="st">"value"</span><span class="op">,</span> {</span>
-<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a>    <span class="kw">get</span><span class="op">:</span> () <span class="kw">=&gt;</span> value<span class="op">,</span></span>
-<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span><span class="op">:</span> v <span class="kw">=&gt;</span> { input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> v }</span>
-<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;div style="width:</span><span class="sc">${</span>width<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>input<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>  wrapper<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"submit"</span><span class="op">,</span> onSubmit)<span class="op">;</span></span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">defineProperty</span>(wrapper<span class="op">,</span> <span class="st">"value"</span><span class="op">,</span> {</span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>    <span class="kw">get</span><span class="op">:</span> () <span class="kw">=&gt;</span> value<span class="op">,</span></span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span><span class="op">:</span> v <span class="kw">=&gt;</span> { input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> v }</span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -321,78 +321,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="html-fill-item html-fill-container dashboard-toolbar-container toolbar-toplevel"><div class="toolbar html-fill-container" data-layout="flow">
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="252" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 251;"><span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a><span class="co">// County stays a standalone, live (non-gated) input so districtsInCounty</span></span>
-<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a><span class="co">// can react to it immediately as the user types/selects.</span></span>
-<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a>viewof county <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">"BRONX"</span><span class="op">,</span></span>
-<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"County: "</span><span class="op">,</span></span>
-<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a><span class="co">//  placeholder: "Enter County…",</span></span>
-<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a>  <span class="dt">datalist</span><span class="op">:</span> uniqueCounties<span class="op">,</span></span>
-<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a>  <span class="dt">unique</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a>  <span class="dt">validate</span><span class="op">:</span> v <span class="kw">=&gt;</span> shared_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span>)<span class="op">.</span><span class="fu">includes</span>(v<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">toUpperCase</span>())<span class="op">,</span></span>
-<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a>  <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a><span class="co">//  width: 75</span></span>
-<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="244" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 243;"><span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a><span class="co">// County stays a standalone, live (non-gated) input so districtsInCounty</span></span>
+<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a><span class="co">// can react to it immediately as the user types/selects.</span></span>
+<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a>viewof county <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">"BRONX"</span><span class="op">,</span></span>
+<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"County: "</span><span class="op">,</span></span>
+<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a><span class="co">//  placeholder: "Enter County…",</span></span>
+<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a>  <span class="dt">datalist</span><span class="op">:</span> uniqueCounties<span class="op">,</span></span>
+<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a>  <span class="dt">unique</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a>  <span class="dt">validate</span><span class="op">:</span> v <span class="kw">=&gt;</span> shared_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span>)<span class="op">.</span><span class="fu">includes</span>(v<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">toUpperCase</span>())<span class="op">,</span></span>
+<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a>  <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a><span class="co">//  width: 75</span></span>
+<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="269" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 268;"><span id="cb5-269"><a href="#cb5-269" aria-hidden="true" tabindex="-1"></a><span class="co">// county's live input is woven into this form's template (see guard()</span></span>
-<span id="cb5-270"><a href="#cb5-270" aria-hidden="true" tabindex="-1"></a><span class="co">// above), so this single cell renders the whole toolbar: county,</span></span>
-<span id="cb5-271"><a href="#cb5-271" aria-hidden="true" tabindex="-1"></a><span class="co">// district, and grade in one row, with Submit below on the left.</span></span>
-<span id="cb5-272"><a href="#cb5-272" aria-hidden="true" tabindex="-1"></a><span class="co">//| output: true</span></span>
-<span id="cb5-273"><a href="#cb5-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-274"><a href="#cb5-274" aria-hidden="true" tabindex="-1"></a>viewof inputSels <span class="op">=</span> <span class="fu">guard</span>(</span>
-<span id="cb5-275"><a href="#cb5-275" aria-hidden="true" tabindex="-1"></a>  ({ template }) <span class="kw">=&gt;</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
-<span id="cb5-276"><a href="#cb5-276" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb5-277"><a href="#cb5-277" aria-hidden="true" tabindex="-1"></a>      <span class="dt">district</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(districtsInCounty<span class="op">,</span> { </span>
-<span id="cb5-278"><a href="#cb5-278" aria-hidden="true" tabindex="-1"></a>        <span class="dt">value</span><span class="op">:</span> districtDefault<span class="op">,</span></span>
-<span id="cb5-279"><a href="#cb5-279" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"District: "</span><span class="op">,</span></span>
-<span id="cb5-280"><a href="#cb5-280" aria-hidden="true" tabindex="-1"></a>        <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a>        <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb5-282"><a href="#cb5-282" aria-hidden="true" tabindex="-1"></a>      })<span class="op">,</span></span>
-<span id="cb5-283"><a href="#cb5-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-284"><a href="#cb5-284" aria-hidden="true" tabindex="-1"></a>      <span class="dt">grade</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
-<span id="cb5-285"><a href="#cb5-285" aria-hidden="true" tabindex="-1"></a>        <span class="kw">new</span> <span class="bu">Map</span>([</span>
-<span id="cb5-286"><a href="#cb5-286" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 5"</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span></span>
-<span id="cb5-287"><a href="#cb5-287" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 6"</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span></span>
-<span id="cb5-288"><a href="#cb5-288" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 7"</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span></span>
-<span id="cb5-289"><a href="#cb5-289" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 8"</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span></span>
-<span id="cb5-290"><a href="#cb5-290" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"All Grades (3-8)"</span><span class="op">,</span> <span class="st">"ELA3_8"</span>]</span>
-<span id="cb5-291"><a href="#cb5-291" aria-hidden="true" tabindex="-1"></a>        ])<span class="op">,</span></span>
-<span id="cb5-292"><a href="#cb5-292" aria-hidden="true" tabindex="-1"></a>        {</span>
-<span id="cb5-293"><a href="#cb5-293" aria-hidden="true" tabindex="-1"></a>          <span class="dt">value</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span></span>
-<span id="cb5-294"><a href="#cb5-294" aria-hidden="true" tabindex="-1"></a>          <span class="dt">label</span><span class="op">:</span> <span class="st">"Grade, in May2025: "</span><span class="op">,</span></span>
-<span id="cb5-295"><a href="#cb5-295" aria-hidden="true" tabindex="-1"></a>          <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb5-296"><a href="#cb5-296" aria-hidden="true" tabindex="-1"></a>          <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb5-297"><a href="#cb5-297" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb5-298"><a href="#cb5-298" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb5-299"><a href="#cb5-299" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb5-300"><a href="#cb5-300" aria-hidden="true" tabindex="-1"></a>    { template }</span>
-<span id="cb5-301"><a href="#cb5-301" aria-hidden="true" tabindex="-1"></a>  )<span class="op">,</span></span>
-<span id="cb5-302"><a href="#cb5-302" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb5-303"><a href="#cb5-303" aria-hidden="true" tabindex="-1"></a>    <span class="dt">resetLabel</span><span class="op">:</span> <span class="st">"Reset"</span><span class="op">,</span></span>
-<span id="cb5-304"><a href="#cb5-304" aria-hidden="true" tabindex="-1"></a>    <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb5-305"><a href="#cb5-305" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="st">"100%"</span></span>
-<span id="cb5-306"><a href="#cb5-306" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb5-307"><a href="#cb5-307" aria-hidden="true" tabindex="-1"></a>  viewof county</span>
-<span id="cb5-308"><a href="#cb5-308" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="261" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 260;"><span id="cb5-261"><a href="#cb5-261" aria-hidden="true" tabindex="-1"></a><span class="co">// county's live input is woven into this form's template (see guard()</span></span>
+<span id="cb5-262"><a href="#cb5-262" aria-hidden="true" tabindex="-1"></a><span class="co">// above), so this single cell renders the whole toolbar: county,</span></span>
+<span id="cb5-263"><a href="#cb5-263" aria-hidden="true" tabindex="-1"></a><span class="co">// district, and grade in one row, with Submit below on the left.</span></span>
+<span id="cb5-264"><a href="#cb5-264" aria-hidden="true" tabindex="-1"></a><span class="co">//| output: true</span></span>
+<span id="cb5-265"><a href="#cb5-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-266"><a href="#cb5-266" aria-hidden="true" tabindex="-1"></a>viewof inputSels <span class="op">=</span> <span class="fu">guard</span>(</span>
+<span id="cb5-267"><a href="#cb5-267" aria-hidden="true" tabindex="-1"></a>  ({ template }) <span class="kw">=&gt;</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
+<span id="cb5-268"><a href="#cb5-268" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb5-269"><a href="#cb5-269" aria-hidden="true" tabindex="-1"></a>      <span class="dt">district</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(districtsInCounty<span class="op">,</span> { </span>
+<span id="cb5-270"><a href="#cb5-270" aria-hidden="true" tabindex="-1"></a>        <span class="dt">value</span><span class="op">:</span> districtDefault<span class="op">,</span></span>
+<span id="cb5-271"><a href="#cb5-271" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"District: "</span><span class="op">,</span></span>
+<span id="cb5-272"><a href="#cb5-272" aria-hidden="true" tabindex="-1"></a>        <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb5-273"><a href="#cb5-273" aria-hidden="true" tabindex="-1"></a>        <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb5-274"><a href="#cb5-274" aria-hidden="true" tabindex="-1"></a>      })<span class="op">,</span></span>
+<span id="cb5-275"><a href="#cb5-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-276"><a href="#cb5-276" aria-hidden="true" tabindex="-1"></a>      <span class="dt">grade</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb5-277"><a href="#cb5-277" aria-hidden="true" tabindex="-1"></a>        <span class="kw">new</span> <span class="bu">Map</span>([</span>
+<span id="cb5-278"><a href="#cb5-278" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 5"</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span></span>
+<span id="cb5-279"><a href="#cb5-279" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 6"</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span></span>
+<span id="cb5-280"><a href="#cb5-280" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 7"</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span></span>
+<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 8"</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span></span>
+<span id="cb5-282"><a href="#cb5-282" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"All Grades (3-8)"</span><span class="op">,</span> <span class="st">"ELA3_8"</span>]</span>
+<span id="cb5-283"><a href="#cb5-283" aria-hidden="true" tabindex="-1"></a>        ])<span class="op">,</span></span>
+<span id="cb5-284"><a href="#cb5-284" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb5-285"><a href="#cb5-285" aria-hidden="true" tabindex="-1"></a>          <span class="dt">value</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span></span>
+<span id="cb5-286"><a href="#cb5-286" aria-hidden="true" tabindex="-1"></a>          <span class="dt">label</span><span class="op">:</span> <span class="st">"Grade, in May2025: "</span><span class="op">,</span></span>
+<span id="cb5-287"><a href="#cb5-287" aria-hidden="true" tabindex="-1"></a>          <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb5-288"><a href="#cb5-288" aria-hidden="true" tabindex="-1"></a>          <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb5-289"><a href="#cb5-289" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-290"><a href="#cb5-290" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb5-291"><a href="#cb5-291" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb5-292"><a href="#cb5-292" aria-hidden="true" tabindex="-1"></a>    { template }</span>
+<span id="cb5-293"><a href="#cb5-293" aria-hidden="true" tabindex="-1"></a>  )<span class="op">,</span></span>
+<span id="cb5-294"><a href="#cb5-294" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb5-295"><a href="#cb5-295" aria-hidden="true" tabindex="-1"></a>    <span class="dt">resetLabel</span><span class="op">:</span> <span class="st">"Reset"</span><span class="op">,</span></span>
+<span id="cb5-296"><a href="#cb5-296" aria-hidden="true" tabindex="-1"></a>    <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb5-297"><a href="#cb5-297" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="st">"100%"</span></span>
+<span id="cb5-298"><a href="#cb5-298" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-299"><a href="#cb5-299" aria-hidden="true" tabindex="-1"></a>  viewof county</span>
+<span id="cb5-300"><a href="#cb5-300" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="313" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 312;"><span id="cb6-313"><a href="#cb6-313" aria-hidden="true" tabindex="-1"></a>_autoSubmit <span class="op">=</span> {</span>
-<span id="cb6-314"><a href="#cb6-314" aria-hidden="true" tabindex="-1"></a>  <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb6-315"><a href="#cb6-315" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> submitBtn <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">"button"</span>))</span>
-<span id="cb6-316"><a href="#cb6-316" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">find</span>(b <span class="kw">=&gt;</span> b<span class="op">.</span><span class="at">textContent</span><span class="op">.</span><span class="fu">trim</span>() <span class="op">===</span> <span class="st">"Submit"</span>)<span class="op">;</span></span>
-<span id="cb6-317"><a href="#cb6-317" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (submitBtn) submitBtn<span class="op">.</span><span class="fu">click</span>()<span class="op">;</span></span>
-<span id="cb6-318"><a href="#cb6-318" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></span>
-<span id="cb6-319"><a href="#cb6-319" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="305" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 304;"><span id="cb6-305"><a href="#cb6-305" aria-hidden="true" tabindex="-1"></a>_autoSubmit <span class="op">=</span> {</span>
+<span id="cb6-306"><a href="#cb6-306" aria-hidden="true" tabindex="-1"></a>  <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb6-307"><a href="#cb6-307" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> submitBtn <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">"button"</span>))</span>
+<span id="cb6-308"><a href="#cb6-308" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">find</span>(b <span class="kw">=&gt;</span> b<span class="op">.</span><span class="at">textContent</span><span class="op">.</span><span class="fu">trim</span>() <span class="op">===</span> <span class="st">"Submit"</span>)<span class="op">;</span></span>
+<span id="cb6-309"><a href="#cb6-309" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (submitBtn) submitBtn<span class="op">.</span><span class="fu">click</span>()<span class="op">;</span></span>
+<span id="cb6-310"><a href="#cb6-310" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></span>
+<span id="cb6-311"><a href="#cb6-311" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -400,7 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="324" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 323;"><span id="cb7-324"><a href="#cb7-324" aria-hidden="true" tabindex="-1"></a>baseYear <span class="op">=</span> <span class="dv">2025</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="316" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 315;"><span id="cb7-316"><a href="#cb7-316" aria-hidden="true" tabindex="-1"></a>baseYear <span class="op">=</span> <span class="dv">2025</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -408,42 +408,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="329" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 328;"><span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">stackedBarChart</span>(longData<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> chartTitle) {</span>
-<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"stackedBarChart called with longData:"</span><span class="op">,</span> longData)<span class="op">;</span></span>
-<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"stackedBarChart called with width"</span><span class="op">,</span> width)<span class="op">;</span></span>
-<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"stackedBarChart called with  height"</span><span class="op">,</span> height)<span class="op">;</span></span>
-<span id="cb8-334"><a href="#cb8-334" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"stackedBarChart called with chartTitle:"</span><span class="op">,</span> chartTitle)<span class="op">;</span></span>
-<span id="cb8-335"><a href="#cb8-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-336"><a href="#cb8-336" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb8-337"><a href="#cb8-337" aria-hidden="true" tabindex="-1"></a>    <span class="dt">className</span><span class="op">:</span> <span class="st">"ELAgrowth-plot"</span><span class="op">,</span></span>
-<span id="cb8-338"><a href="#cb8-338" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb8-339"><a href="#cb8-339" aria-hidden="true" tabindex="-1"></a>    width<span class="op">,</span></span>
-<span id="cb8-340"><a href="#cb8-340" aria-hidden="true" tabindex="-1"></a>    height<span class="op">,</span></span>
-<span id="cb8-341"><a href="#cb8-341" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
-<span id="cb8-342"><a href="#cb8-342" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
-<span id="cb8-343"><a href="#cb8-343" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> chartTitle<span class="op">,</span></span>
-<span id="cb8-344"><a href="#cb8-344" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-345"><a href="#cb8-345" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(longData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">label</span>))]}<span class="op">,</span></span>
-<span id="cb8-346"><a href="#cb8-346" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"# Students"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">labelArrow</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
-<span id="cb8-347"><a href="#cb8-347" aria-hidden="true" tabindex="-1"></a>  <span class="dt">labelAnchor</span><span class="op">:</span> <span class="st">"center"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">100</span>}<span class="op">,</span></span>
-<span id="cb8-348"><a href="#cb8-348" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
-<span id="cb8-349"><a href="#cb8-349" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Proficient"</span><span class="op">,</span> <span class="st">"Not Proficient"</span><span class="op">,</span> <span class="st">"Not Tested"</span>]<span class="op">,</span></span>
-<span id="cb8-350"><a href="#cb8-350" aria-hidden="true" tabindex="-1"></a>      <span class="dt">range</span><span class="op">:</span> [<span class="st">"#2F7F73"</span><span class="op">,</span> <span class="st">"#D95C5C"</span><span class="op">,</span> <span class="st">"#B7BDC4"</span>]<span class="op">,</span></span>
-<span id="cb8-351"><a href="#cb8-351" aria-hidden="true" tabindex="-1"></a>      <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb8-352"><a href="#cb8-352" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb8-353"><a href="#cb8-353" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb8-354"><a href="#cb8-354" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
-<span id="cb8-355"><a href="#cb8-355" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">barY</span>(longData<span class="op">,</span> Plot<span class="op">.</span><span class="fu">stackY</span>({</span>
-<span id="cb8-356"><a href="#cb8-356" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
-<span id="cb8-357"><a href="#cb8-357" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span><span class="op">,</span></span>
-<span id="cb8-358"><a href="#cb8-358" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> <span class="st">"category"</span><span class="op">,</span></span>
-<span id="cb8-359"><a href="#cb8-359" aria-hidden="true" tabindex="-1"></a>        <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb8-360"><a href="#cb8-360" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">category</span><span class="sc">}</span><span class="vs">: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">count</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct</span> <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> <span class="vs">` (</span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%)</span><span class="sc">\n</span><span class="vs">(</span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct2</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% of Tested only)`</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb8-361"><a href="#cb8-361" aria-hidden="true" tabindex="-1"></a>      }))</span>
-<span id="cb8-362"><a href="#cb8-362" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb8-363"><a href="#cb8-363" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb8-364"><a href="#cb8-364" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="321" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 320;"><span id="cb8-321"><a href="#cb8-321" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">stackedBarChart</span>(longData<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> chartTitle) {</span>
+<span id="cb8-322"><a href="#cb8-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-323"><a href="#cb8-323" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"stackedBarChart called with longData:"</span><span class="op">,</span> longData)<span class="op">;</span></span>
+<span id="cb8-324"><a href="#cb8-324" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"stackedBarChart called with width"</span><span class="op">,</span> width)<span class="op">;</span></span>
+<span id="cb8-325"><a href="#cb8-325" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"stackedBarChart called with  height"</span><span class="op">,</span> height)<span class="op">;</span></span>
+<span id="cb8-326"><a href="#cb8-326" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"stackedBarChart called with chartTitle:"</span><span class="op">,</span> chartTitle)<span class="op">;</span></span>
+<span id="cb8-327"><a href="#cb8-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-328"><a href="#cb8-328" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a>    <span class="dt">className</span><span class="op">:</span> <span class="st">"ELAgrowth-plot"</span><span class="op">,</span></span>
+<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a>    width<span class="op">,</span></span>
+<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a>    height<span class="op">,</span></span>
+<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
+<span id="cb8-334"><a href="#cb8-334" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
+<span id="cb8-335"><a href="#cb8-335" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> chartTitle<span class="op">,</span></span>
+<span id="cb8-336"><a href="#cb8-336" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-337"><a href="#cb8-337" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(longData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">label</span>))]}<span class="op">,</span></span>
+<span id="cb8-338"><a href="#cb8-338" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"# Students"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">labelArrow</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb8-339"><a href="#cb8-339" aria-hidden="true" tabindex="-1"></a>  <span class="dt">labelAnchor</span><span class="op">:</span> <span class="st">"center"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">100</span>}<span class="op">,</span></span>
+<span id="cb8-340"><a href="#cb8-340" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb8-341"><a href="#cb8-341" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Proficient"</span><span class="op">,</span> <span class="st">"Not Proficient"</span><span class="op">,</span> <span class="st">"Not Tested"</span>]<span class="op">,</span></span>
+<span id="cb8-342"><a href="#cb8-342" aria-hidden="true" tabindex="-1"></a>      <span class="dt">range</span><span class="op">:</span> [<span class="st">"#2F7F73"</span><span class="op">,</span> <span class="st">"#D95C5C"</span><span class="op">,</span> <span class="st">"#B7BDC4"</span>]<span class="op">,</span></span>
+<span id="cb8-343"><a href="#cb8-343" aria-hidden="true" tabindex="-1"></a>      <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb8-344"><a href="#cb8-344" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb8-345"><a href="#cb8-345" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb8-346"><a href="#cb8-346" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
+<span id="cb8-347"><a href="#cb8-347" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">barY</span>(longData<span class="op">,</span> Plot<span class="op">.</span><span class="fu">stackY</span>({</span>
+<span id="cb8-348"><a href="#cb8-348" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb8-349"><a href="#cb8-349" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span><span class="op">,</span></span>
+<span id="cb8-350"><a href="#cb8-350" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> <span class="st">"category"</span><span class="op">,</span></span>
+<span id="cb8-351"><a href="#cb8-351" aria-hidden="true" tabindex="-1"></a>        <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb8-352"><a href="#cb8-352" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">category</span><span class="sc">}</span><span class="vs">: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">count</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct</span> <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> <span class="vs">` (</span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%)</span><span class="sc">\n</span><span class="vs">(</span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct2</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% of Tested only)`</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb8-353"><a href="#cb8-353" aria-hidden="true" tabindex="-1"></a>      }))</span>
+<span id="cb8-354"><a href="#cb8-354" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb8-355"><a href="#cb8-355" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb8-356"><a href="#cb8-356" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-8" data-nodetype="declaration">
 
@@ -451,26 +451,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="369" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 368;"><span id="cb9-369"><a href="#cb9-369" aria-hidden="true" tabindex="-1"></a><span class="co">// Turn the "Grade" selection into a YEAR -&gt; ASSESSMENT_NAME sequence.</span></span>
-<span id="cb9-370"><a href="#cb9-370" aria-hidden="true" tabindex="-1"></a><span class="co">// If "All Grades (3-8)" was picked, every year uses ELA3_8.</span></span>
-<span id="cb9-371"><a href="#cb9-371" aria-hidden="true" tabindex="-1"></a><span class="co">// If a single grade was picked, the newest year (2025) uses that grade,</span></span>
-<span id="cb9-372"><a href="#cb9-372" aria-hidden="true" tabindex="-1"></a><span class="co">//   and each earlier year steps back one grade (2024 = grade-1, 2023 = grade-2,</span></span>
-<span id="cb9-373"><a href="#cb9-373" aria-hidden="true" tabindex="-1"></a><span class="co">//   2022 = grade-4) so we're following the SAME cohort of students back in time.</span></span>
-<span id="cb9-374"><a href="#cb9-374" aria-hidden="true" tabindex="-1"></a><span class="co">// Grade 3 is the youngest tested grade, so any offset that would push the</span></span>
-<span id="cb9-375"><a href="#cb9-375" aria-hidden="true" tabindex="-1"></a><span class="co">//   cohort below Grade 3 (e.g. Grade 2, Grade 1) is dropped entirely -</span></span>
-<span id="cb9-376"><a href="#cb9-376" aria-hidden="true" tabindex="-1"></a><span class="co">//   that data will never exist.</span></span>
-<span id="cb9-377"><a href="#cb9-377" aria-hidden="true" tabindex="-1"></a>gradeSequence <span class="op">=</span> {</span>
-<span id="cb9-378"><a href="#cb9-378" aria-hidden="true" tabindex="-1"></a>  <span class="co">// inputSels is undefined until the form is first Submitted - bail out with</span></span>
-<span id="cb9-379"><a href="#cb9-379" aria-hidden="true" tabindex="-1"></a>  <span class="co">// an empty sequence rather than throwing</span></span>
-<span id="cb9-380"><a href="#cb9-380" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>inputSels) <span class="cf">return</span> []<span class="op">;</span></span>
-<span id="cb9-381"><a href="#cb9-381" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> inputSels<span class="op">.</span><span class="at">grade</span><span class="op">;</span></span>
-<span id="cb9-382"><a href="#cb9-382" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]</span>
-<span id="cb9-383"><a href="#cb9-383" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">filter</span>(offset <span class="kw">=&gt;</span> g <span class="op">===</span> <span class="st">"ELA3_8"</span> <span class="op">||</span> (g <span class="op">-</span> offset) <span class="op">&gt;=</span> <span class="dv">3</span>)</span>
-<span id="cb9-384"><a href="#cb9-384" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(offset <span class="kw">=&gt;</span> ({</span>
-<span id="cb9-385"><a href="#cb9-385" aria-hidden="true" tabindex="-1"></a>      <span class="dt">year</span><span class="op">:</span> baseYear <span class="op">-</span> offset<span class="op">,</span></span>
-<span id="cb9-386"><a href="#cb9-386" aria-hidden="true" tabindex="-1"></a>      <span class="dt">assessment</span><span class="op">:</span> g <span class="op">===</span> <span class="st">"ELA3_8"</span> <span class="op">?</span> <span class="st">"ELA3_8"</span> <span class="op">:</span> <span class="vs">`ELA</span><span class="sc">${</span>g <span class="op">-</span> offset<span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb9-387"><a href="#cb9-387" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
-<span id="cb9-388"><a href="#cb9-388" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="361" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 360;"><span id="cb9-361"><a href="#cb9-361" aria-hidden="true" tabindex="-1"></a><span class="co">// Turn the "Grade" selection into a YEAR -&gt; ASSESSMENT_NAME sequence.</span></span>
+<span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a><span class="co">// If "All Grades (3-8)" was picked, every year uses ELA3_8.</span></span>
+<span id="cb9-363"><a href="#cb9-363" aria-hidden="true" tabindex="-1"></a><span class="co">// If a single grade was picked, the newest year (2025) uses that grade,</span></span>
+<span id="cb9-364"><a href="#cb9-364" aria-hidden="true" tabindex="-1"></a><span class="co">//   and each earlier year steps back one grade (2024 = grade-1, 2023 = grade-2,</span></span>
+<span id="cb9-365"><a href="#cb9-365" aria-hidden="true" tabindex="-1"></a><span class="co">//   2022 = grade-4) so we're following the SAME cohort of students back in time.</span></span>
+<span id="cb9-366"><a href="#cb9-366" aria-hidden="true" tabindex="-1"></a><span class="co">// Grade 3 is the youngest tested grade, so any offset that would push the</span></span>
+<span id="cb9-367"><a href="#cb9-367" aria-hidden="true" tabindex="-1"></a><span class="co">//   cohort below Grade 3 (e.g. Grade 2, Grade 1) is dropped entirely -</span></span>
+<span id="cb9-368"><a href="#cb9-368" aria-hidden="true" tabindex="-1"></a><span class="co">//   that data will never exist.</span></span>
+<span id="cb9-369"><a href="#cb9-369" aria-hidden="true" tabindex="-1"></a>gradeSequence <span class="op">=</span> {</span>
+<span id="cb9-370"><a href="#cb9-370" aria-hidden="true" tabindex="-1"></a>  <span class="co">// inputSels is undefined until the form is first Submitted - bail out with</span></span>
+<span id="cb9-371"><a href="#cb9-371" aria-hidden="true" tabindex="-1"></a>  <span class="co">// an empty sequence rather than throwing</span></span>
+<span id="cb9-372"><a href="#cb9-372" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>inputSels) <span class="cf">return</span> []<span class="op">;</span></span>
+<span id="cb9-373"><a href="#cb9-373" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> inputSels<span class="op">.</span><span class="at">grade</span><span class="op">;</span></span>
+<span id="cb9-374"><a href="#cb9-374" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]</span>
+<span id="cb9-375"><a href="#cb9-375" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">filter</span>(offset <span class="kw">=&gt;</span> g <span class="op">===</span> <span class="st">"ELA3_8"</span> <span class="op">||</span> (g <span class="op">-</span> offset) <span class="op">&gt;=</span> <span class="dv">3</span>)</span>
+<span id="cb9-376"><a href="#cb9-376" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(offset <span class="kw">=&gt;</span> ({</span>
+<span id="cb9-377"><a href="#cb9-377" aria-hidden="true" tabindex="-1"></a>      <span class="dt">year</span><span class="op">:</span> baseYear <span class="op">-</span> offset<span class="op">,</span></span>
+<span id="cb9-378"><a href="#cb9-378" aria-hidden="true" tabindex="-1"></a>      <span class="dt">assessment</span><span class="op">:</span> g <span class="op">===</span> <span class="st">"ELA3_8"</span> <span class="op">?</span> <span class="st">"ELA3_8"</span> <span class="op">:</span> <span class="vs">`ELA</span><span class="sc">${</span>g <span class="op">-</span> offset<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb9-379"><a href="#cb9-379" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb9-380"><a href="#cb9-380" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
@@ -478,18 +478,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="393" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 392;"><span id="cb10-393"><a href="#cb10-393" aria-hidden="true" tabindex="-1"></a>shared_dataFiltered <span class="op">=</span> {</span>
-<span id="cb10-394"><a href="#cb10-394" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>inputSels) <span class="cf">return</span> []<span class="op">;</span></span>
-<span id="cb10-395"><a href="#cb10-395" aria-hidden="true" tabindex="-1"></a><span class="co">//  const county = inputSels.county.trim().toUpperCase();</span></span>
-<span id="cb10-396"><a href="#cb10-396" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> district <span class="op">=</span> inputSels<span class="op">.</span><span class="at">district</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
-<span id="cb10-397"><a href="#cb10-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-398"><a href="#cb10-398" aria-hidden="true" tabindex="-1"></a><span class="co">// filter all data and return District(ENTITY_NAME) Selected and Assessment(ie, ELA3 or 4 based on the grade selected)</span></span>
-<span id="cb10-399"><a href="#cb10-399" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> shared_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span></span>
-<span id="cb10-400"><a href="#cb10-400" aria-hidden="true" tabindex="-1"></a><span class="co">//    d.COUNTY_DESC.toUpperCase() === county &amp;&amp;</span></span>
-<span id="cb10-401"><a href="#cb10-401" aria-hidden="true" tabindex="-1"></a>    d<span class="op">.</span><span class="at">ENTITY_NAME</span><span class="op">.</span><span class="fu">toUpperCase</span>() <span class="op">===</span> district <span class="op">&amp;&amp;</span></span>
-<span id="cb10-402"><a href="#cb10-402" aria-hidden="true" tabindex="-1"></a>    gradeSequence<span class="op">.</span><span class="fu">some</span>(g <span class="kw">=&gt;</span> <span class="bu">Number</span>(g<span class="op">.</span><span class="at">year</span>) <span class="op">===</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">YEAR</span>) <span class="op">&amp;&amp;</span> g<span class="op">.</span><span class="at">assessment</span> <span class="op">===</span> d<span class="op">.</span><span class="at">ASSESSMENT_NAME</span>)</span>
-<span id="cb10-403"><a href="#cb10-403" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
-<span id="cb10-404"><a href="#cb10-404" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="385" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 384;"><span id="cb10-385"><a href="#cb10-385" aria-hidden="true" tabindex="-1"></a>shared_dataFiltered <span class="op">=</span> {</span>
+<span id="cb10-386"><a href="#cb10-386" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>inputSels) <span class="cf">return</span> []<span class="op">;</span></span>
+<span id="cb10-387"><a href="#cb10-387" aria-hidden="true" tabindex="-1"></a><span class="co">//  const county = inputSels.county.trim().toUpperCase();</span></span>
+<span id="cb10-388"><a href="#cb10-388" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> district <span class="op">=</span> inputSels<span class="op">.</span><span class="at">district</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
+<span id="cb10-389"><a href="#cb10-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-390"><a href="#cb10-390" aria-hidden="true" tabindex="-1"></a><span class="co">// filter all data and return District(ENTITY_NAME) Selected and Assessment(ie, ELA3 or 4 based on the grade selected)</span></span>
+<span id="cb10-391"><a href="#cb10-391" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> shared_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span></span>
+<span id="cb10-392"><a href="#cb10-392" aria-hidden="true" tabindex="-1"></a><span class="co">//    d.COUNTY_DESC.toUpperCase() === county &amp;&amp;</span></span>
+<span id="cb10-393"><a href="#cb10-393" aria-hidden="true" tabindex="-1"></a>    d<span class="op">.</span><span class="at">ENTITY_NAME</span><span class="op">.</span><span class="fu">toUpperCase</span>() <span class="op">===</span> district <span class="op">&amp;&amp;</span></span>
+<span id="cb10-394"><a href="#cb10-394" aria-hidden="true" tabindex="-1"></a>    gradeSequence<span class="op">.</span><span class="fu">some</span>(g <span class="kw">=&gt;</span> <span class="bu">Number</span>(g<span class="op">.</span><span class="at">year</span>) <span class="op">===</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">YEAR</span>) <span class="op">&amp;&amp;</span> g<span class="op">.</span><span class="at">assessment</span> <span class="op">===</span> d<span class="op">.</span><span class="at">ASSESSMENT_NAME</span>)</span>
+<span id="cb10-395"><a href="#cb10-395" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb10-396"><a href="#cb10-396" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
@@ -497,10 +497,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="409" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 408;"><span id="cb11-409"><a href="#cb11-409" aria-hidden="true" tabindex="-1"></a><span class="co">// label for the assessment, used on the x-axis</span></span>
-<span id="cb11-410"><a href="#cb11-410" aria-hidden="true" tabindex="-1"></a>gradeLabel <span class="op">=</span> assessment <span class="kw">=&gt;</span> assessment <span class="op">===</span> <span class="st">"ELA3_8"</span></span>
-<span id="cb11-411"><a href="#cb11-411" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="st">"All Grades 3-8"</span></span>
-<span id="cb11-412"><a href="#cb11-412" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="vs">`Grade </span><span class="sc">${</span>assessment<span class="op">.</span><span class="fu">replace</span>(<span class="st">"ELA"</span><span class="op">,</span> <span class="st">""</span>)<span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="401" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 400;"><span id="cb11-401"><a href="#cb11-401" aria-hidden="true" tabindex="-1"></a><span class="co">// label for the assessment, used on the x-axis</span></span>
+<span id="cb11-402"><a href="#cb11-402" aria-hidden="true" tabindex="-1"></a>gradeLabel <span class="op">=</span> assessment <span class="kw">=&gt;</span> assessment <span class="op">===</span> <span class="st">"ELA3_8"</span></span>
+<span id="cb11-403"><a href="#cb11-403" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="st">"All Grades 3-8"</span></span>
+<span id="cb11-404"><a href="#cb11-404" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="vs">`Grade </span><span class="sc">${</span>assessment<span class="op">.</span><span class="fu">replace</span>(<span class="st">"ELA"</span><span class="op">,</span> <span class="st">""</span>)<span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
@@ -508,56 +508,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="417" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 416;"><span id="cb12-417"><a href="#cb12-417" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">subgroupRows</span>(subgroupName) {</span>
-<span id="cb12-418"><a href="#cb12-418" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows called with subgroupName:", subgroupName);</span></span>
-<span id="cb12-419"><a href="#cb12-419" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("gradeSequence:", gradeSequence);</span></span>
-<span id="cb12-420"><a href="#cb12-420" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("shared_dataFiltered length:", shared_dataFiltered.length);</span></span>
-<span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-422"><a href="#cb12-422" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> byYear <span class="op">=</span> [<span class="op">...</span>gradeSequence]</span>
-<span id="cb12-423"><a href="#cb12-423" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">year</span> <span class="op">-</span> b<span class="op">.</span><span class="at">year</span>)</span>
-<span id="cb12-424"><a href="#cb12-424" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(({ year<span class="op">,</span> assessment }) <span class="kw">=&gt;</span> {</span>
-<span id="cb12-425"><a href="#cb12-425" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> row <span class="op">=</span> shared_dataFiltered<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span></span>
-<span id="cb12-426"><a href="#cb12-426" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Number</span>(d<span class="op">.</span><span class="at">YEAR</span>) <span class="op">===</span> <span class="bu">Number</span>(year) <span class="op">&amp;&amp;</span></span>
-<span id="cb12-427"><a href="#cb12-427" aria-hidden="true" tabindex="-1"></a>        d<span class="op">.</span><span class="at">ASSESSMENT_NAME</span> <span class="op">===</span> assessment <span class="op">&amp;&amp;</span></span>
-<span id="cb12-428"><a href="#cb12-428" aria-hidden="true" tabindex="-1"></a>        d<span class="op">.</span><span class="at">SUBGROUP_NAME</span> <span class="op">===</span> subgroupName</span>
-<span id="cb12-429"><a href="#cb12-429" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
-<span id="cb12-430"><a href="#cb12-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-431"><a href="#cb12-431" aria-hidden="true" tabindex="-1"></a><span class="co">// Console Logs to troubleshoot</span></span>
-<span id="cb12-432"><a href="#cb12-432" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> <span class="cf">if</span> (<span class="op">!</span>row) { <span class="op">--&gt;</span></span>
-<span id="cb12-433"><a href="#cb12-433" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="op">--&gt;</span></span>
-<span id="cb12-434"><a href="#cb12-434" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     <span class="vs">`No matching row for year=</span><span class="sc">${</span>year<span class="sc">}</span><span class="vs">, assessment=</span><span class="sc">${</span>assessment<span class="sc">}</span><span class="vs">, subgroup=</span><span class="sc">${</span>subgroupName<span class="sc">}</span><span class="vs">`</span> <span class="op">--&gt;</span></span>
-<span id="cb12-435"><a href="#cb12-435" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   )<span class="op">;</span> <span class="op">--&gt;</span></span>
-<span id="cb12-436"><a href="#cb12-436" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> } <span class="cf">else</span> { <span class="op">--&gt;</span></span>
-<span id="cb12-437"><a href="#cb12-437" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="op">--&gt;</span></span>
-<span id="cb12-438"><a href="#cb12-438" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     <span class="vs">`Match found for year=</span><span class="sc">${</span>year<span class="sc">}</span><span class="vs">, assessment=</span><span class="sc">${</span>assessment<span class="sc">}</span><span class="vs">, subgroup=</span><span class="sc">${</span>subgroupName<span class="sc">}</span><span class="vs">:`</span><span class="op">,</span> <span class="op">--&gt;</span></span>
-<span id="cb12-439"><a href="#cb12-439" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     row <span class="op">--&gt;</span></span>
-<span id="cb12-440"><a href="#cb12-440" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   )<span class="op">;</span> <span class="op">--&gt;</span></span>
-<span id="cb12-441"><a href="#cb12-441" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> } <span class="op">--&gt;</span></span>
-<span id="cb12-442"><a href="#cb12-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-443"><a href="#cb12-443" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
-<span id="cb12-444"><a href="#cb12-444" aria-hidden="true" tabindex="-1"></a>        <span class="dt">YEAR</span><span class="op">:</span> year<span class="op">,</span></span>
-<span id="cb12-445"><a href="#cb12-445" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>year<span class="sc">}\n${</span><span class="fu">gradeLabel</span>(assessment)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
-<span id="cb12-446"><a href="#cb12-446" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Prof_Count</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">Prof_Count</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb12-447"><a href="#cb12-447" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NotProf_Count</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NotProf_Count</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb12-448"><a href="#cb12-448" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NOT_TESTED</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NOT_TESTED</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb12-449"><a href="#cb12-449" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Prof_Pct</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">Prof_Pct</span> <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
-<span id="cb12-450"><a href="#cb12-450" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NotProf_Pct</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NotProf_Pct</span> <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
-<span id="cb12-451"><a href="#cb12-451" aria-hidden="true" tabindex="-1"></a>        <span class="dt">PER_PROF</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">PER_PROF</span> <span class="op">:</span> <span class="kw">null</span></span>
-<span id="cb12-452"><a href="#cb12-452" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
-<span id="cb12-453"><a href="#cb12-453" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="409" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 408;"><span id="cb12-409"><a href="#cb12-409" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">subgroupRows</span>(subgroupName) {</span>
+<span id="cb12-410"><a href="#cb12-410" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows called with subgroupName:", subgroupName);</span></span>
+<span id="cb12-411"><a href="#cb12-411" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("gradeSequence:", gradeSequence);</span></span>
+<span id="cb12-412"><a href="#cb12-412" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("shared_dataFiltered length:", shared_dataFiltered.length);</span></span>
+<span id="cb12-413"><a href="#cb12-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-414"><a href="#cb12-414" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> byYear <span class="op">=</span> [<span class="op">...</span>gradeSequence]</span>
+<span id="cb12-415"><a href="#cb12-415" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">year</span> <span class="op">-</span> b<span class="op">.</span><span class="at">year</span>)</span>
+<span id="cb12-416"><a href="#cb12-416" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(({ year<span class="op">,</span> assessment }) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-417"><a href="#cb12-417" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> row <span class="op">=</span> shared_dataFiltered<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span></span>
+<span id="cb12-418"><a href="#cb12-418" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Number</span>(d<span class="op">.</span><span class="at">YEAR</span>) <span class="op">===</span> <span class="bu">Number</span>(year) <span class="op">&amp;&amp;</span></span>
+<span id="cb12-419"><a href="#cb12-419" aria-hidden="true" tabindex="-1"></a>        d<span class="op">.</span><span class="at">ASSESSMENT_NAME</span> <span class="op">===</span> assessment <span class="op">&amp;&amp;</span></span>
+<span id="cb12-420"><a href="#cb12-420" aria-hidden="true" tabindex="-1"></a>        d<span class="op">.</span><span class="at">SUBGROUP_NAME</span> <span class="op">===</span> subgroupName</span>
+<span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
+<span id="cb12-422"><a href="#cb12-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-423"><a href="#cb12-423" aria-hidden="true" tabindex="-1"></a><span class="co">// Console Logs to troubleshoot</span></span>
+<span id="cb12-424"><a href="#cb12-424" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> <span class="cf">if</span> (<span class="op">!</span>row) { <span class="op">--&gt;</span></span>
+<span id="cb12-425"><a href="#cb12-425" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="op">--&gt;</span></span>
+<span id="cb12-426"><a href="#cb12-426" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     <span class="vs">`No matching row for year=</span><span class="sc">${</span>year<span class="sc">}</span><span class="vs">, assessment=</span><span class="sc">${</span>assessment<span class="sc">}</span><span class="vs">, subgroup=</span><span class="sc">${</span>subgroupName<span class="sc">}</span><span class="vs">`</span> <span class="op">--&gt;</span></span>
+<span id="cb12-427"><a href="#cb12-427" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   )<span class="op">;</span> <span class="op">--&gt;</span></span>
+<span id="cb12-428"><a href="#cb12-428" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> } <span class="cf">else</span> { <span class="op">--&gt;</span></span>
+<span id="cb12-429"><a href="#cb12-429" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="op">--&gt;</span></span>
+<span id="cb12-430"><a href="#cb12-430" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     <span class="vs">`Match found for year=</span><span class="sc">${</span>year<span class="sc">}</span><span class="vs">, assessment=</span><span class="sc">${</span>assessment<span class="sc">}</span><span class="vs">, subgroup=</span><span class="sc">${</span>subgroupName<span class="sc">}</span><span class="vs">:`</span><span class="op">,</span> <span class="op">--&gt;</span></span>
+<span id="cb12-431"><a href="#cb12-431" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     row <span class="op">--&gt;</span></span>
+<span id="cb12-432"><a href="#cb12-432" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   )<span class="op">;</span> <span class="op">--&gt;</span></span>
+<span id="cb12-433"><a href="#cb12-433" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> } <span class="op">--&gt;</span></span>
+<span id="cb12-434"><a href="#cb12-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-435"><a href="#cb12-435" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb12-436"><a href="#cb12-436" aria-hidden="true" tabindex="-1"></a>        <span class="dt">YEAR</span><span class="op">:</span> year<span class="op">,</span></span>
+<span id="cb12-437"><a href="#cb12-437" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>year<span class="sc">}\n${</span><span class="fu">gradeLabel</span>(assessment)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb12-438"><a href="#cb12-438" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Prof_Count</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">Prof_Count</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb12-439"><a href="#cb12-439" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NotProf_Count</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NotProf_Count</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb12-440"><a href="#cb12-440" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NOT_TESTED</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NOT_TESTED</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb12-441"><a href="#cb12-441" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Prof_Pct</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">Prof_Pct</span> <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb12-442"><a href="#cb12-442" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NotProf_Pct</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NotProf_Pct</span> <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb12-443"><a href="#cb12-443" aria-hidden="true" tabindex="-1"></a>        <span class="dt">PER_PROF</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">PER_PROF</span> <span class="op">:</span> <span class="kw">null</span></span>
+<span id="cb12-444"><a href="#cb12-444" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb12-445"><a href="#cb12-445" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb12-446"><a href="#cb12-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-447"><a href="#cb12-447" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows - byYear:", byYear);</span></span>
+<span id="cb12-448"><a href="#cb12-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-449"><a href="#cb12-449" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> byYear<span class="op">.</span><span class="fu">flatMap</span>(d <span class="kw">=&gt;</span> [</span>
+<span id="cb12-450"><a href="#cb12-450" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Proficient"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">Prof_Count</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> d<span class="op">.</span><span class="at">Prof_Pct</span><span class="op">,</span> <span class="dt">pct2</span><span class="op">:</span> d<span class="op">.</span><span class="at">PER_PROF</span> }<span class="op">,</span></span>
+<span id="cb12-451"><a href="#cb12-451" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Not Proficient"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">NotProf_Count</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span></span>
+<span id="cb12-452"><a href="#cb12-452" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Not Tested"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">NOT_TESTED</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> <span class="kw">null</span> }</span>
+<span id="cb12-453"><a href="#cb12-453" aria-hidden="true" tabindex="-1"></a>  ])<span class="op">;</span></span>
 <span id="cb12-454"><a href="#cb12-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-455"><a href="#cb12-455" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows - byYear:", byYear);</span></span>
+<span id="cb12-455"><a href="#cb12-455" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows flatMap - result:", result);</span></span>
 <span id="cb12-456"><a href="#cb12-456" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-457"><a href="#cb12-457" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> byYear<span class="op">.</span><span class="fu">flatMap</span>(d <span class="kw">=&gt;</span> [</span>
-<span id="cb12-458"><a href="#cb12-458" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Proficient"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">Prof_Count</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> d<span class="op">.</span><span class="at">Prof_Pct</span><span class="op">,</span> <span class="dt">pct2</span><span class="op">:</span> d<span class="op">.</span><span class="at">PER_PROF</span> }<span class="op">,</span></span>
-<span id="cb12-459"><a href="#cb12-459" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Not Proficient"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">NotProf_Count</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span></span>
-<span id="cb12-460"><a href="#cb12-460" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Not Tested"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">NOT_TESTED</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> <span class="kw">null</span> }</span>
-<span id="cb12-461"><a href="#cb12-461" aria-hidden="true" tabindex="-1"></a>  ])<span class="op">;</span></span>
-<span id="cb12-462"><a href="#cb12-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-463"><a href="#cb12-463" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows flatMap - result:", result);</span></span>
-<span id="cb12-464"><a href="#cb12-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-465"><a href="#cb12-465" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
-<span id="cb12-466"><a href="#cb12-466" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-457"><a href="#cb12-457" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb12-458"><a href="#cb12-458" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
@@ -574,7 +574,7 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb13" data-startfrom="474" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 473;"><span id="cb13-474"><a href="#cb13-474" aria-hidden="true" tabindex="-1"></a><span class="fu">md</span><span class="vs">`&lt;span class="ela-score-title"&gt;ELA Scores - </span><span class="sc">${</span>inputSels <span class="op">?</span> inputSels<span class="op">.</span><span class="at">district</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb13" data-startfrom="466" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 465;"><span id="cb13-466"><a href="#cb13-466" aria-hidden="true" tabindex="-1"></a><span class="fu">md</span><span class="vs">`&lt;span class="ela-score-title"&gt;ELA Scores - </span><span class="sc">${</span>inputSels <span class="op">?</span> inputSels<span class="op">.</span><span class="at">district</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div id="ojs-cell-13" data-nodetype="expression" class="html-fill-item html-fill-container">
 
@@ -590,11 +590,11 @@ grid-auto-rows: minmax(0, 1fr);">
 <div id="tabset-1-1" class="tab-pane active html-fill-item html-fill-container" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb14" data-startfrom="481" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 480;"><span id="cb14-481"><a href="#cb14-481" aria-hidden="true" tabindex="-1"></a>fig1 <span class="op">=</span> {</span>
-<span id="cb14-482"><a href="#cb14-482" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb14-483"><a href="#cb14-483" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span> <span class="co">//works well for a 4-year x 3-category stacked bar</span></span>
-<span id="cb14-484"><a href="#cb14-484" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"General Education Students"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Gen Ed Students (no IEP)`</span>)<span class="op">;</span></span>
-<span id="cb14-485"><a href="#cb14-485" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb14" data-startfrom="473" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 472;"><span id="cb14-473"><a href="#cb14-473" aria-hidden="true" tabindex="-1"></a>fig1 <span class="op">=</span> {</span>
+<span id="cb14-474"><a href="#cb14-474" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb14-475"><a href="#cb14-475" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span> <span class="co">//works well for a 4-year x 3-category stacked bar</span></span>
+<span id="cb14-476"><a href="#cb14-476" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"General Education Students"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Gen Ed Students (no IEP)`</span>)<span class="op">;</span></span>
+<span id="cb14-477"><a href="#cb14-477" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-14" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
@@ -604,12 +604,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb15" data-startfrom="491" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 490;"><span id="cb15-491"><a href="#cb15-491" aria-hidden="true" tabindex="-1"></a>fig2 <span class="op">=</span> {</span>
-<span id="cb15-492"><a href="#cb15-492" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb15-493"><a href="#cb15-493" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
-<span id="cb15-494"><a href="#cb15-494" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-495"><a href="#cb15-495" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Students with Disabilities"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Students with Disabilities (IEP)`</span>)<span class="op">;</span></span>
-<span id="cb15-496"><a href="#cb15-496" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb15" data-startfrom="483" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 482;"><span id="cb15-483"><a href="#cb15-483" aria-hidden="true" tabindex="-1"></a>fig2 <span class="op">=</span> {</span>
+<span id="cb15-484"><a href="#cb15-484" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb15-485"><a href="#cb15-485" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
+<span id="cb15-486"><a href="#cb15-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-487"><a href="#cb15-487" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Students with Disabilities"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Students with Disabilities (IEP)`</span>)<span class="op">;</span></span>
+<span id="cb15-488"><a href="#cb15-488" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-15" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
@@ -621,12 +621,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <div id="tabset-1-2" class="tab-pane html-fill-item html-fill-container" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb16" data-startfrom="501" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 500;"><span id="cb16-501"><a href="#cb16-501" aria-hidden="true" tabindex="-1"></a>fig3 <span class="op">=</span> {</span>
-<span id="cb16-502"><a href="#cb16-502" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb16-503"><a href="#cb16-503" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
-<span id="cb16-504"><a href="#cb16-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-505"><a href="#cb16-505" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Not Economically Disadvantaged"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Not Economically Disadvantaged`</span>)<span class="op">;</span></span>
-<span id="cb16-506"><a href="#cb16-506" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb16" data-startfrom="493" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 492;"><span id="cb16-493"><a href="#cb16-493" aria-hidden="true" tabindex="-1"></a>fig3 <span class="op">=</span> {</span>
+<span id="cb16-494"><a href="#cb16-494" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb16-495"><a href="#cb16-495" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
+<span id="cb16-496"><a href="#cb16-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-497"><a href="#cb16-497" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Not Economically Disadvantaged"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Not Economically Disadvantaged`</span>)<span class="op">;</span></span>
+<span id="cb16-498"><a href="#cb16-498" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-16" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
@@ -636,12 +636,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb17" data-startfrom="511" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 510;"><span id="cb17-511"><a href="#cb17-511" aria-hidden="true" tabindex="-1"></a>fig4 <span class="op">=</span> {</span>
-<span id="cb17-512"><a href="#cb17-512" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb17-513"><a href="#cb17-513" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
-<span id="cb17-514"><a href="#cb17-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-515"><a href="#cb17-515" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Economically Disadvantaged"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Economically Disadvantaged`</span>)<span class="op">;</span></span>
-<span id="cb17-516"><a href="#cb17-516" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb17" data-startfrom="503" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 502;"><span id="cb17-503"><a href="#cb17-503" aria-hidden="true" tabindex="-1"></a>fig4 <span class="op">=</span> {</span>
+<span id="cb17-504"><a href="#cb17-504" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb17-505"><a href="#cb17-505" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
+<span id="cb17-506"><a href="#cb17-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-507"><a href="#cb17-507" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Economically Disadvantaged"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Economically Disadvantaged`</span>)<span class="op">;</span></span>
+<span id="cb17-508"><a href="#cb17-508" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-17" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
@@ -653,12 +653,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <div id="tabset-1-3" class="tab-pane html-fill-item html-fill-container" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb18" data-startfrom="522" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 521;"><span id="cb18-522"><a href="#cb18-522" aria-hidden="true" tabindex="-1"></a>fig5 <span class="op">=</span> {</span>
-<span id="cb18-523"><a href="#cb18-523" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb18-524"><a href="#cb18-524" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
-<span id="cb18-525"><a href="#cb18-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-526"><a href="#cb18-526" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"All Students"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`All Students`</span>)<span class="op">;</span></span>
-<span id="cb18-527"><a href="#cb18-527" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb18" data-startfrom="514" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 513;"><span id="cb18-514"><a href="#cb18-514" aria-hidden="true" tabindex="-1"></a>fig5 <span class="op">=</span> {</span>
+<span id="cb18-515"><a href="#cb18-515" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb18-516"><a href="#cb18-516" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
+<span id="cb18-517"><a href="#cb18-517" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-518"><a href="#cb18-518" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"All Students"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`All Students`</span>)<span class="op">;</span></span>
+<span id="cb18-519"><a href="#cb18-519" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-18" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
