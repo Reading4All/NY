@@ -25,7 +25,15 @@ library(tidyr)
 YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
 
 ###### read csv data
+data_local <- 0 #change as needed, 1= data is on computer, 0=online
+
+if (data_local == 0) {
 csv_file <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
+} else if (data_local == 1) {
+  csv_file <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR, ".csv")
+} else {
+  print("Error: fix link(s) to data files")
+}
 
 shared_data <- read_csv(csv_file)
 
@@ -52,39 +60,6 @@ shared_data <- shared_data %>%
 
 ## Remove all columns not used - lessen load to frontend/users, reduce html output size
 shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, SEASON))
-
-###### formatting
-
-### COUNTY_DESC of NYC districts: copy it's ENTITY_NAME to COUNTY_DESC
-shared_data$COUNTY_DESC[grepl("^nyc geog", tolower(shared_data$ENTITY_NAME))] <- 
-  shared_data$ENTITY_NAME[grepl("^nyc geog", tolower(shared_data$ENTITY_NAME))]
-## format the text - to just say the county name 
-shared_data$COUNTY_DESC <- gsub("^Nyc Geog.* - ", "", shared_data$COUNTY_DESC)
-## capitalize them all, others are already
-shared_data$COUNTY_DESC <- toupper(shared_data$COUNTY_DESC)
-## Change entity names with 'nyc Goeog Dist #' 'NYC Dist NEW YORK(Manhattan), to match other ELA plot
-
-### ENTITY_NAME of NYC Districts - format text to take up less space (characters)
-shared_data$ENTITY_NAME <- sub(
-  "^nyc geog dist #",
-  "NYC Geog.Dist#",
-  shared_data$ENTITY_NAME,
-  ignore.case = TRUE
-)
-## and get rid of the ending (" - county")
-shared_data$ENTITY_NAME <- ifelse(
-  grepl("^NYC Geog.Dist#", shared_data$ENTITY_NAME),
-  sub(" - .*$", "", shared_data$ENTITY_NAME),
-  shared_data$ENTITY_NAME
-)
-
-# sort by Prof rate
-## rownames don't exist when using read_csv (into a tibble instead of a df)
-## Reindex the df, so the plot order will stay as we want:
-#if (nrow(shared_data) > 0){
-#rownames(shared_data) <- 1:nrow(shared_data)
-#}
-
 
 ######################################################
 

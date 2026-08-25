@@ -25,11 +25,23 @@ library(tidyr)
 YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
 
 ###### read csv data
-csv_file1 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
-csv_file2 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-1, ".csv")
-csv_file3 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-2, ".csv")
-csv_file4 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-3, ".csv")
-csv_file5 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-4, ".csv")
+data_local <- 0 #change as needed, 1= data is on computer, 0=online
+
+if (data_local == 0) {
+  csv_file1 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
+  csv_file2 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-1, ".csv")
+  csv_file3 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-2, ".csv")
+  csv_file4 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-3, ".csv")
+  csv_file5 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-4, ".csv")
+} else if (data_local == 1) {
+  csv_file1 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR, ".csv")
+  csv_file2 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-1, ".csv")
+  csv_file3 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-2, ".csv")
+  csv_file4 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-3, ".csv")
+  csv_file5 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-4, ".csv")
+} else {
+  print("Error: fix link(s) to data files")
+}
 
 df1 <- read_csv(csv_file1)
 df2 <- read_csv(csv_file2)
@@ -75,26 +87,6 @@ shared_data <- shared_data[!startsWith(tolower(shared_data$ENTITY_NAME), "nyc ge
 
 
 ###### FORMATTING
-
-### County rows - format COUNTY_DESCs, to work and look good on user input filters
-## Populate COUNTY_DESC of county rows with it's ENTITY_TYPE
-shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
-  toupper(shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
-## then remove ' County'
-shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"] <- 
-  sub(" COUNTY$", "", shared_data$COUNTY_DESC[shared_data$ENTITY_TYPE == "COUNTY"])
-## Rename COUNTY_DESC of 'NEW York' to New York (Manhattan) (uppercase) so it's less confusing
-shared_data$COUNTY_DESC[shared_data$COUNTY_DESC == "NEW YORK"] <- "NEW YORK (MANHATTAN)"
-
-### County rows - format ENTITY_NAMEs to 'ALL - COUNTY'
-shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
-  paste0("ALL ", shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
-## change ' County' text to " Districts'
-shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"] <- 
-  sub(" County$", " Districts", shared_data$ENTITY_NAME[shared_data$ENTITY_TYPE == "COUNTY"])
-## change 'ALL - New York Districts' text to " All - Manhattan Districts'
-shared_data$ENTITY_NAME[shared_data$ENTITY_NAME == "ALL New York Districts"] <- "ALL Manhatten Districts"
-
 ### format ENTITY_CD
 shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
 
