@@ -25,7 +25,7 @@ library(tidyr)
 YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
 
 ###### read csv data
-data_local <- 1 #change as needed, 1= data is on computer, 0=online
+data_local <- 0 #change as needed, 1= data is on computer, 0=online
 
 if (data_local == 0) {
   csv_file1 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
