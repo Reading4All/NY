@@ -4,7 +4,7 @@ project:
     - CNAME
 
 website:
-  title: "NY"
+  title: "Open School Data (NY)"
   site-url: "https://data.openschooldata.com/"
   open-graph: true
   sidebar:
