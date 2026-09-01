@@ -25,7 +25,7 @@ library(tidyr)
 YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
 
 ###### read csv data
-data_local <- 0 #change as needed, 1= data is on computer, 0=online
+data_local <- 1 #change as needed, 1= data is on computer, 0=online
 
 if (data_local == 0) {
   csv_file1 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
@@ -58,14 +58,6 @@ shared_data <- rbind(df1, df2, df3, df4, df5)
 ## Only Keep Spring (year-end) Data
 shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
 
-## Only Keep Subgroups to be used
-shared_data<-shared_data[(shared_data$SUBGROUP_NAME == "Students with Disabilities" |
-                          shared_data$SUBGROUP_NAME == "General Education Students" |
-                          shared_data$SUBGROUP_NAME == "Economically Disadvantaged" |  
-                          shared_data$SUBGROUP_NAME == "Not Economically Disadvantaged" |
-                          shared_data$SUBGROUP_NAME == "All Students"
-                          ),]
-
 # Keep District and County Data
 ## (old) Only Keep District Data
 ## shared_data<-shared_data[(shared_data$ENTITY_TYPE == "DISTRICT"),]
@@ -73,6 +65,14 @@ shared_data <- shared_data[
   shared_data$ENTITY_TYPE == "DISTRICT" |
   shared_data$ENTITY_TYPE == "COUNTY",
 ]
+
+## Only Keep Subgroups to be used
+shared_data<-shared_data[(shared_data$SUBGROUP_NAME == "Students with Disabilities" |
+                          shared_data$SUBGROUP_NAME == "General Education Students" |
+                          shared_data$SUBGROUP_NAME == "Economically Disadvantaged" |  
+                          shared_data$SUBGROUP_NAME == "Not Economically Disadvantaged" |
+                          shared_data$SUBGROUP_NAME == "All Students"
+                          ),]
 
 ## Remove rows with NA Prof_Pct rates (to prevent rows with missing counts from being included but NA on plots)
 shared_data <- shared_data %>% 
