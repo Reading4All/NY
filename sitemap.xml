@@ -2,34 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://data.openschooldata.com/plots/DistrictELAGrowth.html</loc>
-    <lastmod>2026-09-01T20:09:19.413Z</lastmod>
+    <lastmod>2026-09-03T15:41:26.713Z</lastmod>
   </url>
   <url>
     <loc>https://data.openschooldata.com/index.html</loc>
-    <lastmod>2026-09-01T20:09:19.412Z</lastmod>
+    <lastmod>2026-09-03T15:41:26.713Z</lastmod>
   </url>
   <url>
     <loc>https://data.openschooldata.com/data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html</loc>
-    <lastmod>2026-09-01T20:09:19.391Z</lastmod>
+    <lastmod>2026-09-03T15:41:26.692Z</lastmod>
   </url>
   <url>
-    <loc>https://data.openschooldata.com/data/SPENDING,ENROLLMENT/SPED/SOURCEDATA-ELA.html</loc>
-    <lastmod>2026-09-01T20:09:19.409Z</lastmod>
+    <loc>https://data.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs-LegalFees.html</loc>
+    <lastmod>2026-09-03T15:41:26.707Z</lastmod>
   </url>
   <url>
-    <loc>https://data.openschooldata.com/data/SPENDING,ENROLLMENT/PERSONELL/ABOUT-DATA_Personell,Salaries.html</loc>
-    <lastmod>2026-09-01T20:09:19.409Z</lastmod>
+    <loc>https://data.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-Personell,Salaries.html</loc>
+    <lastmod>2026-09-03T15:41:26.707Z</lastmod>
+  </url>
+  <url>
+    <loc>https://data.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-slfs_essa.html</loc>
+    <lastmod>2026-09-03T15:41:26.707Z</lastmod>
+  </url>
+  <url>
+    <loc>https://data.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-SPED.html</loc>
+    <lastmod>2026-09-03T15:41:26.707Z</lastmod>
+  </url>
+  <url>
+    <loc>https://data.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs.html</loc>
+    <lastmod>2026-09-03T15:41:26.707Z</lastmod>
   </url>
   <url>
     <loc>https://data.openschooldata.com/data/ELA/SOURCEDATA-ELA.html</loc>
-    <lastmod>2026-09-01T20:09:19.382Z</lastmod>
+    <lastmod>2026-09-03T15:41:26.684Z</lastmod>
   </url>
   <url>
     <loc>https://data.openschooldata.com/data/MATH/SOURCEDATA-MATH.html</loc>
-    <lastmod>2026-09-01T20:09:19.408Z</lastmod>
+    <lastmod>2026-09-03T15:41:26.707Z</lastmod>
   </url>
   <url>
     <loc>https://data.openschooldata.com/plots/ELAcountyreport-2025.html</loc>
-    <lastmod>2026-09-01T20:09:19.413Z</lastmod>
+    <lastmod>2026-09-03T15:41:26.713Z</lastmod>
   </url>
 </urlset>

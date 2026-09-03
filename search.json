@@ -17,18 +17,39 @@
     "text": "**Cleaned DATA file: enrollment-by-district-of-residence-nonpublic.csv * with school years (ending): 2021-2025\n**SOURCE DATA, and Steps to Clean:\n* Source Data: annual “enrollment-by-districts-of-residence-and-attendance-nonpublic-20XX-XX.xlsx” files, from: https://www.p12.nysed.gov/irs/statistics/nonpublic/home.html\n* R Script to clean and merge them: enrollment-by-districts-of-residence-nonpublic–MergeClean.R"
   },
   {
-    "objectID": "data/SPENDING,ENROLLMENT/SPED/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
-    "href": "data/SPENDING,ENROLLMENT/SPED/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs-LegalFees.html",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs-LegalFees.html",
+    "title": "Open School Data (NY)",
+    "section": "",
+    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
+  },
+  {
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-Personell,Salaries.html",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-Personell,Salaries.html",
+    "title": "Open School Data (NY)",
+    "section": "",
+    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
+  },
+  {
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-slfs_essa.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-slfs_essa.html#source-data-steps-to-clean-and-create-the-clean-data-file",
     "title": "Open School Data (NY)",
     "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
     "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data: “slfs_financial_data.xlsx” (2024 on), “essa-financial-data.xlsx” (2023 and prior)\n\n\nBoth from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting\n\n\nR Script to merge/clean them: slfs_essa_financial_merge.R"
   },
   {
-    "objectID": "data/SPENDING,ENROLLMENT/PERSONELL/ABOUT-DATA_Personell,Salaries.html",
-    "href": "data/SPENDING,ENROLLMENT/PERSONELL/ABOUT-DATA_Personell,Salaries.html",
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPED.html",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPED.html",
     "title": "Open School Data (NY)",
     "section": "",
-    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file: * Source Data: annual “YYYY-YY_Admin_Comp_Data.xlsx” files, from https://www.p12.nysed.gov/irs/pmf/ * or expenditures (has #teachers)\n* ReportCardDatabase-Expenditures per pupil (has #students, and matches the report card data info used to calculated perPupil info)\n* or dis_by_county2025.xlsx (has #student with disabilities and classifications\n** Update and Run this R Script, in the same directory: TBD.R"
+    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
+  },
+  {
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs.html",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs.html",
+    "title": "Open School Data (NY)",
+    "section": "",
+    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
   },
   {
     "objectID": "data/ELA/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
