@@ -1,14 +1,45 @@
 ---
 sidebar: false
 listing:
+- id: data-listing
   contents: "plots/*.qmd"
   type: table
   sort-ui: false
+  filter-ui: false
   fields: [title]
+  field-display-names:
+    title: "Student Outcomes and Spending - Plots & Data"
   table-hover: true
   table-striped: false
   categories: false
   sort: title
+  
+- id: SOR-listing
+  contents: SOR-links.yml
+  type: table
+  sort-ui: false
+  filter-ui: false
+  fields: [title]
+  field-display-names:
+    title: "Evidence-Based Instruction, Science of Reading/Writing/Learning"
+  table-hover: true
+  table-striped: false
+  categories: false
+  sort: title
+  
+- id: RTI_SPED-listing
+  contents: RTI_SPED-links.yml
+  type: table
+  sort-ui: false
+  filter-ui: false
+  fields: [title]
+  field-display-names:
+    title: "RTI/MTSS and Special Education (SPED)"
+  table-hover: true
+  table-striped: false
+  categories: false
+  sort: title
+
 about:
   template: jolla
   image: "images/favicon.png"
@@ -28,6 +59,9 @@ about:
 .quarto-listing-table td {
   text-align: left !important;
 }
+<!-- .quarto-listing-table { -->
+<!--   color: #0e3166; -->
+<!-- } -->
 </style>
 ```
 
@@ -37,5 +71,7 @@ We hope to help parents, teachers, and community members work together to help m
 
 If you'd like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!
 
-***Nothing on this page should be construed as legal advice.***  
-***Use at your own discretion, and verify data (mistakes happen). Please email any issues.*** 
+***\*\*DISCLAIMER: Nothing on this page should be construed as legal advice.  
+Use at your own discretion, and verify data (mistakes happen, please email any issues).***
+  
+  

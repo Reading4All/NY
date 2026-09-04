@@ -1,0 +1,17 @@
+# SOR-links.yml
+
+- title: "Science of Reading (Reading Rockets)"
+  path: https://www.readingrockets.org/classroom/evidence-based-instruction/science-reading
+  description: "Using hihgh-quality research to guide effective classroom practices"
+
+- title: "IES Practice Guides - All"
+  path: https://ies.ed.gov/ncee/wwc/practiceguides
+  description: "Recommended practices, based on research, for educators to use in their classrooms"
+
+- title: "IES Practice Guide - Reading(K-3)"
+  path: https://ies.ed.gov/ncee/WWC/PracticeGuide/21
+  description: "Foundational Skills to Support Reading"
+
+- title: "IES Practice Guide - Writing(Elementary School)"
+  path: https://ies.ed.gov/ncee/WWC/PracticeGuide/17
+  description: "Teaching Elementary School Students to Be Effective Writers"
