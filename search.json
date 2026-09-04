@@ -1,20 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-Personell,Salaries.html",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-Personell,Salaries.html",
     "title": "Open School Data (NY)",
     "section": "",
-    "text": "This website contains free, printable plots and visualizations of public data related to student literacy outcomes in our NY public schools.\nWe hope to help parents, teachers, and community members work together to help make needed change so all students learn to read and write in our public schools.\nIf you’d like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\n\n\n\n\nELA scores, District Growth\n\n\n\n\nELA scores, by County - 2025\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Reports / Plots"
-    ]
-  },
-  {
-    "objectID": "data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
-    "href": "data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
-    "title": "Open School Data (NY)",
-    "section": "",
-    "text": "**Cleaned DATA file: enrollment-by-district-of-residence-nonpublic.csv * with school years (ending): 2021-2025\n**SOURCE DATA, and Steps to Clean:\n* Source Data: annual “enrollment-by-districts-of-residence-and-attendance-nonpublic-20XX-XX.xlsx” files, from: https://www.p12.nysed.gov/irs/statistics/nonpublic/home.html\n* R Script to clean and merge them: enrollment-by-districts-of-residence-nonpublic–MergeClean.R"
+    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
   },
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs-LegalFees.html",
@@ -24,8 +14,46 @@
     "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
   },
   {
-    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-Personell,Salaries.html",
-    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-Personell,Salaries.html",
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPED.html",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPED.html",
+    "title": "Open School Data (NY)",
+    "section": "",
+    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
+  },
+  {
+    "objectID": "data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
+    "href": "data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
+    "title": "Open School Data (NY)",
+    "section": "",
+    "text": "**Cleaned DATA file: enrollment-by-district-of-residence-nonpublic.csv * with school years (ending): 2021-2025\n**SOURCE DATA, and Steps to Clean:\n* Source Data: annual “enrollment-by-districts-of-residence-and-attendance-nonpublic-20XX-XX.xlsx” files, from: https://www.p12.nysed.gov/irs/statistics/nonpublic/home.html\n* R Script to clean and merge them: enrollment-by-districts-of-residence-nonpublic–MergeClean.R"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Open School Data (NY)",
+    "section": "",
+    "text": "This website contains free, printable plots and visualizations of public data related to student literacy outcomes in our NY public schools.\nWe hope to help parents, teachers, and community members work together to help make needed change so all students learn to read and write in our public schools.\nIf you’d like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!\nNothing on this page should be construed as legal advice.\nUse at your own discretion, and verify data (mistakes happen). Please email any issues.\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\n\n\n\n\nELA scores, District Growth\n\n\n\n\nELA scores, by County - 2025\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Reports / Plots"
+    ]
+  },
+  {
+    "objectID": "data/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "href": "data/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "title": "Open School Data (NY)",
+    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
+    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_MATH_ANYYEAR-filePerSeason.R"
+  },
+  {
+    "objectID": "data/ELA/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "href": "data/ELA/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "title": "Open School Data (NY)",
+    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
+    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
+  },
+  {
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs.html",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs.html",
     "title": "Open School Data (NY)",
     "section": "",
     "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
@@ -36,33 +64,5 @@
     "title": "Open School Data (NY)",
     "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
     "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data: “slfs_financial_data.xlsx” (2024 on), “essa-financial-data.xlsx” (2023 and prior)\n\n\nBoth from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting\n\n\nR Script to merge/clean them: slfs_essa_financial_merge.R"
-  },
-  {
-    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPED.html",
-    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPED.html",
-    "title": "Open School Data (NY)",
-    "section": "",
-    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
-  },
-  {
-    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs.html",
-    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs.html",
-    "title": "Open School Data (NY)",
-    "section": "",
-    "text": "Cleaned DATA file: TBD \nSOURCE DATA, Steps to Clean and Create the Clean DATA file:"
-  },
-  {
-    "objectID": "data/ELA/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
-    "href": "data/ELA/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
-    "title": "Open School Data (NY)",
-    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
-    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
-  },
-  {
-    "objectID": "data/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
-    "href": "data/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
-    "title": "Open School Data (NY)",
-    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
-    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_MATH_ANYYEAR-filePerSeason.R"
   }
 ]

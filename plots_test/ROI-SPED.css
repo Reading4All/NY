@@ -1,0 +1,160 @@
+/* gets rid of giant white space above title */
+.code-copy-outer-scaffold.html-fill-item.html-fill-container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    top: 0 !important;
+}
+
+/* gets rid of too much whitespace above plots */
+h2 {
+  margin-top: 0 !important;
+  font-size: 1.1rem;
+}
+
+/* input boxes - formatting so they wrap when screen size decreased */
+.input-toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 4px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+.input-toolbar > form {
+  width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.input-toolbar input,
+.input-toolbar select {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 850px) {
+  .input-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .input-toolbar {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+  }
+}
+
+
+/* end of input boxes - formatting */
+
+/* remove scrollbar under input header */
+.cell-output.cell-output-display {
+  overflow-x: hidden;
+}
+
+/* font in the reference notes sections */
+.card-body.html-fill-item.html-fill-container {
+  color: #5a5a5a;
+  font-size: .8rem;
+}
+
+/* Put plots side-by-side on desktop */
+@media (min-width: 768px) {
+  .panel-tabset .tab-pane.active {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .panel-tabset .tab-pane.active > .cell {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+/* Stack on smaller screens */
+@media (max-width: 767px) {
+  .panel-tabset .tab-pane.active {
+    display: block !important;
+  }
+}
+
+@media print {
+
+  @page {
+    size: landscape;
+    margin: 0.4in 0.5in; /* clean, predictable border on the paper */
+  }
+
+  /* --- Hide UI chrome that only makes sense on screen ---
+     This page has no #print-footer or #print-hide-toolbar element,
+     and no .panel-tabset - it's a single dashboard with a title,
+     2 plots, and a notes section, laid out with bslib's nested CSS
+     grid ("fillable" .bslib-grid containers), not Bootstrap tabs. */
+  #quarto-dashboard-header,
+  .navbar-container,
+  div.toolbar.html-fill-container {
+    display: none !important;
+  }
+
+  /* --- Re-hide OJS source code (Quarto normally keeps this
+     collapsed behind a code-fold toggle) --- */
+  .cell-code,
+  .sourceCode,
+  pre.sourceCode,
+  details.code-fold {
+    display: none !important;
+  }
+
+  /* --- Strip the card "box" chrome, keep just the content --- */
+  .card,
+  .bslib-card {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  .card-header,
+  .bslib-card .card-header {
+    display: none !important;
+  }
+  .card-body,
+  .bslib-card .card-body {
+    padding: 0 !important;
+  }
+
+  /* --- Let bslib's fill-height containers size to their natural
+     content height instead of trying to fill a browser viewport ---
+     IMPORTANT: this deliberately does NOT touch `display`. bslib sets
+     `.bslib-grid` to `display: grid` inline (that's what puts your
+     2 plots side by side); forcing it to `display: block` here would
+     collapse them back into a stack. We only reset height/overflow. */
+  body,
+  .quarto-dashboard,
+  .quarto-dashboard-content,
+  .bslib-grid,
+  .html-fill-container,
+  .html-fill-item {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* --- Cap each plot's height so the title + both plots + notes
+     all fit on one landscape page. Landscape Letter is 8.5in tall;
+     after the 0.4in top/bottom @page margins and roughly 1in for the
+     title and notes list, there's about 6.5in of room left. Adjust
+     this number if your title/notes take up more or less space. */
+  .card-body svg {
+    max-height: 5.5in !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}
