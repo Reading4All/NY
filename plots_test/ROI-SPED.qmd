@@ -1,0 +1,467 @@
+---
+title: "ROI - SPED Spending & ELA Growth"
+format:
+  dashboard:
+    code-copy: false
+    orientation: columns
+    expandable: false
+    scrolling: true
+    theme: 
+      - minty
+      - ../custom.scss
+    css: ROI-SPED.css
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: ../
+---
+```{r}
+#| echo: false
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(readr)
+library(dplyr)
+
+# 1. Load and clean ELA data (5-year cohort window)
+YEAR <- 2025
+
+# Dynamically construct raw GitHub URLs for ELA database
+csv_url1 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
+csv_url2 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-1, ".csv")
+csv_url3 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-2, ".csv")
+csv_url4 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-3, ".csv")
+csv_url5 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-4, ".csv")
+
+# Safely read and combine raw ELA files from GitHub
+read_safe_csv <- function(url) {
+  tryCatch({
+    read_csv(url, col_types = cols(.default = col_character()))
+  }, error = function(e) {
+    # Fail-safe empty dataframe with expected columns if URL fails
+    data.frame(
+      ENTITY_CD = character(), ENTITY_NAME = character(), YEAR = character(), 
+      ASSESSMENT_NAME = character(), SUBGROUP_NAME = character(), 
+      Prof_Count = character(), NotProf_Count = character(), NOT_TESTED = character(),
+      Prof_Pct = character(), NotProf_Pct = character(), PER_PROF = character(),
+      SEASON = character(), ENTITY_TYPE = character(), COUNTY_DESC = character()
+    )
+  })
+}
+
+df1 <- read_safe_csv(csv_url1)
+df2 <- read_safe_csv(csv_url2)
+df3 <- read_safe_csv(csv_url3)
+df4 <- read_safe_csv(csv_url4)
+df5 <- read_safe_csv(csv_url5)
+
+ela_data <- rbind(df1, df2, df3, df4, df5)
+
+# Keep only Spring (year-end) district/county data, strictly filtered to "Students with Disabilities"
+ela_clean <- ela_data %>%
+  filter(
+    SEASON == "Spring",
+    ENTITY_TYPE %in% c("DISTRICT", "COUNTY"),
+    SUBGROUP_NAME == "Students with Disabilities",
+    !is.na(Prof_Pct)
+  ) %>%
+  mutate(
+    YEAR = as.numeric(YEAR),
+    Prof_Count = as.numeric(Prof_Count),
+    NotProf_Count = as.numeric(NotProf_Count),
+    NOT_TESTED = as.numeric(NOT_TESTED),
+    Prof_Pct = as.numeric(Prof_Pct),
+    NotProf_Pct = as.numeric(NotProf_Pct),
+    PER_PROF = as.numeric(PER_PROF)
+  ) %>%
+  # Strip out NYC districts to match DistrictELAGrowth layout size constraints
+  filter(!startsWith(tolower(ENTITY_NAME), "nyc geo")) %>%
+  select(ENTITY_NAME, COUNTY_DESC, YEAR, ASSESSMENT_NAME, SUBGROUP_NAME, Prof_Count, NotProf_Count, NOT_TESTED, Prof_Pct, NotProf_Pct, PER_PROF)
+
+# 2. Load and Clean raw Spending Text database from GitHub
+spending_url <- "https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SPENDING%2CENROLLMENT/slfs_essa_financial_merged_thru2025.txt"
+
+# Safe read checking tab or space delimiters dynamically
+spending_raw <- tryCatch({
+  df <- read_delim(spending_url, delim = "\t", col_names = FALSE, col_types = cols(.default = col_character()))
+  if (ncol(df) < 5) stop("Not tab delimited")
+  df
+}, error = function(e) {
+  read_delim(spending_url, delim = " ", col_names = FALSE, col_types = cols(.default = col_character()))
+})
+
+# Explicitly assign standard headers to prevent index shifting
+colnames(spending_raw) <- c(
+  "ENTITY_CD", "ENTITY_NAME", "YEAR", "PK12_Enrollment", "SWD_Enrollment", 
+  "Special_Education_Expenditures", "Special_Education_Expenditures_PerSWD", 
+  "Total_Expenditures", "Total_Instructional_Expenditures", 
+  "Total_Expenditures_PerPupil", "Special_Education_Expenditures_PerPupil"
+)
+
+spending_clean <- spending_raw %>%
+  mutate(
+    YEAR = as.numeric(YEAR),
+    PK12_Enrollment = as.numeric(PK12_Enrollment),
+    SWD_Enrollment = as.numeric(SWD_Enrollment),
+    Special_Education_Expenditures = as.numeric(Special_Education_Expenditures),
+    Special_Education_Expenditures_PerPupil = as.numeric(Special_Education_Expenditures_PerPupil)
+  ) %>%
+  select(ENTITY_NAME, YEAR, PK12_Enrollment, SWD_Enrollment, Special_Education_Expenditures, Special_Education_Expenditures_PerPupil)
+
+# Pass ELA and Spending databases separately to Observable JS
+ojs_define(
+  ela_to_js = ela_clean,
+  spending_to_js = spending_clean
+)
+```
+
+```{ojs}
+//| output: false
+// 1. Transpose the separate ELA and Spending dataframes in OJS
+shared_ela = transpose(ela_to_js)
+shared_spending = transpose(spending_to_js)
+```
+
+```{ojs}
+//| output: false
+// 2. Identify unique counties and dynamically calculate matching districts (from ELA data)
+uniqueCounties = new Set(shared_ela.map(d => d.COUNTY_DESC).filter(Boolean));
+
+districtsInCounty = new Set(
+  shared_ela
+    .filter(d => d.COUNTY_DESC && d.COUNTY_DESC.toUpperCase() === county.toUpperCase())
+    .map(d => d.ENTITY_NAME)
+);
+
+districtDefault = {
+  county;
+  return "";
+}
+```
+
+```{ojs}
+//| output: false
+// 3. Submit/Reset guard function exactly matching DistrictELAGrowth.qmd architecture
+function guard(fn, options = {}, countyView) {
+  const {
+    submitLabel = "Submit",
+    resetLabel = "Reset",
+    required = false,
+    resubmit = true,
+    width = "100%",
+    justify = "start"
+  } = options;
+  const onSubmit = () => {
+    value = input.value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+    wrapper.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+  const onReset = () => {
+    input.value = value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+  };
+  const onInnerInputCapture = () => {
+    invalid = true;
+    submit.disabled = true;
+  };
+  const onInnerInput = e => {
+    e.stopPropagation();
+    submit.disabled = false;
+    reset.disabled = false;
+  };
+  const submit = htl.html`<button ${ { disabled: !resubmit && !required, onclick: onSubmit } } class="btn btn-primary btn-sm">${submitLabel}</button>`;
+  const reset = htl.html`<button ${ { disabled: true, onclick: onReset } } class=\"btn btn-secondary btn-sm\">${resetLabel}</button>`;
+  const footer = htl.html`
+    <div>
+      <hr style="padding:0;margin:10px 0">
+      <div style="display:flex;gap:1ch;justify-content: ${justify} ">
+        ${submit}
+      </div>
+    </div>
+  `;
+  const template = inputs => {
+    const row = document.createElement("div");
+    row.className = "input-toolbar";
+    row.append(countyView);
+    (Array.isArray(inputs) ? inputs : Object.values(inputs))
+      .forEach(input => row.append(input));
+    const container = document.createElement("div");
+    container.style.cssText = "width:100%;max-width:100%;min-width:0;box-sizing:border-box";
+    container.append(row, footer);
+    return container;
+  };
+  const input = fn({ submit, reset, footer, template, onSubmit, onReset });
+  let invalid = !!input.querySelector(":invalid");
+  submit.disabled = !resubmit || invalid;
+  input.addEventListener("input", onInnerInputCapture, { capture: true });
+  input.addEventListener("input", onInnerInput);
+  let value = required ? undefined : input.value;
+  const wrapper = htl.html`<div style="width: ${width} ">${input}`;
+  wrapper.addEventListener("submit", onSubmit);
+  return Object.defineProperty(wrapper, "value", {
+    get: () => value,
+    set: v => { input.value = v }
+  });
+}
+```
+
+## {.toolbar #print-hide-toolbar}
+
+```{ojs}
+//| output: false
+// Standalone live-reactive County search text input
+viewof county = Inputs.text({
+  value: "NASSAU",
+  label: "County: ",
+  datalist: uniqueCounties,
+  unique: true,
+  validate: v => shared_ela.map(d => d.COUNTY_DESC).includes(v.value.toUpperCase()),
+  sort: true,
+  required: true
+});
+```
+
+```{ojs}
+//| output: true
+// Woven Inputs Form for District and Target Grade (Subgroup removed as it is locked to Students with Disabilities)
+viewof inputSels = guard(
+  ({ template }) => Inputs.form(
+    {
+      district: Inputs.select(districtsInCounty, {
+        value: districtDefault,
+        label: "District: ",
+        sort: true,
+        required: true
+      }),
+      grade: Inputs.select(
+        new Map([
+          ["Grade 5", 5],
+          ["Grade 6", 6],
+          ["Grade 7", 7],
+          ["Grade 8", 8]
+        ]),
+        {
+          value: 8,
+          label: "Ending Grade (in May 2025): ",
+          sort: true,
+          required: true
+        }
+      )
+    },
+    { template }
+  ),
+  {
+    resetLabel: "Reset",
+    required: true,
+    width: "100%"
+  },
+  viewof county
+);
+```
+
+```{ojs}
+//| output: false
+// Auto-submit triggers once on page load to draw initial plots instantly
+_autoSubmit = {
+  setTimeout(() => {
+    const submitBtn = Array.from(document.querySelectorAll("button"))
+      .find(b => b.textContent.trim() === "Submit");
+    if (submitBtn) submitBtn.click();
+  }, 1000);
+}
+```
+
+```{ojs}
+//| output: false
+baseYear = 2025
+
+// Build a dynamic year-to-year cohort sequence tracking the SAME kids back to Grade 3
+gradeSequence = {
+  if (!inputSels) return [];
+  const g = inputSels.grade;
+  return [0, 1, 2, 3, 4, 5]
+    .filter(offset => (g - offset) >= 3)
+    .map(offset => ({
+      year: baseYear - offset,
+      assessment: `ELA${g - offset}`
+    }));
+}
+
+// Filter ELA dataset strictly to selected District and Cohort Grades
+shared_elaFiltered = {
+  if (!inputSels) return [];
+  const district = inputSels.district.trim().toUpperCase();
+  return shared_ela.filter(d => 
+    d.ENTITY_NAME.toUpperCase() === district &&
+    gradeSequence.some(g => Number(g.year) === Number(d.YEAR) && g.assessment === d.ASSESSMENT_NAME)
+  );
+}
+
+// Filter Spending dataset strictly to selected District
+shared_spendingFiltered = {
+  if (!inputSels) return [];
+  const district = inputSels.district.trim().toUpperCase();
+  return shared_spending.filter(d => 
+    d.ENTITY_NAME.toUpperCase() === district
+  );
+}
+
+// Human-friendly grade labels for x-axis
+gradeLabel = assessment => `Grade ${assessment.replace("ELA", "")}`
+```
+
+```{ojs}
+//| output: false
+// Calculate Cumulative Spending year-by-year as this specific cohort moves through school
+cumulativeSpendData = {
+  if (!inputSels || shared_spendingFiltered.length === 0) return [];
+  
+  // Sort years from earliest (e.g. 2020) to latest (e.g. 2025)
+  const sortedYears = [...gradeSequence].sort((a, b) => a.year - b.year);
+  
+  let cumulativeSum = 0;
+  return sortedYears.map(g => {
+    // Locate the row matching this year in the district's spending data
+    const row = shared_spendingFiltered.find(d => Number(d.YEAR) === Number(g.year));
+    const annualSpend = (row && row.Special_Education_Expenditures_PerPupil) ? +row.Special_Education_Expenditures_PerPupil : 0;
+    cumulativeSum += annualSpend;
+    
+    return {
+      year: g.year,
+      label: `${g.year}\\n${gradeLabel(g.assessment)}`,
+      annualSpend: annualSpend,
+      cumulativeSpend: cumulativeSum
+    };
+  });
+}
+
+// Format the cohort ELA percentages strictly based on full cohort size to bypass opt-out bias
+subgroupCohortData = {
+  if (!inputSels || shared_elaFiltered.length === 0) return [];
+  
+  const subgroupName = "Students with Disabilities";
+  const sortedYears = [...gradeSequence].sort((a, b) => a.year - b.year);
+  
+  const byYear = sortedYears.map(({ year, assessment }) => {
+    const row = shared_elaFiltered.find(d => 
+      Number(d.YEAR) === Number(year) && 
+      d.ASSESSMENT_NAME === assessment && 
+      d.SUBGROUP_NAME === subgroupName
+    );
+    
+    const prof = row ? +row.Prof_Count : 0;
+    const notProf = row ? +row.NotProf_Count : 0;
+    const notTested = row ? +row.NOT_TESTED : 0;
+    const total = prof + notProf + notTested;
+    
+    return {
+      YEAR: year,
+      label: `${year}\\n${gradeLabel(assessment)}`,
+      profPct: total > 0 ? (prof / total) * 100 : 0,
+      notProfPct: total > 0 ? (notProf / total) * 100 : 0,
+      notTestedPct: total > 0 ? (notTested / total) * 100 : 0,
+      profCount: prof,
+      notProfCount: notProf,
+      notTestedCount: notTested
+    };
+  });
+  
+  // Flatten into stacked structure for Observable Plot
+  return byYear.flatMap(d => [
+    { label: d.label, category: "Proficient", percent: d.profPct, count: d.profCount },
+    { label: d.label, category: "Not Proficient", percent: d.notProfPct, count: d.notProfCount },
+    { label: d.label, category: "Not Tested", percent: d.notTestedPct, count: d.notTestedCount }
+  ]);
+}
+```
+## Title Text with District Selected {height="50px"}
+```{ojs}
+//| output: true
+md`<span class="ela-score-title">${inputSels ? inputSels.district : ""}</span>`
+
+```
+## Plots - side by side
+### PLOT A - Spending
+```{ojs}
+// Render the rising curve of cumulative special education per-pupil spending standard
+Plot.plot({
+  width: 600,
+  height: 400,
+  marginLeft: 80,
+  marginBottom: 50,
+  title: "Special Ed Spending",
+  y: {
+    label: "SPED $ Spent (cumulative)",
+    grid: true,
+    labelAnchor: "center"
+  },
+  x: {
+    label: null,
+    domain: cumulativeSpendData.map(d => d.label)
+  },
+  marks: [
+    Plot.line(cumulativeSpendData, { x: "label", y: "cumulativeSpend", stroke: "#122C4F", strokeWidth: 3 }),
+    Plot.dot(cumulativeSpendData, { x: "label", y: "cumulativeSpend", fill: "#3DAE44", r: 6, stroke: "#122C4F", strokeWidth: 1.5, tip: true }),
+    Plot.text(cumulativeSpendData, {
+      x: "label",
+      y: "cumulativeSpend",
+      text: d => `$${Math.round(d.cumulativeSpend).toLocaleString()}`,
+      dy: -15,
+      fontSize: 10,
+      fontWeight: "bold",
+      fill: "#122C4F"
+    })
+  ]
+})
+```
+
+### PLOT B - ELA Growth
+```{ojs}
+// Render the stacked ELA cohort outcomes based on full cohort to eliminate opt-out distortions
+Plot.plot({
+  width: 600,
+  height: 400,
+  marginLeft: 80,
+  marginBottom: 50,
+  title: "Students with Disabilities - ELA Scores",
+  y: {
+    label: "% of Enrolled Cohort Students",
+    grid: true,
+    labelAnchor: "center",
+    domain: [0, 100]
+  },
+  x: {
+    label: null,
+    domain: gradeSequence.sort((a,b) => a.year - b.year).map(g => `${g.year}\\n${gradeLabel(g.assessment)}`)
+  },
+  color: {
+    domain: ["Proficient", "Not Proficient", "Not Tested"],
+    range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
+    legend: true
+  },
+  marks: [
+    Plot.ruleY([0]),
+    Plot.barY(subgroupCohortData, Plot.stackY({
+      x: "label",
+      y: "percent",
+      fill: "category",
+      tip: true,
+      title: d => `${d.category}:\n${d.count} Students\n(${d.percent.toFixed(1)}% of entire cohort)`
+    }))
+  ]
+})
+```
+<!-- ## Notes: -->
+
+<!-- Why This Page Exposes the Reading Bottleneck: -->
+<!-- 1. **The Cumulative \"Mountain of Cash\" Standard (All Grades combined):** Plot A calculates the distributed special education footprint per pupil under our *Total Enrollment Standard* (`Special_Education_Expenditures_PerPupil`). Special Education budgets in New York are reported district-wide for all grade levels (PK-12) combined, rather than on a grade-specific basis. This plot sums up the overall special education budget allocation per total student over the course of the cohort's school career. By the end of Grade 8, parents can see if a district has spent **$15,000 to $20,000+ per student** purely on the footprint of special education instruction. -->
+<!-- 2. **The Truth About \"Averages\" (Opt-Out Bypass):** Plot B stacks **Proficient** (Green), **Not Proficient** (Red), and **Not Tested / Opted Out** (Gray) relative to the *entire enrolled cohort* of Students with Disabilities. If a wealthy district claims a \"90% proficiency rate\" but has an expanding gray band of opted-out students while the green band narrows, it visually shatters the illusion.  -->
+<!-- 3. **The Divergence Paradox:** By placing these plots side-by-side, parents can ask the central question of accountability: *“If the taxpayer bill in Plot A is climbing steeply year-over-year, why are reading proficiencies in Plot B flatlining or shrinking as our children grow older? This is not a resource crisis—this is a curriculum crisis.”* -->
+
+## Sourcedata Credits:
+*   **Special Education Spending:** [New York State Education Department (NYSED) Fiscal Research Unit](https://www.p12.nysed.gov/irs/school_finance/) (Form ST-3 databases combined through 2025).
+*   **ELA Academic Performance:** [NYSED Data Site Downloads Portal](https://data.nysed.gov/downloads.php) (Annual EM ELA spring performance datasets, Grades 3-8).  
+  
