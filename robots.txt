@@ -1,1 +1,1 @@
-Sitemap: https://data.openschooldata.com/sitemap.xml
+Sitemap: https://www.openschooldata.com/sitemap.xml
