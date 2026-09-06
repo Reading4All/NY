@@ -342,7 +342,7 @@ console.log("stackedBarChart called with chartTitle:", chartTitle);
         y: "count",
         fill: "category",
         tip: true,
-        title: d => `${d.category}: ${d.count} ${d.pct != null ? ` (${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% of Tested only)` : ""}`
+        title: d => `${d.category}: ${d.count}\n${d.pct != null ? `(${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% of Tested only)` : ""}`
       }))
     ]
   });
