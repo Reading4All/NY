@@ -5,7 +5,7 @@ project:
 
 website:
   title: "Open School Data (NY)"
-  site-url: "https://data.openschooldata.com/"
+  site-url: "https://www.openschooldata.com/"
   open-graph: true
   sidebar:
     style: floating
