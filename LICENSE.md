@@ -13,6 +13,13 @@ format:
     nav-buttons:
       - icon: arrow-left-circle-fill
         href: ../
+    include-in-header:
+      text: |
+        <style>
+        .quarto-dashboard-links {
+          margin-left: auto;
+        }
+        </style>
 ---
 
 **BSD 3-Clause License**
