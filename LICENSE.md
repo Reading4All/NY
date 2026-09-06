@@ -1,6 +1,23 @@
-BSD 3-Clause License
+---
+sidebar: false
+copyright:
+  holder: "OpenSchoolData(NY)"
+  year: 2026
+license:
+  text: "BSD 3-Clause License"
+  url: "https://opensource.org/license/BSD-3-Clause"
+format: 
+  dashboard: 
+    theme: 
+      - minty
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: ../
+---
 
-Copyright (c) 2026, OpenSchoolData
+**BSD 3-Clause License**
+
+Copyright (c) 2026, OpenSchoolData(NY)
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
