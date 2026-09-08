@@ -1,0 +1,581 @@
+---
+title: "Special Education Spending (2021-2025)"
+#subtitle: "Multi-Year Special Education Spending (2021-2025)"
+#author: "Open School Data"
+format:
+  dashboard:
+    orientation: rows
+    expandable: false
+    scrolling: true
+    code-copy: false
+    theme: 
+      - minty
+      - ../custom.scss
+    css: SPED_Spending.css
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: ../
+---
+
+```{r}
+#| echo: false
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(readr)
+library(dplyr)
+
+### Annual updating steps:
+### Set most current year
+YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
+g <- 8  #last grade to show on plot, or use "ELA3_8"
+###
+
+years_back <- YEAR - 2021 #4 years back, being we have ELA since 2021
+  
+######## Load and clean the SPENDING data
+spending_url <- "https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SPENDING%2CENROLLMENT/slfs_essa_financial_merged_thru2025.csv"
+spending_raw <- 
+  read_csv(spending_url)
+
+# Clean variables and filter for years 2021-YEAR
+spending_clean <- spending_raw %>%
+  mutate(
+    YEAR = as.numeric(YEAR),
+    PK12_Enrollment = as.numeric(PK12_Enrollment),
+    SWD_Enrollment = as.numeric(SWD_Enrollment),
+    Special_Education_Expenditures = as.numeric(Special_Education_Expenditures),
+    Special_Education_Expenditures_PerSWD = as.numeric(Special_Education_Expenditures_PerSWD),
+    Special_Education_Expenditures_PerPupil = as.numeric(Special_Education_Expenditures_PerPupil)
+  ) %>%
+  filter(YEAR >= 2021 & YEAR <= YEAR)
+## remove Entity_Name because we'll use the cleaner names from the ELA data
+spending_clean["ENTITY_NAME"] <- NULL
+
+# Format BEDS Code to prevent scientific notation in JSON serialization
+spending_clean$ENTITY_CD <- format(spending_clean$ENTITY_CD, scientific = FALSE)
+
+######## Load and clean ELA data
+### Read ELA data
+  csv_file1 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
+  csv_file2 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-1, ".csv")
+  csv_file3 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-2, ".csv")
+  csv_file4 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-3, ".csv")
+  csv_file5 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-4, ".csv")
+
+df1 <- read_csv(csv_file1)
+df2 <- read_csv(csv_file2)
+df3 <- read_csv(csv_file3)
+df4 <- read_csv(csv_file4)
+df5 <- read_csv(csv_file5)  
+# combine
+shared_data <- rbind(df1, df2, df3, df4, df5)
+
+## KEEP Only Keep Spring (year-end) Data
+shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
+
+# Only keep District and County Data
+## (old) Only Keep District Data
+shared_data <- shared_data[shared_data$ENTITY_TYPE == "DISTRICT",]
+
+## Only Keep Subgroups to be used - SWD
+shared_data<-shared_data[(shared_data$SUBGROUP_NAME == "Students with Disabilities"),]
+
+###### Only Keep All ELA tested Grades (ELA3_8) we want on this report
+## Based on top selections, currently: grade8 for 2025, 7 for 2024, 6 for 2023, 5 for 2022, 4 for 2021
+
+# Set grade sequence to show on plot (YEAR-0, YEAR-1... YEAR-4)
+offsets <- 0:years_back
+valid_offsets <- offsets[g == "ELA3_8" | (g - offsets) >= 3]
+# Create the final list of objects exactly like the OJS structure
+grade_sequence <- lapply(valid_offsets, function(offset) {
+  list(
+    year = YEAR - offset,
+    assessment = if (g == "ELA3_8") "ELA3_8" else paste0("ELA", g - offset)
+  )
+})
+# Filter shared_data with years/grades we want 
+keep_rows <- Reduce(`|`, lapply(grade_sequence, function(g_entry) {
+  shared_data$ASSESSMENT_NAME == g_entry$assessment & shared_data$YEAR == g_entry$year
+}))
+shared_data <- shared_data[keep_rows, ]
+
+## Remove rows with NA Prof_Pct rates (to prevent rows with missing counts from being included but NA on plots)
+##shared_data <- shared_data %>% 
+##  filter(!is.na(Prof_Pct)) %>% 
+##  dplyr::arrange(Prof_Pct, NotProf_Pct)
+
+## Remove all columns not used - lessen load to frontend/users, reduce html output size
+shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, NotProf_Pct, NotTested_Pct, SEASON, TOTAL_COUNT))
+
+## Remove NYC districts for this plot - they are not currently included in the spending data csv
+shared_data <- shared_data[!startsWith(tolower(shared_data$ENTITY_NAME), "nyc geo"), ]
+
+## format ENTITY_CD
+shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
+
+## Remove col 1, ENTITY NAME
+shared_data["...1"] <- NULL
+
+####### Merge them
+spending_ela_merged <- shared_data %>%
+  inner_join(`spending_clean`, by = c("ENTITY_CD", "YEAR"))
+
+# Pass databases to Observable JS
+ojs_define(df_to_js = spending_ela_merged)
+ojs_define(gradeSequence = grade_sequence)
+```
+
+```{ojs}
+//| output: false
+// Transpose merged R dataframe into OJS format
+shared_data = transpose(df_to_js)
+
+```
+
+```{ojs}
+//| output: false
+// Identify unique counties and dynamically calculate matching districts
+uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC).filter(Boolean));
+
+districtsInCounty = new Set(
+  shared_data
+    .filter(d => d.COUNTY_DESC && d.COUNTY_DESC.toUpperCase() === county.toUpperCase())
+    .map(d => d.ENTITY_NAME)
+);
+
+districtDefault = {
+  county;
+  return "";
+}
+
+```
+
+```{ojs}
+//| output: false
+// Guard function matching DistrictELAGrowth.qmd toolbar architecture
+function guard(fn, options = {}, countyView) {
+  const {
+    submitLabel = "Submit",
+    resetLabel = "Reset",
+    required = false,
+    resubmit = true,
+    width = "100%",
+    justify = "start"
+  } = options;
+  
+  const onSubmit = () => {
+    value = input.value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+    wrapper.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+  const onReset = () => {
+    input.value = value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+  };
+  const onInnerInputCapture = () => {
+    invalid = true;
+    submit.disabled = true;
+  };
+  const onInnerInput = e => {
+    e.stopPropagation();
+    submit.disabled = false;
+    reset.disabled = false;
+  };
+  const submit = htl.html`<button ${ { disabled: !resubmit && !required, onclick: onSubmit } } class="btn btn-primary btn-sm">${submitLabel}</button>`;
+  const reset = htl.html`<button ${ { disabled: true, onclick: onReset } } class=\"btn btn-secondary btn-sm\">${resetLabel}</button>`;
+  const footer = htl.html`
+    <div>
+      <hr style="padding:0;margin:10px 0">
+      <div style="display:flex;gap:1ch;justify-style: ${justify} ">
+        ${submit}
+      </div>
+    </div>
+  `;
+  const template = inputs => {
+    const row = document.createElement("div");
+    row.className = "input-toolbar";
+    row.append(countyView);
+    (Array.isArray(inputs) ? inputs : Object.values(inputs))
+      .forEach(input => row.append(input));
+    const container = document.createElement("div");
+    container.style.cssText = "width:100%;max-width:100%;min-width:0;box-sizing:border-box";
+    container.append(row, footer);
+    return container;
+  };
+  const input = fn({ submit, reset, footer, template, onSubmit, onReset });
+  let invalid = !!input.querySelector(":invalid");
+  submit.disabled = !resubmit || invalid;
+  input.addEventListener("input", onInnerInputCapture, { capture: true });
+  input.addEventListener("input", onInnerInput);
+  let value = required ? undefined : input.value;
+  const wrapper = htl.html`<div style="width: ${width} ">${input}`;
+  wrapper.addEventListener("submit", onSubmit);
+  return Object.defineProperty(wrapper, "value", {
+    get: () => value,
+    set: v => { input.value = v }
+  });
+}
+
+```
+#### {.toolbar #print-hide-toolbar}
+```{ojs}
+//| output: false
+// Standalone live-reactive County search text input
+viewof county = Inputs.text({
+  value: "NASSAU",
+  label: "County: ",
+  datalist: uniqueCounties,
+  unique: true,
+  validate: v => shared_data.map(d => d.COUNTY_DESC).includes(v.value.toUpperCase()),
+  sort: true,
+  required: true
+});
+
+```
+
+```{ojs}
+//| output: true
+// Woven Inputs Form for District Selection
+viewof inputSels = guard(
+  ({ template }) => Inputs.form(
+    {
+      district: Inputs.select(districtsInCounty, {
+        value: districtDefault,
+        label: "District: ",
+        sort: true,
+        required: true
+      })
+    },
+    { template }
+  ),
+  {
+    resetLabel: "Reset",
+    required: true,
+    width: "100%"
+  },
+  viewof county
+);
+
+```
+
+```{ojs}
+//| output: false
+// Auto-submit triggers once on page load to draw initial plots instantly
+_autoSubmit = {
+  setTimeout(() => {
+    const submitBtn = Array.from(document.querySelectorAll("button"))
+      .find(b => b.textContent.trim() === "Submit");
+    if (submitBtn) submitBtn.click();
+  }, 1000);
+}
+
+```
+
+```{ojs}
+//| output: false
+baseYear = 2025
+```
+
+```{ojs}
+//| output: false
+//| echo: true
+function stackedBarChart(longData) {
+
+  return Plot.plot({
+    //className: "ELAgrowth-plot",
+    //width,
+    //height,
+    width: 1000,
+    height: 575,
+    marginLeft: 80,
+    marginBottom: 50,
+    //title: chartTitle,
+    
+    x: { label: null, domain: [...new Set(longData.map(d => d.label))]},
+    y: { label: "# Students", grid: true, labelArrow: false,
+  labelAnchor: "center", dx: 100},
+    color: {
+      domain: ["Proficient", "Not Proficient", "Not Tested"],
+      range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
+      legend: true
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.barY(longData, Plot.stackY({
+        x: "label",
+        y: "count",
+        fill: "category",
+        tip: true,
+        title: d => `${d.category}: ${d.count}\n${d.pct != null ? `(${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% of Tested only)` : ""}`
+      }))
+    ]
+  });
+}
+```
+
+```{ojs}
+//| output: false
+// update - data for Spending Plot (shared_dataFiltered) basedon user inputs
+shared_dataFiltered = {
+  if (!inputSels) return [];
+  const district = inputSels.district.trim().toUpperCase();
+  return shared_data
+    .filter(d => d.ENTITY_NAME.toUpperCase() === district)
+    .sort((a, b) => Number(a.YEAR) - Number(b.YEAR));
+}
+
+// Preprocess accumulation dataset for Waterfall Chart
+waterfallData = {
+  let acc = 0;
+  return shared_dataFiltered.map(d => {
+    const annual = Number(d.Special_Education_Expenditures) || 0;
+    const yStart = acc;
+    acc += annual;
+    return {
+      ...d,
+      YEAR: String(d.YEAR),
+      annual,
+      yStart,
+      yEnd: acc
+    };
+  });
+}
+
+// 1. Calculated Cumulative SPED Spending (2021-YEAR)
+cumulativeTotal = {
+  if (!inputSels || shared_dataFiltered.length === 0) return 0;
+  const years = [2021, 2022, 2023, 2024, 2025];
+  let sum = 0;
+  years.forEach(y => {
+    const row = shared_dataFiltered.find(d => Number(d.YEAR) === y);
+    if (row && row.Special_Education_Expenditures) {
+      sum += +row.Special_Education_Expenditures;
+    }
+  });
+  return sum;
+}
+
+// 2. Extract 2025 SPED spending per Pupil
+spedPerPupil2025 = {
+  if (!inputSels || shared_dataFiltered.length === 0) return 0;
+  const row = shared_dataFiltered.find(d => Number(d.YEAR) === 2025);
+  return (row && row.Special_Education_Expenditures_PerPupil) ? +row.Special_Education_Expenditures_PerPupil : 0;
+}
+
+Enrollment2025 = {
+  if (!inputSels || shared_dataFiltered.length === 0) return 0;
+  const row = shared_dataFiltered.find(d => Number(d.YEAR) === 2025);
+  return (row && row.PK12_Enrollment) ? +row.PK12_Enrollment : 0;
+}
+
+```
+
+```{ojs}
+//| output: false
+// update - data for ELA Plot (shared_dataFiltered_ELA) based on user inputs
+shared_dataFiltered_ELA = {
+  if (!inputSels) return [];
+  const district_ela = inputSels.district.trim().toUpperCase();
+  return shared_data
+    .filter(d => d.ENTITY_NAME.toUpperCase() === district_ela &&
+    gradeSequence.some(g => Number(g.year) === Number(d.YEAR) && g.assessment === d.ASSESSMENT_NAME))
+    .sort((a, b) => Number(a.YEAR) - Number(b.YEAR));
+}
+
+// label for the assessment, used on the x-axis
+gradeLabel = assessment => assessment === "ELA3_8"
+  ? "All Grades 3-8"
+  : `Grade ${assessment.replace("ELA", "")}`
+```
+
+```{ojs}
+//| output: false
+// ELA plot.  Subgroup and assesment will never actually change being there's not user input for them
+function subgroupRows(subgroupName) {
+
+  const byYear = [...gradeSequence]
+    .sort((a, b) => a.year - b.year)
+    .map(({ year, assessment }) => {
+      const row = shared_dataFiltered_ELA.find(d =>
+        Number(d.YEAR) === Number(year) &&
+        d.ASSESSMENT_NAME === assessment &&
+        d.SUBGROUP_NAME === subgroupName
+      );
+
+      return {
+        YEAR: year,
+        label: `${year}\n${gradeLabel(assessment)}`,
+        Prof_Count: row ? +row.Prof_Count : 0,
+        NotProf_Count: row ? +row.NotProf_Count : 0,
+        NOT_TESTED: row ? +row.NOT_TESTED : 0,
+        Prof_Pct: row ? +row.Prof_Pct : null,
+        NotProf_Pct: row ? +row.NotProf_Pct : null,
+        PER_PROF: row ? +row.PER_PROF : null
+      };
+    });
+
+  // console.log("subgroupRows - byYear:", byYear);
+
+  const result = byYear.flatMap(d => [
+    { label: d.label, YEAR: d.YEAR, category: "Proficient", count: d.Prof_Count, pct: d.Prof_Pct, pct2: d.PER_PROF },
+    { label: d.label, YEAR: d.YEAR, category: "Not Proficient", count: d.NotProf_Count, pct: null },
+    { label: d.label, YEAR: d.YEAR, category: "Not Tested", count: d.NOT_TESTED, pct: null }
+  ]);
+
+  // console.log("subgroupRows flatMap - result:", result);
+
+  return result;
+}
+```
+#### Print District Selected{height=10%}
+```{ojs}
+//| echo: false
+md`### Special Education (SPED) Spending:<br>**${inputSels ? inputSels.district : ""}**`
+
+```
+#### Print Indicator Cards{height=20%}
+```{ojs}
+//| echo: false
+html`
+<style>
+  .indicator-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+    font-family: sans-serif;
+  }
+  .indicator-card {
+    flex: 1 1 20px;
+    background: #F4F6F8;
+    border-left: 5px solid #122C4F;
+    padding: 15px 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    min-width: 0;
+  }
+  .indicator-card.accent-green { border-left-color: #3DAE44; }
+  .indicator-card.half { flex: 2 1 20px; }
+  .indicator-card.quarter { flex: 1 1 20px; }
+
+  .indicator-label {
+    font-size: clamp(0.5rem, 1.1vw, 0.6875rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #555;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+  }
+  .indicator-value {
+    font-size: clamp(1.125rem, 2.8vw, 1.75rem);
+    font-weight: 800;
+    margin: 2px 0;
+  }
+  .indicator-card.accent-green .indicator-value { color: #3DAE44; }
+  .indicator-card:not(.accent-green) .indicator-value { color: #122C4F; }
+  .indicator-desc {
+    font-size: clamp(0.5rem, 1.1vw, 0.6875rem);
+    color: #666;
+    line-height: 1.3;
+  }
+</style>
+
+<div class="indicator-row">
+  <div class="indicator-card half accent-green">
+    <div class="indicator-label">Cumulative SPED Spending (2021-2025)</div>
+    <div class="indicator-value">$${Math.round(cumulativeTotal).toLocaleString()}</div>
+    <div class="indicator-desc">
+      Total for all PK-12 SPED students.
+    </div>
+  </div>
+
+  <div class="indicator-card quarter">
+    <div class="indicator-label">2025 SPED Spending Per Pupil</div>
+    <div class="indicator-value">$${Math.round(spedPerPupil2025).toLocaleString()}</div>
+    <div class="indicator-desc">
+      
+    </div>
+  </div>
+
+  <div class="indicator-card quarter">
+    <div class="indicator-label">2025 Total Pupils (PK-12)</div>
+    <div class="indicator-value">${Math.round(Enrollment2025).toLocaleString()}</div>
+    <div class="indicator-desc">
+      
+    </div>
+  </div>
+</div>
+`
+
+```
+#### Plots Row {height=45%}
+```{ojs}
+//| title: "SPED Spending (Cumulative: 2021-2025)"
+//| echo: false
+Plot.plot({
+  marginLeft: 80,
+  marginRight: 40,
+  width: 1000,
+  height: 600,
+  x: { 
+    label: "School Year", 
+    type: "band",
+    domain: ["2021", "2022", "2023", "2024", "2025"]
+  },
+  y: { 
+    label: "($)", 
+    grid: true,
+    labelAnchor: "center"
+  },
+  marks: [
+    Plot.barY(waterfallData, {
+      x: "YEAR",
+      y1: "yStart",
+      y2: "yEnd",
+      fill: "#122C4F",
+      channels: {
+    "SPED Spending": d => `$${Number(d.annual).toLocaleString()}` },
+            tip: {
+        format: {
+          x: true,
+          y1: false,
+          y2: false,
+          annual: d => `$${Math.round(d).toLocaleString()}`,
+          yEnd: d => `$${Math.round(d).toLocaleString()}`,
+          "Additional Info": true 
+        }
+      }
+    }),
+    Plot.text(waterfallData, {
+      x: "YEAR",
+      y: "yEnd",
+      text: d => `$${Math.round(d.yEnd).toLocaleString()}`,
+      dy: -12,
+      fontSize: 10,
+      fontWeight: "bold",
+      fill: "#3DAE44"
+    }),
+    Plot.ruleY([0])
+  ]
+})
+
+```
+```{ojs}
+//| title: "SPED ELA Scores (SWD) - Are literacy gaps closing?"
+//| echo: false
+fig2 = {
+  //const width = 1000;
+  //const height = 420; //works well for a 4-year x 3-category stacked bar
+  return stackedBarChart(subgroupRows("Students with Disabilities"));
+}
+
+```
+## References, Notes {#print-footer}
+* ELA DATA: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
+* ELA DATA (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
+* Expenditures & Enrollment: [NYSED Financial Transparency](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting) ("slfs_financial_data.xlsx" for 2024+, "essa-financial-data.xlsx" for 2023 and prior)  
