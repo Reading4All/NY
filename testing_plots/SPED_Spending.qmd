@@ -10,7 +10,7 @@ format:
     code-copy: false
     theme: 
       - minty
-      - ../../custom.scss  # remove one '../' after moving back to plot folder
+      - ../custom.scss
     #css: DistrictELAGrowth.css
     nav-buttons:
       - icon: arrow-left-circle-fill
