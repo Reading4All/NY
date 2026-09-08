@@ -107,6 +107,7 @@ shared_data = transpose(df_to_js)
 ```{ojs}
 //| output: false
 uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC)); //for popup
+
 // save unique districts (based on unique BEDSCODE)
 districtsInCounty = new Set(
   shared_data
@@ -251,11 +252,7 @@ viewof county = Inputs.text({
 
 ```{ojs}
 //| output: true
-// county's live input is woven into this form's template (see guard()
-// above), so this single cell renders the whole toolbar: county,
-// district, and grade in one row, with Submit below on the left.
-//| output: true
-
+// Woven Inputs Form for District Selection
 viewof inputSels = guard(
   ({ template }) => Inputs.form(
     {
@@ -295,6 +292,7 @@ viewof inputSels = guard(
 
 ```{ojs}
 //| output: false
+// Auto-submit triggers once on page load to draw initial plots instantly
 _autoSubmit = {
   setTimeout(() => {
     const submitBtn = Array.from(document.querySelectorAll("button"))
@@ -312,11 +310,6 @@ baseYear = 2025
 ```{ojs}
 //| output: false
 function stackedBarChart(longData, width, height, chartTitle) {
-
-console.log("stackedBarChart called with longData:", longData);
-console.log("stackedBarChart called with width", width);
-console.log("stackedBarChart called with  height", height);
-console.log("stackedBarChart called with chartTitle:", chartTitle);
 
   return Plot.plot({
     className: "ELAgrowth-plot",
