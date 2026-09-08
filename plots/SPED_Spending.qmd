@@ -1,5 +1,5 @@
 ---
-title: "Special Education Spending (2021-2025)"
+title: "Special Education Spending (SPED) (2021-2025)"
 #subtitle: "Multi-Year Special Education Spending (2021-2025)"
 #author: "Open School Data"
 format:
@@ -469,7 +469,7 @@ function subgroupRows(subgroupName) {
 #### Print District Selected{height=10%}
 ```{ojs}
 //| echo: false
-md`### Special Education (SPED) Spending:<br>**${inputSels ? inputSels.district : ""}**`
+md`### Special Education Spending:<br>**${inputSels ? inputSels.district : ""}**`
 
 ```
 #### Print Indicator Cards{height=20%}
@@ -599,7 +599,7 @@ Plot.plot({
 
 ```
 ```{ojs}
-//| title: "SPED ELA Scores (SWD) - Are literacy gaps closing?"
+//| title: "SPED(SWD) ELA Scores: Are gaps closing?"
 //| echo: false
 fig2 = {
   //const width = 1000;
