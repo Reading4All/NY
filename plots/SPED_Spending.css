@@ -4,6 +4,23 @@ h2 {
   font-size: 1.1rem;
 }
 
+/* set min width so the cumulated spending box wraps */
+.indicator-card.half.accent-green {
+  min-width: 300px;
+}
+
+/* set min width so the cumulated spending box wraps */
+.indicator-card.quarter {
+  min-width: 175px;
+}
+
+/* decrease whitespace below cards */
+.bslib-grid.html-fill-item.html-fill-container {
+  grid-template-rows: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
 /* input boxes - formatting so they wrap when screen size decreased */
 .input-toolbar {
   display: grid;
@@ -44,7 +61,6 @@ h2 {
   }
 }
 
-
 /* end of input boxes - formatting */
 
 /* remove scrollbar under input header */
@@ -58,65 +74,56 @@ h2 {
   font-size: .8rem;
 }
 
-/* Put plots side-by-side on desktop */
+
+/* =========================================================
+   PLOTS SIDE-BY-SIDE ON SCREEN
+   ========================================================= */
+
 @media (min-width: 768px) {
+
   .panel-tabset .tab-pane.active {
     display: grid !important;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 20px !important;
   }
 
   .panel-tabset .tab-pane.active > .cell {
     width: 100% !important;
-    max-width: none !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 }
 
+
 /* Stack on smaller screens */
 @media (max-width: 767px) {
+
   .panel-tabset .tab-pane.active {
     display: block !important;
   }
 }
 
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
 @media print {
 
-  /* 0. FORCE DEFAULT BROWSER PRINT LAYOUT TO PORTRAIT */ 
-  @page { 
-    size: landscape; 
-    margin-left: 0.5in; /* Gives your plots a clean border on the paper */ 
+  /* -------------------------------------------------------
+     PAGE
+     ------------------------------------------------------- */
+
+  @page {
+    size: landscape;
+    margin: 0.35in 0.5in 0.9in 0.5in;
   }
 
-  /* --- Show ALL tabs, not just the currently active one ---
-     Bootstrap tabsets hide inactive .tab-pane elements on screen;
-     for print we need every tab's content visible and stacked.
-     Forcing block display (instead of bslib's flex/grid fill layout)
-     also matters below - page breaks are unreliable inside flex/grid
-     containers, so everything from .tab-content down needs to be
-     plain block flow for print. */
-  .panel-tabset .tab-content,
-  .panel-tabset .tab-content > .tab-pane,
-  .panel-tabset .tab-pane .card,
-  .panel-tabset .tab-pane .bslib-card,
-  .panel-tabset .tab-pane .card-body,
-  .panel-tabset .tab-pane .html-fill-container {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    height: auto !important;
-  }
 
-  /* --- Flatten every ancestor of the tabset too ---
-     Quarto dashboards (bslib) lay out the WHOLE page with nested
-     flex/grid "fillable" containers (.bslib-grid, .bslib-gap-spacing,
-     .html-fill-container, .html-fill-item, .quarto-dashboard content
-     wrappers, .column-screen, .column-page, etc). break-before/after/
-     inside are only honored inside a normal block flow: if ANY
-     ancestor between the page root and .tab-pane is still flex or
-     grid, the whole subtree is treated as one unbreakable unit and
-     page breaks are silently ignored, even though .tab-content and
-     .tab-pane themselves are already block above. So reset the
-     ancestor chain too, not just the tabset's own internals. */
+  /* -------------------------------------------------------
+     REMOVE QUARTO FILL HEIGHT
+     ------------------------------------------------------- */
+
   body,
   .quarto-dashboard,
   .quarto-dashboard-content,
@@ -129,51 +136,154 @@ h2 {
   .html-fill-container,
   .html-fill-item,
   .column-screen,
-  .column-page,
-  .panel-tabset {
-    display: block !important;
+  .column-page {
     height: auto !important;
     max-height: none !important;
     min-height: 0 !important;
     overflow: visible !important;
   }
 
-  /* --- Put the 2 plots in each tab back side-by-side for print --- */
+
+  /* -------------------------------------------------------
+     SHOW ALL TAB CONTENT
+     ------------------------------------------------------- */
+
+  .panel-tabset .tab-content,
+  .panel-tabset .tab-pane,
+  .panel-tabset .tab-pane .card,
+  .panel-tabset .tab-pane .bslib-card,
+  .panel-tabset .tab-pane .card-body {
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+  }
+
+
+  /* -------------------------------------------------------
+     FORCE THE PLOT CONTAINER TO TWO COLUMNS
+     ------------------------------------------------------- */
+
   .panel-tabset .tab-content > .tab-pane {
     display: grid !important;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
 
-  .panel-tabset .tab-pane > .cell {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+
+    grid-template-rows: auto !important;
+
+    column-gap: 15px !important;
+    row-gap: 0 !important;
+
     width: 100% !important;
-    max-width: none !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* Tab navigation isn't usable on paper, so hide it when printing */
+
+  /* -------------------------------------------------------
+     FORCE EACH PLOT INTO ITS OWN COLUMN
+     ------------------------------------------------------- */
+
+  .panel-tabset .tab-content > .tab-pane > .cell {
+    grid-column: auto !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+
+  /* -------------------------------------------------------
+     MAKE PLOT OUTPUT FIT COLUMN
+     ------------------------------------------------------- */
+
+  .panel-tabset .cell-output,
+  .panel-tabset .cell-output-display {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+  }
+
+
+  /* -------------------------------------------------------
+     RESIZE SVG PLOTS
+     ------------------------------------------------------- */
+
+  .panel-tabset svg {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+
+  /* -------------------------------------------------------
+     RESIZE CANVAS PLOTS
+     ------------------------------------------------------- */
+
+  .panel-tabset canvas {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+
+  /* -------------------------------------------------------
+     OTHER PLOT CONTAINERS
+     ------------------------------------------------------- */
+
+  .panel-tabset .plotly,
+  .panel-tabset .observablehq {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+
+  /* -------------------------------------------------------
+     HIDE TAB NAVIGATION
+     ------------------------------------------------------- */
+
   .panel-tabset .nav-tabs {
     display: none !important;
   }
 
-  /* --- Hide the county/district/grade input toolbar when printing */
+
+  /* -------------------------------------------------------
+     HIDE INPUT TOOLBAR
+     ------------------------------------------------------- */
+
   #print-hide-toolbar,
   div.toolbar.html-fill-container {
     display: none !important;
   }
-  
-  /* --- Hide the website header when printing */
+
+
+  /* -------------------------------------------------------
+     HIDE WEBSITE HEADER
+     ------------------------------------------------------- */
+
   #quarto-dashboard-header,
   div.navbar-container {
     display: none !important;
   }
 
-  /* --- Re-hide OJS source code ---
-     The broad "unhide everything" rules above (targeting .card,
-     .bslib-card, .card-body, .html-fill-container, etc.) also
-     reverse the display:none that Quarto normally uses to hide
-     each OJS cell's source code (shown/toggled via a code-fold
-     control). Explicitly re-hide it here, after the unhide rules,
-     so this wins the cascade and code stays hidden in print. */
+
+  /* -------------------------------------------------------
+     HIDE OJS SOURCE CODE
+     ------------------------------------------------------- */
+
   .cell-code,
   .sourceCode,
   pre.sourceCode,
@@ -181,11 +291,11 @@ h2 {
     display: none !important;
   }
 
-  /* --- Strip the visible "card" chrome (border/shadow/header bar) ---
-     Quarto dashboards wrap each plot, each tab-pane, and each
-     section (like References) in a Bootstrap/bslib "card" for the
-     on-screen boxed/light-box look. For print we want just the
-     content, no boxes. This removes the chrome but keeps spacing. */
+
+  /* -------------------------------------------------------
+     REMOVE CARD CHROME
+     ------------------------------------------------------- */
+
   .card,
   .bslib-card,
   .panel-tabset .card,
@@ -195,42 +305,46 @@ h2 {
     box-shadow: none !important;
     background: transparent !important;
   }
+
   .card-header,
   .bslib-card .card-header {
-    display: none !important; /* remove the little title bar above each plot box */
+    display: none !important;
   }
+
   .card-body,
   .bslib-card .card-body {
     padding: 0 !important;
   }
 
-  /* --- Repeat "References, Notes" on every page ---
-     position: fixed elements re-render on every printed page in
-     Chrome/Edge. (Firefox and Safari print engines don't reliably
-     support this; see note below the code block.) */
+
+  /* -------------------------------------------------------
+     PRINT FOOTER
+     ------------------------------------------------------- */
+
   #print-footer {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
+
     background: white;
+
     font-size: 9pt;
     line-height: 1.2;
+
     padding: 4pt 12pt;
+
     border-top: 0.5pt solid #ccc;
   }
+
   #print-footer h2 {
     font-size: 9pt;
     margin: 0 0 2pt 0;
   }
+
   #print-footer ul {
     margin: 0;
     padding-left: 14pt;
   }
 
-  /* Reserve space at the bottom of every page so plot content
-     doesn't get hidden behind the fixed footer */
-  @page {
-    margin-bottom: 0.9in;
-  }
 }
