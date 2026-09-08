@@ -3,7 +3,8 @@
     "listing": "/index.html",
     "items": [
       "/plots/DistrictELAGrowth.html",
-      "/plots/ELAcountyreport-2025.html"
+      "/plots/ELAcountyreport-2025.html",
+      "/plots/SPED_Spending.html"
     ]
   }
 ]
