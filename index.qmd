@@ -58,7 +58,7 @@ format:
     include-after-body:
       text: |
         <footer style="text-align: center; padding: 20px; color: #666;">
-          Copyright (c) 2026, OpenSchoolData<br>
+          Copyright (c) 2026, OpenSchoolData(NY)<br>
           License: <a href="LICENSE.md">BSD 3-Clause License</a>
         </footer>
 
