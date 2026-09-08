@@ -532,7 +532,6 @@ html`
     <div class="indicator-label">2025 SPED Spending Per Pupil</div>
     <div class="indicator-value">$${Math.round(spedPerPupil2025).toLocaleString()}</div>
     <div class="indicator-desc">
-      
     </div>
   </div>
 
@@ -540,9 +539,9 @@ html`
     <div class="indicator-label">2025 Total Pupils (PK-12)</div>
     <div class="indicator-value">${Math.round(Enrollment2025).toLocaleString()}</div>
     <div class="indicator-desc">
-      
     </div>
   </div>
+  
 </div>
 `
 
