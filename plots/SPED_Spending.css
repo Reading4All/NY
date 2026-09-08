@@ -346,5 +346,11 @@ h2 {
     margin: 0;
     padding-left: 14pt;
   }
-
+}
+@media print and (max-width: 767px) {
+  .panel-tabset .tab-pane.active {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 15px !important;
+  }
 }
