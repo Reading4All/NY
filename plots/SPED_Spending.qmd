@@ -119,9 +119,26 @@ shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
 ## Remove col 1, ENTITY NAME
 shared_data["...1"] <- NULL
 
-####### Merge them
-spending_ela_merged <- shared_data %>%
-  inner_join(`spending_clean`, by = c("ENTITY_CD", "YEAR"))
+####### Merge them - which is right??!?!
+##spending_ela_merged <- shared_data %>%
+##  inner_join(`spending_clean`, by = c("ENTITY_CD", "YEAR"))
+
+# keep all ela and ela with matches 
+#spending_ela_merged <- shared_data %>%
+#  inner_join(`spending_clean`, by = c("ENTITY_CD", "YEAR"))
+
+# keep all spending and ela with matches - think this is right but doesn't work
+spending_ela_merged <- spending_clean %>%
+  left_join(
+    shared_data,
+    by = c("ENTITY_CD", "YEAR")
+  )
+
+#Populate any missing ENTITY_NAME or COUNTY_DESCs
+spending_ela_merged <- spending_ela_merged %>%
+  group_by(ENTITY_CD) %>%
+  fill(ENTITY_NAME, COUNTY_DESC, .direction = "downup") %>%
+  ungroup()
 
 # Pass databases to Observable JS
 ojs_define(df_to_js = spending_ela_merged)
@@ -142,7 +159,11 @@ uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC).filter(Boolean));
 
 districtsInCounty = new Set(
   shared_data
-    .filter(d => d.COUNTY_DESC && d.COUNTY_DESC.toUpperCase() === county.toUpperCase())
+    .filter(d =>
+      d.COUNTY_DESC &&
+      d.ENTITY_NAME &&
+      d.COUNTY_DESC.toUpperCase() === county.toUpperCase()
+    )
     .map(d => d.ENTITY_NAME)
 );
 
@@ -297,7 +318,7 @@ function stackedBarChart(longData) {
     //title: chartTitle,
     
     x: { label: null, domain: [...new Set(longData.map(d => d.label))]},
-    y: { label: "# Students", grid: true, labelArrow: false,
+    y: { label: "# Students with IEPs", grid: true, labelArrow: false,
   labelAnchor: "center", dx: 100},
     color: {
       domain: ["Proficient", "Not Proficient", "Not Tested"],
@@ -323,9 +344,14 @@ function stackedBarChart(longData) {
 // update - data for Spending Plot (shared_dataFiltered) basedon user inputs
 shared_dataFiltered = {
   if (!inputSels) return [];
+
   const district = inputSels.district.trim().toUpperCase();
+
   return shared_data
-    .filter(d => d.ENTITY_NAME.toUpperCase() === district)
+    .filter(d =>
+      d.ENTITY_NAME &&
+      d.ENTITY_NAME.toUpperCase() === district
+    )
     .sort((a, b) => Number(a.YEAR) - Number(b.YEAR));
 }
 
@@ -380,10 +406,18 @@ Enrollment2025 = {
 // update - data for ELA Plot (shared_dataFiltered_ELA) based on user inputs
 shared_dataFiltered_ELA = {
   if (!inputSels) return [];
+
   const district_ela = inputSels.district.trim().toUpperCase();
+
   return shared_data
-    .filter(d => d.ENTITY_NAME.toUpperCase() === district_ela &&
-    gradeSequence.some(g => Number(g.year) === Number(d.YEAR) && g.assessment === d.ASSESSMENT_NAME))
+    .filter(d =>
+      d.ENTITY_NAME &&
+      d.ENTITY_NAME.toUpperCase() === district_ela &&
+      gradeSequence.some(
+        g => Number(g.year) === Number(d.YEAR) &&
+             g.assessment === d.ASSESSMENT_NAME
+      )
+    )
     .sort((a, b) => Number(a.YEAR) - Number(b.YEAR));
 }
 
