@@ -1,7 +1,7 @@
 ---
 sidebar: false
 copyright:
-  holder: "OpenSchoolData(NY)"
+  holder: "OpenSchoolData"
   year: 2026
 license:
   text: "BSD 3-Clause License"
