@@ -308,9 +308,9 @@ baseYear = 2025
 function stackedBarChart(longData) {
 
   return Plot.plot({
-    //className: "ELAgrowth-plot",
-    //width,
-    //height,
+    style: {
+      fontSize: "14px"
+    },
     width: 1000,
     height: 575,
     marginLeft: 80,
@@ -319,7 +319,7 @@ function stackedBarChart(longData) {
     
     x: { label: null, domain: [...new Set(longData.map(d => d.label))]},
     y: { label: "# Students with IEPs", grid: true, labelArrow: false,
-  labelAnchor: "center", dx: 100},
+    labelAnchor: "center", dx: 100},
     color: {
       domain: ["Proficient", "Not Proficient", "Not Tested"],
       range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
@@ -331,7 +331,9 @@ function stackedBarChart(longData) {
         x: "label",
         y: "count",
         fill: "category",
-        tip: true,
+        tip: {
+        dx: -50,
+        fontSize: 14},
         title: d => `${d.category}: ${d.count}\n${d.pct != null ? `(${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% of Tested only)` : ""}`
       }))
     ]
@@ -386,7 +388,7 @@ cumulativeTotal = {
   return sum;
 }
 
-// 2. Extract 2025 SPED spending per Pupil
+// 2. Extract 2025 SPED spending per Pupil (and per SWD)
 spedPerPupil2025 = {
   if (!inputSels || shared_dataFiltered.length === 0) return 0;
   const row = shared_dataFiltered.find(d => Number(d.YEAR) === 2025);
@@ -397,6 +399,18 @@ Enrollment2025 = {
   if (!inputSels || shared_dataFiltered.length === 0) return 0;
   const row = shared_dataFiltered.find(d => Number(d.YEAR) === 2025);
   return (row && row.PK12_Enrollment) ? +row.PK12_Enrollment : 0;
+}
+
+spedPerSWD2025 = {
+  if (!inputSels || shared_dataFiltered.length === 0) return 0;
+  const row = shared_dataFiltered.find(d => Number(d.YEAR) === 2025);
+  return (row && row.Special_Education_Expenditures_PerSWD) ? +row.Special_Education_Expenditures_PerSWD : 0;
+}
+
+EnrollmentSWD2025 = {
+  if (!inputSels || shared_dataFiltered.length === 0) return 0;
+  const row = shared_dataFiltered.find(d => Number(d.YEAR) === 2025);
+  return (row && row.SWD_Enrollment) ? +row.SWD_Enrollment : 0;
 }
 
 ```
@@ -524,7 +538,7 @@ html`
     <div class="indicator-label">Cumulative SPED Spending (2021-2025)</div>
     <div class="indicator-value">$${Math.round(cumulativeTotal).toLocaleString()}</div>
     <div class="indicator-desc">
-      Total for all PK-12 SPED students.
+      Total for all PK-12 SPED pupils.
     </div>
   </div>
 
@@ -532,13 +546,15 @@ html`
     <div class="indicator-label">2025 SPED Spending Per Pupil</div>
     <div class="indicator-value">$${Math.round(spedPerPupil2025).toLocaleString()}</div>
     <div class="indicator-desc">
+    Total Pupils (PK-12): ${Math.round(Enrollment2025).toLocaleString()}
     </div>
   </div>
 
   <div class="indicator-card quarter">
-    <div class="indicator-label">2025 Total Pupils (PK-12)</div>
-    <div class="indicator-value">${Math.round(Enrollment2025).toLocaleString()}</div>
+    <div class="indicator-label">2025 SPED Spending Per SWD</div>
+    <div class="indicator-value">$${Math.round(spedPerSWD2025).toLocaleString()}</div>
     <div class="indicator-desc">
+    Total SWD (PK-12): ${Math.round(EnrollmentSWD2025).toLocaleString()}
     </div>
   </div>
   
@@ -551,16 +567,25 @@ html`
 //| title: "SPED Spending (Cumulative: 2021-2025)"
 //| echo: false
 Plot.plot({
+  style: {
+    fontSize: "14px"
+  },
   marginLeft: 80,
   marginRight: 40,
   width: 1000,
   height: 600,
   x: { 
-    label: "School Year", 
+    //label: "School Year", 
     type: "band",
     domain: ["2021", "2022", "2023", "2024", "2025"]
   },
   y: { 
+    tickFormat: d => 
+      d >= 1e6
+        ? `${(d / 1e6).toFixed(1)}M`
+        : d >= 1e3
+          ? `${(d / 1e3).toFixed(0)}K`
+          : d,
     label: "($)", 
     grid: true,
     labelAnchor: "center"
@@ -573,7 +598,9 @@ Plot.plot({
       fill: "#4F81A8", //"#122C4F",
       channels: {
     "SPED Spending": d => `$${Number(d.annual).toLocaleString()}` },
-            tip: {
+      tip: {
+        dx: -50,
+        fontSize: 14,
         format: {
           x: true,
           y1: false,
@@ -611,4 +638,4 @@ fig2 = {
 ## References, Notes {#print-footer}
 * ELA DATA: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
 * ELA DATA (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
-* Expenditures & Enrollment: [NYSED Financial Transparency](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting) ("slfs_financial_data.xlsx" for 2024+, "essa-financial-data.xlsx" for 2023 and prior)  
+* Expenditures & Enrollment: [NYSED Financial Transparency](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting): [slsf_financial_data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/slfs_financial_data.xlsx) for 2024+, [essa-financial-data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/essa-financial-data.xlsx) for 2023 and prior  
