@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.openschooldata.com/LICENSE.html</loc>
-    <lastmod>2026-09-09T16:06:29.025Z</lastmod>
+    <lastmod>2026-09-09T22:17:54.742Z</lastmod>
   </url>
   <url>
-    <loc>https://www.openschooldata.com/plots/SPED_Spending.html</loc>
-    <lastmod>2026-09-09T16:06:29.261Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/plots/ELAcountyreport-2025.html</loc>
-    <lastmod>2026-09-09T16:06:29.261Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-slfs_essa.html</loc>
-    <lastmod>2026-09-09T16:06:29.257Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs.html</loc>
-    <lastmod>2026-09-09T16:06:29.257Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/ELA/SOURCEDATA-ELA.html</loc>
-    <lastmod>2026-09-09T16:06:29.233Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/MATH/SOURCEDATA-MATH.html</loc>
-    <lastmod>2026-09-09T16:06:29.256Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/index.html</loc>
-    <lastmod>2026-09-09T16:06:29.260Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html</loc>
-    <lastmod>2026-09-09T16:06:29.241Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-SPED.html</loc>
-    <lastmod>2026-09-09T16:06:29.257Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs-LegalFees.html</loc>
-    <lastmod>2026-09-09T16:06:29.256Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-Personell,Salaries.html</loc>
-    <lastmod>2026-09-09T16:06:29.257Z</lastmod>
+    <loc>https://www.openschooldata.com/support-us.html</loc>
+    <lastmod>2026-09-09T22:17:54.944Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/plots/DistrictELAGrowth.html</loc>
-    <lastmod>2026-09-09T16:06:29.261Z</lastmod>
+    <lastmod>2026-09-09T22:17:54.943Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-Personell,Salaries.html</loc>
+    <lastmod>2026-09-09T22:17:54.940Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs-LegalFees.html</loc>
+    <lastmod>2026-09-09T22:17:54.938Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-SPED.html</loc>
+    <lastmod>2026-09-09T22:17:54.940Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html</loc>
+    <lastmod>2026-09-09T22:17:54.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/index.html</loc>
+    <lastmod>2026-09-09T22:17:54.942Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/MATH/SOURCEDATA-MATH.html</loc>
+    <lastmod>2026-09-09T22:17:54.938Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/ELA/SOURCEDATA-ELA.html</loc>
+    <lastmod>2026-09-09T22:17:54.918Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-IEEs.html</loc>
+    <lastmod>2026-09-09T22:17:54.940Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-slfs_essa.html</loc>
+    <lastmod>2026-09-09T22:17:54.940Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/plots/ELAcountyreport-2025.html</loc>
+    <lastmod>2026-09-09T22:17:54.943Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/plots/SPED_Spending.html</loc>
+    <lastmod>2026-09-09T22:17:54.943Z</lastmod>
   </url>
 </urlset>
