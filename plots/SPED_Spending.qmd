@@ -312,9 +312,9 @@ function stackedBarChart(longData) {
       fontSize: "14px"
     },
     width: 1000,
-    height: 575,
+    height: 600,
     marginLeft: 80,
-    marginBottom: 50,
+//    marginBottom: 50,
     //title: chartTitle,
     
     x: { label: null, domain: [...new Set(longData.map(d => d.label))]},
@@ -571,11 +571,11 @@ Plot.plot({
     fontSize: "14px"
   },
   marginLeft: 80,
-  marginRight: 40,
+//  marginRight: 40,
   width: 1000,
   height: 600,
   x: { 
-    //label: "School Year", 
+    label: "", 
     type: "band",
     domain: ["2021", "2022", "2023", "2024", "2025"]
   },
@@ -590,27 +590,34 @@ Plot.plot({
     grid: true,
     labelAnchor: "center"
   },
-  marks: [
-    Plot.barY(waterfallData, {
-      x: "YEAR",
-      y1: "yStart",
-      y2: "yEnd",
-      fill: "#4F81A8", //"#122C4F",
-      channels: {
-    "SPED Spending": d => `$${Number(d.annual).toLocaleString()}` },
-      tip: {
-        dx: -50,
-        fontSize: 14,
-        format: {
-          x: true,
-          y1: false,
-          y2: false,
-          annual: d => `$${Math.round(d).toLocaleString()}`,
-          yEnd: d => `$${Math.round(d).toLocaleString()}`,
-          "Additional Info": true 
+    
+    color: {
+      domain: ["SPED Spending"],
+      range: ["#4f81a8"],
+      legend: true
+    },
+    
+    marks: [
+      Plot.barY(waterfallData, {
+        x: "YEAR",
+        y1: "yStart",
+        y2: "yEnd",
+        fill: "#4F81A8", //"#122C4F",
+        channels: {
+          "SPED Spending": d => `$${Number(d.annual).toLocaleString()}` },
+        tip: {
+          dx: -50,
+          fontSize: 14,
+            format: {
+              x: true,
+              y1: false,
+              y2: false,
+              annual: d => `$${Math.round(d).toLocaleString()}`,
+              yEnd: d => `$${Math.round(d).toLocaleString()}`,
+              "Additional Info": true 
+            }
         }
-      }
-    }),
+      }),
     Plot.text(waterfallData, {
       x: "YEAR",
       y: "yEnd",
