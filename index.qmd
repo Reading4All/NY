@@ -52,7 +52,9 @@ about:
     - icon: substack
       text: Substack
       href: https://open.substack.com/pub/openschooldata
-
+    - icon: cup
+      text: Support Us
+      href: "support-us.html"
 format:
   html:
     include-after-body:
@@ -61,7 +63,6 @@ format:
           Copyright (c) 2026, OpenSchoolData<br>
           License: <a href="LICENSE.md">BSD 3-Clause License</a>
         </footer>
-
 ---
 ```{=html}
 <style>
