@@ -314,7 +314,7 @@ function stackedBarChart(longData) {
     width: 1000,
     height: 600,
     marginLeft: 80,
-//    marginBottom: 50,
+    marginBottom: 50,
     //title: chartTitle,
     
     x: { label: null, domain: [...new Set(longData.map(d => d.label))]},
@@ -573,6 +573,7 @@ Plot.plot({
     fontSize: "14px"
   },
   marginLeft: 80,
+  marginBottom: 50,
 //  marginRight: 40,
   width: 1000,
   height: 600,
