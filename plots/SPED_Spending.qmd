@@ -493,7 +493,7 @@ html`
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     min-width: 0;
   }
-  .indicator-card.accent-green { border-left-color: #3DAE44; }
+  .indicator-card.accent-green { border-left-color: #122C4F; } //#3DAE44
   .indicator-card.half { flex: 2 1 20px; }
   .indicator-card.quarter { flex: 1 1 20px; }
 
@@ -510,8 +510,8 @@ html`
     font-weight: 800;
     margin: 2px 0;
   }
-  .indicator-card.accent-green .indicator-value { color: #3DAE44; }
-  .indicator-card:not(.accent-green) .indicator-value { color: #122C4F; }
+  .indicator-card.accent-green .indicator-value { color: #4f81a8; } //#3DAE44;
+  .indicator-card:not(.accent-green) .indicator-value { color: #4f81a8; }
   .indicator-desc {
     font-size: clamp(0.5rem, 1.1vw, 0.6875rem);
     color: #666;
@@ -570,7 +570,7 @@ Plot.plot({
       x: "YEAR",
       y1: "yStart",
       y2: "yEnd",
-      fill: "#122C4F",
+      fill: "#4F81A8", //"#122C4F",
       channels: {
     "SPED Spending": d => `$${Number(d.annual).toLocaleString()}` },
             tip: {
@@ -589,9 +589,9 @@ Plot.plot({
       y: "yEnd",
       text: d => `$${Math.round(d.yEnd).toLocaleString()}`,
       dy: -12,
-      fontSize: 10,
+      fontSize: 14,
       fontWeight: "bold",
-      fill: "#3DAE44"
+      fill: "#5a5a5a" //"#3DAE44"
     }),
     Plot.ruleY([0])
   ]
