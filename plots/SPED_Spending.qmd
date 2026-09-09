@@ -427,6 +427,8 @@ shared_dataFiltered_ELA = {
     .filter(d =>
       d.ENTITY_NAME &&
       d.ENTITY_NAME.toUpperCase() === district_ela &&
+      d.Prof_Pct != null &&
+      !Number.isNaN(Number(d.Prof_Pct)) &&
       gradeSequence.some(
         g => Number(g.year) === Number(d.YEAR) &&
              g.assessment === d.ASSESSMENT_NAME
