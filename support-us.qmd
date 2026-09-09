@@ -6,6 +6,15 @@ format:
   dashboard:
     scrolling: true
     orientation: rows
+    nav-buttons:
+      - icon: envelope
+        href: mailto:support@openschooldata.com
+        aria-label: Email
+      - icon: substack
+        href: https://substack.com
+        aria-label: Substack
+      - icon: cup
+        href: "support-us.html"
     include-after-body:
       text: |
         <footer style="text-align: center; padding: 20px; color: #666;">
