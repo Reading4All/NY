@@ -9,7 +9,6 @@ format:
       - minty
       - ../custom.scss
     css: DistrictELAGrowth.css
-
 ---
 ```{r}
 #| echo: false
