@@ -1,12 +1,12 @@
 # SOR-links.yml
 
-- title: "Science of Reading (Reading Rockets)"
-  path: https://www.readingrockets.org/classroom/evidence-based-instruction/science-reading
-  description: "Using hihgh-quality research to guide effective classroom practices"
-
 - title: "The Importance of Evidence-Based Instruction (Reading Rockets)"
   path: https://www.readingrockets.org/classroom/evidence-based-instruction/what-is-evidence-based-instruction
   description: ""
+
+- title: "Science of Reading (Reading Rockets)"
+  path: https://www.readingrockets.org/classroom/evidence-based-instruction/science-reading
+  description: "Using hihgh-quality research to guide effective classroom practices"
 
 - title: "Science of Writing (Releasing Writers/thinkSRSD)"
   path: https://thinksrsd.com/srsd-in-action/
