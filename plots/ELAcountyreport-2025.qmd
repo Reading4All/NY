@@ -9,6 +9,9 @@ format:
       - minty
       - ../custom.scss
     css: ELAcountyreport.css
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: ../
 ---
 
 ```{r}

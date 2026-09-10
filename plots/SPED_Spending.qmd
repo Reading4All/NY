@@ -12,6 +12,9 @@ format:
       - minty
       - ../custom.scss
     css: SPED_Spending.css
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: ../
 ---
 
 ```{r}
