@@ -10,6 +10,10 @@ website:
   sidebar: false
 
 format:
+  dashboard:
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: ../
   html:
     page-layout: full
     theme: 
@@ -22,7 +26,3 @@ format:
             Copyright (c) 2026, OpenSchoolData<br>
             License: <a href="/LICENSE.md">BSD 3-Clause License</a>
           </footer>
-  dashboard:
-    nav-buttons:
-      - icon: arrow-left-circle-fill
-        href: ../
