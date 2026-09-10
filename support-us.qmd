@@ -25,7 +25,8 @@ format:
 Have an idea? Want to request a new plot? Want to help work on this open-source project? We want to hear from you!
 <br><br><br>
 **Support our Volunteer Work!**<br>
-If you'd like to buy a volunteer a coffee to show your support, it's appreciated, but reading is a right that nobody should have to pay for, so if not, I understand. Please use our resources, and share with your friends and colleagues to keep 'literacy for all' a priority!<br><br>
+Please use our resources, and share with your friends and colleagues to keep 'literacy for all' a priority!<br><br>
+If you'd like to buy a volunteer a coffee to show your support, it's appreciated, but reading is a right that nobody should have to pay for, so if not, no problem.<br><br>
 
 ### Right Col{width=350px}
 <div class="iframe-cropper">

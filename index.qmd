@@ -21,24 +21,38 @@ listing:
   filter-ui: false
   fields: [title]
   field-display-names:
-    title: "Evidence-Based Instruction, Science of Reading/Writing/Learning"
+    title: "Science of Reading(SOR)/Writing/Learning"
   table-hover: true
   table-striped: false
   categories: false
   sort: title
   
-- id: RTI_SPED-listing
-  contents: RTI_SPED-links.yml
+- id: Schools-listing
+  contents: Schools-links.yml
   type: table
   sort-ui: false
   filter-ui: false
   fields: [title]
   field-display-names:
-    title: "RTI/MTSS and Special Education (SPED)"
+    title: "School Districts - RTI/MTSS & SPED, Parental Rights"
   table-hover: true
   table-striped: false
   categories: false
   sort: title
+
+- id: Resources-listing
+  contents: Resources-links.yml
+  type: table
+  sort-ui: false
+  filter-ui: false
+  fields: [title]
+  field-display-names:
+    title: "Free SOR Resources, Parent Templates, Podcasts"
+  table-hover: true
+  table-striped: false
+  categories: false
+  sort: title
+
 
 about:
   template: jolla
