@@ -1,4 +1,5 @@
 ---
+format: html
 sidebar: false
 listing:
 - id: data-listing
