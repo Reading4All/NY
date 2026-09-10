@@ -6,6 +6,12 @@ format:
   dashboard:
     scrolling: true
     orientation: rows
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: index.html
+      - icon: envelope
+        href: mailto:support@openschooldata.com
+        aria-label: Email
     include-after-body:
       text: |
         <footer style="text-align: center; padding: 20px; color: #666;">
