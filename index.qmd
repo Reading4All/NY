@@ -25,7 +25,7 @@ listing:
   table-hover: true
   table-striped: false
   categories: false
-  sort: title
+  sort: false
   
 - id: Schools-listing
   contents: Schools-links.yml
@@ -38,7 +38,7 @@ listing:
   table-hover: true
   table-striped: false
   categories: false
-  sort: title
+  sort: false
 
 - id: Resources-listing
   contents: Resources-links.yml
@@ -51,8 +51,7 @@ listing:
   table-hover: true
   table-striped: false
   categories: false
-  sort: title
-
+  sort: false
 
 about:
   template: jolla
