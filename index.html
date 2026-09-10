@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
   
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-RTI_SPED-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-Schools-listing .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -145,7 +145,35 @@ ul.task-list li input[type="checkbox"] {
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-RTI_SPED-listing'] = new List('listing-RTI_SPED-listing', options);
+    window['quarto-listings']['listing-Schools-listing'] = new List('listing-Schools-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-Resources-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-Resources-listing'] = new List('listing-Resources-listing', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -233,19 +261,19 @@ Student Outcomes and Spending - Plots &amp; Data
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1789002904796" data-listing-reading-time-sort="13" data-listing-word-count-sort="2401" data-listing-title-sort="ELA scores, District Growth" data-listing-filename-sort="DistrictELAGrowth.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-listing-file-modified-sort="1789055277356" data-listing-reading-time-sort="13" data-listing-word-count-sort="2401" data-listing-title-sort="ELA scores, District Growth" data-listing-filename-sort="DistrictELAGrowth.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./plots/DistrictELAGrowth.html" class="title listing-title">ELA scores, District Growth</a>
 </td>
 </tr>
-<tr data-index="1" data-listing-file-modified-sort="1789002904796" data-listing-reading-time-sort="19" data-listing-word-count-sort="3716" data-listing-title-sort="ELA scores, by County - 2025" data-listing-filename-sort="ELAcountyreport-2025.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="1" data-listing-file-modified-sort="1789055277356" data-listing-reading-time-sort="19" data-listing-word-count-sort="3716" data-listing-title-sort="ELA scores, by County - 2025" data-listing-filename-sort="ELAcountyreport-2025.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./plots/ELAcountyreport-2025.html" class="title listing-title">ELA scores, by County - 2025</a>
 </td>
 </tr>
-<tr data-index="2" data-listing-file-modified-sort="1789002904796" data-listing-reading-time-sort="16" data-listing-word-count-sort="3088" data-listing-title-sort="Special Education Spending (SPED) (2021-2025)" data-listing-filename-sort="SPED_Spending.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="2" data-listing-file-modified-sort="1789055277356" data-listing-reading-time-sort="16" data-listing-word-count-sort="3088" data-listing-title-sort="Special Education Spending (SPED) (2021-2025)" data-listing-filename-sort="SPED_Spending.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./plots/SPED_Spending.html" class="title listing-title">Special Education Spending (SPED) (2021-2025)</a>
@@ -259,7 +287,7 @@ Student Outcomes and Spending - Plots &amp; Data
 <thead>
 <tr>
 <th>
-Evidence-Based Instruction, Science of Reading/Writing/Learning
+Science of Reading(SOR)/Writing/Learning
 </th>
 </tr>
 </thead>
@@ -288,15 +316,27 @@ Evidence-Based Instruction, Science of Reading/Writing/Learning
 <a href="https://www.readingrockets.org/classroom/evidence-based-instruction/science-reading" class="title listing-title">Science of Reading (Reading Rockets)</a>
 </td>
 </tr>
+<tr data-index="4" data-listing-title-sort="Science of Writing (Releasing Writers/thinkSRSD)" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="https://thinksrsd.com/srsd-in-action/" class="title listing-title">Science of Writing (Releasing Writers/thinkSRSD)</a>
+</td>
+</tr>
+<tr data-index="5" data-listing-title-sort="The Importance of Evidence-Based Instruction (Reading Rockets)" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="https://www.readingrockets.org/classroom/evidence-based-instruction/what-is-evidence-based-instruction" class="title listing-title">The Importance of Evidence-Based Instruction (Reading Rockets)</a>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
-</div><div class="quarto-listing quarto-listing-container-table" id="listing-RTI_SPED-listing">
+</div><div class="quarto-listing quarto-listing-container-table" id="listing-Schools-listing">
 <table class="quarto-listing-table table table-hover">
 <thead>
 <tr>
 <th>
-RTI/MTSS and Special Education (SPED)
+School Districts - RTI/MTSS &amp; SPED, Parental Rights
 </th>
 </tr>
 </thead>
@@ -311,6 +351,37 @@ RTI/MTSS and Special Education (SPED)
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="https://www.readingrockets.org/classroom/evidence-based-instruction" class="title listing-title">What is MTSS (and RTI)? (Reading Rockets)</a>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+</div><div class="quarto-listing quarto-listing-container-table" id="listing-Resources-listing">
+<table class="quarto-listing-table table table-hover">
+<thead>
+<tr>
+<th>
+Free SOR Resources, Parent Templates, Podcasts
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-title-sort="Phonics - UFLI Foundations (free phonics program and resources)" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="https://ufli.education.ufl.edu/foundations/toolbox/" class="title listing-title">Phonics - UFLI Foundations (free phonics program and resources)</a>
+</td>
+</tr>
+<tr data-index="1" data-listing-title-sort="Podcast - Sold a Story Podcast (APR, Emily Hanford)" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="https://www.readingrockets.org/classroom/evidence-based-instruction" class="title listing-title">Podcast - Sold a Story Podcast (APR, Emily Hanford)</a>
+</td>
+</tr>
+<tr data-index="2" data-listing-title-sort="Writing - GIST info &amp; templates" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="https://greatmiddleschools.org/toolkits/reading/get-the-gist/" class="title listing-title">Writing - GIST info &amp; templates</a>
 </td>
 </tr>
 </tbody>
