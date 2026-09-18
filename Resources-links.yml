@@ -4,11 +4,15 @@
   path: https://www.readingrockets.org/classroom/evidence-based-instruction
   description: ""
 
-- title: "Reading - UFLI Foundations (explicit, systematic phonics program and resources)"
+- title: "Reading, Spelling - UFLI Foundations (explicit, systematic phonics program and resources)"
   path: https://ufli.education.ufl.edu/foundations/toolbox/
   description: ""
 
-- title: "Writing - GIST templates"
+- title: "Writing, Reading Comprehension - GIST instructions"
   path: https://greatmiddleschools.org/toolkits/reading/get-the-gist/
+  description: ""
+
+- title: "Writing, Reading Comprehension - GIST template"
+  path: https://greatmiddleschools.org/wp-content/uploads/2018/07/Student_Gist_Log_Interactive.pdf
   description: ""
 
