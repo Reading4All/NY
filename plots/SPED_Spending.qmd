@@ -1,5 +1,5 @@
 ---
-title: "Special Education Spending (SPED) (2021-2025)"
+title: "Special Education Spending - 2021-2025"
 #subtitle: "Multi-Year Special Education Spending (2021-2025)"
 #author: "Open School Data"
 format:

@@ -1,0 +1,495 @@
+---
+title: "Special Ed Spending - 2025"
+format:
+  dashboard:
+    orientation: rows
+    expandable: false
+    scrolling: true
+    code-copy: false
+    theme:
+      - minty
+---
+
+```{r}
+#| echo: false
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(readr)
+library(dplyr)
+
+######## Load the ST3 data
+spending_url <- "https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SPENDING%2CENROLLMENT/ST3-SPED-2025.csv"
+spending_raw <- read_csv(spending_url, show_col_types = FALSE)
+
+spending_clean <- spending_raw %>%
+  filter(!is.na(NAME)) %>%
+  transmute(
+    ENTITY_CD   = BEDSCODE,
+    ENTITY_NAME = NAME,
+    COUNTY_DESC = COUNTY_DESC,
+    YEAR        = as.numeric(YEAR),
+
+    # Columns F-H : District Legal spending
+    ## Legal_ContractualOther        = as.numeric(`31597:48`),
+    ## Legal_MaterialsSupplies       = as.numeric(`31599:48`),
+    ## Legal_BOCESServices           = as.numeric(`31601:48`),
+
+    # Columns I-Q, S : SPED spending
+    # SPED_InstructionalSalaries = as.numeric(`31993:48`),
+    # SPED_NoninstructionalSalaries = as.numeric(`31995:48`),
+    SPED_Equipment                = as.numeric(`31997:48`),
+    SPED_ContractualOther         = as.numeric(`31999:48`),
+    SPED_MaterialsSupplies        = as.numeric(`32001:48`),
+    SPED_TuitionPublicDistricts   = as.numeric(`32003:48`),
+    SPED_TuitionAllOther          = as.numeric(`32005:48`),
+    SPED_Textbooks                = as.numeric(`32009:48`),
+    SPED_BOCESServices            = as.numeric(`32011:48`),
+    SPED_PaymentsCharterSchools   = as.numeric(`32007:48`)
+  ) %>%
+  mutate(across(
+    ## removing legal
+    ## Legal_ContractualOther:SPED_PaymentsCharterSchools,
+    SPED_Equipment:SPED_PaymentsCharterSchools,
+    # Treat NA as $0, and clip any negative (adjustment) values at $0
+    # since a pie chart can't display a negative slice.
+    ~ pmax(replace_na(.x, 0), 0)
+  ))
+
+######## Special Funds (Special Aid Fund) columns
+# Row 2 of the CSV is the "Account Code" row and row 1 is the "Title" row.
+# Keep every column whose account code starts with "F", contains an "_", and does
+# not contain "_0". Codes without an "_" (e.g. F4256, IDEA federal aid) are
+# revenue lines, and the "_0" columns are pre-computed totals.
+# Also excluded: transportation (F55xx), Instructional Salaries (_15),
+# Noninstructional Salaries (_16), and Employee Benefits (_8).
+acct_row  <- spending_raw %>% filter(BEDSCODE == "Account Code")
+title_row <- spending_raw %>% filter(BEDSCODE == "Title")
+
+######## SPED (General Fund) columns for chart 1, with real account codes
+# looked up from the CSV's "Account Code" row, same as the Special Funds
+# chart below. Order here controls both the legend order and which
+# spendingColor shade (below) each item gets.
+sped_meta <- tibble(
+  col       = c("31997:48", "32009:48", "32001:48", "31999:48",
+                "32003:48", "32005:48", "32011:48", "32007:48"),
+  key       = c("SPED_Equipment", "SPED_Textbooks", "SPED_MaterialsSupplies",
+                "SPED_ContractualOther", "SPED_TuitionPublicDistricts",
+                "SPED_TuitionAllOther", "SPED_BOCESServices",
+                "SPED_PaymentsCharterSchools"),
+  item_name = c("Equipment", "Textbooks", "Materials & Supplies",
+                "Contractual & Other", "Outside Tuition, Public Schools",
+                "Outside Tuition, Other", "BOCES Services", "Charter Schools")
+) %>%
+  mutate(
+    code  = as.character(unlist(acct_row[1, col], use.names = FALSE)),
+    label = paste0(item_name, " (", code, ")")
+  )
+
+item_order <- c("2", "45", "48", "4", "471", "472", "473", "49")
+group_order <- c("School Year", "Early Intervention",
+                 "Summer", "Pre-K", "Preschool 12-Month")
+
+sf_meta <- tibble(
+  col   = names(spending_raw),
+  code  = as.character(unlist(acct_row[1, ],  use.names = FALSE)),
+  title = as.character(unlist(title_row[1, ], use.names = FALSE))
+) %>%
+  filter(
+    str_starts(code, "F"),
+    str_detect(code, "_"),
+    !str_detect(code, "_0"),
+    !str_starts(code, "F55"),
+    !str_detect(code, "_(15|16|8)$")
+  ) %>%
+  mutate(
+    key    = paste0("SF_", str_remove(col, ":.*$")),
+    prefix = str_extract(code, "^F\\d+"),
+    suffix = str_extract(code, "(?<=_)\\d+$"),
+    line   = str_match(title, "\\(Line (\\d+),")[, 2],
+    group  = case_when(
+      prefix == "F2250"           ~ "School Year",
+      prefix == "F2251"           ~ "Early Intervention",
+      prefix == "F2252"           ~ "Preschool 12-Month",
+      prefix == "F2253"           ~ "Summer",
+      prefix == "F2510"           ~ "Pre-K"
+    ),
+    item_name = case_when(
+      suffix == "2"   ~ "Equipment",
+      suffix == "45"  ~ "Materials & Supplies",
+      suffix == "48"  ~ "Textbooks",
+      suffix == "4"   ~ "Contractual & Other",
+      suffix == "471" ~ "Outside Tuition, Public Schools",
+      suffix == "472" ~ "Outside Tuition, Other",
+      suffix == "473" ~ "Outside Charter Schools",
+      suffix == "49"  ~ "BOCES Services"
+    ),
+    label = paste0("", item_name, " - ", group, " (", code, ")")
+  ) %>%
+  arrange(match(suffix, item_order), match(group, group_order), line)
+
+stopifnot(!anyDuplicated(sf_meta$label), !anyDuplicated(sf_meta$key))
+
+sf_values <- spending_raw %>%
+  filter(!is.na(NAME)) %>%
+  select(all_of(sf_meta$col)) %>%
+  mutate(across(everything(), ~ pmax(replace_na(as.numeric(.x), 0), 0)))
+names(sf_values) <- sf_meta$key
+
+spending_clean <- bind_cols(spending_clean, sf_values)
+
+# Format BEDS Code to prevent scientific notation in JSON serialization
+spending_clean$ENTITY_CD <- format(spending_clean$ENTITY_CD, scientific = FALSE)
+
+# Pass data to Observable JS
+ojs_define(
+  df_to_js     = spending_clean,
+  sped_fields_js = sped_meta %>% select(key, label),
+  sf_fields_js = sf_meta %>% select(key, label, item_name)
+)
+```
+
+```{ojs}
+//| output: false
+// Transpose merged R dataframe into OJS format
+shared_data = transpose(df_to_js)
+```
+
+```{ojs}
+//| output: false
+// Identify unique counties and dynamically calculate matching districts
+uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC).filter(Boolean));
+
+districtsInCounty = new Set(
+  shared_data
+    .filter(d =>
+      d.COUNTY_DESC &&
+      d.ENTITY_NAME &&
+      d.COUNTY_DESC.toUpperCase() === county.toUpperCase()
+    )
+    .map(d => d.ENTITY_NAME)
+);
+
+districtDefault = {
+  county;
+  return "";
+}
+```
+
+```{ojs}
+//| output: false
+// Guard function - toolbar architecture (county -> district submit/reset)
+function guard(fn, options = {}, countyView) {
+  const {
+    submitLabel = "Submit",
+    resetLabel = "Reset",
+    required = false,
+    resubmit = true,
+    width = "100%",
+    justify = "start"
+  } = options;
+
+  const onSubmit = () => {
+    value = input.value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+    wrapper.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+  const onReset = () => {
+    input.value = value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+  };
+  const onInnerInputCapture = () => {
+    invalid = true;
+    submit.disabled = true;
+  };
+  const onInnerInput = e => {
+    e.stopPropagation();
+    submit.disabled = false;
+    reset.disabled = false;
+  };
+  const submit = htl.html`<button ${ { disabled: !resubmit && !required, onclick: onSubmit } } class="btn btn-primary btn-sm">${submitLabel}</button>`;
+  const reset = htl.html`<button ${ { disabled: true, onclick: onReset } } class="btn btn-secondary btn-sm">${resetLabel}</button>`;
+  const footer = htl.html`
+    <div>
+      <hr style="padding:0;margin:10px 0">
+      <div style="display:flex;gap:1ch;justify-style: ${justify} ">
+        ${submit}
+      </div>
+    </div>
+  `;
+  const template = inputs => {
+    const row = document.createElement("div");
+    row.className = "input-toolbar";
+    row.append(countyView);
+    (Array.isArray(inputs) ? inputs : Object.values(inputs))
+      .forEach(input => row.append(input));
+    const container = document.createElement("div");
+    container.style.cssText = "width:100%;max-width:100%;min-width:0;box-sizing:border-box";
+    container.append(row, footer);
+    return container;
+  };
+  const input = fn({ submit, reset, footer, template, onSubmit, onReset });
+  let invalid = !!input.querySelector(":invalid");
+  submit.disabled = !resubmit || invalid;
+  input.addEventListener("input", onInnerInputCapture, { capture: true });
+  input.addEventListener("input", onInnerInput);
+  let value = required ? undefined : input.value;
+  const wrapper = htl.html`<div style="width: ${width} ">${input}`;
+  wrapper.addEventListener("submit", onSubmit);
+  return Object.defineProperty(wrapper, "value", {
+    get: () => value,
+    set: v => { input.value = v }
+  });
+}
+```
+
+#### {.toolbar #print-hide-toolbar}
+```{ojs}
+//| output: false
+// Standalone live-reactive County search text input
+viewof county = Inputs.text({
+  value: "NASSAU",
+  label: "County: ",
+  datalist: uniqueCounties,
+  unique: true,
+  validate: v => shared_data.map(d => d.COUNTY_DESC).includes(v.value.toUpperCase()),
+  sort: true,
+  required: true
+});
+```
+
+```{ojs}
+//| output: true
+// Woven Inputs Form for District Selection
+viewof inputSels = guard(
+  ({ template }) => Inputs.form(
+    {
+      district: Inputs.select(districtsInCounty, {
+        value: districtDefault,
+        label: "District: ",
+        sort: true,
+        required: true
+      })
+    },
+    { template }
+  ),
+  {
+    resetLabel: "Reset",
+    required: true,
+    width: "100%"
+  },
+  viewof county
+);
+```
+
+```{ojs}
+//| output: false
+// Auto-submit triggers once on page load to draw initial charts instantly
+_autoSubmit = {
+  setTimeout(() => {
+    const submitBtn = Array.from(document.querySelectorAll("button"))
+      .find(b => b.textContent.trim() === "Submit");
+    if (submitBtn) submitBtn.click();
+  }, 1000);
+}
+```
+
+```{ojs}
+//| output: false
+// Filter to the single selected district's row
+shared_dataFiltered = {
+  if (!inputSels) return [];
+  const district = inputSels.district.trim().toUpperCase();
+  return shared_data.filter(d => d.ENTITY_NAME && d.ENTITY_NAME.toUpperCase() === district);
+}
+
+selectedRow = shared_dataFiltered.length ? shared_dataFiltered[0] : null;
+```
+
+```{ojs}
+//| output: false
+// Field list for the pie chart (label shown to user : underlying column)
+// SPED fields (built in the R chunk from the CSV's Account Code row)
+spedFields = transpose(sped_fields_js);
+
+function toChartData(row, fields) {
+  if (!row) return [];
+  return fields
+    .map(f => ({ label: f.label, value: +row[f.key] || 0 }))
+    .filter(d => d.value > 0);
+}
+
+spedChartData = toChartData(selectedRow, spedFields);
+
+// Special Funds fields (built in the R chunk from the CSV's Account Code row)
+sfFields = transpose(sf_fields_js);
+sfChartData = toChartData(selectedRow, sfFields);
+```
+
+```{ojs}
+//| output: false
+// Color scale for the General Funds
+
+spendingColor = {
+  // Same hue family, stepped through lightness for the items in each group
+  const EquipMaterialShades = d3.quantize(t => d3.interpolateYlOrBr(0.1 + t * 0.2), 3);
+  const TuitionShades   = d3.quantize(t => d3.interpolateBlues(0.3 + t * 0.7), 4);    
+//  const legalShades  = d3.quantize(t => d3.interpolateReds(0.5 + t * 0.8), 3); 
+  const SPEDContracts  = d3.quantize(t => d3.interpolateGreens(.5), 1); 
+
+
+  return d3.scaleOrdinal()
+    .domain(spedFields.map(f => f.label))
+    .range([
+      EquipMaterialShades[0],   // Equipment
+      EquipMaterialShades[1],   // Textbooks
+      EquipMaterialShades[2],   // Materials & Supplies
+      SPEDContracts[0],  // Contractual & Other
+      TuitionShades[0],  // Outside Tuition, Public Schools
+      TuitionShades[1],  // Outside Tuition, Other
+      TuitionShades[2],  // BOCES Services
+      TuitionShades[3]  // Charter Schools
+      // legalShades[0],  // Legal - Contractual & Other
+      // legalShades[1],  // Legal - Materials & Supplies
+      // legalShades[2]   // Legal - BOCES Services
+    ]);
+}
+  
+```
+
+```{ojs}
+//| output: false
+// Color scale for the Special Funds
+
+sfColor = {
+  // Groups with a single static color (no gradient) go here.
+  const staticColors = {
+    "Outside Tuition, Public Schools": d3.interpolateBlues(.3),
+    "Outside Tuition, Other":          d3.interpolateBlues(.4),
+    "Outside Charter Schools":         d3.interpolateBlues(.5),
+    "BOCES Services":                  d3.interpolateBlues(.7)
+  };
+  // Groups shaded across a range of a d3 interpolator go here.
+  const interps = {
+    "Equipment":           d3.interpolateYlOrBr,
+    "Materials & Supplies": d3.interpolateYlOrBr,
+    "Textbooks":            d3.interpolateYlOrBr,
+    "Contractual & Other":  d3.interpolateGreens
+  };
+  // Per-color lightness band [min, max]; anything not listed uses the default.
+  const defaultRange = [0.4, 0.9];
+  const ranges = {
+    "Equipment":            [0.1, 0.35],
+    "Materials & Supplies": [0.1, 0.35],
+    "Textbooks":            [0.1, 0.35]
+  };
+  const groups = d3.group(sfFields, f => f.item_name);
+  const colorOf = new Map();
+  for (const [g, members] of groups) {
+    if (staticColors[g]) {
+      members.forEach(f => colorOf.set(f.label, staticColors[g]));
+      continue;
+    }
+    const interp = interps[g] || d3.interpolateGreys;
+    const [lo, hi] = ranges[g] || defaultRange;
+    members.forEach((f, i) => {
+      const t = members.length === 1 ? 0.7 : i / (members.length - 1);
+      colorOf.set(f.label, interp(lo + (hi - lo) * t));
+    });
+  }
+  return d3.scaleOrdinal()
+    .domain(sfFields.map(f => f.label))
+    .range(sfFields.map(f => colorOf.get(f.label)));
+}
+
+```
+
+```{ojs}
+//| output: false
+// Reusable pie chart (d3), with a % label on larger slices and a legend
+function pieChart(data, { width = 460, height = 440, title = "", color = spendingColor } = {}) {
+  if (!data || data.length === 0) {
+    return html`<div style="text-align:center;color:#888;padding:60px 20px;">
+      <strong>${title}</strong><br>No spending reported for this district.
+    </div>`;
+  }
+
+  const total = d3.sum(data, d => d.value);
+  const radius = Math.min(width, height) / 2 - 20;
+
+  const arcs = d3.pie().value(d => d.value).sort(null)(data);
+  const arcGen = d3.arc().innerRadius(radius * 0.35).outerRadius(radius);
+
+  const svg = d3.create("svg")
+    .attr("viewBox", [-width / 2, -height / 2, width, height])
+    .attr("width", width)
+    .attr("height", height)
+    .style("font", "12px sans-serif");
+
+  svg.append("g")
+    .selectAll("path")
+    .data(arcs)
+    .join("path")
+      .attr("d", arcGen)
+      .attr("fill", d => color(d.data.label))
+      .attr("stroke", "white")
+      .attr("stroke-width", 1)
+    .append("title")
+      .text(d => `${d.data.label}\n$${Math.round(d.data.value).toLocaleString()} (${((d.data.value / total) * 100).toFixed(1)}%)`);
+
+  svg.append("g")
+    .attr("text-anchor", "middle")
+    .selectAll("text")
+    .data(arcs)
+    .join("text")
+      .attr("transform", d => `translate(${arcGen.centroid(d)})`)
+      .style("font-size", "10px")
+      .style("font-weight", "600")
+      .style("fill", "#fff")
+      .text(d => (d.data.value / total) > 0.04 ? `${Math.round((d.data.value / total) * 100)}%` : "");
+
+  svg.append("text")
+      .attr("x", 0)
+      .attr("y", -height / 2 + 16)
+      .attr("text-anchor", "middle")
+      .style("font-size", "15px")
+      .style("font-weight", "bold")
+      .text(title);
+
+const legend = html`<div style="font-size:11px;margin:6px auto 0;width:fit-content;max-width:100%;">
+  ${data.map(d => html`<div style="display:flex;align-items:center;justify-content:flex-start;gap:6px;margin:2px 0;">
+    <span style="width:10px;height:10px;background:${color(d.label)};display:inline-block;border-radius:2px;flex:none;"></span>
+    <span>${d.label}: <strong>$${Math.round(d.value).toLocaleString()}</strong></span>
+  </div>`)}
+</div>`;
+
+return html`<div style="text-align:left;width:${width}px;max-width:100%;">${svg.node()}${legend}</div>`;
+}
+```
+
+#### Print District Selected {height=10%}
+```{ojs}
+//| echo: false
+md`### SPED Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Transportation</i></h>`
+```
+
+#### Pie Charts {height=90%}
+```{ojs}
+//| title: "General Fund"
+//| echo: false
+pieChart(spedChartData, { title: "" }) 
+```
+
+```{ojs}
+//| title: "Special Aid Fund"
+//| echo: false
+pieChart(sfChartData, { title: "", color: sfColor })
+```
+
+## References, Notes {#print-footer}
+* Spending Data from: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [XLSX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
+<!-- * Per Pupil SPED Spending from:  -->
