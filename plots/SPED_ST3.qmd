@@ -1,5 +1,5 @@
 ---
-title: "Special Ed Spending - 2025"
+title: "District SPED Spending (2025)"
 format:
   dashboard:
     orientation: rows
@@ -20,7 +20,7 @@ library(tidyverse)
 library(readr)
 library(dplyr)
 
-######## Load the ST3 data
+######## Load the spending data
 spending_url <- "https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SPENDING%2CENROLLMENT/ST3-SPED-2025.csv"
 spending_raw <- read_csv(spending_url, show_col_types = FALSE)
 
@@ -410,8 +410,19 @@ sfColor = {
 
 ```{ojs}
 //| output: false
-// Reusable pie chart (d3), with a % label on larger slices and a legend
-function pieChart(data, { width = 460, height = 440, title = "", color = spendingColor } = {}) {
+// Reusable pie chart (d3), with a % label on larger slices and a legend.
+// No width/height is passed in at the call site — the SVG uses a fixed
+// internal drawing coordinate system (drawWidth/drawHeight, purely for the
+// math below: radius, text positions, viewBox), but is rendered with CSS
+// width:100%/height:auto, so the browser scales it to fill whatever
+// container (card, column, etc.) it's placed in and rescales on resize.
+// This is the standard responsive-SVG technique; it doesn't rely on OJS's
+// built-in reactive `width`, which is scoped to the cell that references
+// it and wouldn't track the *calling* cell's container from inside a
+// function defined elsewhere.
+function pieChart(data, { title = "", color = spendingColor } = {}) {
+  const drawWidth = 460, drawHeight = 440;
+
   if (!data || data.length === 0) {
     return html`<div style="text-align:center;color:#888;padding:60px 20px;">
       <strong>${title}</strong><br>No spending reported for this district.
@@ -419,15 +430,16 @@ function pieChart(data, { width = 460, height = 440, title = "", color = spendin
   }
 
   const total = d3.sum(data, d => d.value);
-  const radius = Math.min(width, height) / 2 - 20;
+  const radius = Math.min(drawWidth, drawHeight) / 2 - 20;
 
   const arcs = d3.pie().value(d => d.value).sort(null)(data);
   const arcGen = d3.arc().innerRadius(radius * 0.35).outerRadius(radius);
 
   const svg = d3.create("svg")
-    .attr("viewBox", [-width / 2, -height / 2, width, height])
-    .attr("width", width)
-    .attr("height", height)
+    .attr("viewBox", [-drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight])
+    .style("width", "100%")
+    .style("height", "auto")
+    .style("display", "block")
     .style("font", "12px sans-serif");
 
   svg.append("g")
@@ -454,7 +466,7 @@ function pieChart(data, { width = 460, height = 440, title = "", color = spendin
 
   svg.append("text")
       .attr("x", 0)
-      .attr("y", -height / 2 + 16)
+      .attr("y", -drawHeight / 2 + 16)
       .attr("text-anchor", "middle")
       .style("font-size", "15px")
       .style("font-weight", "bold")
@@ -467,7 +479,7 @@ const legend = html`<div style="font-size:11px;margin:6px auto 0;width:fit-conte
   </div>`)}
 </div>`;
 
-return html`<div style="text-align:left;width:${width}px;max-width:100%;">${svg.node()}${legend}</div>`;
+return html`<div style="text-align:left;width:100%;">${svg.node()}${legend}</div>`;
 }
 ```
 
@@ -489,7 +501,6 @@ pieChart(spedChartData, { title: "" })
 //| echo: false
 pieChart(sfChartData, { title: "", color: sfColor })
 ```
-
 ## References, Notes {#print-footer}
 * Spending Data from: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [XLSX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
 <!-- * Per Pupil SPED Spending from:  -->
