@@ -14,7 +14,6 @@ nav-buttons:
   - icon: arrow-left-circle-fill
     href: ../
 ---
-
 ```{r}
 #| echo: false
 #| include: false
@@ -45,6 +44,29 @@ spec_all <- tibble(
 item_order  <- c("2", "45", "48", "4", "471", "472", "473", "49")
 group_order <- c("School Age", "Early Intervention", "Summer", "Preschool")
 
+
+######## For reference, what's in the CSV
+## General Fund
+## A2250_ = SPED Spending
+## A1420_ = Legal Spending
+## A2820_ = Pycological Services
+## A2825_ = Social Work Services
+## A2830_ = Special Schools
+
+# Special Aid Fund
+## F2250_ = SPED Spending - School Age
+## F2251_ = SPED Spending - Early Intervention
+## F2252_ = SPED Spending - Pre-School
+## F2253_ = SPED Spending - Summer
+## F5511_ = SPED Transportation - District
+## F5541_ = SPED Transportation - Summer, Contract
+## F5551_  = SPED Transportation - Summer, Public 
+## F5582_ = SPED Transportation - Summer, to BOCES
+## F5598_ = SPED Transportation - Summer Total
+
+## A9901_95 = Transfer from Gen Fund to Special Fund -- good to have
+## fyi, on ST3, Account codes without "_" is revenue, not spending
+
 ######## Special Aid Funds Metadata (sf_meta)
 sf_meta <- spec_all %>%
   filter(
@@ -64,20 +86,23 @@ sf_meta <- spec_all %>%
       prefix == "F2251" ~ "Early Intervention",
       prefix == "F2252" ~ "Preschool",
       prefix == "F2253" ~ "Summer",
-      prefix == "F2510" ~ "Pre-K",
       TRUE              ~ "Other"
     ),
     item_name = case_when(
+      suffix == "0"   ~ "Total",
+      suffix == "15"  ~ "Instructional Salaries",
+      suffix == "16"  ~ "Non-Instructional",
       suffix == "2"   ~ "Equipment",
-      suffix == "45"  ~ "Materials & Supplies",
-      suffix == "48"  ~ "Textbooks",
       suffix == "4"   ~ "Contractual & Other",
+      suffix == "45"  ~ "Materials & Supplies",
       suffix == "471" ~ "Tuition To Public Schools",
       suffix == "472" ~ "Tuition To Other",
       suffix == "473" ~ "Tuition To Charter Schools",
+      suffix == "48"  ~ "Textbooks",
       suffix == "49"  ~ "BOCES Services",
-      TRUE            ~ "Other"
-    ),
+      suffix == "8"   ~ "Employee Benefits",
+      suffix == "95"  ~ "Xfer to Special Aid Fund",
+      TRUE            ~ "Other"    ),
     label = paste0(item_name, " - ", group, " (", code, ")")
   ) %>%
   arrange(match(suffix, item_order), match(group, group_order), line)
@@ -87,7 +112,12 @@ stopifnot(!anyDuplicated(sf_meta$label), !anyDuplicated(sf_meta$key))
 ######## General Funds & Legal Metadata (sped_meta)
 sped_meta <- spec_all %>%
   filter(
-    (str_starts(code, "A1420_") | str_starts(code, "A2250_")), # Legal and SPED
+    (str_starts(code, "A1420_") |   # Keep Legal
+       str_starts(code, "A2250_") |  # Keep SPED
+       str_starts(code, "A2820_") |  # keep psychological
+       str_starts(code, "A2825_") |  # keep social worker
+       str_starts(code, "A2830_")    # keep special schools
+     ), 
     !str_detect(code, "_0$"),        # Exclude A2250_0 (totals)
     !str_detect(code, "_(15|16|8)$") # Exclude salaries and employee benefits
   ) %>%
@@ -111,7 +141,14 @@ sped_meta <- spec_all %>%
       suffix == "95"  ~ "Xfer to Special Aid Fund",
       TRUE            ~ "Other"
     ),
-    item_name = if_else(prefix == "A1420", paste0("Legal - ", item_base), item_base),
+    program_label = case_when(
+      prefix == "A1420" ~ "Legal",
+      prefix == "A2820" ~ "Psychological",
+      prefix == "A2825" ~ "Social Work",
+      prefix == "A2830" ~ "Special Schools",
+      TRUE              ~ ""
+    ),
+    item_name = if_else(program_label != "", paste0(program_label, " - ", item_base), item_base),
     label     = paste0(item_name, " (", code, ")")
   ) %>%
   arrange(prefix, match(suffix, item_order))
@@ -359,17 +396,34 @@ spendingColor = {
   const EquipMaterialShades = d3.quantize(t => d3.interpolateYlOrBr(0.1 + t * 0.2), 3);
   const SPEDContracts  = d3.quantize(t => d3.interpolateGreens(.5), 1); 
   const legalShades  = d3.quantize(t => d3.interpolateReds(0.5 + t * 0.7), 3); 
+  
+  // Shades of Purple for Psychological, Social Work, and Special Schools (A2820_, A2825_, A2830_)
+  const psychShades   = d3.quantize(t => d3.interpolatePurples(0.25 + t * 0.25), 3); // Lighter Purples
+  const socialShades  = d3.quantize(t => d3.interpolatePurples(0.55 + t * 0.25), 3); // Mid Purples
+  const specSchShades = d3.quantize(t => d3.interpolatePurples(0.82 + t * 0.15), 3); // Dark Purples
 
   // Shared shades of blue across all 3 plots for tuition and BOCES services
   const tuitionBlue1 = d3.interpolateBlues(0.30); // Tuition To Public Schools
   const tuitionBlue2 = d3.interpolateBlues(0.50); // Tuition To Other
   const tuitionBlue3 = d3.interpolateBlues(0.60); // Tuition To Charter Schools
-  const tuitionBlue4 = d3.interpolateBlues(0.70); // BOCES Services
+  const tuitionBlue4 = d3.interpolateBlues(0.80); // BOCES Services (Lighter Blue)
 
   const colorMap = new Map([
     ["Legal - Contractual & Other", legalShades[0]],
     ["Legal - Materials & Supplies", legalShades[1]],
     ["Legal - BOCES Services", legalShades[2]],
+
+    ["Psychological - Contractual & Other", psychShades[0]],
+    ["Psychological - Materials & Supplies", psychShades[1]],
+    ["Psychological - BOCES Services", psychShades[2]],
+
+    ["Social Work - Contractual & Other", socialShades[0]],
+    ["Social Work - Materials & Supplies", socialShades[1]],
+    ["Social Work - BOCES Services", socialShades[2]],
+
+    ["Special Schools - Contractual & Other", specSchShades[0]],
+    ["Special Schools - Materials & Supplies", specSchShades[1]],
+    ["Special Schools - BOCES Services", specSchShades[2]],
 
     ["Equipment", EquipMaterialShades[0]],
     ["Materials & Supplies", EquipMaterialShades[1]],
@@ -385,7 +439,13 @@ spendingColor = {
 
   return d3.scaleOrdinal()
     .domain(spedFields.map(f => f.label))
-    .range(spedFields.map(f => colorMap.get(f.item_name) || "#999"));
+    .range(spedFields.map(f => {
+      if (colorMap.has(f.item_name)) return colorMap.get(f.item_name);
+      if (f.item_name.startsWith("Psychological")) return d3.interpolatePurples(0.35);
+      if (f.item_name.startsWith("Social Work")) return d3.interpolatePurples(0.65);
+      if (f.item_name.startsWith("Special Schools")) return d3.interpolatePurples(0.85);
+      return "#999";
+    }));
 }
 
 ```
@@ -400,10 +460,10 @@ sfColor = {
     "Tuition To Public Schools":        d3.interpolateBlues(0.30),
     "Tuition To Other":                 d3.interpolateBlues(0.50),
     "Tuition To Charter Schools":       d3.interpolateBlues(0.60),
-    "BOCES Services":                  d3.interpolateBlues(0.70),
+    "BOCES Services":                  d3.interpolateBlues(0.80),
     "Legal - Contractual & Other":     d3.interpolateReds(.2),
     "Legal - Materials & Supplies":    d3.interpolateReds(.3),
-    "Legal - BOCES Services":          d3.interpolateReds(.4),
+    "Legal - BOCES Services":          d3.interpolateReds(.35),
     "Contractual & Other":             d3.interpolateGreens(0.5)                     
   };
   // Groups shaded across a range of a d3 interpolator go here.
@@ -450,6 +510,12 @@ itemColor = {
   for (const f of spedFields) {
     if (f.item_name.startsWith("Legal")) {
       byItem.set("Legal", d3.interpolateReds(0.5));
+    } else if (f.item_name.startsWith("Psychological")) {
+      byItem.set("Psychological", d3.interpolatePurples(0.35));
+    } else if (f.item_name.startsWith("Social Work")) {
+      byItem.set("Social Work", d3.interpolatePurples(0.65));
+    } else if (f.item_name.startsWith("Special Schools")) {
+      byItem.set("Special Schools", d3.interpolatePurples(0.88));
     } else if (!byItem.has(f.item_name)) {
       byItem.set(f.item_name, spendingColor(f.label));
     }
@@ -464,14 +530,18 @@ itemColor = {
 ```{ojs}
 //| output: false
 // Combined chart data: sum the General Fund (spedFields) and Special Aid
-// Fund (sfFields) values together by item type, so e.g. every "Materials &
-// Supplies" account across both funds becomes one slice.
+// Fund (sfFields) values together by item type
 combinedChartData = {
   const totals = new Map();
   function addFields(fields) {
     for (const f of fields) {
       const v = +selectedRow?.[f.key] || 0;
-      const labelName = f.item_name.startsWith("Legal") ? "Legal" : f.item_name;
+      let labelName = f.item_name;
+      if (f.item_name.startsWith("Legal")) labelName = "Legal";
+      else if (f.item_name.startsWith("Psychological")) labelName = "Psychological";
+      else if (f.item_name.startsWith("Social Work")) labelName = "Social Work";
+      else if (f.item_name.startsWith("Special Schools")) labelName = "Special Schools";
+      
       totals.set(labelName, (totals.get(labelName) || 0) + v);
     }
   }
@@ -587,4 +657,4 @@ pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })
 ```
 
 #### References, Notes {#print-footer}
-* Spending Data: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
+*  Spending Data: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
