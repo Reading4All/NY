@@ -1,0 +1,356 @@
+/* gets rid of too much whitespace above plots */
+h2 {
+  margin-top: 0 !important;
+  font-size: 1.1rem;
+}
+
+/* set min width so the cumulated spending box wraps */
+.indicator-card.half.accent-green {
+  min-width: 300px;
+}
+
+/* set min width so the cumulated spending box wraps */
+.indicator-card.quarter {
+  min-width: 150px;
+}
+
+/* decrease whitespace below cards */
+.bslib-grid.html-fill-item.html-fill-container {
+  grid-template-rows: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* input boxes - formatting so they wrap when screen size decreased */
+.input-toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 4px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+.input-toolbar > form {
+  width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.input-toolbar input,
+.input-toolbar select {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 850px) {
+  .input-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .input-toolbar {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+  }
+}
+
+/* end of input boxes - formatting */
+
+/* remove scrollbar under input header */
+.cell-output.cell-output-display {
+  overflow-x: hidden;
+}
+
+/* font in the reference notes sections */
+.card-body.html-fill-item.html-fill-container {
+  color: #5a5a5a;
+  font-size: .8rem;
+}
+
+
+/* =========================================================
+   PLOTS SIDE-BY-SIDE ON SCREEN
+   ========================================================= */
+
+@media (min-width: 768px) {
+
+  .panel-tabset .tab-pane.active {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .panel-tabset .tab-pane.active > .cell {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+
+/* Stack on smaller screens */
+@media (max-width: 767px) {
+
+  .panel-tabset .tab-pane.active {
+    display: block !important;
+  }
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+  /* -------------------------------------------------------
+     PAGE
+     ------------------------------------------------------- */
+
+  @page {
+    size: landscape;
+    margin: 0.35in 0.5in 0.9in 0.5in;
+  }
+
+
+  /* -------------------------------------------------------
+     REMOVE QUARTO FILL HEIGHT
+     ------------------------------------------------------- */
+
+  body,
+  .quarto-dashboard,
+  .quarto-dashboard-content,
+  main.quarto-dashboard-content,
+  .dashboard-page,
+  .dashboard-row,
+  .dashboard-column,
+  .bslib-grid,
+  .bslib-gap-spacing,
+  .html-fill-container,
+  .html-fill-item,
+  .column-screen,
+  .column-page {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+
+  /* -------------------------------------------------------
+     SHOW ALL TAB CONTENT
+     ------------------------------------------------------- */
+
+  .panel-tabset .tab-content,
+  .panel-tabset .tab-pane,
+  .panel-tabset .tab-pane .card,
+  .panel-tabset .tab-pane .bslib-card,
+  .panel-tabset .tab-pane .card-body {
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+  }
+
+
+  /* -------------------------------------------------------
+     FORCE THE PLOT CONTAINER TO TWO COLUMNS
+     ------------------------------------------------------- */
+
+  .panel-tabset .tab-content > .tab-pane {
+    display: grid !important;
+
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+
+    grid-template-rows: auto !important;
+
+    column-gap: 15px !important;
+    row-gap: 0 !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+
+  /* -------------------------------------------------------
+     FORCE EACH PLOT INTO ITS OWN COLUMN
+     ------------------------------------------------------- */
+
+  .panel-tabset .tab-content > .tab-pane > .cell {
+    grid-column: auto !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+
+  /* -------------------------------------------------------
+     MAKE PLOT OUTPUT FIT COLUMN
+     ------------------------------------------------------- */
+
+  .panel-tabset .cell-output,
+  .panel-tabset .cell-output-display {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+  }
+
+
+  /* -------------------------------------------------------
+     RESIZE SVG PLOTS
+     ------------------------------------------------------- */
+
+  .panel-tabset svg {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+
+  /* -------------------------------------------------------
+     RESIZE CANVAS PLOTS
+     ------------------------------------------------------- */
+
+  .panel-tabset canvas {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+
+  /* -------------------------------------------------------
+     OTHER PLOT CONTAINERS
+     ------------------------------------------------------- */
+
+  .panel-tabset .plotly,
+  .panel-tabset .observablehq {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+
+  /* -------------------------------------------------------
+     HIDE TAB NAVIGATION
+     ------------------------------------------------------- */
+
+  .panel-tabset .nav-tabs {
+    display: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+     HIDE INPUT TOOLBAR
+     ------------------------------------------------------- */
+
+  #print-hide-toolbar,
+  div.toolbar.html-fill-container {
+    display: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+     HIDE WEBSITE HEADER
+     ------------------------------------------------------- */
+
+  #quarto-dashboard-header,
+  div.navbar-container {
+    display: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+     HIDE OJS SOURCE CODE
+     ------------------------------------------------------- */
+
+  .cell-code,
+  .sourceCode,
+  pre.sourceCode,
+  details.code-fold {
+    display: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+     REMOVE CARD CHROME
+     ------------------------------------------------------- */
+
+  .card,
+  .bslib-card,
+  .panel-tabset .card,
+  #print-footer.card,
+  #print-footer .card {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .card-header,
+  .bslib-card .card-header {
+    display: none !important;
+  }
+
+  .card-body,
+  .bslib-card .card-body {
+    padding: 0 !important;
+  }
+
+
+  /* -------------------------------------------------------
+     PRINT FOOTER
+     ------------------------------------------------------- */
+
+  #print-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background: white;
+
+    font-size: 9pt;
+    line-height: 1.2;
+
+    padding: 4pt 12pt;
+
+    border-top: 0.5pt solid #ccc;
+  }
+
+  #print-footer h2 {
+    font-size: 9pt;
+    margin: 0 0 2pt 0;
+  }
+
+  #print-footer ul {
+    margin: 0;
+    padding-left: 14pt;
+  }
+}
+@media print and (max-width: 767px) {
+  .panel-tabset .tab-pane.active {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 15px !important;
+  }
+}

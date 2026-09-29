@@ -6,8 +6,13 @@ format:
     expandable: false
     scrolling: true
     code-copy: false
-    theme:
+    theme: 
       - minty
+      - ../custom.scss
+    css: DistrictELAGrowth.css
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: ../
 ---
 
 ```{r}
@@ -33,9 +38,9 @@ spending_clean <- spending_raw %>%
     YEAR        = as.numeric(YEAR),
 
     # Columns F-H : District Legal spending
-    ## Legal_ContractualOther        = as.numeric(`31597:48`),
-    ## Legal_MaterialsSupplies       = as.numeric(`31599:48`),
-    ## Legal_BOCESServices           = as.numeric(`31601:48`),
+     Legal_ContractualOther        = as.numeric(`31597:48`),
+     Legal_MaterialsSupplies       = as.numeric(`31599:48`),
+     Legal_BOCESServices           = as.numeric(`31601:48`),
 
     # Columns I-Q, S : SPED spending
     # SPED_InstructionalSalaries = as.numeric(`31993:48`),
@@ -50,11 +55,11 @@ spending_clean <- spending_raw %>%
     SPED_PaymentsCharterSchools   = as.numeric(`32007:48`)
   ) %>%
   mutate(across(
-    ## removing legal
-    ## Legal_ContractualOther:SPED_PaymentsCharterSchools,
-    SPED_Equipment:SPED_PaymentsCharterSchools,
+    ## keep legal data
+     Legal_ContractualOther:SPED_PaymentsCharterSchools,
+    ## remove legal data
+    ## SPED_Equipment:SPED_PaymentsCharterSchools,
     # Treat NA as $0, and clip any negative (adjustment) values at $0
-    # since a pie chart can't display a negative slice.
     ~ pmax(replace_na(.x, 0), 0)
   ))
 
@@ -68,18 +73,23 @@ spending_clean <- spending_raw %>%
 acct_row  <- spending_raw %>% filter(BEDSCODE == "Account Code")
 title_row <- spending_raw %>% filter(BEDSCODE == "Title")
 
-######## SPED (General Fund) columns for chart 1, with real account codes
-# looked up from the CSV's "Account Code" row, same as the Special Funds
-# chart below. Order here controls both the legend order and which
-# spendingColor shade (below) each item gets.
+
+######## Cleaning, grouping data
+
+## data for SPED General Funds
+## This is too manual, show update this to do this programmatically, like how' data for Special Funds', below
 sped_meta <- tibble(
-  col       = c("31997:48", "32009:48", "32001:48", "31999:48",
-                "32003:48", "32005:48", "32011:48", "32007:48"),
-  key       = c("SPED_Equipment", "SPED_Textbooks", "SPED_MaterialsSupplies",
+ 
+  ##includes legal data 
+  col       = c("31597:48", "31599:48", "31601:48", "31997:48", "32009:48", "32001:48",
+                "31999:48", "32003:48", "32005:48", "32011:48", "32007:48"),
+  
+  key       = c("Legal_ContractualOther", "Legal_MaterialsSupplies", "Legal_BOCESServices",
+                "SPED_Equipment", "SPED_Textbooks", "SPED_MaterialsSupplies",
                 "SPED_ContractualOther", "SPED_TuitionPublicDistricts",
                 "SPED_TuitionAllOther", "SPED_BOCESServices",
                 "SPED_PaymentsCharterSchools"),
-  item_name = c("Equipment", "Textbooks", "Materials & Supplies",
+  item_name = c("Legal - Contractual & Other", "Legal - Materials & Supplies", "Legal - BOCES Services", "Equipment", "Textbooks", "Materials & Supplies",
                 "Contractual & Other", "Outside Tuition, Public Schools",
                 "Outside Tuition, Other", "BOCES Services", "Charter Schools")
 ) %>%
@@ -88,6 +98,7 @@ sped_meta <- tibble(
     label = paste0(item_name, " (", code, ")")
   )
 
+## data for Special Funds
 item_order <- c("2", "45", "48", "4", "471", "472", "473", "49")
 group_order <- c("School Year", "Early Intervention",
                  "Summer", "Pre-K", "Preschool 12-Month")
@@ -338,13 +349,20 @@ spendingColor = {
   // Same hue family, stepped through lightness for the items in each group
   const EquipMaterialShades = d3.quantize(t => d3.interpolateYlOrBr(0.1 + t * 0.2), 3);
   const TuitionShades   = d3.quantize(t => d3.interpolateBlues(0.3 + t * 0.7), 4);    
-//  const legalShades  = d3.quantize(t => d3.interpolateReds(0.5 + t * 0.8), 3); 
   const SPEDContracts  = d3.quantize(t => d3.interpolateGreens(.5), 1); 
+// red colors for legal data
+  const legalShades  = d3.quantize(t => d3.interpolateReds(0.5 + t * 0.8), 3); 
 
 
   return d3.scaleOrdinal()
     .domain(spedFields.map(f => f.label))
     .range([
+      // ORDER MATTERS, these colors must match order above to be colored correctly
+      // legal shades
+      legalShades[0],  // Legal - Contractual & Other
+      legalShades[1],  // Legal - Materials & Supplies
+      legalShades[2],   // Legal - BOCES Services
+    
       EquipMaterialShades[0],   // Equipment
       EquipMaterialShades[1],   // Textbooks
       EquipMaterialShades[2],   // Materials & Supplies
@@ -353,9 +371,6 @@ spendingColor = {
       TuitionShades[1],  // Outside Tuition, Other
       TuitionShades[2],  // BOCES Services
       TuitionShades[3]  // Charter Schools
-      // legalShades[0],  // Legal - Contractual & Other
-      // legalShades[1],  // Legal - Materials & Supplies
-      // legalShades[2]   // Legal - BOCES Services
     ]);
 }
   
@@ -371,14 +386,17 @@ sfColor = {
     "Outside Tuition, Public Schools": d3.interpolateBlues(.3),
     "Outside Tuition, Other":          d3.interpolateBlues(.4),
     "Charter Schools":                 d3.interpolateBlues(.5),
-    "BOCES Services":                  d3.interpolateBlues(.7)
+    "BOCES Services":                  d3.interpolateBlues(.7),
+    "Legal - Contractual & Other":     d3.interpolateReds(0.1),
+    "Legal - Materials & Supplies":    d3.interpolateReds(0.15),
+    "Legal - BOCES Services":          d3.interpolateReds(0.2),
+    "Contractual & Other":             d3.interpolateGreens(0.5)                     
   };
   // Groups shaded across a range of a d3 interpolator go here.
   const interps = {
     "Equipment":           d3.interpolateYlOrBr,
     "Materials & Supplies": d3.interpolateYlOrBr,
-    "Textbooks":            d3.interpolateYlOrBr,
-    "Contractual & Other":  d3.interpolateGreens
+    "Textbooks":            d3.interpolateYlOrBr
   };
   // Per-color lightness band [min, max]; anything not listed uses the default.
   const defaultRange = [0.4, 0.9];
@@ -410,14 +428,20 @@ sfColor = {
 
 ```{ojs}
 //| output: false
+
+// Colors for Total chart
 // One color per item type (Equipment, Materials & Supplies, etc.), reused by
-// the combined chart below. Pulled directly from sfColor so a category's
-// color always matches what it already looks like in the Special Aid Fund
-// chart (sfColor is the more general of the two: every item type gets a
-// distinct color there, vs. spendingColor above where a couple of item
-// types share a hue and are only told apart by position).
+// the combined chart below. Prefer sfColor, since it gives every shared item
+// type its own distinct color; fall back to spendingColor for anything that
+// only exists in the General Fund chart (the Legal items), so every category
+// in the combined chart gets a real, intentional color instead of whatever
+// d3.scaleOrdinal falls back to for an unrecognized label.
 itemColor = {
-  const byItem = new Map(sfFields.map(f => [f.item_name, sfColor(f.label)]));
+  const byItem = new Map();
+  for (const f of sfFields) byItem.set(f.item_name, sfColor(f.label));
+  for (const f of spedFields) {
+    if (!byItem.has(f.item_name)) byItem.set(f.item_name, spendingColor(f.label));
+  }
   return d3.scaleOrdinal()
     .domain([...byItem.keys()])
     .range([...byItem.values()]);
@@ -522,23 +546,23 @@ return html`<div style="text-align:left;width:100%;">${svg.node()}${legend}</div
 ## Row - Print District Selected {height=15%}
 ```{ojs}
 //| echo: false
-md`### SPED Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Transportation</i></h>`
+md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Transportation</i></h>`
 ```
 ## Row - Pie Charts {height=85% .flow}
 ### Left Col - Total Chart {width=60% .fill}
 ```{ojs}
-//| title: "Combined: General Fund + Special Aid Fund"
+//| title: "Combined Spending: General + Special Aid"
 //| echo: false
 pieChart(combinedChartData, { title: "", color: itemColor })
 ```
 ### Right Col - General and Special Fund Charts {width=40% .fill}
 ```{ojs}
-//| title: "General Fund"
+//| title: "General Fund - Spending"
 //| echo: false
 pieChart(spedChartData, { title: "", maxHeight: 250 }) 
 ```
 ```{ojs}
-//| title: "Special Aid Fund"
+//| title: "Special Aid Fund - Spending"
 //| echo: false
 pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })
 ```
