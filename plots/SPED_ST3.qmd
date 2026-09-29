@@ -6,13 +6,13 @@ format:
     expandable: false
     scrolling: true
     code-copy: false
-    theme: 
+    theme:
       - minty
       - ../custom.scss
     css: DistrictELAGrowth.css
-    nav-buttons:
-      - icon: arrow-left-circle-fill
-        href: ../
+nav-buttons:
+  - icon: arrow-left-circle-fill
+    href: ../
 ---
 
 ```{r}
@@ -29,91 +29,30 @@ library(dplyr)
 spending_url <- "https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SPENDING%2CENROLLMENT/ST3-SPED-2025.csv"
 spending_raw <- read_csv(spending_url, show_col_types = FALSE)
 
-spending_clean <- spending_raw %>%
-  filter(!is.na(NAME)) %>%
-  transmute(
-    ENTITY_CD   = BEDSCODE,
-    ENTITY_NAME = NAME,
-    COUNTY_DESC = COUNTY_DESC,
-    YEAR        = as.numeric(YEAR),
-
-    # Columns F-H : District Legal spending
-     Legal_ContractualOther        = as.numeric(`31597:48`),
-     Legal_MaterialsSupplies       = as.numeric(`31599:48`),
-     Legal_BOCESServices           = as.numeric(`31601:48`),
-
-    # Columns I-Q, S : SPED spending
-    # SPED_InstructionalSalaries = as.numeric(`31993:48`),
-    # SPED_NoninstructionalSalaries = as.numeric(`31995:48`),
-    SPED_Equipment                = as.numeric(`31997:48`),
-    SPED_ContractualOther         = as.numeric(`31999:48`),
-    SPED_MaterialsSupplies        = as.numeric(`32001:48`),
-    SPED_TuitionPublicDistricts   = as.numeric(`32003:48`),
-    SPED_TuitionAllOther          = as.numeric(`32005:48`),
-    SPED_Textbooks                = as.numeric(`32009:48`),
-    SPED_BOCESServices            = as.numeric(`32011:48`),
-    SPED_PaymentsCharterSchools   = as.numeric(`32007:48`)
-  ) %>%
-  mutate(across(
-    ## keep legal data
-     Legal_ContractualOther:SPED_PaymentsCharterSchools,
-    ## remove legal data
-    ## SPED_Equipment:SPED_PaymentsCharterSchools,
-    # Treat NA as $0, and clip any negative (adjustment) values at $0
-    ~ pmax(replace_na(.x, 0), 0)
-  ))
-
-######## Special Funds (Special Aid Fund) columns
-# Row 2 of the CSV is the "Account Code" row and row 1 is the "Title" row.
-# Keep every column whose account code starts with "F", contains an "_", and does
-# not contain "_0". Codes without an "_" (e.g. F4256, IDEA federal aid) are
-# revenue lines, and the "_0" columns are pre-computed totals.
-# Also excluded: transportation (F55xx), Instructional Salaries (_15),
-# Noninstructional Salaries (_16), and Employee Benefits (_8).
+# Extract Account Code and Title rows for spec_all
 acct_row  <- spending_raw %>% filter(BEDSCODE == "Account Code")
 title_row <- spending_raw %>% filter(BEDSCODE == "Title")
 
-
-######## Cleaning, grouping data
-
-## data for SPED General Funds
-## This is too manual, show update this to do this programmatically, like how' data for Special Funds', below
-sped_meta <- tibble(
- 
-  ##includes legal data 
-  col       = c("31597:48", "31599:48", "31601:48", "31997:48", "32009:48", "32001:48",
-                "31999:48", "32003:48", "32005:48", "32011:48", "32007:48"),
-  
-  key       = c("Legal_ContractualOther", "Legal_MaterialsSupplies", "Legal_BOCESServices",
-                "SPED_Equipment", "SPED_Textbooks", "SPED_MaterialsSupplies",
-                "SPED_ContractualOther", "SPED_TuitionPublicDistricts",
-                "SPED_TuitionAllOther", "SPED_BOCESServices",
-                "SPED_PaymentsCharterSchools"),
-  item_name = c("Legal - Contractual & Other", "Legal - Materials & Supplies", "Legal - BOCES Services", "Equipment", "Textbooks", "Materials & Supplies",
-                "Contractual & Other", "Outside Tuition, Public Schools",
-                "Outside Tuition, Other", "BOCES Services", "Charter Schools")
-) %>%
-  mutate(
-    code  = as.character(unlist(acct_row[1, col], use.names = FALSE)),
-    label = paste0(item_name, " (", code, ")")
-  )
-
-## data for Special Funds
-item_order <- c("2", "45", "48", "4", "471", "472", "473", "49")
-group_order <- c("School Year", "Early Intervention",
-                 "Summer", "Pre-K", "Preschool 12-Month")
-
-sf_meta <- tibble(
+######## Master Metadata Table (spec_all)
+# Create a single reference table for all columns in spending_raw
+spec_all <- tibble(
   col   = names(spending_raw),
   code  = as.character(unlist(acct_row[1, ],  use.names = FALSE)),
   title = as.character(unlist(title_row[1, ], use.names = FALSE))
-) %>%
+)
+
+######## Common Suffix & Group Ordering
+item_order  <- c("2", "45", "48", "4", "471", "472", "473", "49")
+group_order <- c("School Age", "Early Intervention", "Summer", "Preschool")
+
+######## Special Aid Funds Metadata (sf_meta)
+sf_meta <- spec_all %>%
   filter(
-    str_starts(code, "F"),
-    str_detect(code, "_"),
-    !str_detect(code, "_0"),
-    !str_starts(code, "F55"),
-    !str_detect(code, "_(15|16|8)$")
+    str_starts(code, "F"),             # Keep FXXXX account codes
+    str_detect(code, "_"),             # Exclude revenue lines (no _)
+    !str_detect(code, "_0"),           # Exclude totals (_0)
+    !str_starts(code, "F55"),          # Exclude Transportation (F55)
+    !str_detect(code, "_(15|16|8)$")   # Exclude Instr.Salaries, NonInstr.Salaries, Benefits
   ) %>%
   mutate(
     key    = paste0("SF_", str_remove(col, ":.*$")),
@@ -121,44 +60,106 @@ sf_meta <- tibble(
     suffix = str_extract(code, "(?<=_)\\d+$"),
     line   = str_match(title, "\\(Line (\\d+),")[, 2],
     group  = case_when(
-      prefix == "F2250"           ~ "School Year",
-      prefix == "F2251"           ~ "Early Intervention",
-      prefix == "F2252"           ~ "Preschool 12-Month",
-      prefix == "F2253"           ~ "Summer",
-      prefix == "F2510"           ~ "Pre-K"
+      prefix == "F2250" ~ "School Age",
+      prefix == "F2251" ~ "Early Intervention",
+      prefix == "F2252" ~ "Preschool",
+      prefix == "F2253" ~ "Summer",
+      prefix == "F2510" ~ "Pre-K",
+      TRUE              ~ "Other"
     ),
     item_name = case_when(
       suffix == "2"   ~ "Equipment",
       suffix == "45"  ~ "Materials & Supplies",
       suffix == "48"  ~ "Textbooks",
       suffix == "4"   ~ "Contractual & Other",
-      suffix == "471" ~ "Outside Tuition, Public Schools",
-      suffix == "472" ~ "Outside Tuition, Other",
-      suffix == "473" ~ "Charter Schools",
-      suffix == "49"  ~ "BOCES Services"
+      suffix == "471" ~ "Tuition To Public Schools",
+      suffix == "472" ~ "Tuition To Other",
+      suffix == "473" ~ "Tuition To Charter Schools",
+      suffix == "49"  ~ "BOCES Services",
+      TRUE            ~ "Other"
     ),
-    label = paste0("", item_name, " - ", group, " (", code, ")")
+    label = paste0(item_name, " - ", group, " (", code, ")")
   ) %>%
   arrange(match(suffix, item_order), match(group, group_order), line)
 
 stopifnot(!anyDuplicated(sf_meta$label), !anyDuplicated(sf_meta$key))
 
+######## General Funds & Legal Metadata (sped_meta)
+sped_meta <- spec_all %>%
+  filter(
+    (str_starts(code, "A1420_") | str_starts(code, "A2250_")), # Legal and SPED
+    !str_detect(code, "_0$"),        # Exclude A2250_0 (totals)
+    !str_detect(code, "_(15|16|8)$") # Exclude salaries and employee benefits
+  ) %>%
+  mutate(
+    prefix    = str_extract(code, "^A\\d+"),
+    suffix    = str_extract(code, "(?<=_)\\d+$"),
+    key       = paste0("SPED_", str_remove(col, ":.*$")),
+    item_base = case_when(
+      suffix == "0"   ~ "Total",
+      suffix == "15"  ~ "Instructional Salaries",
+      suffix == "16"  ~ "Non-Instructional",
+      suffix == "2"   ~ "Equipment",
+      suffix == "4"   ~ "Contractual & Other",
+      suffix == "45"  ~ "Materials & Supplies",
+      suffix == "471" ~ "Tuition To Public Schools",
+      suffix == "472" ~ "Tuition To Other",
+      suffix == "473" ~ "Tuition To Charter Schools",
+      suffix == "48"  ~ "Textbooks",
+      suffix == "49"  ~ "BOCES Services",
+      suffix == "8"   ~ "Employee Benefits",
+      suffix == "95"  ~ "Xfer to Special Aid Fund",
+      TRUE            ~ "Other"
+    ),
+    item_name = if_else(prefix == "A1420", paste0("Legal - ", item_base), item_base),
+    label     = paste0(item_name, " (", code, ")")
+  ) %>%
+  arrange(prefix, match(suffix, item_order))
+
+stopifnot(!anyDuplicated(sped_meta$label), !anyDuplicated(sped_meta$key))
+
+######## Clean Spending Data
+# Extract base demographic/identifier columns
+spending_clean <- spending_raw %>%
+  filter(!is.na(NAME)) %>%
+  transmute(
+    ENTITY_CD   = BEDSCODE,
+    ENTITY_NAME = NAME,
+    COUNTY_DESC = COUNTY_DESC,
+    YEAR        = as.numeric(YEAR)
+  )
+
+# Dynamically extract and clean SPED & Legal values based on sped_meta
+sped_values <- spending_raw %>%
+  filter(!is.na(NAME)) %>%
+  select(all_of(sped_meta$col)) %>%
+  mutate(across(everything(), ~ pmax(replace_na(as.numeric(.x), 0), 0)))
+names(sped_values) <- sped_meta$key
+
+# Dynamically extract SPED Total (A2250_0) from spec_all
+total_col <- spec_all %>% filter(code == "A2250_0") %>% pull(col)
+if (length(total_col) > 0) {
+  sped_values$SPED_Total <- pmax(replace_na(as.numeric(spending_raw %>% filter(!is.na(NAME)) %>% pull(all_of(total_col[1]))), 0), 0)
+}
+
+# Dynamically extract Special Aid Fund values based on sf_meta
 sf_values <- spending_raw %>%
   filter(!is.na(NAME)) %>%
   select(all_of(sf_meta$col)) %>%
   mutate(across(everything(), ~ pmax(replace_na(as.numeric(.x), 0), 0)))
 names(sf_values) <- sf_meta$key
 
-spending_clean <- bind_cols(spending_clean, sf_values)
+# Merge all cleaned columns
+spending_clean <- bind_cols(spending_clean, sped_values, sf_values)
 
 # Format BEDS Code to prevent scientific notation in JSON serialization
 spending_clean$ENTITY_CD <- format(spending_clean$ENTITY_CD, scientific = FALSE)
 
 # Pass data to Observable JS
 ojs_define(
-  df_to_js     = spending_clean,
+  df_to_js       = spending_clean,
   sped_fields_js = sped_meta %>% select(key, label, item_name),
-  sf_fields_js = sf_meta %>% select(key, label, item_name)
+  sf_fields_js   = sf_meta %>% select(key, label, item_name)
 )
 ```
 
@@ -166,6 +167,7 @@ ojs_define(
 //| output: false
 // Transpose merged R dataframe into OJS format
 shared_data = transpose(df_to_js)
+
 ```
 
 ```{ojs}
@@ -187,6 +189,7 @@ districtDefault = {
   county;
   return "";
 }
+
 ```
 
 ```{ojs}
@@ -256,9 +259,10 @@ function guard(fn, options = {}, countyView) {
     set: v => { input.value = v }
   });
 }
+
 ```
 
-## {.toolbar #print-hide-toolbar}
+#### {.toolbar #print-hide-toolbar}
 ```{ojs}
 //| output: false
 // Standalone live-reactive County search text input
@@ -271,6 +275,7 @@ viewof county = Inputs.text({
   sort: true,
   required: true
 });
+
 ```
 
 ```{ojs}
@@ -295,6 +300,7 @@ viewof inputSels = guard(
   },
   viewof county
 );
+
 ```
 
 ```{ojs}
@@ -307,6 +313,7 @@ _autoSubmit = {
     if (submitBtn) submitBtn.click();
   }, 1000);
 }
+
 ```
 
 ```{ojs}
@@ -319,6 +326,7 @@ shared_dataFiltered = {
 }
 
 selectedRow = shared_dataFiltered.length ? shared_dataFiltered[0] : null;
+
 ```
 
 ```{ojs}
@@ -339,6 +347,7 @@ spedChartData = toChartData(selectedRow, spedFields);
 // Special Funds fields (built in the R chunk from the CSV's Account Code row)
 sfFields = transpose(sf_fields_js);
 sfChartData = toChartData(selectedRow, sfFields);
+
 ```
 
 ```{ojs}
@@ -346,34 +355,39 @@ sfChartData = toChartData(selectedRow, sfFields);
 // Color scale for the General Funds
 
 spendingColor = {
-  // Same hue family, stepped through lightness for the items in each group
+  // Shared color palette across all charts
   const EquipMaterialShades = d3.quantize(t => d3.interpolateYlOrBr(0.1 + t * 0.2), 3);
-  const TuitionShades   = d3.quantize(t => d3.interpolateBlues(0.3 + t * 0.7), 4);    
   const SPEDContracts  = d3.quantize(t => d3.interpolateGreens(.5), 1); 
-// red colors for legal data
-  const legalShades  = d3.quantize(t => d3.interpolateReds(0.5 + t * 0.8), 3); 
+  const legalShades  = d3.quantize(t => d3.interpolateReds(0.5 + t * 0.7), 3); 
 
+  // Shared shades of blue across all 3 plots for tuition and BOCES services
+  const tuitionBlue1 = d3.interpolateBlues(0.30); // Tuition To Public Schools
+  const tuitionBlue2 = d3.interpolateBlues(0.50); // Tuition To Other
+  const tuitionBlue3 = d3.interpolateBlues(0.60); // Tuition To Charter Schools
+  const tuitionBlue4 = d3.interpolateBlues(0.70); // BOCES Services
+
+  const colorMap = new Map([
+    ["Legal - Contractual & Other", legalShades[0]],
+    ["Legal - Materials & Supplies", legalShades[1]],
+    ["Legal - BOCES Services", legalShades[2]],
+
+    ["Equipment", EquipMaterialShades[0]],
+    ["Materials & Supplies", EquipMaterialShades[1]],
+    ["Textbooks", EquipMaterialShades[2]],
+
+    ["Contractual & Other", SPEDContracts[0]],
+
+    ["Tuition To Public Schools", tuitionBlue1],
+    ["Tuition To Other", tuitionBlue2],
+    ["Tuition To Charter Schools", tuitionBlue3],
+    ["BOCES Services", tuitionBlue4]
+  ]);
 
   return d3.scaleOrdinal()
     .domain(spedFields.map(f => f.label))
-    .range([
-      // ORDER MATTERS, these colors must match order above to be colored correctly
-      // legal shades
-      legalShades[0],  // Legal - Contractual & Other
-      legalShades[1],  // Legal - Materials & Supplies
-      legalShades[2],   // Legal - BOCES Services
-    
-      EquipMaterialShades[0],   // Equipment
-      EquipMaterialShades[1],   // Textbooks
-      EquipMaterialShades[2],   // Materials & Supplies
-      SPEDContracts[0],  // Contractual & Other
-      TuitionShades[0],  // Outside Tuition, Public Schools
-      TuitionShades[1],  // Outside Tuition, Other
-      TuitionShades[2],  // BOCES Services
-      TuitionShades[3]  // Charter Schools
-    ]);
+    .range(spedFields.map(f => colorMap.get(f.item_name) || "#999"));
 }
-  
+
 ```
 
 ```{ojs}
@@ -383,18 +397,18 @@ spendingColor = {
 sfColor = {
   // Groups with a single static color (no gradient) go here.
   const staticColors = {
-    "Outside Tuition, Public Schools": d3.interpolateBlues(.3),
-    "Outside Tuition, Other":          d3.interpolateBlues(.4),
-    "Charter Schools":                 d3.interpolateBlues(.5),
-    "BOCES Services":                  d3.interpolateBlues(.7),
-    "Legal - Contractual & Other":     d3.interpolateReds(0.1),
-    "Legal - Materials & Supplies":    d3.interpolateReds(0.15),
-    "Legal - BOCES Services":          d3.interpolateReds(0.2),
+    "Tuition To Public Schools":        d3.interpolateBlues(0.30),
+    "Tuition To Other":                 d3.interpolateBlues(0.50),
+    "Tuition To Charter Schools":       d3.interpolateBlues(0.60),
+    "BOCES Services":                  d3.interpolateBlues(0.70),
+    "Legal - Contractual & Other":     d3.interpolateReds(.2),
+    "Legal - Materials & Supplies":    d3.interpolateReds(.3),
+    "Legal - BOCES Services":          d3.interpolateReds(.4),
     "Contractual & Other":             d3.interpolateGreens(0.5)                     
   };
   // Groups shaded across a range of a d3 interpolator go here.
   const interps = {
-    "Equipment":           d3.interpolateYlOrBr,
+    "Equipment":            d3.interpolateYlOrBr,
     "Materials & Supplies": d3.interpolateYlOrBr,
     "Textbooks":            d3.interpolateYlOrBr
   };
@@ -430,22 +444,21 @@ sfColor = {
 //| output: false
 
 // Colors for Total chart
-// One color per item type (Equipment, Materials & Supplies, etc.), reused by
-// the combined chart below. Prefer sfColor, since it gives every shared item
-// type its own distinct color; fall back to spendingColor for anything that
-// only exists in the General Fund chart (the Legal items), so every category
-// in the combined chart gets a real, intentional color instead of whatever
-// d3.scaleOrdinal falls back to for an unrecognized label.
 itemColor = {
   const byItem = new Map();
   for (const f of sfFields) byItem.set(f.item_name, sfColor(f.label));
   for (const f of spedFields) {
-    if (!byItem.has(f.item_name)) byItem.set(f.item_name, spendingColor(f.label));
+    if (f.item_name.startsWith("Legal")) {
+      byItem.set("Legal", d3.interpolateReds(0.5));
+    } else if (!byItem.has(f.item_name)) {
+      byItem.set(f.item_name, spendingColor(f.label));
+    }
   }
   return d3.scaleOrdinal()
     .domain([...byItem.keys()])
     .range([...byItem.values()]);
 }
+
 ```
 
 ```{ojs}
@@ -458,7 +471,8 @@ combinedChartData = {
   function addFields(fields) {
     for (const f of fields) {
       const v = +selectedRow?.[f.key] || 0;
-      totals.set(f.item_name, (totals.get(f.item_name) || 0) + v);
+      const labelName = f.item_name.startsWith("Legal") ? "Legal" : f.item_name;
+      totals.set(labelName, (totals.get(labelName) || 0) + v);
     }
   }
   if (selectedRow) {
@@ -468,6 +482,7 @@ combinedChartData = {
   return Array.from(totals, ([label, value]) => ({ label, value }))
     .filter(d => d.value > 0);
 }
+
 ```
 
 ```{ojs}
@@ -475,10 +490,6 @@ combinedChartData = {
 // Reusable pie chart (d3), with a % label on larger slices and a legend.
 function pieChart(data, { title = "", color = spendingColor, maxHeight = 350 } = {}) {
   const drawWidth = 460, drawHeight = 440;
-  // The SVG scales to 100% of its container's width, with height following
-  // automatically to keep the drawing's proportions (drawWidth:drawHeight).
-  // maxHeight caps how tall that's allowed to get on a wide container by
-  // capping the equivalent max-width, since height = width * (drawHeight/drawWidth).
   const maxWidth = maxHeight * (drawWidth / drawHeight);
 
   if (!data || data.length === 0) {
@@ -541,31 +552,39 @@ const legend = html`<div style="font-size:11px;margin:6px auto 0;width:fit-conte
 
 return html`<div style="text-align:left;width:100%;">${svg.node()}${legend}</div>`;
 }
+
 ```
 
-## Row - Print District Selected {height=15%}
+#### Row - Print District Selected {height=15%}
 ```{ojs}
 //| echo: false
-md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Transportation</i></h>`
+md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Transportation</i></h><br>Total SPED Program Spending (A2250_0): **$${selectedRow ? Math.round(selectedRow.SPED_Total).toLocaleString() : ""}**`
+
 ```
-## Row - Pie Charts {height=85% .flow}
-### Left Col - Total Chart {width=60% .fill}
+
+#### Row - Pie Charts {height=85% .flow}
+##### Left Col - Total Chart {width=60% .fill}
 ```{ojs}
 //| title: "Combined Spending: General + Special Aid"
 //| echo: false
 pieChart(combinedChartData, { title: "", color: itemColor })
+
 ```
-### Right Col - General and Special Fund Charts {width=40% .fill}
+
+##### Right Col - General and Special Fund Charts {width=40% .fill}
 ```{ojs}
 //| title: "General Fund - Spending"
 //| echo: false
 pieChart(spedChartData, { title: "", maxHeight: 250 }) 
+
 ```
+
 ```{ojs}
 //| title: "Special Aid Fund - Spending"
 //| echo: false
 pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })
+
 ```
 
-## References, Notes {#print-footer}
+#### References, Notes {#print-footer}
 * Spending Data: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
