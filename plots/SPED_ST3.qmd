@@ -14,6 +14,7 @@ nav-buttons:
   - icon: arrow-left-circle-fill
     href: ../
 ---
+
 ```{r}
 #| echo: false
 #| include: false
@@ -103,7 +104,7 @@ sf_meta <- spec_all %>%
       suffix == "8"   ~ "Employee Benefits",
       suffix == "95"  ~ "Xfer to Special Aid Fund",
       TRUE            ~ "Other"    ),
-    label = paste0(item_name, " - ", group, " (", code, ")")
+    label = paste0("SPED - ", item_name, " - ", group, " (", code, ")")
   ) %>%
   arrange(match(suffix, item_order), match(group, group_order), line)
 
@@ -148,7 +149,7 @@ sped_meta <- spec_all %>%
       prefix == "A2830" ~ "Special Schools",
       TRUE              ~ ""
     ),
-    item_name = if_else(program_label != "", paste0(program_label, " - ", item_base), item_base),
+    item_name = if_else(program_label != "", paste0(program_label, " - ", item_base), paste0("SPED - ", item_base)),
     label     = paste0(item_name, " (", code, ")")
   ) %>%
   arrange(prefix, match(suffix, item_order))
@@ -198,6 +199,7 @@ ojs_define(
   sped_fields_js = sped_meta %>% select(key, label, item_name),
   sf_fields_js   = sf_meta %>% select(key, label, item_name)
 )
+
 ```
 
 ```{ojs}
@@ -425,21 +427,24 @@ spendingColor = {
     ["Special Schools - Materials & Supplies", specSchShades[1]],
     ["Special Schools - BOCES Services", specSchShades[2]],
 
-    ["Equipment", EquipMaterialShades[0]],
-    ["Materials & Supplies", EquipMaterialShades[1]],
-    ["Textbooks", EquipMaterialShades[2]],
+    ["SPED - Equipment", EquipMaterialShades[0]],
+    ["SPED - Materials & Supplies", EquipMaterialShades[1]],
+    ["SPED - Textbooks", EquipMaterialShades[2]],
 
-    ["Contractual & Other", SPEDContracts[0]],
+    ["SPED - Contractual & Other", SPEDContracts[0]],
 
-    ["Tuition To Public Schools", tuitionBlue1],
-    ["Tuition To Other", tuitionBlue2],
-    ["Tuition To Charter Schools", tuitionBlue3],
-    ["BOCES Services", tuitionBlue4]
+    ["SPED - Tuition To Public Schools", tuitionBlue1],
+    ["SPED - Tuition To Other", tuitionBlue2],
+    ["SPED - Tuition To Charter Schools", tuitionBlue3],
+    ["SPED - BOCES Services", tuitionBlue4]
   ]);
 
   return d3.scaleOrdinal()
     .domain(spedFields.map(f => f.label))
     .range(spedFields.map(f => {
+      // Normalize single vs double space if present
+      const normName = f.item_name.replace(/^SPED\s+-\s+/, "SPED - ");
+      if (colorMap.has(normName)) return colorMap.get(normName);
       if (colorMap.has(f.item_name)) return colorMap.get(f.item_name);
       if (f.item_name.startsWith("Psychological")) return d3.interpolatePurples(0.35);
       if (f.item_name.startsWith("Social Work")) return d3.interpolatePurples(0.65);
@@ -506,7 +511,10 @@ sfColor = {
 // Colors for Total chart
 itemColor = {
   const byItem = new Map();
-  for (const f of sfFields) byItem.set(f.item_name, sfColor(f.label));
+  for (const f of sfFields) {
+    const combinedLabel = "SPED - " + f.item_name;
+    byItem.set(combinedLabel, sfColor(f.label));
+  }
   for (const f of spedFields) {
     if (f.item_name.startsWith("Legal")) {
       byItem.set("Legal", d3.interpolateReds(0.5));
@@ -516,8 +524,11 @@ itemColor = {
       byItem.set("Social Work", d3.interpolatePurples(0.65));
     } else if (f.item_name.startsWith("Special Schools")) {
       byItem.set("Special Schools", d3.interpolatePurples(0.88));
-    } else if (!byItem.has(f.item_name)) {
-      byItem.set(f.item_name, spendingColor(f.label));
+    } else {
+      const normName = f.item_name.replace(/^SPED\s+-\s+/, "SPED - ");
+      if (!byItem.has(normName)) {
+        byItem.set(normName, spendingColor(f.label));
+      }
     }
   }
   return d3.scaleOrdinal()
@@ -537,10 +548,18 @@ combinedChartData = {
     for (const f of fields) {
       const v = +selectedRow?.[f.key] || 0;
       let labelName = f.item_name;
-      if (f.item_name.startsWith("Legal")) labelName = "Legal";
-      else if (f.item_name.startsWith("Psychological")) labelName = "Psychological";
-      else if (f.item_name.startsWith("Social Work")) labelName = "Social Work";
-      else if (f.item_name.startsWith("Special Schools")) labelName = "Special Schools";
+      if (f.item_name.startsWith("Legal")) {
+        labelName = "Legal";
+      } else if (f.item_name.startsWith("Psychological")) {
+        labelName = "Psychological";
+      } else if (f.item_name.startsWith("Social Work")) {
+        labelName = "Social Work";
+      } else if (f.item_name.startsWith("Special Schools")) {
+        labelName = "Special Schools";
+      } else {
+        const cleanName = f.item_name.replace(/^SPED\s+-\s+/, "");
+        labelName = "SPED - " + cleanName;
+      }
       
       totals.set(labelName, (totals.get(labelName) || 0) + v);
     }
@@ -628,8 +647,7 @@ return html`<div style="text-align:left;width:100%;">${svg.node()}${legend}</div
 #### Row - Print District Selected {height=15%}
 ```{ojs}
 //| echo: false
-md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Transportation</i></h><br>Total SPED Program Spending (A2250_0): **$${selectedRow ? Math.round(selectedRow.SPED_Total).toLocaleString() : ""}**`
-
+md`### SPED & Related Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Transportation</i></h>`
 ```
 
 #### Row - Pie Charts {height=85% .flow}
