@@ -123,7 +123,7 @@ sf_meta <- tibble(
       suffix == "4"   ~ "Contractual & Other",
       suffix == "471" ~ "Outside Tuition, Public Schools",
       suffix == "472" ~ "Outside Tuition, Other",
-      suffix == "473" ~ "Outside Charter Schools",
+      suffix == "473" ~ "Charter Schools",
       suffix == "49"  ~ "BOCES Services"
     ),
     label = paste0("", item_name, " - ", group, " (", code, ")")
@@ -146,7 +146,7 @@ spending_clean$ENTITY_CD <- format(spending_clean$ENTITY_CD, scientific = FALSE)
 # Pass data to Observable JS
 ojs_define(
   df_to_js     = spending_clean,
-  sped_fields_js = sped_meta %>% select(key, label),
+  sped_fields_js = sped_meta %>% select(key, label, item_name),
   sf_fields_js = sf_meta %>% select(key, label, item_name)
 )
 ```
@@ -247,7 +247,7 @@ function guard(fn, options = {}, countyView) {
 }
 ```
 
-#### {.toolbar #print-hide-toolbar}
+## {.toolbar #print-hide-toolbar}
 ```{ojs}
 //| output: false
 // Standalone live-reactive County search text input
@@ -370,7 +370,7 @@ sfColor = {
   const staticColors = {
     "Outside Tuition, Public Schools": d3.interpolateBlues(.3),
     "Outside Tuition, Other":          d3.interpolateBlues(.4),
-    "Outside Charter Schools":         d3.interpolateBlues(.5),
+    "Charter Schools":                 d3.interpolateBlues(.5),
     "BOCES Services":                  d3.interpolateBlues(.7)
   };
   // Groups shaded across a range of a d3 interpolator go here.
@@ -410,18 +410,52 @@ sfColor = {
 
 ```{ojs}
 //| output: false
+// One color per item type (Equipment, Materials & Supplies, etc.), reused by
+// the combined chart below. Pulled directly from sfColor so a category's
+// color always matches what it already looks like in the Special Aid Fund
+// chart (sfColor is the more general of the two: every item type gets a
+// distinct color there, vs. spendingColor above where a couple of item
+// types share a hue and are only told apart by position).
+itemColor = {
+  const byItem = new Map(sfFields.map(f => [f.item_name, sfColor(f.label)]));
+  return d3.scaleOrdinal()
+    .domain([...byItem.keys()])
+    .range([...byItem.values()]);
+}
+```
+
+```{ojs}
+//| output: false
+// Combined chart data: sum the General Fund (spedFields) and Special Aid
+// Fund (sfFields) values together by item type, so e.g. every "Materials &
+// Supplies" account across both funds becomes one slice.
+combinedChartData = {
+  const totals = new Map();
+  function addFields(fields) {
+    for (const f of fields) {
+      const v = +selectedRow?.[f.key] || 0;
+      totals.set(f.item_name, (totals.get(f.item_name) || 0) + v);
+    }
+  }
+  if (selectedRow) {
+    addFields(spedFields);
+    addFields(sfFields);
+  }
+  return Array.from(totals, ([label, value]) => ({ label, value }))
+    .filter(d => d.value > 0);
+}
+```
+
+```{ojs}
+//| output: false
 // Reusable pie chart (d3), with a % label on larger slices and a legend.
-// No width/height is passed in at the call site — the SVG uses a fixed
-// internal drawing coordinate system (drawWidth/drawHeight, purely for the
-// math below: radius, text positions, viewBox), but is rendered with CSS
-// width:100%/height:auto, so the browser scales it to fill whatever
-// container (card, column, etc.) it's placed in and rescales on resize.
-// This is the standard responsive-SVG technique; it doesn't rely on OJS's
-// built-in reactive `width`, which is scoped to the cell that references
-// it and wouldn't track the *calling* cell's container from inside a
-// function defined elsewhere.
-function pieChart(data, { title = "", color = spendingColor } = {}) {
+function pieChart(data, { title = "", color = spendingColor, maxHeight = 350 } = {}) {
   const drawWidth = 460, drawHeight = 440;
+  // The SVG scales to 100% of its container's width, with height following
+  // automatically to keep the drawing's proportions (drawWidth:drawHeight).
+  // maxHeight caps how tall that's allowed to get on a wide container by
+  // capping the equivalent max-width, since height = width * (drawHeight/drawWidth).
+  const maxWidth = maxHeight * (drawWidth / drawHeight);
 
   if (!data || data.length === 0) {
     return html`<div style="text-align:center;color:#888;padding:60px 20px;">
@@ -439,7 +473,9 @@ function pieChart(data, { title = "", color = spendingColor } = {}) {
     .attr("viewBox", [-drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight])
     .style("width", "100%")
     .style("height", "auto")
+    .style("max-width", `${maxWidth}px`)
     .style("display", "block")
+    .style("margin", "0 auto")
     .style("font", "12px sans-serif");
 
   svg.append("g")
@@ -483,24 +519,29 @@ return html`<div style="text-align:left;width:100%;">${svg.node()}${legend}</div
 }
 ```
 
-#### Print District Selected {height=10%}
+## Row - Print District Selected {height=15%}
 ```{ojs}
 //| echo: false
 md`### SPED Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Transportation</i></h>`
 ```
-
-#### Pie Charts {height=90%}
+## Row - Pie Charts {height=85% .flow}
+### Left Col - Total Chart {width=60% .fill}
+```{ojs}
+//| title: "Combined: General Fund + Special Aid Fund"
+//| echo: false
+pieChart(combinedChartData, { title: "", color: itemColor })
+```
+### Right Col - General and Special Fund Charts {width=40% .fill}
 ```{ojs}
 //| title: "General Fund"
 //| echo: false
-pieChart(spedChartData, { title: "" }) 
+pieChart(spedChartData, { title: "", maxHeight: 250 }) 
 ```
-
 ```{ojs}
 //| title: "Special Aid Fund"
 //| echo: false
-pieChart(sfChartData, { title: "", color: sfColor })
+pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })
 ```
+
 ## References, Notes {#print-footer}
-* Spending Data from: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [XLSX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
-<!-- * Per Pupil SPED Spending from:  -->
+* Spending Data: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
