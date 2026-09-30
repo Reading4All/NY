@@ -653,7 +653,7 @@ md`### SPED & Related Spending - 2025:<br>**${inputSels ? inputSels.district : "
 #### Row - Pie Charts {height=85% .flow}
 ##### Left Col - Total Chart {width=60% .fill}
 ```{ojs}
-//| title: "Combined Spending: General + Special Aid"
+//| title: "Combined: General + Special Aid Funds"
 //| echo: false
 pieChart(combinedChartData, { title: "", color: itemColor })
 
@@ -675,4 +675,4 @@ pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })
 ```
 
 #### References, Notes {#print-footer}
-*  Spending Data: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
+*  Spending Data: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2024-2025_School_Year.XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
