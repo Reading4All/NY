@@ -43,7 +43,7 @@ spec_all <- tibble(
 
 ######## Common Suffix & Group Ordering
 item_order  <- c("2", "45", "48", "4", "471", "472", "473", "49")
-group_order <- c("School Age", "Early Intervention", "Summer", "Preschool")
+group_order <- c("School Age", "Early Intervention", "Summer", "Preschool", "Transportation")
 
 
 ######## For reference, what's in the CSV
@@ -74,15 +74,16 @@ sf_meta <- spec_all %>%
     str_starts(code, "F"),             # Keep FXXXX account codes
     str_detect(code, "_"),             # Exclude revenue lines (no _)
     !str_detect(code, "_0"),           # Exclude totals (_0)
-    !str_starts(code, "F55"),          # Exclude Transportation (F55)
-    !str_detect(code, "_(15|16|8)$")   # Exclude Instr.Salaries, NonInstr.Salaries, Benefits
+        !str_detect(code, "_(15|16|8)$")   # Exclude Instr.Salaries, NonInstr.Salaries, Benefits
   ) %>%
   mutate(
     key    = paste0("SF_", str_remove(col, ":.*$")),
-    prefix = str_extract(code, "^F\\d+"),
-    suffix = str_extract(code, "(?<=_)\\d+$"),
-    line   = str_match(title, "\\(Line (\\d+),")[, 2],
+    prefix = str_extract(code, r"(^F\d+)"),
+    suffix = str_extract(code, r"((?<=_)\d+$)"),
+    line   = str_match(title, r"--(\(Line (\d+),)--")[, 2],
     group  = case_when(
+      prefix == "F5511" ~ "District",
+      str_starts(prefix, "F55") ~ "Summer",
       prefix == "F2250" ~ "School Age",
       prefix == "F2251" ~ "Early Intervention",
       prefix == "F2252" ~ "Preschool",
@@ -90,6 +91,11 @@ sf_meta <- spec_all %>%
       TRUE              ~ "Other"
     ),
     item_name = case_when(
+      prefix == "F5511" ~ "Transportation",
+      prefix == "F5541" ~ "Transportation Contract",
+      prefix == "F5551" ~ "Transportation Public",
+      prefix == "F5582" ~ "Transportation BOCES",
+      str_starts(prefix, "F55") ~ "Transportation",
       suffix == "0"   ~ "Total",
       suffix == "15"  ~ "Instructional Salaries",
       suffix == "16"  ~ "Non-Instructional",
@@ -106,11 +112,12 @@ sf_meta <- spec_all %>%
       TRUE            ~ "Other"    ),
     label = paste0("SPED - ", item_name, " - ", group, " (", code, ")")
   ) %>%
-  arrange(match(suffix, item_order), match(group, group_order), line)
+  arrange(str_starts(prefix, "F55"), match(suffix, item_order), match(group, group_order), line)
 
 stopifnot(!anyDuplicated(sf_meta$label), !anyDuplicated(sf_meta$key))
 
 ######## General Funds & Legal Metadata (sped_meta)
+program_prefix_order <- c("A1420", "A2820", "A2825", "A2830", "A2250")
 sped_meta <- spec_all %>%
   filter(
     (str_starts(code, "A1420_") |   # Keep Legal
@@ -123,8 +130,8 @@ sped_meta <- spec_all %>%
     !str_detect(code, "_(15|16|8)$") # Exclude salaries and employee benefits
   ) %>%
   mutate(
-    prefix    = str_extract(code, "^A\\d+"),
-    suffix    = str_extract(code, "(?<=_)\\d+$"),
+    prefix    = str_extract(code, r"(^A\d+)"),
+    suffix    = str_extract(code, r"((?<=_)\d+$)"),
     key       = paste0("SPED_", str_remove(col, ":.*$")),
     item_base = case_when(
       suffix == "0"   ~ "Total",
@@ -152,7 +159,7 @@ sped_meta <- spec_all %>%
     item_name = if_else(program_label != "", paste0(program_label, " - ", item_base), paste0("SPED - ", item_base)),
     label     = paste0(item_name, " (", code, ")")
   ) %>%
-  arrange(prefix, match(suffix, item_order))
+  arrange(match(prefix, program_prefix_order), match(suffix, item_order))
 
 stopifnot(!anyDuplicated(sped_meta$label), !anyDuplicated(sped_meta$key))
 
@@ -436,7 +443,8 @@ spendingColor = {
     ["SPED - Tuition To Public Schools", tuitionBlue1],
     ["SPED - Tuition To Other", tuitionBlue2],
     ["SPED - Tuition To Charter Schools", tuitionBlue3],
-    ["SPED - BOCES Services", tuitionBlue4]
+    ["SPED - BOCES Services", tuitionBlue4],
+    ["SPED - Transportation", d3.interpolateBlues(0.95)]
   ]);
 
   return d3.scaleOrdinal()
@@ -466,6 +474,10 @@ sfColor = {
     "Tuition To Other":                 d3.interpolateBlues(0.50),
     "Tuition To Charter Schools":       d3.interpolateBlues(0.60),
     "BOCES Services":                  d3.interpolateBlues(0.80),
+    "Transportation":                  d3.interpolateBlues(0.90),
+    "Transportation Contract":         d3.interpolateBlues(0.92),
+    "Transportation Public":           d3.interpolateBlues(0.94),
+    "Transportation BOCES":            d3.interpolateBlues(0.97),
     "Legal - Contractual & Other":     d3.interpolateReds(.2),
     "Legal - Materials & Supplies":    d3.interpolateReds(.3),
     "Legal - BOCES Services":          d3.interpolateReds(.35),
@@ -512,7 +524,8 @@ sfColor = {
 itemColor = {
   const byItem = new Map();
   for (const f of sfFields) {
-    const combinedLabel = "SPED - " + f.item_name;
+    let combinedLabel = "SPED - " + f.item_name;
+    if (f.item_name.startsWith("Transportation")) combinedLabel = "SPED - Transportation";
     byItem.set(combinedLabel, sfColor(f.label));
   }
   for (const f of spedFields) {
@@ -524,6 +537,8 @@ itemColor = {
       byItem.set("Social Work", d3.interpolatePurples(0.65));
     } else if (f.item_name.startsWith("Special Schools")) {
       byItem.set("Special Schools", d3.interpolatePurples(0.88));
+    } else if (f.item_name.startsWith("Transportation")) {
+      byItem.set("SPED - Transportation", d3.interpolateBlues(0.92));
     } else {
       const normName = f.item_name.replace(/^SPED\s+-\s+/, "SPED - ");
       if (!byItem.has(normName)) {
@@ -531,9 +546,34 @@ itemColor = {
       }
     }
   }
+
+  const masterOrder = [
+    "Legal",
+    "Psychological",
+    "Social Work",
+    "Special Schools",
+    "SPED - Equipment",
+    "SPED - Materials & Supplies",
+    "SPED - Textbooks",
+    "SPED - Contractual & Other",
+    "SPED - Tuition To Public Schools",
+    "SPED - Tuition To Other",
+    "SPED - Tuition To Charter Schools",
+    "SPED - BOCES Services",
+    "SPED - Transportation"
+  ];
+
+  const sortedKeys = [...byItem.keys()].sort((a, b) => {
+    let idxA = masterOrder.indexOf(a);
+    let idxB = masterOrder.indexOf(b);
+    if (idxA === -1) idxA = 999;
+    if (idxB === -1) idxB = 999;
+    return idxA - idxB;
+  });
+
   return d3.scaleOrdinal()
-    .domain([...byItem.keys()])
-    .range([...byItem.values()]);
+    .domain(sortedKeys)
+    .range(sortedKeys.map(k => byItem.get(k)));
 }
 
 ```
@@ -556,6 +596,8 @@ combinedChartData = {
         labelName = "Social Work";
       } else if (f.item_name.startsWith("Special Schools")) {
         labelName = "Special Schools";
+      } else if (f.item_name.startsWith("Transportation")) {
+        labelName = "SPED - Transportation";
       } else {
         const cleanName = f.item_name.replace(/^SPED\s+-\s+/, "");
         labelName = "SPED - " + cleanName;
@@ -568,33 +610,89 @@ combinedChartData = {
     addFields(spedFields);
     addFields(sfFields);
   }
+
+  const masterOrder = [
+    "Legal",
+    "Psychological",
+    "Social Work",
+    "Special Schools",
+    "SPED - Equipment",
+    "SPED - Materials & Supplies",
+    "SPED - Textbooks",
+    "SPED - Contractual & Other",
+    "SPED - Tuition To Public Schools",
+    "SPED - Tuition To Other",
+    "SPED - Tuition To Charter Schools",
+    "SPED - BOCES Services",
+    "SPED - Transportation"
+  ];
+
   return Array.from(totals, ([label, value]) => ({ label, value }))
-    .filter(d => d.value > 0);
+    .filter(d => d.value > 0)
+    .sort((a, b) => {
+      let idxA = masterOrder.indexOf(a.label);
+      let idxB = masterOrder.indexOf(b.label);
+      if (idxA === -1) idxA = 999;
+      if (idxB === -1) idxB = 999;
+      return idxA - idxB;
+    });
 }
 
 ```
 
 ```{ojs}
 //| output: false
+total_sped_total = d3.sum(spedChartData, d => d.value)
+```
+
+```{ojs}
+//| output: false
+total_sf_total = d3.sum(sfChartData, d => d.value)
+```
+
+```{ojs}
+//| output: false
+total_combined_total = d3.sum(combinedChartData, d => d.value)
+```
+
+```{ojs}
+//| output: false
+total_sped_total_str = `$${Math.round(total_sped_total).toLocaleString()}`
+```
+
+```{ojs}
+//| output: false
+total_sf_total_str = `$${Math.round(total_sf_total).toLocaleString()}`
+```
+
+```{ojs}
+//| output: false
+total_combined_total_str = `$${Math.round(total_combined_total).toLocaleString()}`
+```
+
+
+```{ojs}
+//| output: false
 // Reusable pie chart (d3), with a % label on larger slices and a legend.
 function pieChart(data, { title = "", color = spendingColor, maxHeight = 350 } = {}) {
-  const drawWidth = 460, drawHeight = 440;
-  const maxWidth = maxHeight * (drawWidth / drawHeight);
-
   if (!data || data.length === 0) {
-    return html`<div style="text-align:center;color:#888;padding:60px 20px;">
+    return html`<div style="text-align:center;color:#888;padding:20px;">
       <strong>${title}</strong><br>No spending reported for this district.
     </div>`;
   }
 
   const total = d3.sum(data, d => d.value);
-  const radius = Math.min(drawWidth, drawHeight) / 2 - 20;
+  const radius = 180;
+  const padTop = title ? 30 : 0;
+  const drawWidth = (radius + 10) * 2;
+  const drawHeight = (radius + 10) * 2 + padTop;
+  const maxWidth = maxHeight * (drawWidth / drawHeight);
 
   const arcs = d3.pie().value(d => d.value).sort(null)(data);
   const arcGen = d3.arc().innerRadius(radius * 0.35).outerRadius(radius);
 
   const svg = d3.create("svg")
-    .attr("viewBox", [-drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight])
+    .attr("viewBox", [-drawWidth / 2, -drawHeight / 2 - padTop / 2, drawWidth, drawHeight])
     .style("width", "100%")
     .style("height", "auto")
     .style("max-width", `${maxWidth}px`)
@@ -624,13 +722,15 @@ function pieChart(data, { title = "", color = spendingColor, maxHeight = 350 } =
       .style("fill", "#fff")
       .text(d => (d.data.value / total) > 0.04 ? `${Math.round((d.data.value / total) * 100)}%` : "");
 
-  svg.append("text")
-      .attr("x", 0)
-      .attr("y", -drawHeight / 2 + 16)
-      .attr("text-anchor", "middle")
-      .style("font-size", "15px")
-      .style("font-weight", "bold")
-      .text(title);
+  if (title) {
+    svg.append("text")
+        .attr("x", 0)
+        .attr("y", -drawHeight / 2 + 16)
+        .attr("text-anchor", "middle")
+        .style("font-size", "15px")
+        .style("font-weight", "bold")
+        .text(title);
+  }
 
 const legend = html`<div style="font-size:11px;margin:6px auto 0;width:fit-content;max-width:100%;">
   ${data.map(d => html`<div style="display:flex;align-items:center;justify-content:flex-start;gap:6px;margin:2px 0;">
@@ -639,7 +739,7 @@ const legend = html`<div style="font-size:11px;margin:6px auto 0;width:fit-conte
   </div>`)}
 </div>`;
 
-return html`<div style="text-align:left;width:100%;">${svg.node()}${legend}</div>`;
+return html`<div style="text-align:left;width:100%;margin-top:0;">${svg.node()}${legend}</div>`;
 }
 
 ```
@@ -647,15 +747,18 @@ return html`<div style="text-align:left;width:100%;">${svg.node()}${legend}</div
 #### Row - Print District Selected {height=15%}
 ```{ojs}
 //| echo: false
-md`### SPED & Related Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Transportation</i></h>`
+md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Benefits</i></h>`
 ```
 
 #### Row - Pie Charts {height=85% .flow}
 ##### Left Col - Total Chart {width=60% .fill}
 ```{ojs}
-//| title: "Combined: General + Special Aid Funds"
+//| title: "Combined Spending: General + Special Aid"
 //| echo: false
-pieChart(combinedChartData, { title: "", color: itemColor })
+html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
+  <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_combined_total_str}</strong></div>
+  ${pieChart(combinedChartData, { title: "", color: itemColor })}
+</div>`
 
 ```
 
@@ -663,16 +766,22 @@ pieChart(combinedChartData, { title: "", color: itemColor })
 ```{ojs}
 //| title: "General Fund - Spending"
 //| echo: false
-pieChart(spedChartData, { title: "", maxHeight: 250 }) 
+html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
+  <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_sped_total_str}</strong></div>
+  ${pieChart(spedChartData, { title: "", maxHeight: 250 })}
+</div>`
 
 ```
 
 ```{ojs}
 //| title: "Special Aid Fund - Spending"
 //| echo: false
-pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })
+html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
+  <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_sf_total_str}</strong></div>
+  ${pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })}
+</div>`
 
 ```
 
 #### References, Notes {#print-footer}
-*  Spending Data: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2024-2025_School_Year.XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
+*  Spending Data: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)

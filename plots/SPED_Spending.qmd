@@ -119,14 +119,6 @@ shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
 ## Remove col 1, ENTITY NAME
 shared_data["...1"] <- NULL
 
-####### Merge them - which is right??!?!
-##spending_ela_merged <- shared_data %>%
-##  inner_join(`spending_clean`, by = c("ENTITY_CD", "YEAR"))
-
-# keep all ela and ela with matches 
-#spending_ela_merged <- shared_data %>%
-#  inner_join(`spending_clean`, by = c("ENTITY_CD", "YEAR"))
-
 # keep all spending and ela with matches - think this is right but doesn't work
 spending_ela_merged <- spending_clean %>%
   left_join(
@@ -318,7 +310,7 @@ function stackedBarChart(longData) {
     //title: chartTitle,
     
     x: { label: null, domain: [...new Set(longData.map(d => d.label))]},
-    y: { label: "# Students with IEPs", grid: true, labelArrow: false,
+    y: { label: "# Students with IEPs (#SWD)", grid: true, labelArrow: false,
     labelAnchor: "center", dx: 100},
     color: {
       domain: ["Proficient", "Not Proficient", "Not Tested"],
@@ -540,7 +532,7 @@ html`
     <div class="indicator-label">Cumulative SPED Spending (2021-2025)</div>
     <div class="indicator-value">$${Math.round(cumulativeTotal).toLocaleString()}</div>
     <div class="indicator-desc">
-      Total for all PK-12 SPED pupils.
+      ESSA/SLFS Total for PK-12.
     </div>
   </div>
 
@@ -548,7 +540,7 @@ html`
     <div class="indicator-label">2025 SPED Spending Per Pupil</div>
     <div class="indicator-value">$${Math.round(spedPerPupil2025).toLocaleString()}</div>
     <div class="indicator-desc">
-    Total Pupils (PK-12): ${Math.round(Enrollment2025).toLocaleString()}
+    Total Pupils (PK-12): <b>${Math.round(Enrollment2025).toLocaleString()}</b>
     </div>
   </div>
 
@@ -556,7 +548,7 @@ html`
     <div class="indicator-label">2025 SPED Spending Per SWD</div>
     <div class="indicator-value">$${Math.round(spedPerSWD2025).toLocaleString()}</div>
     <div class="indicator-desc">
-    Total SWD (PK-12): ${Math.round(EnrollmentSWD2025).toLocaleString()}
+    Total SWD (PK-12): <b>${Math.round(EnrollmentSWD2025).toLocaleString()}</b>
     </div>
   </div>
   
@@ -635,8 +627,11 @@ Plot.plot({
 })
 
 ```
+## References, Notes {#print-footer1}
+* Expenditures & Enrollment (info): [NYSED Financial Transparency](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting): [slsf_financial_data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/slfs_financial_data.xlsx) for 2024+, [essa-financial-data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/essa-financial-data.xlsx) for 2023 and prior
+* Exclusions (items not included in SLFS special ed spending): Out-of-District Tuition & Placements, Special Education Transportation, Related Services & Central Administration, Extended School Year (ESY) Programs [NYSED ESSA/SLFS Transparency](https://www.nysed.gov/fiscal-analysis-research/essaslfs-financial-transparency-faq)
 ```{ojs}
-//| title: "SPED(SWD) ELA Scores: Are gaps closing?"
+//| title: "SPED ELA Scores: Are gaps closing?"
 //| echo: false
 fig2 = {
   //const width = 1000;
@@ -645,7 +640,6 @@ fig2 = {
 }
 
 ```
-## References, Notes {#print-footer}
+## References, Notes {#print-footer2}
 * ELA DATA: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
 * ELA DATA (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
-* Expenditures & Enrollment: [NYSED Financial Transparency](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting): [slsf_financial_data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/slfs_financial_data.xlsx) for 2024+, [essa-financial-data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/essa-financial-data.xlsx) for 2023 and prior  

@@ -1,0 +1,30 @@
+ESSA/SLFS (School-Level Finance Survey) Special Ed Spending info:
+
+It reflects direct classroom instruction (A2250 operating lines and F2250 school-age IDEA Part B grant lines.
+
+It excludes four major special education spending areas:
+    Out-of-District Tuition & Placements (Categorized under "Exclusions"):
+        A2250.471: Public school district tuition
+        A2250.472: Approved private 853 school and Special Act district tuition
+        A2250.473: Direct special education payments to charter schools
+        Why excluded: These tuition checks are stripped out of school building totals so they do not artificially distort individual school per-pupil averages.
+    Special Education Transportation (Categorized under "Transportation"):
+        General Fund Busing: Special education bus drivers/monitors (A5510.160/.161), contracted vendors (A5510.400), and BOCES busing (A5581.49)
+        Summer ESY Busing: Section 4408 July/August special education transit (F5511, F5541, F5582)
+    Related Services & Central Administration (Categorized under "Instructional Support" or "Central Overhead"):
+        School Psychologists (A2820): Evaluators, test protocols, and certified psychologist salaries
+        School Social Workers (A2825): Certified social workers and counseling services
+        Pupil Personnel Services Directors (A2830): Special education administrators and central PPS office staff
+        Special Education Legal Counsel (A1420.400): Retainers, attorneys, and impartial hearing costs (charged to central board legal)
+    Summer Extended School Year Programs (Categorized under "Summer Programs"):
+        F2253: July/August Section 4408 summer special education instructional costs
+
+It also excludes
+    School legal spending
+
+
+ST-3:
+
+It relects all spending (SPED (from A(gen ed) and F(special funding) and SPED exclusions, and non SPED spending too
+It is the root source of all finanical data - the ESS/SLFS spreadsheet, MOE, etc (which each excluding different things in their Special Ed totals and exclusions).
+
