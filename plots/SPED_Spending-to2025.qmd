@@ -162,7 +162,8 @@ districtsInCounty = new Set(
 
 districtDefault = {
   county;
-  return "";
+  // Default to Cold Spring Harbor CSD when it is in the selected county, otherwise blank
+  return districtsInCounty.has("Harborfields CSD") ? "Harborfields CSD" : "";
 }
 
 ```
@@ -241,7 +242,7 @@ function guard(fn, options = {}, countyView) {
 //| output: false
 // Standalone live-reactive County search text input
 viewof county = Inputs.text({
-  value: "NASSAU",
+  value: "SUFFOLK",
   label: "County: ",
   datalist: uniqueCounties,
   unique: true,
@@ -367,7 +368,7 @@ waterfallData = {
   });
 }
 
-// 1. 2025 SPED Spending (ESSA/SLFS)
+// 1. Total 2025 SPED Spending
 total2025 = {
   if (!inputSels || shared_dataFiltered.length === 0) return 0;
   const row = shared_dataFiltered.find(d => Number(d.YEAR) === 2025);
@@ -523,7 +524,7 @@ html`
 
 <div class="indicator-row">
   <div class="indicator-card half accent-green">
-    <div class="indicator-label">2025 SPED Spending (ESSA/SLFS)</div>
+    <div class="indicator-label">Total 2025 SPED Spending</div>
     <div class="indicator-value">$${Math.round(total2025).toLocaleString()}</div>
     <div class="indicator-desc">
       ESSA/SLFS Total for PK-12. See notes for exclusions.

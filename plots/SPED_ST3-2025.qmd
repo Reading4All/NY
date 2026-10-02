@@ -277,7 +277,9 @@ districtsInCounty = new Set(
 
 districtDefault = {
   county;
-  return "";
+  // Default to Cold Spring Harbor CSD when it is in the selected county (case-insensitive match), otherwise blank
+  const match = [...districtsInCounty].find(n => n.toUpperCase() === "COLD SPRING HARBOR CSD");
+  return match ?? "";
 }
 
 ```
@@ -357,7 +359,7 @@ function guard(fn, options = {}, countyView) {
 //| output: false
 // Standalone live-reactive County search text input
 viewof county = Inputs.text({
-  value: "NASSAU",
+  value: "SUFFOLK",
   label: "County: ",
   datalist: uniqueCounties,
   unique: true,
