@@ -1,5 +1,5 @@
 ---
-title: "District SPED Spending (2025)"
+title: "Special Ed & Legal Spending (ST-3) - 2025"
 format:
   dashboard:
     orientation: rows
@@ -74,7 +74,7 @@ sf_meta <- spec_all %>%
     str_starts(code, "F"),             # Keep FXXXX account codes
     str_detect(code, "_"),             # Exclude revenue lines (no _)
     !str_detect(code, "_0"),           # Exclude totals (_0)
-        !str_detect(code, "_(15|16|8)$")   # Exclude Instr.Salaries, NonInstr.Salaries, Benefits
+    !str_detect(code, "_(15|16|8)$")   # Exclude Instr.Salaries, NonInstr.Salaries, Benefits
   ) %>%
   mutate(
     key    = paste0("SF_", str_remove(col, ":.*$")),
@@ -115,6 +115,18 @@ sf_meta <- spec_all %>%
   arrange(str_starts(prefix, "F55"), match(suffix, item_order), match(group, group_order), line)
 
 stopifnot(!anyDuplicated(sf_meta$label), !anyDuplicated(sf_meta$key))
+
+######## Special Aid Funds Salaries & Benefits Metadata (sf_sal_meta)
+sf_sal_meta <- spec_all %>%
+  filter(
+    str_starts(code, "F"),
+    str_detect(code, "_"),
+    !str_detect(code, "_0"),
+    str_detect(code, "_(15|16|8)$")
+  ) %>%
+  mutate(
+    key = paste0("SF_SAL_", str_remove(col, ":.*$"))
+  )
 
 ######## General Funds & Legal Metadata (sped_meta)
 program_prefix_order <- c("A1420", "A2820", "A2825", "A2830", "A2250")
@@ -163,6 +175,22 @@ sped_meta <- spec_all %>%
 
 stopifnot(!anyDuplicated(sped_meta$label), !anyDuplicated(sped_meta$key))
 
+######## General Funds Salaries & Benefits Metadata (sped_sal_meta)
+sped_sal_meta <- spec_all %>%
+  filter(
+    (str_starts(code, "A1420_") |
+       str_starts(code, "A2250_") |
+       str_starts(code, "A2820_") |
+       str_starts(code, "A2825_") |
+       str_starts(code, "A2830_")
+     ),
+    !str_detect(code, "_0$"),
+    str_detect(code, "_(15|16|8)$")
+  ) %>%
+  mutate(
+    key = paste0("SPED_SAL_", str_remove(col, ":.*$"))
+  )
+
 ######## Clean Spending Data
 # Extract base demographic/identifier columns
 spending_clean <- spending_raw %>%
@@ -194,17 +222,33 @@ sf_values <- spending_raw %>%
   mutate(across(everything(), ~ pmax(replace_na(as.numeric(.x), 0), 0)))
 names(sf_values) <- sf_meta$key
 
+# Dynamically extract SPED & Legal salary/benefit values
+sped_sal_values <- spending_raw %>%
+  filter(!is.na(NAME)) %>%
+  select(all_of(sped_sal_meta$col)) %>%
+  mutate(across(everything(), ~ pmax(replace_na(as.numeric(.x), 0), 0)))
+names(sped_sal_values) <- sped_sal_meta$key
+
+# Dynamically extract Special Aid Fund salary/benefit values
+sf_sal_values <- spending_raw %>%
+  filter(!is.na(NAME)) %>%
+  select(all_of(sf_sal_meta$col)) %>%
+  mutate(across(everything(), ~ pmax(replace_na(as.numeric(.x), 0), 0)))
+names(sf_sal_values) <- sf_sal_meta$key
+
 # Merge all cleaned columns
-spending_clean <- bind_cols(spending_clean, sped_values, sf_values)
+spending_clean <- bind_cols(spending_clean, sped_values, sf_values, sped_sal_values, sf_sal_values)
 
 # Format BEDS Code to prevent scientific notation in JSON serialization
 spending_clean$ENTITY_CD <- format(spending_clean$ENTITY_CD, scientific = FALSE)
 
 # Pass data to Observable JS
 ojs_define(
-  df_to_js       = spending_clean,
-  sped_fields_js = sped_meta %>% select(key, label, item_name),
-  sf_fields_js   = sf_meta %>% select(key, label, item_name)
+  df_to_js           = spending_clean,
+  sped_fields_js     = sped_meta %>% select(key, label, item_name),
+  sf_fields_js       = sf_meta %>% select(key, label, item_name),
+  sped_sal_fields_js = sped_sal_meta %>% select(key),
+  sf_sal_fields_js   = sf_sal_meta %>% select(key)
 )
 
 ```
@@ -380,6 +424,10 @@ selectedRow = shared_dataFiltered.length ? shared_dataFiltered[0] : null;
 // Field list for the pie chart (label shown to user : underlying column)
 // SPED fields (built in the R chunk from the CSV's Account Code row)
 spedFields = transpose(sped_fields_js);
+sfFields   = transpose(sf_fields_js);
+
+spedSalFields = transpose(sped_sal_fields_js);
+sfSalFields   = transpose(sf_sal_fields_js);
 
 function toChartData(row, fields) {
   if (!row) return [];
@@ -389,10 +437,7 @@ function toChartData(row, fields) {
 }
 
 spedChartData = toChartData(selectedRow, spedFields);
-
-// Special Funds fields (built in the R chunk from the CSV's Account Code row)
-sfFields = transpose(sf_fields_js);
-sfChartData = toChartData(selectedRow, sfFields);
+sfChartData   = toChartData(selectedRow, sfFields);
 
 ```
 
@@ -670,6 +715,35 @@ total_sf_total_str = `$${Math.round(total_sf_total).toLocaleString()}`
 total_combined_total_str = `$${Math.round(total_combined_total).toLocaleString()}`
 ```
 
+```{ojs}
+//| output: false
+total_sped_sal = d3.sum(spedSalFields, f => +selectedRow?.[f.key] || 0)
+```
+
+```{ojs}
+//| output: false
+total_sf_sal = d3.sum(sfSalFields, f => +selectedRow?.[f.key] || 0)
+```
+
+```{ojs}
+//| output: false
+total_combined_sal = total_sped_sal + total_sf_sal
+```
+
+```{ojs}
+//| output: false
+total_sped_sal_str = `$${Math.round(total_sped_sal).toLocaleString()}`
+```
+
+```{ojs}
+//| output: false
+total_sf_sal_str = `$${Math.round(total_sf_sal).toLocaleString()}`
+```
+
+```{ojs}
+//| output: false
+total_combined_sal_str = `$${Math.round(total_combined_sal).toLocaleString()}`
+```
 
 ```{ojs}
 //| output: false
@@ -709,7 +783,8 @@ function pieChart(data, { title = "", color = spendingColor, maxHeight = 350 } =
       .attr("stroke", "white")
       .attr("stroke-width", 1)
     .append("title")
-      .text(d => `${d.data.label}\n$${Math.round(d.data.value).toLocaleString()} (${((d.data.value / total) * 100).toFixed(1)}%)`);
+      .text(d => `${d.data.label}
+$${Math.round(d.data.value).toLocaleString()} (${((d.data.value / total) * 100).toFixed(1)}%)`);
 
   svg.append("g")
     .attr("text-anchor", "middle")
@@ -748,6 +823,7 @@ return html`<div style="text-align:left;width:100%;margin-top:0;">${svg.node()}$
 ```{ojs}
 //| echo: false
 md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Benefits</i></h>`
+
 ```
 
 #### Row - Pie Charts {height=85% .flow}
@@ -757,6 +833,7 @@ md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_combined_total_str}</strong></div>
+  <div style="font-size:0.9em;color:#555;margin-bottom:6px;font-style:italic;">Salary & Benefits (excluded): <strong>${total_combined_sal_str}</strong></div>
   ${pieChart(combinedChartData, { title: "", color: itemColor })}
 </div>`
 
@@ -768,6 +845,7 @@ html`<div style="display:flex;flex-direction:column;justify-content:flex-start;a
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_sped_total_str}</strong></div>
+  <div style="font-size:0.9em;color:#555;margin-bottom:6px;font-style:italic;">Salary & Benefits (excluded): <strong>${total_sped_sal_str}</strong></div>
   ${pieChart(spedChartData, { title: "", maxHeight: 250 })}
 </div>`
 
@@ -778,10 +856,11 @@ html`<div style="display:flex;flex-direction:column;justify-content:flex-start;a
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_sf_total_str}</strong></div>
+  <div style="font-size:0.9em;color:#555;margin-bottom:6px;">Salary & Benefits: <strong>${total_sf_sal_str}</strong></div>
   ${pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })}
 </div>`
 
 ```
 
 #### References, Notes {#print-footer}
-*  Spending Data: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
+* Data Source: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)

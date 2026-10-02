@@ -4,7 +4,7 @@ listing:
 - id: data-listing
   contents: 
     - "plots/*.qmd"
-    - "!plots/SPED_ST3.qmd"
+    # - "!plots/SPED_ST3.qmd"
   type: table
   sort-ui: false
   filter-ui: false

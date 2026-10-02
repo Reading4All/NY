@@ -1,7 +1,5 @@
 ---
-title: "Special Education Spending - 2021-2025"
-#subtitle: "Multi-Year Special Education Spending (2021-2025)"
-#author: "Open School Data"
+title: "Special Ed Spending (ESSA/SLSF) - 2021-2025"
 format:
   dashboard:
     orientation: rows
@@ -628,8 +626,8 @@ Plot.plot({
 
 ```
 ## References, Notes {#print-footer1}
-* Expenditures & Enrollment (info): [NYSED Financial Transparency](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting): [slsf_financial_data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/slfs_financial_data.xlsx) for 2024+, [essa-financial-data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/essa-financial-data.xlsx) for 2023 and prior
-* Exclusions (items not included in SLFS special ed spending): Out-of-District Tuition & Placements, Special Education Transportation, Related Services & Central Administration, Extended School Year (ESY) Programs [NYSED ESSA/SLFS Transparency](https://www.nysed.gov/fiscal-analysis-research/essaslfs-financial-transparency-faq)
+* Data Source: [NYSED Financial Transparency](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting): [slsf_financial_data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/slfs_financial_data.xlsx) for 2024+, [essa-financial-data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/essa-financial-data.xlsx) for 2023 and prior
+* ESSA/SLFS Exclusions (items not included): Out-of-District Tuition & Placements, Special Education Transportation, Related Services & Central Administration, Extended School Year (ESY) Programs [NYSED ESSA/SLFS Transparency](https://www.nysed.gov/fiscal-analysis-research/essaslfs-financial-transparency-faq)
 ```{ojs}
 //| title: "SPED ELA Scores: Are gaps closing?"
 //| echo: false
@@ -641,5 +639,5 @@ fig2 = {
 
 ```
 ## References, Notes {#print-footer2}
-* ELA DATA: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
-* ELA DATA (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
+* ELA data from: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
+* ELA data (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
