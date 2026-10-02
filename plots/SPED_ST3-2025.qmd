@@ -856,11 +856,12 @@ html`<div style="display:flex;flex-direction:column;justify-content:flex-start;a
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_sf_total_str}</strong></div>
-  <div style="font-size:0.9em;color:#555;margin-bottom:6px;">Salary & Benefits: <strong>${total_sf_sal_str}</strong></div>
+  <div style="font-size:0.9em;color:#555;margin-bottom:6px;font-style:italic;">Salary & Benefits (excluded): <strong>${total_sf_sal_str}</strong></div>
   ${pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })}
 </div>`
 
 ```
 
 #### References, Notes {#print-footer}
-* Data Source: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm) — [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
+* Data from: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm): [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
+* Information: [ST-3 Information](https://stateaid.nysed.gov/st3/)
