@@ -75,8 +75,8 @@ shared_data <- rbind(df1, df2, df3, df4, df5)
 shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
 
 # Only keep District and County Data
-## (old) Only Keep District Data
-shared_data <- shared_data[shared_data$ENTITY_TYPE == "DISTRICT",]
+shared_data <- shared_data %>%
+  filter(ENTITY_TYPE == "DISTRICT" | COUNTY_DESC == "ALL NYC")
 
 ## Only Keep Subgroups to be used - SWD
 shared_data<-shared_data[(shared_data$SUBGROUP_NAME == "Students with Disabilities"),]
@@ -118,6 +118,9 @@ shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
 shared_data["...1"] <- NULL
 
 # keep all spending and ela with matches - think this is right but doesn't work
+# but first change entity_cd of county_dec="NYC ALL" to match it's ELA entity_CD, otherwise the NYC total's won't match
+shared_data$ENTITY_CD[shared_data$COUNTY_DESC == "ALL NYC"] <- "300000010000"
+
 spending_ela_merged <- spending_clean %>%
   left_join(
     shared_data,
@@ -530,7 +533,7 @@ html`
     <div class="indicator-label">Cumulative SPED Spending (2021-2025)</div>
     <div class="indicator-value">$${Math.round(cumulativeTotal).toLocaleString()}</div>
     <div class="indicator-desc">
-      ESSA/SLFS Total for PK-12.
+      ESSA/SLFS Total for PK-12. See notes for exclusions.
     </div>
   </div>
 
