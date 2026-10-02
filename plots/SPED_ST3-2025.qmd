@@ -829,7 +829,7 @@ md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}
 #### Row - Pie Charts {height=85% .flow}
 ##### Left Col - Total Chart {width=60% .fill}
 ```{ojs}
-//| title: "Combined Spending: General + Special Aid"
+//| title: "Combined: General + Special Aid Funds"
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_combined_total_str}</strong></div>
@@ -841,7 +841,7 @@ html`<div style="display:flex;flex-direction:column;justify-content:flex-start;a
 
 ##### Right Col - General and Special Fund Charts {width=40% .fill}
 ```{ojs}
-//| title: "General Fund - Spending"
+//| title: "General Fund"
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_sped_total_str}</strong></div>
@@ -852,7 +852,7 @@ html`<div style="display:flex;flex-direction:column;justify-content:flex-start;a
 ```
 
 ```{ojs}
-//| title: "Special Aid Fund - Spending"
+//| title: "Special Aid Fund"
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_sf_total_str}</strong></div>
