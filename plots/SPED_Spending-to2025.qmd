@@ -538,7 +538,7 @@ html`
 
 <div class="indicator-row">
   <div class="indicator-card half accent-green">
-    <div class="indicator-label">Total 2025 SPED Spending</div>
+    <div class="indicator-label">2025 SPED Spending (ESSA/SLSF)</div>
     <div class="indicator-value">$${Math.round(total2025).toLocaleString()}</div>
     <div class="indicator-desc">
       ESSA/SLFS Total for PK-12. See notes for exclusions.
@@ -546,7 +546,7 @@ html`
   </div>
 
   <div class="indicator-card quarter">
-    <div class="indicator-label">2025 SPED Spending Per Pupil</div>
+    <div class="indicator-label">2025 SPED Spending - Per Pupil</div>
     <div class="indicator-value">$${Math.round(spedPerPupil2025).toLocaleString()}</div>
     <div class="indicator-desc">
     Total Pupils (PK-12): <b>${Math.round(Enrollment2025).toLocaleString()}</b>
@@ -554,7 +554,7 @@ html`
   </div>
 
   <div class="indicator-card quarter">
-    <div class="indicator-label">2025 SPED Spending Per SWD</div>
+    <div class="indicator-label">2025 SPED Spending - Per SWD</div>
     <div class="indicator-value">$${Math.round(spedPerSWD2025).toLocaleString()}</div>
     <div class="indicator-desc">
     Total SWD (PK-12): <b>${Math.round(EnrollmentSWD2025).toLocaleString()}</b>
