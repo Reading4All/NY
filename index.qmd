@@ -23,7 +23,7 @@ listing:
   filter-ui: false
   fields: [title]
   field-display-names:
-    title: "Science of Reading(SOR)/Writing/Learning"
+    title: "Science of Reading/Writing/Learning"
   table-hover: true
   table-striped: false
   categories: false
