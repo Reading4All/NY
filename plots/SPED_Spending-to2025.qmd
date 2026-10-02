@@ -163,7 +163,7 @@ districtsInCounty = new Set(
 districtDefault = {
   county;
   // Default to Cold Spring Harbor CSD when it is in the selected county, otherwise blank
-  return districtsInCounty.has("Cold Spring Harbor CSD") ? "Cold Spring Harbor CSD" : "";
+  return districtsInCounty.has("Harborfields CSD") ? "Harborfields CSD" : "";
 }
 
 ```
@@ -682,4 +682,4 @@ fig2 = {
 ## References, Notes {#print-footer2}
 * ELA data from: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
 * ELA data (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
-* When any data is not available, the bar will not appear
+* A missing bar indicates that some or all of its data is unavailable
