@@ -108,7 +108,7 @@ shared_data <- shared_data[keep_rows, ]
 ## Remove all columns not used - lessen load to frontend/users, reduce html output size
 shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, NotProf_Pct, NotTested_Pct, SEASON, TOTAL_COUNT))
 
-## Remove NYC districts for this plot - they are not currently included in the spending data csv
+## Remove NYC ELA data (except keep NYC total (NYC CHANCELLOR'S OFFICE) because SLF file has one NYC total
 shared_data <- shared_data[!startsWith(tolower(shared_data$ENTITY_NAME), "nyc geo"), ]
 
 ## format ENTITY_CD
