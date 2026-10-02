@@ -163,7 +163,7 @@ districtsInCounty = new Set(
 districtDefault = {
   county;
   // Default to Cold Spring Harbor CSD when it is in the selected county, otherwise blank
-  return districtsInCounty.has("Harborfields CSD") ? "Harborfields CSD" : "";
+  return districtsInCounty.has("Cold Spring Harbor CSD") ? "Cold Spring Harbor CSD" : "";
 }
 
 ```
@@ -366,6 +366,20 @@ waterfallData = {
       yEnd: acc
     };
   });
+}
+
+// Label placement for each year's spending label on the plot.
+// A bar is "short" if it is too small (in pixels) to hold the label inside it.
+// Short bars get black labels placed outside the bar, so they never collide with the cumulative total above.
+barLabelData = {
+  const plotH = 530;     // approx. drawable plot height in px (600 - margins)
+  const minBarPx = 32;   // minimum bar height needed to fit the label inside
+  const maxEnd = Math.max(...waterfallData.map(d => d.yEnd), 1);
+  return waterfallData.map(d => ({
+    ...d,
+    short: (d.annual / maxEnd) * plotH < minBarPx,
+    first: d.yStart <= 0
+  }));
 }
 
 // 1. Total 2025 SPED Spending
@@ -617,6 +631,36 @@ Plot.plot({
       fontWeight: "bold",
       fill: "#5a5a5a" //"#3DAE44"
     }),
+    // Each year's spending, centered near the bottom of its bar (white, inside the bar)
+    Plot.text(barLabelData.filter(d => !d.short), {
+      x: "YEAR",
+      y: "yStart",
+      text: d => `$${Math.round(d.annual).toLocaleString()}`,
+      dy: -14,
+      fontSize: 14,
+      //fontWeight: "bold",
+      fill: "white"
+    }),
+    // Short bar (not the first year): black label just below the bottom of the bar
+    Plot.text(barLabelData.filter(d => d.short && !d.first), {
+      x: "YEAR",
+      y: "yStart",
+      text: d => `$${Math.round(d.annual).toLocaleString()}`,
+      dy: 16,
+      fontSize: 14,
+      fontWeight: "bold",
+      fill: "black"
+    }),
+    // Short first bar (sits on the axis): black label above the cumulative total
+    Plot.text(barLabelData.filter(d => d.short && d.first), {
+      x: "YEAR",
+      y: "yEnd",
+      text: d => `$${Math.round(d.annual).toLocaleString()}`,
+      dy: -34,
+      fontSize: 14,
+      fontWeight: "bold",
+      fill: "black"
+    }),
     Plot.ruleY([0])
   ]
 })
@@ -638,3 +682,4 @@ fig2 = {
 ## References, Notes {#print-footer2}
 * ELA data from: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
 * ELA data (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
+* When any data is not available, the bar will not appear

@@ -13,89 +13,7 @@ format:
       - icon: arrow-left-circle-fill
         href: ../
 ---
-```{r}
-#| echo: false
-#| include: false
-library(tidyverse)
-library(tidyr)
 
-### READ, KEEP DATA NEEDED FOR ALL THE PLOTS, for all user inputs #####
-
-###### {r, read csv, format df}
-YEAR <-  2025 #YEAR ENDING SPRING DATA, so CSV with same year as selected
-
-###### read csv data
-data_local <- 0 #change as needed, 1= data is on computer, 0=online
-
-if (data_local == 0) {
-  csv_file1 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
-  csv_file2 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-1, ".csv")
-  csv_file3 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-2, ".csv")
-  csv_file4 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-3, ".csv")
-  csv_file5 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-4, ".csv")
-} else if (data_local == 1) {
-  csv_file1 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR, ".csv")
-  csv_file2 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-1, ".csv")
-  csv_file3 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-2, ".csv")
-  csv_file4 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-3, ".csv")
-  csv_file5 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-4, ".csv")
-} else {
-  print("Error: fix link(s) to data files")
-}
-
-df1 <- read_csv(csv_file1)
-df2 <- read_csv(csv_file2)
-df3 <- read_csv(csv_file3)
-df4 <- read_csv(csv_file4)
-df5 <- read_csv(csv_file5)
-
-# combine
-shared_data <- rbind(df1, df2, df3, df4, df5)
-
-
-###### KEEP ONLY NEEDED Data
-
-## Only Keep Spring (year-end) Data
-shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
-
-# Keep District and County Data
-## (old) Only Keep District Data
-## shared_data<-shared_data[(shared_data$ENTITY_TYPE == "DISTRICT"),]
-shared_data <- shared_data[
-  shared_data$ENTITY_TYPE == "DISTRICT" |
-  shared_data$ENTITY_TYPE == "COUNTY",
-]
-
-## Only Keep Subgroups to be used
-shared_data<-shared_data[(shared_data$SUBGROUP_NAME == "Students with Disabilities" |
-                          shared_data$SUBGROUP_NAME == "General Education Students" |
-                          shared_data$SUBGROUP_NAME == "Economically Disadvantaged" |  
-                          shared_data$SUBGROUP_NAME == "Not Economically Disadvantaged" |
-                          shared_data$SUBGROUP_NAME == "All Students"
-                          ),]
-
-## Remove rows with NA Prof_Pct rates (to prevent rows with missing counts from being included but NA on plots)
-shared_data <- shared_data %>% 
-  filter(!is.na(Prof_Pct)) %>% 
-  dplyr::arrange(Prof_Pct, NotProf_Pct)
-
-## Remove all columns not used - lessen load to frontend/users, reduce html output size
-shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, NotProf_Pct, NotTested_Pct, SEASON, TOTAL_COUNT))
-
-## Remove NYC districts for this plot - because HMTL is already to large (NYC county/all will still be available), plus as it it will fail because it's $COUNTY_DESC is null)
-shared_data <- shared_data[!startsWith(tolower(shared_data$ENTITY_NAME), "nyc geo"), ]
-
-
-###### FORMATTING
-### format ENTITY_CD
-shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
-
-
-##### Make df available to OJS chunk
-# df to ojs
-ojs_define(df_to_js = shared_data) 
-
-```
 
 ```{ojs}
 //| output: false
@@ -510,5 +428,6 @@ fig5 = {
 ## Sourcedata, Notes {#print-footer}
 * ELA data from: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
 * ELA data (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
-* A missing bar indicates that some or all of its data is unavailable 
+* When any data is not available, the bar will not appear 
 :::
+
