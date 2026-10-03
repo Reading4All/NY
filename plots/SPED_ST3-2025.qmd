@@ -865,5 +865,5 @@ html`<div style="display:flex;flex-direction:column;justify-content:flex-start;a
 ```
 
 #### References, Notes {#print-footer}
-* Data from: [NYSED ST-3 Financial Report](https://stateaid.nysed.gov/st3/st3data.htm): [2025-2026 XSLX](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
+* Data from: [NYSED ST-3 Financial Report - Year ending 2025](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
 * Information: [ST-3 Information](https://stateaid.nysed.gov/st3/)
