@@ -1,25 +1,25 @@
 # Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv  
   
-## SOURCE DATA, Steps to Clean and Create the Clean DATA file:  
-### raw data files: "slfs_financial_data.xlsx" (2024 on), "essa-financial-data.xlsx" (2023 and prior)  
-### raw data files from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting  
-### R Script to merge/clean them: slfs_essa_financial_merge.R  
+## SOURCE DATA, R script to Create the Clean DATA file:  
+- raw data files: "slfs_financial_data.xlsx" (2024 on), "essa-financial-data.xlsx" (2023 and prior)  
+- raw data files from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting  
+- R Script to merge/clean them: slfs_essa_financial_merge.R  
  
  
 # Cleaned DATA file: ST3-SPED-202X.csv  (one per year)  
   
-## SOURCE DATA, Steps to Clean and Create the Clean DATA file:  
-### raw data files: 2024-2025_School_Year_2025-2026_SAMS ST-3.xlsx  (one per year)  
-### raw data files from: https://stateaid.nysed.gov/st3/st3data.htm  
-### R Script to merge/clean them: Clean_ST3-SPED.R  
+## SOURCE DATA, R script to Create the Clean DATA file:  
+- raw data files: 2024-2025_School_Year_2025-2026_SAMS ST-3.xlsx  (one per year)  
+- raw data files from: https://stateaid.nysed.gov/st3/st3data.htm  
+- R Script to merge/clean them: Clean_ST3-SPED.R  
  
  
 # Cleaned DATA file: personnel-master-thru2025.csv  
   
-## SOURCE DATA, Steps to Clean and Create the Clean DATA file:  
-### raw data files: personnel-master-file-statistical-run-202X-2X.xlsx  (one per year)  
-### raw data files from: https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf  
-### R Script to merge/clean them: personnel-master--Clean_Merge.R  
+## SOURCE DATA, R script to Create the Clean DATA file:  
+- raw data files: personnel-master-file-statistical-run-202X-2X.xlsx  (one per year)  
+- raw data files from: https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf  
+- R Script to merge/clean them: personnel-master-Clean_Merge.R  
   
   
   
