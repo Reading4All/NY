@@ -7,18 +7,32 @@
     "text": "**Cleaned DATA file: enrollment-by-district-of-residence-nonpublic.csv * with school years (ending): 2021-2025\n**SOURCE DATA, and Steps to Clean:\n* Source Data: annual “enrollment-by-districts-of-residence-and-attendance-nonpublic-20XX-XX.xlsx” files, from: https://www.p12.nysed.gov/irs/statistics/nonpublic/home.html\n* R Script to clean and merge them: enrollment-by-districts-of-residence-nonpublic–MergeClean.R"
   },
   {
-    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-steps-to-clean-and-create-the-clean-data-file-1",
-    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-steps-to-clean-and-create-the-clean-data-file-1",
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html",
     "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
-    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
-    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nraw data files: 2024-2025_School_Year_2025-2026_SAMS ST-3.xlsx (one per year)\n\n\nraw data files from: https://stateaid.nysed.gov/st3/st3data.htm\n\n\nR Script to merge/clean them: Clean_ST3-SPED.R"
+    "section": "",
+    "text": "raw data files: “slfs_financial_data.xlsx” (2024 on), “essa-financial-data.xlsx” (2023 and prior)\n\nraw data files from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting\n\nR Script to merge/clean them: slfs_essa_financial_merge.R"
   },
   {
-    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-steps-to-clean-and-create-the-clean-data-file-2",
-    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-steps-to-clean-and-create-the-clean-data-file-2",
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file",
     "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
-    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
-    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nraw data files: personnel-master-file-statistical-run-202X-2X.xlsx (one per year)\n\n\nraw data files from: https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf\n\n\nR Script to merge/clean them: personnel-master–Clean_Merge.R"
+    "section": "",
+    "text": "raw data files: “slfs_financial_data.xlsx” (2024 on), “essa-financial-data.xlsx” (2023 and prior)\n\nraw data files from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting\n\nR Script to merge/clean them: slfs_essa_financial_merge.R"
+  },
+  {
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file-1",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file-1",
+    "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
+    "section": "SOURCE DATA, R script to Create the Clean DATA file:",
+    "text": "SOURCE DATA, R script to Create the Clean DATA file:\n\nraw data files: 2024-2025_School_Year_2025-2026_SAMS ST-3.xlsx (one per year)\n\nraw data files from: https://stateaid.nysed.gov/st3/st3data.htm\n\nR Script to merge/clean them: Clean_ST3-SPED.R"
+  },
+  {
+    "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file-2",
+    "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file-2",
+    "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
+    "section": "SOURCE DATA, R script to Create the Clean DATA file:",
+    "text": "SOURCE DATA, R script to Create the Clean DATA file:\n\nraw data files: personnel-master-file-statistical-run-202X-2X.xlsx (one per year)\n\nraw data files from: https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf\n\nR Script to merge/clean them: personnel-master-Clean_Merge.R"
   },
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#essaslfs-school-level-finance-survey-special-ed-spending-info",
@@ -49,10 +63,10 @@
     "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_MATH_ANYYEAR-filePerSeason.R"
   },
   {
-    "objectID": "data/ELA/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
-    "href": "data/ELA/SOURCEDATA-ELA.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "objectID": "data/ELA/SOURCEDATA-ELA.html#source-data-r-script-to-create-the-clean-data-file",
+    "href": "data/ELA/SOURCEDATA-ELA.html#source-data-r-script-to-create-the-clean-data-file",
     "title": "Open School Data (NY)",
-    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
-    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
+    "section": "SOURCE DATA, R script to Create the Clean DATA file:",
+    "text": "SOURCE DATA, R script to Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
   }
 ]
