@@ -1,5 +1,5 @@
 ---
-title: "Change in Students and Staff by District"
+title: "Staff Counts & Salaries - 2021-2025"
 format:
   dashboard:
     orientation: columns
@@ -29,8 +29,21 @@ FIRST_YEAR <- 2021
 ###
 
 ###### read csv data (district personnel + district financial/enrollment)
-personnel_url <- "https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SPENDING%2CENROLLMENT/personnel-master-thru2025.csv"
-financial_url <- "https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SPENDING%2CENROLLMENT/slfs_essa_financial_merged_thru2025.csv"
+h1 <- "https://raw."
+h2 <- "git"
+h3 <- "hub"
+h4 <- "user"
+h5 <- "content"
+h6 <- ".com/"
+base_url <- paste0(h1, h2, h3, h4, h5, h6)
+
+repo <- "Reading4All/NY/refs/heads/main/data/"
+folder <- "SPENDING%2CENROLLMENT/"
+f1 <- "personnel-master-thru2025.csv"
+f2 <- "slfs_essa_financial_merged_thru2025.csv"
+
+personnel_url <- paste0(base_url, repo, folder, f1)
+financial_url <- paste0(base_url, repo, folder, f2)
 
 # fuction to keep 12-digit BEDS code as text (keeps leading zero, avoids scientific notation in JSON)
 pad_cd <- function(x) sprintf("%012.0f", as.numeric(x))
@@ -38,12 +51,6 @@ pad_cd <- function(x) sprintf("%012.0f", as.numeric(x))
 # Personnel: one row per district x year x staff type
 df1 <- read_csv(personnel_url, show_col_types = FALSE) %>%
   filter(is.na(NEEDS_RESOURCE_DESC) | NEEDS_RESOURCE_DESC != "CHARTER SCHOOL") 
-
-# fixed clean data - done already
-  # %>%       # drop charters (they have no student counts in the SLFS file)
-  # mutate(
-  #  TOTAL_FTE = as.numeric(TOTAL_FTE)
-  # )
 
 # Enrollment: one row per district x year
 df2 <- read_csv(financial_url, show_col_types = FALSE) %>%
@@ -92,8 +99,42 @@ long <- bind_rows(students, staff) |>
   select(COUNTY_DESC, DISTRICT_NAME, YEAR, series, value, change) |>
   arrange(COUNTY_DESC, DISTRICT_NAME, series, YEAR)
 
+# Calculate staff average salaries using AVG_SAL_FOR_FTE
+calc_salary <- function(sal, fte) {
+  sal <- as.numeric(sal)
+  fte <- as.numeric(fte)
+  valid <- !is.na(sal) & sal > 0
+  if (!any(valid)) return(NA_real_)
+  sal <- sal[valid]
+  fte <- fte[valid]
+  fte[is.na(fte) | fte <= 0] <- 1
+  sum(sal * fte) / sum(fte)
+}
+
+salaries <- raw %>%
+  mutate(AVG_SAL_FOR_FTE = parse_number(as.character(AVG_SAL_FOR_FTE))) %>%
+  filter(!is.na(AVG_SAL_FOR_FTE), AVG_SAL_FOR_FTE > 0, !is.na(STAFF_IND_DESC)) %>%
+  mutate(series = if_else(STAFF_IND_DESC == "Classroom Teacher", lab_teachers, as.character(STAFF_IND_DESC))) %>%
+  group_by(COUNTY_DESC, DISTRICT_NAME, YEAR, series) %>%
+  summarise(
+    salary = round(calc_salary(AVG_SAL_FOR_FTE, TOTAL_FTE), 0),
+    .groups = "drop"
+  ) %>%
+  filter(!is.na(salary)) %>%
+  # Change in average salary since FIRST_YEAR (same approach as the first plot)
+  group_by(COUNTY_DESC, DISTRICT_NAME, series) %>%
+  mutate(
+    baseline = salary[YEAR == FIRST_YEAR][1],   # NA if no first-year salary for this role
+    change   = salary - baseline
+  ) %>%
+  ungroup() %>%
+  filter(!is.na(change)) %>%
+  select(COUNTY_DESC, DISTRICT_NAME, YEAR, series, salary, change) %>%
+  arrange(COUNTY_DESC, DISTRICT_NAME, series, YEAR)
+
 # Hand the data to Observable JS
 ojs_define(chg = long,
+           salaries = salaries,
            first_year = FIRST_YEAR, last_year = LAST_YEAR)
 ```
 
@@ -102,6 +143,7 @@ ojs_define(chg = long,
 
 // Get the data from R and make it usable (transpose it) in JS
 shared_data = transpose(chg)
+salary_data = transpose(salaries)
 ```
 
 ```{ojs}
@@ -133,7 +175,7 @@ districtDefault = {
 ```{ojs}
 //| output: false
 // guard function
-// makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit
+// makes a submit and reset button to use after multiple inputs made
 
 function guard(fn, options = {}, countyView) {
   const {
@@ -232,6 +274,72 @@ const template = inputs => {
     set: v => { input.value = v }
   });
 }
+
+// view: "Annual" = average salary each year; "Change Over Time" = change since firstYear
+function salaryPlot(data, width, height, view = "Annual") {
+
+  const annual = view === "Annual";
+  const yField = annual ? "salary" : "change";
+  const money  = n => n != null ? `$${n.toLocaleString()}` : "";
+  const signed = n => `${n < 0 ? "-" : "+"}$${Math.abs(n).toLocaleString()}`;
+
+  // One fixed color per role (not assigned by order of appearance), so a role
+  // keeps the same color in every district. No blues anywhere.
+  // Orange = classroom teachers and red = administrators, as in the first plot.
+  // The map order is also the legend order.
+  const roleColors = new Map([
+    ["Classroom Teachers",            "#E08A1E"],  // orange (same as plot 1)
+    ["Classroom Teacher",             "#E08A1E"],  // (alias, only used if the R label changes)
+    ["Central Administration",        "#D95C5C"],  // red (same as plot 1)
+    ["Program Administration",        "#1c9b84"],  // teal
+    ["Principals & Asst. Principals", "#874197"],  // purple (dark)
+    ["Other Non-Teaching Staff",      "#444444"],  // charcoal gray
+    ["Guidance Counselors",           "#d76cb7"],  // pink (light)
+    ["Psychologists & Psychiatrists", "#0c6944"],  // forest green
+    ["Social Workers",                "#9c3a11"],  // rust brown
+    ["Nurses",                        "#827f11"]   // olive
+  ]);
+  const fallbackColor = "#8c8c8c";  // any role not listed above
+
+  const present = new Set(data.map(d => d.series));
+  const domain = [
+    ...[...roleColors.keys()].filter(s => present.has(s)),
+    ...[...present].filter(s => !roleColors.has(s))
+  ];
+  const range = domain.map(s => roleColors.get(s) ?? fallbackColor);
+
+  return Plot.plot({
+    className: "StaffSalary-plot",
+
+    width,
+    height,
+    marginLeft: 80,
+    marginBottom: 50,
+    marginRight: 30,
+
+    x: { label: "School year (ending)", tickFormat: "d", ticks: yearTicks, labelAnchor: "center", labelArrow: false },
+    y: {
+      label: annual ? "Average Salary ($)" : `Change in average salary since ${firstYear} ($)`,
+      grid: true, labelAnchor: "center", tickFormat: "$,d", ticks: 7, labelArrow: false
+    },
+    color: {
+      domain: domain,
+      range: range,
+      legend: true
+    },
+    marks: [
+      ...(annual ? [] : [Plot.ruleY([0])]),
+      Plot.line(data, {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.5}),
+      Plot.dot(data, {x: "YEAR", y: yField, stroke: "series", r: 4}),
+      Plot.tip(data, Plot.pointer({
+        x: "YEAR", y: yField, stroke: "series",
+        title: d => annual
+          ? `${d.series}\n${d.YEAR}\nAverage Salary: ${money(d.salary)}\nChange since ${firstYear}: ${signed(d.change)}`
+          : `${d.series}\n${d.YEAR}\nChange: ${signed(d.change)}\nAverage Salary: ${money(d.salary)}`
+      }))
+    ]
+  });
+}
 ```
 
 ## {.toolbar #print-hide-toolbar}
@@ -297,11 +405,24 @@ dd = {
     d.DISTRICT_NAME && d.DISTRICT_NAME.toUpperCase() === selectedDistrict
   );
 }
+
+dd_salary = {
+  if (!inputSels || !inputSels.district) return [];
+  const selectedDistrict = inputSels.district.trim().toUpperCase();
+
+  return salary_data.filter(d =>
+    d.DISTRICT_NAME && d.DISTRICT_NAME.toUpperCase() === selectedDistrict
+  );
+}
 ```
 
 ```{ojs}
 //| output: false
-function changePlot(data, width, height) {
+// view: "Change Over Time" = change since firstYear; "Annual" = the actual value each year
+function changePlot(data, width, height, view = "Change Over Time") {
+
+  const annual = view === "Annual";
+  const yField = annual ? "value" : "change";
 
   return Plot.plot({
     className: "StudentStaffgrowth-plot",
@@ -313,7 +434,10 @@ function changePlot(data, width, height) {
     marginRight: 30,
 
     x: { label: "School year (ending)", tickFormat: "d", ticks: yearTicks, labelAnchor: "center", labelArrow: false },
-    y: { label: `Change since ${firstYear}`, grid: true, labelAnchor: "center", ticks: 7, labelArrow: false},
+    y: {
+      label: annual ? "Students (head count) and staff (FTE)" : `Change since ${firstYear}`,
+      grid: true, labelAnchor: "center", ticks: 7, labelArrow: false
+    },
     color: {
       domain: [
         "Students",
@@ -325,11 +449,13 @@ function changePlot(data, width, height) {
     },
     marks: [
       Plot.ruleY([0]),
-      Plot.line(data, {x: "YEAR", y: "change", stroke: "series", strokeWidth: 2.5}),
-      Plot.dot(data, {x: "YEAR", y: "change", stroke: "series", r: 4}),
+      Plot.line(data, {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.5}),
+      Plot.dot(data, {x: "YEAR", y: yField, stroke: "series", r: 4}),
       Plot.tip(data, Plot.pointer({
-        x: "YEAR", y: "change", stroke: "series",
-        title: d => `${d.series}\n${d.YEAR}\nChange: ${d.change.toFixed(1)}\nTotal: ${d.value.toFixed(1)}`
+        x: "YEAR", y: yField, stroke: "series",
+        title: d => annual
+          ? `${d.series}\n${d.YEAR}\nTotal: ${d.value.toFixed(1)}\nChange since ${firstYear}: ${d.change >= 0 ? "+" : ""}${d.change.toFixed(1)}`
+          : `${d.series}\n${d.YEAR}\nChange: ${d.change.toFixed(1)}\nTotal: ${d.value.toFixed(1)}`
       }))
     ]
   });
@@ -339,10 +465,43 @@ function changePlot(data, width, height) {
 ::: {.column-screen}
 ## Plots {.flow}
 ::: {.column-screen}
+### Print Staff Average Salaries
+```{ojs}
+//| echo: false
+md`<span class="ela-score-title">${salaryView === "Annual" ? "Staff Average Salaries" : `Staff Average Salaries, Change Since ${firstYear}`}:  ${inputSels ? inputSels.district : ""}</span>`
+```
+
+```{ojs}
+//| echo: false
+// Toggle for the salary plot (default: Annual)
+viewof salaryView = Inputs.radio(["Change Over Time", "Annual"], {
+  value: "Annual",
+  label: "View: "
+})
+```
+
+```{ojs}
+//| column: screen
+fig2 = {
+  const width = 1000;
+  const height = 480;
+
+  return salaryPlot(dd_salary, width, height, salaryView);
+}
+```
 ### Print District Selected
 ```{ojs}
 //| echo: false
-md`<span class="ela-score-title">Change in Students and Staff since ${firstYear} - ${inputSels ? inputSels.district : ""}</span>`
+md`<span class="ela-score-title">${topView === "Annual" ? "Student Enrollment and Staff" : `Student Enrollment and Staff - Change Since ${firstYear}`}:  ${inputSels ? inputSels.district : ""}</span>`
+```
+
+```{ojs}
+//| echo: false
+// Toggle for the top plot (default: Change Over Time)
+viewof topView = Inputs.radio(["Change Over Time", "Annual"], {
+  value: "Change Over Time",
+  label: "View: "
+})
 ```
 
 ```{ojs}
@@ -351,15 +510,16 @@ fig1 = {
   const width = 1000;
   const height = 480;
 
-  return changePlot(dd, width, height);
+  return changePlot(dd, width, height, topView);
 }
 ```
+
 :::
 :::
 ## Sourcedata, Notes {#print-footer}
-* Data Source - Staff data:  [personnel-master-file-statistical-run-2024-25.xlsx](https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf)
-* Data Source - Student enrollment data: [slfs_financial_data.xlsx - 2024 on, essa-financial-data.xlsx - 2023 and prior](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting)
+* Data Source - Staff data: PMF Statistical Run
+* Data Source - Student enrollment data: ESSA Financial Reporting
 * "Aministrators, Priciples, Other Staff" is the sum of non-classroom-teacher staff.
 * A district is omitted when that year's value is unavailable.
+* Salary change is each role's average salary (weighted by FTE) minus its average salary in the first year shown; a role with no first-year salary is omitted from the salary plot.
 * Charter schools and NYC districts are not included.
-

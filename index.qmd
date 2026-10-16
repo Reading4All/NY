@@ -7,6 +7,7 @@ listing:
     - "plots/ELAcountyreport-2025.qmd"
     - "plots/SPED_ST3-2025.qmd"
     - "plots/SPED_Spending-to2025.qmd"
+    - "DistrictStaffCountsSalaries-to2025.qmd"
   type: table
   sort-ui: false
   filter-ui: false
