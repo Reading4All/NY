@@ -492,7 +492,7 @@ fig2 = {
 ### Print District Selected
 ```{ojs}
 //| echo: false
-md`<span class="ela-score-title">${topView === "Annual" ? "Student Enrollment and Staff" : `Student Enrollment and Staff - Change Since ${firstYear}`}:  ${inputSels ? inputSels.district : ""}</span>`
+md`<span class="ela-score-title">${topView === "Annual" ? "Staff Counts and Student Enrollment" : `Staff Counts and Student Enrollment - Change Since ${firstYear}`}:  ${inputSels ? inputSels.district : ""}</span>`
 ```
 
 ```{ojs}
