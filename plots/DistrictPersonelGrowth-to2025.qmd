@@ -1,0 +1,365 @@
+---
+title: "Change in Students and Staff by District"
+format:
+  dashboard:
+    orientation: columns
+    expandable: false
+    scrolling: true
+    theme:
+      - minty
+      - ../custom.scss
+    css: DistrictPersonelGrowth.css
+    nav-buttons:
+      - icon: arrow-left-circle-fill
+        href: ../
+---
+
+```{r}
+#| label: prep-data
+#| echo: false
+#| include: false
+library(readr)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+
+### Annual updating steps:
+LAST_YEAR  <- 2025   # school year ending in spring of this year
+FIRST_YEAR <- 2021
+###
+
+###### read csv data (district personnel + district financial/enrollment)
+personnel_url <- "https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SPENDING%2CENROLLMENT/personnel-master-thru2025.csv"
+financial_url <- "https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/SPENDING%2CENROLLMENT/slfs_essa_financial_merged_thru2025.csv"
+
+# fuction to keep 12-digit BEDS code as text (keeps leading zero, avoids scientific notation in JSON)
+pad_cd <- function(x) sprintf("%012.0f", as.numeric(x))
+
+# Personnel: one row per district x year x staff type
+df1 <- read_csv(personnel_url, show_col_types = FALSE) %>%
+  filter(is.na(NEEDS_RESOURCE_DESC) | NEEDS_RESOURCE_DESC != "CHARTER SCHOOL") 
+
+# fixed clean data - done already
+  # %>%       # drop charters (they have no student counts in the SLFS file)
+  # mutate(
+  #  TOTAL_FTE = as.numeric(TOTAL_FTE)
+  # )
+
+# Enrollment: one row per district x year
+df2 <- read_csv(financial_url, show_col_types = FALSE) %>%
+  transmute(
+    ENTITY_CD = pad_cd(ENTITY_CD),
+    YEAR = as.numeric(YEAR),
+    PK12_Enrollment = as.numeric(PK12_Enrollment)
+  ) %>%
+  distinct(ENTITY_CD, YEAR, .keep_all = TRUE)
+
+# Keep all personnel rows, add enrollment where there's a match
+raw <- df1 %>%
+  left_join(df2, by = c("ENTITY_CD", "YEAR")) %>%
+  filter(YEAR >= FIRST_YEAR, YEAR <= LAST_YEAR)
+
+# PK12_Enrollment is stored as text; strip any commas/suppression marks
+raw <- raw |>
+  mutate(PK12_Enrollment = parse_number(as.character(PK12_Enrollment)))
+
+lab_students <- "Students"
+lab_teachers <- "Classroom Teachers"
+lab_other    <- "Aministrators, Priciples, Other non-Inst.Staff"
+
+# Enrollment is repeated on every staff row, so take one value per district-year
+students <- raw |>
+  distinct(COUNTY_DESC, DISTRICT_NAME, YEAR, PK12_Enrollment) |>
+  transmute(COUNTY_DESC, DISTRICT_NAME, YEAR, series = lab_students, value = PK12_Enrollment)
+
+# Two staff groups: classroom teachers vs. every other role combined
+staff <- raw |>
+  mutate(series = if_else(STAFF_IND_DESC == "Classroom Teacher",
+                          lab_teachers, lab_other)) |>
+  group_by(COUNTY_DESC, DISTRICT_NAME, YEAR, series) |>
+  summarise(value = sum(TOTAL_FTE, na.rm = TRUE), .groups = "drop")
+
+# Change since FIRST_YEAR. Rounded and trimmed to keep the page size down.
+long <- bind_rows(students, staff) |>
+  group_by(COUNTY_DESC, DISTRICT_NAME, series) |>
+  mutate(
+    baseline = value[YEAR == FIRST_YEAR][1],   # NA if district has no first-year value
+    change   = value - baseline
+  ) |>
+  ungroup() |>
+  filter(!is.na(change)) |>
+  mutate(value = round(value, 2), change = round(change, 2)) |>
+  select(COUNTY_DESC, DISTRICT_NAME, YEAR, series, value, change) |>
+  arrange(COUNTY_DESC, DISTRICT_NAME, series, YEAR)
+
+# Hand the data to Observable JS
+ojs_define(chg = long,
+           first_year = FIRST_YEAR, last_year = LAST_YEAR)
+```
+
+```{ojs}
+//| output: false
+
+// Get the data from R and make it usable (transpose it) in JS
+shared_data = transpose(chg)
+```
+
+```{ojs}
+//| output: false
+// Years from the R constants (works whether they arrive as a number or a 1-item array)
+firstYear = [].concat(first_year)[0]
+lastYear  = [].concat(last_year)[0]
+yearTicks = Array.from({length: lastYear - firstYear + 1}, (_, i) => firstYear + i)
+```
+
+```{ojs}
+//| output: false
+uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC).filter(Boolean)); //for popup
+
+// Save unique districts in selected county
+districtsInCounty = new Set(
+  shared_data
+    .filter(d => d.COUNTY_DESC && d.COUNTY_DESC.toUpperCase() === county.toUpperCase())
+    .map(d => d.DISTRICT_NAME)
+);
+
+// Set Plot district when page initially loads and after user inputs county
+districtDefault = {
+  county; // Triggers when county changes
+  return "";
+}
+```
+
+```{ojs}
+//| output: false
+// guard function
+// makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit
+
+function guard(fn, options = {}, countyView) {
+  const {
+    submitLabel = "Submit",
+    resetLabel = "Reset",
+    required = false,
+    resubmit = true,
+    width = "100%",
+    justify = "start"
+  } = options;
+
+  const onSubmit = () => {
+    value = input.value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+    wrapper.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+
+  const onReset = () => {
+    input.value = value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+  };
+
+  const onInnerInputCapture = () => {
+    invalid = true;
+    submit.disabled = true;
+  };
+
+  const onInnerInput = e => {
+    e.stopPropagation();
+    submit.disabled = false;
+    reset.disabled = false;
+  };
+
+  const submit = htl.html`
+    <button ${{disabled: !resubmit && !required, onclick: onSubmit}}>
+      ${submitLabel}
+  `;
+
+  const reset = htl.html`
+    <button ${{disabled: true, onclick: onReset}}>
+      ${resetLabel}
+  `;
+
+  const footer = htl.html`
+    <div>
+      <hr style="padding:0;margin:10px 0">
+      <div style="display:flex;gap:1ch;justify-content:${justify}">
+        ${submit}
+      </div>
+    </div>
+  `;
+
+const template = inputs => {
+  const row = document.createElement("div");
+  row.className = "input-toolbar";
+
+  row.append(countyView);
+
+  (Array.isArray(inputs) ? inputs : Object.values(inputs))
+    .forEach(input => row.append(input));
+
+  const container = document.createElement("div");
+  container.style.cssText =
+    "width:100%;max-width:100%;min-width:0;box-sizing:border-box";
+
+  container.append(row, footer);
+
+  return container;
+};
+
+  const input = fn({
+    submit,
+    reset,
+    footer,
+    template,
+    onSubmit,
+    onReset
+  });
+
+  let invalid = !!input.querySelector(":invalid");
+  submit.disabled = !resubmit || invalid;
+
+  input.addEventListener("input", onInnerInputCapture, {capture: true});
+  input.addEventListener("input", onInnerInput);
+
+  let value = required ? undefined : input.value;
+
+  const wrapper = htl.html`<div style="width:${width}">${input}`;
+
+  wrapper.addEventListener("submit", onSubmit);
+
+  return Object.defineProperty(wrapper, "value", {
+    get: () => value,
+    set: v => { input.value = v }
+  });
+}
+```
+
+## {.toolbar #print-hide-toolbar}
+```{ojs}
+//| output: false
+// County stays a standalone, live (non-gated) input so districtsInCounty
+// can react to it immediately as the user types/selects.
+viewof county = Inputs.text({
+  value: "ALBANY",
+  label: "County: ",
+  datalist: uniqueCounties,
+  unique: true,
+  validate: v => shared_data.map(d => d.COUNTY_DESC ? d.COUNTY_DESC.toUpperCase() : "").includes(v.value.toUpperCase()),
+  sort: true,
+  required: true
+});
+```
+
+```{ojs}
+//| output: true
+// Woven Inputs Form for District Selection
+viewof inputSels = guard(
+  ({ template }) => Inputs.form(
+    {
+      district: Inputs.select(districtsInCounty, {
+        value: districtDefault,
+        label: "District: ",
+        sort: true,
+        required: true
+      })
+    },
+    { template }
+  ),
+  {
+    resetLabel: "Reset",
+    required: true,
+    width: "100%"
+  },
+  viewof county
+);
+```
+
+```{ojs}
+//| output: false
+// Auto-submit triggers once on page load to draw initial plots instantly
+_autoSubmit = {
+  setTimeout(() => {
+    const submitBtn = Array.from(document.querySelectorAll("button"))
+      .find(b => b.textContent.trim() === "Submit");
+    if (submitBtn) submitBtn.click();
+  }, 1000);
+}
+```
+
+```{ojs}
+//| output: false
+// Filter data by the district selected (empty until the form is first Submitted)
+dd = {
+  if (!inputSels || !inputSels.district) return [];
+  const selectedDistrict = inputSels.district.trim().toUpperCase();
+
+  return shared_data.filter(d =>
+    d.DISTRICT_NAME && d.DISTRICT_NAME.toUpperCase() === selectedDistrict
+  );
+}
+```
+
+```{ojs}
+//| output: false
+function changePlot(data, width, height) {
+
+  return Plot.plot({
+    className: "StudentStaffgrowth-plot",
+
+    width,
+    height,
+    marginLeft: 80,
+    marginBottom: 50,
+    marginRight: 30,
+
+    x: { label: "School year (ending)", tickFormat: "d", ticks: yearTicks, labelAnchor: "center", labelArrow: false },
+    y: { label: `Change since ${firstYear}`, grid: true, labelAnchor: "center", ticks: 7, labelArrow: false},
+    color: {
+      domain: [
+        "Students",
+        "Classroom Teachers",
+        "Aministrators, Priciples, Other non-Inst.Staff"
+      ],
+      range: ["#4f81a8", "#E08A1E", "#d95c5c"],
+      legend: true
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.line(data, {x: "YEAR", y: "change", stroke: "series", strokeWidth: 2.5}),
+      Plot.dot(data, {x: "YEAR", y: "change", stroke: "series", r: 4}),
+      Plot.tip(data, Plot.pointer({
+        x: "YEAR", y: "change", stroke: "series",
+        title: d => `${d.series}\n${d.YEAR}\nChange: ${d.change.toFixed(1)}\nTotal: ${d.value.toFixed(1)}`
+      }))
+    ]
+  });
+}
+```
+
+::: {.column-screen}
+## Plots {.flow}
+::: {.column-screen}
+### Print District Selected
+```{ojs}
+//| echo: false
+md`<span class="ela-score-title">Change in Students and Staff since ${firstYear} - ${inputSels ? inputSels.district : ""}</span>`
+```
+
+```{ojs}
+//| column: screen
+fig1 = {
+  const width = 1000;
+  const height = 480;
+
+  return changePlot(dd, width, height);
+}
+```
+:::
+:::
+## Sourcedata, Notes {#print-footer}
+* Data Source - Staff data:  [personnel-master-file-statistical-run-2024-25.xlsx](https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf)
+* Data Source - Student enrollment data: [slfs_financial_data.xlsx - 2024 on, essa-financial-data.xlsx - 2023 and prior](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting)
+* "Aministrators, Priciples, Other Staff" is the sum of non-classroom-teacher staff.
+* A district is omitted when that year's value is unavailable.
+* Charter schools and NYC districts are not included.
+
