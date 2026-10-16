@@ -1,3 +1,10 @@
+/* Change plot axis title textfont size*/
+.observablehq svg g[aria-label="x-axis label"] text,
+.observablehq svg g[aria-label="y-axis label"] text {
+  font-size: 1.05rem !important; /* Adjust font size here (or 14px, 16px) */
+/*  font-weight: 600;            Optional: make title text semi-bold */
+}
+
 /* gets rid of too much whitespace above plots */
 h2 {
   margin-top: 0 !important;

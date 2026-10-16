@@ -476,7 +476,7 @@ md`<span class="ela-score-title">${salaryView === "Annual" ? "Staff Average Sala
 // Toggle for the salary plot (default: Annual)
 viewof salaryView = Inputs.radio(["Change Over Time", "Annual"], {
   value: "Annual",
-  label: "View: "
+  label: "Select View: "
 })
 ```
 
@@ -500,7 +500,7 @@ md`<span class="ela-score-title">${topView === "Annual" ? "Student Enrollment an
 // Toggle for the top plot (default: Change Over Time)
 viewof topView = Inputs.radio(["Change Over Time", "Annual"], {
   value: "Change Over Time",
-  label: "View: "
+  label: "Select View: "
 })
 ```
 
