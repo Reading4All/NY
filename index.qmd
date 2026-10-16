@@ -3,8 +3,10 @@ sidebar: false
 listing:
 - id: data-listing
   contents: 
-    - "plots/*.qmd"
-    # - "!plots/SPED_ST3.qmd"
+    - "plots/DistrictELAGrowth-to2025.qmd"
+    - "plots/ELAcountyreport-2025.qmd"
+    - "plots/SPED_ST3-2025.qmd"
+    - "plots/SPED_Spending-to2025.qmd"
   type: table
   sort-ui: false
   filter-ui: false
