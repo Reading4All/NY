@@ -21,10 +21,10 @@ h2 {
   min-height: 0 !important;
 }
 
-/* input boxes - formatting so they wrap when screen size decreased */
+/* Input boxes: side by side on wider screens, stacked on narrow screens */
 .input-toolbar {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 5fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 12px;
   row-gap: 4px;
   width: 100%;
@@ -33,12 +33,15 @@ h2 {
   align-items: start;
 }
 
-.input-toolbar > form {
+.input-toolbar > * {
   width: 100%;
   min-width: 0;
+  box-sizing: border-box;
+}
+
+.input-toolbar > form {
   margin: 0 !important;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .input-toolbar input,
@@ -48,17 +51,47 @@ h2 {
   box-sizing: border-box;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 650px) {
   .input-toolbar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-@media (max-width: 400px) {
-  .input-toolbar {
-    grid-template-columns: 1fr;
-    row-gap: 4px;
-  }
+/* Reduce vertical whitespace around the OJS chunks containing the View toggles */
+.cell:has(input[type="radio"]) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.cell:has(input[type="radio"]) .cell-output,
+.cell:has(input[type="radio"]) .cell-output-display,
+.cell:has(input[type="radio"]) fieldset {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Keep the "View:" label and radio toggles on the same line */
+.cell:has(input[type="radio"]) fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 4px;
+}
+
+.cell:has(input[type="radio"]) fieldset > legend {
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.cell:has(input[type="radio"]) fieldset label {
+  margin: 0;
 }
 
 /* end of input boxes - formatting */
