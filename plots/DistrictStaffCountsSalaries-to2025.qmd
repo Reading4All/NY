@@ -8,7 +8,7 @@ format:
     theme:
       - minty
       - ../custom.scss
-    css: DistrictPersonelGrowth.css
+    css: DistrictStaffCountsSalaries.css
     nav-buttons:
       - icon: arrow-left-circle-fill
         href: ../
@@ -334,8 +334,8 @@ function salaryPlot(data, width, height, view = "Annual") {
       Plot.tip(data, Plot.pointer({
         x: "YEAR", y: yField, stroke: "series",
         title: d => annual
-          ? `${d.series}\n${d.YEAR}\nAverage Salary: ${money(d.salary)}\nChange since ${firstYear}: ${signed(d.change)}`
-          : `${d.series}\n${d.YEAR}\nChange: ${signed(d.change)}\nAverage Salary: ${money(d.salary)}`
+          ? `${d.series}\nAverage Salary: ${money(d.salary)}\nChange since ${firstYear}: ${signed(d.change)}`
+          : `${d.series}\nChange: ${signed(d.change)}\nAverage Salary: ${money(d.salary)}`
       }))
     ]
   });
@@ -454,8 +454,8 @@ function changePlot(data, width, height, view = "Change Over Time") {
       Plot.tip(data, Plot.pointer({
         x: "YEAR", y: yField, stroke: "series",
         title: d => annual
-          ? `${d.series}\n${d.YEAR}\nTotal: ${d.value.toFixed(1)}\nChange since ${firstYear}: ${d.change >= 0 ? "+" : ""}${d.change.toFixed(1)}`
-          : `${d.series}\n${d.YEAR}\nChange: ${d.change.toFixed(1)}\nTotal: ${d.value.toFixed(1)}`
+          ? `${d.series}\nTotal: ${d.value.toFixed(1)}\nChange since ${firstYear}: ${d.change >= 0 ? "+" : ""}${d.change.toFixed(1)}`
+          : `${d.series}\nChange: ${d.change.toFixed(1)}\nTotal: ${d.value.toFixed(1)}`
       }))
     ]
   });
