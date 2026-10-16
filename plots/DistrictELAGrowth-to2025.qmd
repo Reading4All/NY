@@ -508,7 +508,7 @@ fig5 = {
 :::
 :::
 ## Sourcedata, Notes {#print-footer}
-* ELA data from: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
+* Data Source - ELA data: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
 * ELA data (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
 * A missing bar indicates that some or all of its data is unavailable 
 :::

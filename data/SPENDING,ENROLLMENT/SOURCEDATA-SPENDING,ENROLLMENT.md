@@ -22,9 +22,15 @@
 - R Script to merge/clean them: personnel-master-Clean_Merge.R  
   
   
-  
-# OTHER - GENERAL SPENDING NOTES:
-  
+# OTHER - Teacher info:  
+## ST3 info: Classroom Teacher	Teacher Salaries	Mainly the .15 codes, e.g. A2110.11 to A2110.14 and A2250.15
+- Guidance, Nurses, Psychologists, Social Workers	Instructional Salaries for Pupil Personnel Services	A2805.15 to A2830.15
+- Principals, Program Administration	Curriculum Development and Supervision (my best match, see below)	A2010.15, A2020.15, A2040.15
+- Central Administration	Central Administration	A1240, A1310, A1345, A1430, A1460, A1480, and others
+- Other Non-Teaching Staff	Other Instructional Salaries	.15 and .16 codes (pre-K teachers, librarians, paraprofessionals, secretaries)
+
+
+# OTHER - GENERAL SPENDING NOTES:  
 ## ESSA/SLFS (School-Level Finance Survey) Special Ed Spending info:
 - It reflects direct classroom instruction (A2250 operating lines and F2250 school-age IDEA Part B grant lines).
 - It excludes four major special education spending areas:
@@ -46,7 +52,7 @@
 - It also excludes:
     School legal spending
 - The website has a spreadsheet to show each ST3 code that's included as SLSF "Special Ed"
-  
+
 ## ST-3:
 - It relects all spending (SPED (from A(gen ed) and F(special funding) and SPED exclusions, and non SPED spending too
 - It is the root source of all finanical data - the ESS/SLFS spreadsheet, MOE, etc (which each excluding different things in their Special Ed totals and exclusions).
