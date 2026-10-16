@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/plots/DistrictPersonelGrowth-to2025.html",
       "/plots/DistrictELAGrowth-to2025.html",
       "/plots/ELAcountyreport-2025.html",
       "/plots/SPED_ST3-2025.html",

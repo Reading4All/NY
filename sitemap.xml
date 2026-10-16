@@ -2,46 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.openschooldata.com/support-us.html</loc>
-    <lastmod>2026-10-16T17:03:01.671Z</lastmod>
+    <lastmod>2026-10-16T17:43:03.453Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/data/Future/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html</loc>
-    <lastmod>2026-10-16T17:03:01.637Z</lastmod>
+    <lastmod>2026-10-16T17:43:03.416Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html</loc>
-    <lastmod>2026-10-16T17:03:01.651Z</lastmod>
+    <lastmod>2026-10-16T17:43:03.432Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/plots/DistrictELAGrowth-to2025.html</loc>
-    <lastmod>2026-10-16T17:03:01.669Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/plots/SPED_ST3-2025.html</loc>
-    <lastmod>2026-10-16T17:03:01.669Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/index.html</loc>
-    <lastmod>2026-10-16T17:03:01.668Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/LICENSE.html</loc>
-    <lastmod>2026-10-16T17:03:01.423Z</lastmod>
+    <lastmod>2026-10-16T17:43:03.451Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/plots/SPED_Spending-to2025.html</loc>
-    <lastmod>2026-10-16T17:03:01.669Z</lastmod>
+    <lastmod>2026-10-16T17:43:03.451Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/LICENSE.html</loc>
+    <lastmod>2026-10-16T17:43:03.178Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/index.html</loc>
+    <lastmod>2026-10-16T17:43:03.450Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/plots/SPED_ST3-2025.html</loc>
+    <lastmod>2026-10-16T17:43:03.451Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/plots/DistrictPersonelGrowth-to2025.html</loc>
+    <lastmod>2026-10-16T17:43:03.451Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/plots/ELAcountyreport-2025.html</loc>
-    <lastmod>2026-10-16T17:03:01.669Z</lastmod>
+    <lastmod>2026-10-16T17:43:03.451Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/data/Future/MATH/SOURCEDATA-MATH.html</loc>
-    <lastmod>2026-10-16T17:03:01.651Z</lastmod>
+    <lastmod>2026-10-16T17:43:03.432Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/data/ELA/SOURCEDATA-ELA.html</loc>
-    <lastmod>2026-10-16T17:03:01.629Z</lastmod>
+    <lastmod>2026-10-16T17:43:03.407Z</lastmod>
   </url>
 </urlset>
