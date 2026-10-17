@@ -1,5 +1,5 @@
 ---
-title: "Special Ed & Legal Spending (ST-3) - 2025"
+title: "Special Ed & Legal Spending (ST-3)"
 format:
   dashboard:
     orientation: rows

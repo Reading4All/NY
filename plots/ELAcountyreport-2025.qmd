@@ -1,5 +1,5 @@
 ---
-title: "ELA scores, by County - 2025"
+title: "ELA scores, by County"
 format: 
   dashboard: 
     orientation: columns

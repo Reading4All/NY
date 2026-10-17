@@ -1,11 +1,11 @@
 ---
-title: "Staff Counts & Salaries - 2021-2025"
+title: "Salaries & Staff Counts"
 format:
   dashboard:
     orientation: columns
     expandable: false
-    scrolling: true
-    theme:
+    scrolling: false
+    theme: 
       - minty
       - ../custom.scss
     css: DistrictStaffCountsSalaries.css
@@ -283,29 +283,9 @@ function salaryPlot(data, width, height, view = "Annual") {
   const money  = n => n != null ? `$${n.toLocaleString()}` : "";
   const signed = n => `${n < 0 ? "-" : "+"}$${Math.abs(n).toLocaleString()}`;
 
-  // One fixed color per role (not assigned by order of appearance), so a role
-  // keeps the same color in every district. No blues anywhere.
-  // Orange = classroom teachers and red = administrators, as in the first plot.
-  // The map order is also the legend order.
-  const roleColors = new Map([
-    ["Classroom Teachers",            "#E08A1E"],  // orange (same as plot 1)
-    ["Classroom Teacher",             "#E08A1E"],  // (alias, only used if the R label changes)
-    ["Central Administration",        "#D95C5C"],  // red (same as plot 1)
-    ["Program Administration",        "#1c9b84"],  // teal
-    ["Principals & Asst. Principals", "#874197"],  // purple (dark)
-    ["Other Non-Teaching Staff",      "#444444"],  // charcoal gray
-    ["Guidance Counselors",           "#d76cb7"],  // pink (light)
-    ["Psychologists & Psychiatrists", "#0c6944"],  // forest green
-    ["Social Workers",                "#9c3a11"],  // rust brown
-    ["Nurses",                        "#827f11"]   // olive
-  ]);
-  const fallbackColor = "#8c8c8c";  // any role not listed above
-
-  const present = new Set(data.map(d => d.series));
-  const domain = [
-    ...[...roleColors.keys()].filter(s => present.has(s)),
-    ...[...present].filter(s => !roleColors.has(s))
-  ];
+  // Colors/order come from roleColors (defined once, below, and shared with the
+  // salary table so the two always match)
+  const domain = salaryDomain(data);
   const range = domain.map(s => roleColors.get(s) ?? fallbackColor);
 
   return Plot.plot({
@@ -322,10 +302,10 @@ function salaryPlot(data, width, height, view = "Annual") {
       label: annual ? "Average Salary ($)" : `Change in average salary since ${firstYear} ($)`,
       grid: true, labelAnchor: "center", tickFormat: "$,d", ticks: 7, labelArrow: false
     },
+    // no legend here: the table above the plot is the legend
     color: {
       domain: domain,
-      range: range,
-      legend: true
+      range: range
     },
     marks: [
       ...(annual ? [] : [Plot.ruleY([0])]),
@@ -339,6 +319,67 @@ function salaryPlot(data, width, height, view = "Annual") {
       }))
     ]
   });
+}
+```
+
+```{ojs}
+//| output: false
+// One fixed color per role (not assigned by order of appearance), so a role
+// keeps the same color in every district. No blues anywhere.
+// Orange = classroom teachers and red = administrators, as in the first plot.
+// The map order is also the order of the rows in the salary table.
+roleColors = new Map([
+  ["Classroom Teachers",            "#E08A1E"],  // orange (same as plot 1)
+  ["Classroom Teacher",             "#E08A1E"],  // (alias, only used if the R label changes)
+  ["Central Administration",        "#D95C5C"],  // red (same as plot 1)
+  ["Program Administration",        "#1c9b84"],  // teal
+  ["Principals & Asst. Principals", "#874197"],  // purple (dark)
+  ["Other Non-Teaching Staff",      "#444444"],  // charcoal gray
+  ["Guidance Counselors",           "#d76cb7"],  // pink (light)
+  ["Psychologists & Psychiatrists", "#0c6944"],  // forest green
+  ["Social Workers",                "#9c3a11"],  // rust brown
+  ["Nurses",                        "#827f11"]   // olive
+]);
+
+fallbackColor = "#8c8c8c";  // any role not listed above
+
+// Roles present in the data, in the fixed order above (an unlisted role goes last)
+function salaryDomain(data) {
+  const present = new Set(data.map(d => d.series));
+  return [
+    ...[...roleColors.keys()].filter(s => present.has(s)),
+    ...[...present].filter(s => !roleColors.has(s))
+  ];
+}
+
+// Table that replaces the plot legend: color, staff type, average salary
+// (average salary is for the most recent year, lastYear)
+function salaryTable(data) {
+  if (!data || !data.length) return htl.html``;
+
+  const roles = salaryDomain(data);
+  const latest = new Map(
+    data.filter(d => Number(d.YEAR) === Number(lastYear)).map(d => [d.series, d.salary])
+  );
+  const money = n => n != null ? `$${n.toLocaleString()}` : "–";
+  const cell = "padding:3px 16px 3px 0;border:0;";
+
+  return htl.html`<table style="width:auto;border-collapse:collapse;font-size:0.85rem;margin:0 0 6px 0">
+    <thead>
+      <tr style="border-bottom:1px solid #ccc;text-align:left">
+        <th style="${cell}">Color</th>
+        <th style="${cell}">Staff type</th>
+        <th style="${cell}text-align:right">Average salary, ${lastYear}</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${roles.map(r => htl.html`<tr>
+        <td style="${cell}"><span style="display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:middle;background:${roleColors.get(r) ?? fallbackColor}"></span></td>
+        <td style="${cell}">${r}</td>
+        <td style="${cell}text-align:right">${money(latest.get(r))}</td>
+      </tr>`)}
+    </tbody>
+  </table>`;
 }
 ```
 
@@ -468,7 +509,13 @@ function changePlot(data, width, height, view = "Change Over Time") {
 ### Print Staff Average Salaries
 ```{ojs}
 //| echo: false
-md`<span class="ela-score-title">${salaryView === "Annual" ? "Staff Average Salaries" : `Staff Average Salaries, Change Since ${firstYear}`}:  ${inputSels ? inputSels.district : ""}</span>`
+md`<span class="ela-score-title" style="display:block;background:#d9eee8;">${inputSels ? inputSels.district : ""}<br>Professional Staff Average Salaries:</span>`
+```
+
+```{ojs}
+//| echo: false
+// Color key + average salary for each staff type in the plot below
+salaryTable(dd_salary)
 ```
 
 ```{ojs}
@@ -492,7 +539,7 @@ fig2 = {
 ### Print District Selected
 ```{ojs}
 //| echo: false
-md`<span class="ela-score-title">${topView === "Annual" ? "Staff Counts and Student Enrollment" : `Staff Counts and Student Enrollment - Change Since ${firstYear}`}:  ${inputSels ? inputSels.district : ""}</span>`
+md`<span class="ela-score-title" style="display:block;background:#d9eee8;margin-top:2.5rem;">${topView === "Annual" ? "Total Staff and Students" : `Total Staff and Students - Change Since ${firstYear}`}</span>`
 ```
 
 ```{ojs}

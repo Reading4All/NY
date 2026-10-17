@@ -114,6 +114,21 @@ svg.ELAgrowth-plot {
 
 /*-- scss:rules --*/
 
+/* light tint of the header color (theme primary mixed with white); change 70% to lighten/darken.
+   Must live in scss:rules, where $primary is defined. */
+.ela-score-title {
+  background-color: mix(#ffffff, $primary, 70%) !important;
+  padding: 8px 14px 8px 2rem !important;  // 2rem = left padding; change to taste
+  border-radius: 0 !important;
+  // full-bleed: make the band as wide as the screen and center it on its column
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw !important;
+  box-sizing: border-box;
+}
+
 .quarto-dashboard .toolbar {
   background-color: #cccecf !important;
 }
@@ -124,6 +139,12 @@ svg.ELAgrowth-plot {
   background-color: #5a5a5a !important;
 }
 */
+
+/* topmost header, don't show title */
+#quarto-dashboard-header .navbar-title {
+  display: none !important;
+}
+
 
 /* make the back arrow in header not wrap */
 #quarto-dashboard-header .navbar-container {
@@ -140,4 +161,17 @@ svg.ELAgrowth-plot {
   flex-shrink: 0;
   margin-left: auto;
   align-self: center; /* keeps the icon anchored center-right even as the title bar gets taller */
+}
+
+/* let the full-width title band show past the edges of the cards/containers that hold it
+   (only containers that actually contain a title are affected) */
+.quarto-dashboard .card:has(.ela-score-title),
+.quarto-dashboard .card-body:has(.ela-score-title),
+.quarto-dashboard .bslib-grid:has(.ela-score-title),
+.quarto-dashboard .html-fill-container:has(.ela-score-title),
+.quarto-dashboard .html-fill-item:has(.ela-score-title) {
+  overflow: visible !important;
+}
+html, body {
+  overflow-x: hidden;  /* 100vw includes the scrollbar width; avoids a sideways scrollbar */
 }

@@ -1,5 +1,5 @@
 ---
-title: "Special Ed Spending (ESSA/SLSF) - 2021-2025"
+title: "Special Ed Spending (ESSA/SLSF)"
 format:
   dashboard:
     orientation: rows
