@@ -72,17 +72,24 @@ raw <- raw |>
 
 lab_students <- "Students"
 lab_teachers <- "Classroom Teachers"
-lab_other    <- "Aministrators, Priciples, Other non-Inst.Staff"
+lab_admin    <- "All - Administrators"
+lab_princ    <- "Principals & Asst. Principals"
+lab_other    <- "All Other - Professional Staff"
 
 # Enrollment is repeated on every staff row, so take one value per district-year
 students <- raw |>
   distinct(COUNTY_DESC, DISTRICT_NAME, YEAR, PK12_Enrollment) |>
   transmute(COUNTY_DESC, DISTRICT_NAME, YEAR, series = lab_students, value = PK12_Enrollment)
 
-# Two staff groups: classroom teachers vs. every other role combined
+# Four staff groups: classroom teachers, administrators (central + program),
+# principals & asst. principals, and every other role combined
 staff <- raw |>
-  mutate(series = if_else(STAFF_IND_DESC == "Classroom Teacher",
-                          lab_teachers, lab_other)) |>
+  mutate(series = case_when(
+    STAFF_IND_DESC == "Classroom Teacher" ~ lab_teachers,
+    STAFF_IND_DESC %in% c("Central Administration", "Program Administration") ~ lab_admin,
+    STAFF_IND_DESC == "Principals & Asst. Principals" ~ lab_princ,
+    TRUE ~ lab_other
+  )) |>
   group_by(COUNTY_DESC, DISTRICT_NAME, YEAR, series) |>
   summarise(value = sum(TOTAL_FTE, na.rm = TRUE), .groups = "drop")
 
@@ -118,6 +125,8 @@ salaries <- raw %>%
   group_by(COUNTY_DESC, DISTRICT_NAME, YEAR, series) %>%
   summarise(
     salary = round(calc_salary(AVG_SAL_FOR_FTE, TOTAL_FTE), 0),
+    fte = round(sum(as.numeric(TOTAL_FTE), na.rm = TRUE), 1),                         # total FTE for this role
+    total_salary = round(sum(AVG_SAL_FOR_FTE * as.numeric(TOTAL_FTE), na.rm = TRUE), 0),  # est. total salaries = avg salary x FTE, summed
     .groups = "drop"
   ) %>%
   filter(!is.na(salary)) %>%
@@ -129,7 +138,7 @@ salaries <- raw %>%
   ) %>%
   ungroup() %>%
   filter(!is.na(change)) %>%
-  select(COUNTY_DESC, DISTRICT_NAME, YEAR, series, salary, change) %>%
+  select(COUNTY_DESC, DISTRICT_NAME, YEAR, series, salary, change, fte, total_salary) %>%
   arrange(COUNTY_DESC, DISTRICT_NAME, series, YEAR)
 
 # Hand the data to Observable JS
@@ -309,7 +318,9 @@ function salaryPlot(data, width, height, view = "Annual") {
     },
     marks: [
       ...(annual ? [] : [Plot.ruleY([0])]),
-      Plot.line(data, {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.5}),
+      // the five "other" roles get a thinner line (all the same thickness)
+      Plot.line(data.filter(d => !thinRoles.has(d.series)), {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.5}),
+      Plot.line(data.filter(d => thinRoles.has(d.series)),  {x: "YEAR", y: yField, stroke: "series", strokeWidth: 1.25}),
       Plot.dot(data, {x: "YEAR", y: yField, stroke: "series", r: 4}),
       Plot.tip(data, Plot.pointer({
         x: "YEAR", y: yField, stroke: "series",
@@ -325,23 +336,50 @@ function salaryPlot(data, width, height, view = "Annual") {
 ```{ojs}
 //| output: false
 // One fixed color per role (not assigned by order of appearance), so a role
-// keeps the same color in every district. No blues anywhere.
-// Orange = classroom teachers and red = administrators, as in the first plot.
+// keeps the same color in every district. No blues anywhere in this plot.
+// Dark green = classroom teachers, red = central administration, orange = program administration,
+// brown = principals; every other role is a shade of purple.
 // The map order is also the order of the rows in the salary table.
 roleColors = new Map([
-  ["Classroom Teachers",            "#E08A1E"],  // orange (same as plot 1)
-  ["Classroom Teacher",             "#E08A1E"],  // (alias, only used if the R label changes)
-  ["Central Administration",        "#D95C5C"],  // red (same as plot 1)
-  ["Program Administration",        "#1c9b84"],  // teal
-  ["Principals & Asst. Principals", "#874197"],  // purple (dark)
-  ["Other Non-Teaching Staff",      "#444444"],  // charcoal gray
-  ["Guidance Counselors",           "#d76cb7"],  // pink (light)
-  ["Psychologists & Psychiatrists", "#0c6944"],  // forest green
-  ["Social Workers",                "#9c3a11"],  // rust brown
-  ["Nurses",                        "#827f11"]   // olive
+  ["Classroom Teachers",            "#0c6944"],  // dark green
+  ["Classroom Teacher",             "#0c6944"],  // (alias, only used if the R label changes)
+  ["Central Administration",        "#D95C5C"],  // red
+  ["Program Administration",        "#9c3a11"],  // rust brown
+  ["Principals & Asst. Principals", "#E08A1E"],  // orange
+  ["Other Non-Teaching Staff",      "#958da0"],  // purple (light orchid)
+  ["Guidance Counselors",           "#907daf"],  // purple (violet)
+  ["Psychologists & Psychiatrists", "#896dbd"],  // purple (plum)
+  ["Social Workers",                "#7f5ccc"],  // purple (lavender)
+  ["Nurses",                        "#704bda"]   // purple (magenta-purple)
 ]);
 
 fallbackColor = "#8c8c8c";  // any role not listed above
+
+// Roles drawn with a thinner line in the salary plot
+thinRoles = new Set([
+  "Other Non-Teaching Staff",
+  "Guidance Counselors",
+  "Psychologists & Psychiatrists",
+  "Social Workers",
+  "Nurses"
+]);
+
+// Staff groups used by the Staff Counts plot and its table
+// (colors match the individual roles in the salary plot)
+staffGroups = [
+  {label: "Classroom Teachers",            color: "#0c6944"},
+  {label: "All - Administrators",            color: "#D95C5C"},
+  {label: "Principals & Asst. Principals", color: "#E08A1E"},
+  {label: "All Other - Professional Staff",  color: "#958da0"}
+];
+
+// Which group a role (from the salary data) belongs to
+function staffGroupOf(role) {
+  if (role === "Classroom Teachers" || role === "Classroom Teacher") return "Classroom Teachers";
+  if (role === "Central Administration" || role === "Program Administration") return "All - Administrators";
+  if (role === "Principals & Asst. Principals") return "Principals & Asst. Principals";
+  return "All Other - Professional Staff";
+}
 
 // Roles present in the data, in the fixed order above (an unlisted role goes last)
 function salaryDomain(data) {
@@ -359,9 +397,10 @@ function salaryTable(data) {
 
   const roles = salaryDomain(data);
   const latest = new Map(
-    data.filter(d => Number(d.YEAR) === Number(lastYear)).map(d => [d.series, d.salary])
+    data.filter(d => Number(d.YEAR) === Number(lastYear)).map(d => [d.series, d])
   );
   const money = n => n != null ? `$${n.toLocaleString()}` : "–";
+  const fmtFte = n => n != null ? n.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1}) : "–";
   const cell = "padding:3px 16px 3px 0;border:0;";
 
   return htl.html`<table style="width:auto;border-collapse:collapse;font-size:0.85rem;margin:0 0 6px 0">
@@ -370,13 +409,80 @@ function salaryTable(data) {
         <th style="${cell}">Color</th>
         <th style="${cell}">Staff type</th>
         <th style="${cell}text-align:right">Average salary, ${lastYear}</th>
+        <th style="${cell}text-align:right">Total (FT)</th>
       </tr>
     </thead>
     <tbody>
       ${roles.map(r => htl.html`<tr>
         <td style="${cell}"><span style="display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:middle;background:${roleColors.get(r) ?? fallbackColor}"></span></td>
         <td style="${cell}">${r}</td>
-        <td style="${cell}text-align:right">${money(latest.get(r))}</td>
+        <td style="${cell}text-align:right">${money(latest.get(r)?.salary)}</td>
+        <td style="${cell}text-align:right">${fmtFte(latest.get(r)?.fte)}</td>
+      </tr>`)}
+    </tbody>
+  </table>`;
+}
+
+// Dashboard-style card: "% to Admins" = share of all estimated total salaries (latest year)
+// that goes to administrators (Central + Program Administration combined)
+function adminShareCard(data) {
+  if (!data || !data.length) return htl.html``;
+
+  const latest = data.filter(d => Number(d.YEAR) === Number(lastYear) && d.total_salary > 0);
+  const total  = d3.sum(latest, d => d.total_salary);
+  const admins = d3.sum(latest.filter(d => staffGroupOf(d.series) === "All - Administrators"), d => d.total_salary);
+  const money0 = n => `$${Math.round(n).toLocaleString()}`;
+  const pct = total > 0 ? `${(100 * admins / total).toFixed(1)}%` : "–";
+  const adminColor = staffGroups.find(g => g.label === "All - Administrators").color;
+
+  return htl.html`<div style="min-width:190px;padding:14px 20px;border:1px solid #dcdcdc;border-left:6px solid ${adminColor};border-radius:6px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.08);text-align:center">
+    <div style="font-size:0.9rem;font-weight:600;color:#5a5a5a">% to Admins</div>
+    <div style="font-size:2.4rem;font-weight:700;line-height:1.2;color:#2c3e50">${pct}</div>
+    <div style="font-size:0.75rem;color:#5a5a5a">of total ${lastYear} salaries (est.)<br>${admins ? `${money0(admins)} of ${money0(total)}` : ""}<br>**Excluding Benefits, Other</div>
+  </div>`;
+}
+// Top table with the "% to Admins" card to its right (wraps below on narrow screens)
+function salaryTableAndCard(data) {
+  return htl.html`<div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-start">
+    ${salaryTable(data)}
+    ${adminShareCard(data)}
+  </div>`;
+}
+
+// Second table (staff counts section): color, staff group, total FTE, estimated total salaries
+// (most recent year, lastYear), using the same four staff groups as the Staff Counts plot
+function staffTable(data) {
+  if (!data || !data.length) return htl.html``;
+
+  const latest = data.filter(d => Number(d.YEAR) === Number(lastYear));
+  const rows = staffGroups.map(g => {
+    const members = latest.filter(d => staffGroupOf(d.series) === g.label);
+    return {
+      label: g.label,
+      color: g.color,
+      fte: members.length ? d3.sum(members, d => d.fte) : null,
+      total_salary: members.length ? d3.sum(members, d => d.total_salary) : null
+    };
+  });
+  const money = n => n != null ? `$${Math.round(n).toLocaleString()}` : "–";
+  const fmtFte = n => n != null ? n.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1}) : "–";
+  const cell = "padding:3px 16px 3px 0;border:0;";
+
+  return htl.html`<table style="width:auto;border-collapse:collapse;font-size:0.85rem;margin:0 0 6px 0">
+    <thead>
+      <tr style="border-bottom:1px solid #ccc;text-align:left">
+        <th style="${cell}">Color</th>
+        <th style="${cell}">Staff type</th>
+        <th style="${cell}text-align:right">Total (FT)</th>
+        <th style="${cell}text-align:right">Total Salaries (Est.), ${lastYear}</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${rows.map(r => htl.html`<tr>
+        <td style="${cell}"><span style="display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:middle;background:${r.color}"></span></td>
+        <td style="${cell}">${r.label}</td>
+        <td style="${cell}text-align:right">${fmtFte(r.fte)}</td>
+        <td style="${cell}text-align:right">${money(r.total_salary)}</td>
       </tr>`)}
     </tbody>
   </table>`;
@@ -480,17 +586,15 @@ function changePlot(data, width, height, view = "Change Over Time") {
       grid: true, labelAnchor: "center", ticks: 7, labelArrow: false
     },
     color: {
-      domain: [
-        "Students",
-        "Classroom Teachers",
-        "Aministrators, Priciples, Other non-Inst.Staff"
-      ],
-      range: ["#4f81a8", "#E08A1E", "#d95c5c"],
+      domain: ["Students", ...staffGroups.map(g => g.label)],
+      range: ["#4f81a8", ...staffGroups.map(g => g.color)],
       legend: true
     },
     marks: [
       Plot.ruleY([0]),
-      Plot.line(data, {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.5}),
+      // the gray "All Other" line is thinner (same as the gray line in the salary plot)
+      Plot.line(data.filter(d => d.series !== "All Other - Professional Staff"), {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.5}),
+      Plot.line(data.filter(d => d.series === "All Other - Professional Staff"), {x: "YEAR", y: yField, stroke: "series", strokeWidth: 1.25}),
       Plot.dot(data, {x: "YEAR", y: yField, stroke: "series", r: 4}),
       Plot.tip(data, Plot.pointer({
         x: "YEAR", y: yField, stroke: "series",
@@ -514,8 +618,8 @@ md`<span class="ela-score-title" style="display:block;background:#d9eee8;">${inp
 
 ```{ojs}
 //| echo: false
-// Color key + average salary for each staff type in the plot below
-salaryTable(dd_salary)
+// Color key + average salary and total FTE for each staff type in the plot below, with the "% to Admins" card next to it
+salaryTableAndCard(dd_salary)
 ```
 
 ```{ojs}
@@ -529,17 +633,29 @@ viewof salaryView = Inputs.radio(["Change Over Time", "Annual"], {
 
 ```{ojs}
 //| column: screen
-fig2 = {
+// Salaries Plot  
+fig1 = {
   const width = 1000;
   const height = 480;
 
   return salaryPlot(dd_salary, width, height, salaryView);
 }
 ```
-### Print District Selected
+### Print Staff Counts
 ```{ojs}
 //| echo: false
-md`<span class="ela-score-title" style="display:block;background:#d9eee8;margin-top:2.5rem;">${topView === "Annual" ? "Total Staff and Students" : `Total Staff and Students - Change Since ${firstYear}`}</span>`
+
+// (to make this title change with the toggle again, use:)
+// md`<span class="ela-score-title" style="display:block;background:#d9eee8;margin-top:2.5rem;">${topView === "Annual" ? "Total Staff and Students" : `Total Staff and Students - Change Since ${firstYear}`}</span>`
+
+md`<span class="ela-score-title" style="display:block;background:#d9eee8;margin-top:2.5rem;">Total Staff and Students:</span>`
+
+```
+
+```{ojs}
+//| echo: false
+// Staff group, total FTE, and estimated total salaries (latest year)
+staffTable(dd_salary)
 ```
 
 ```{ojs}
@@ -553,7 +669,8 @@ viewof topView = Inputs.radio(["Change Over Time", "Annual"], {
 
 ```{ojs}
 //| column: screen
-fig1 = {
+// Staff Counts Plot
+fig2 = {
   const width = 1000;
   const height = 480;
 
@@ -566,7 +683,7 @@ fig1 = {
 ## Sourcedata, Notes {#print-footer}
 * Data Source - Staff data: PMF Statistical Run
 * Data Source - Student enrollment data: ESSA Financial Reporting
-* "Aministrators, Priciples, Other Staff" is the sum of non-classroom-teacher staff.
+* "All - Administrators" = Central Administration + Program Administration; "All Other - Professional Staff" = every role other than classroom teachers, administrators, and principals & asst. principals (nurses, counselors, psychologists, social workers, other non-teaching staff, etc.).
 * A district is omitted when that year's value is unavailable.
 * Salary change is each role's average salary (weighted by FTE) minus its average salary in the first year shown; a role with no first-year salary is omitted from the salary plot.
 * Charter schools and NYC districts are not included.
