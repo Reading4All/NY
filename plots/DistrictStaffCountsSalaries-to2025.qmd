@@ -3,8 +3,8 @@ title: "Salaries & Staff Counts"
 format:
   dashboard:
     orientation: columns
-    expandable: false
-    scrolling: false
+    expandable: true
+    scrolling: true
     theme: 
       - minty
       - ../custom.scss
@@ -319,7 +319,7 @@ function salaryPlot(data, width, height, view = "Annual") {
     marks: [
       ...(annual ? [] : [Plot.ruleY([0])]),
       // the five "other" roles get a thinner line (all the same thickness)
-      Plot.line(data.filter(d => !thinRoles.has(d.series)), {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.5}),
+      Plot.line(data.filter(d => !thinRoles.has(d.series)), {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.75}),
       Plot.line(data.filter(d => thinRoles.has(d.series)),  {x: "YEAR", y: yField, stroke: "series", strokeWidth: 1.25}),
       Plot.dot(data, {x: "YEAR", y: yField, stroke: "series", r: 4}),
       Plot.tip(data, Plot.pointer({
@@ -593,7 +593,7 @@ function changePlot(data, width, height, view = "Change Over Time") {
     marks: [
       Plot.ruleY([0]),
       // the gray "All Other" line is thinner (same as the gray line in the salary plot)
-      Plot.line(data.filter(d => d.series !== "All Other - Professional Staff"), {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.5}),
+      Plot.line(data.filter(d => d.series !== "All Other - Professional Staff"), {x: "YEAR", y: yField, stroke: "series", strokeWidth: 2.75}),
       Plot.line(data.filter(d => d.series === "All Other - Professional Staff"), {x: "YEAR", y: yField, stroke: "series", strokeWidth: 1.25}),
       Plot.dot(data, {x: "YEAR", y: yField, stroke: "series", r: 4}),
       Plot.tip(data, Plot.pointer({
