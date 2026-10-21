@@ -681,14 +681,17 @@ fig2 = {
 
 :::
 :::
-## Sourcedata, Notes {#print-footer}
-
-<a data-bs-toggle="collapse" href="#notesCollapse" role="button" aria-expanded="false" aria-controls="notesCollapse">
-  Data Sources & Notes
+<a data-bs-toggle="collapse" href="#notesCollapse" role="button" aria-expanded="false" aria-controls="notesCollapse" class="ela-score-title notes-toggle-link" style="display:block; background:#d9eee8; padding:6px 12px; border-radius:4px; text-decoration:none; cursor:pointer; margin-top:2.5rem;">
+  <span class="toggle-sign" style="font-weight:bold; margin-right:8px; display:inline-block; width:14px;"></span>Data Sources & Notes
 </a>
 
-<div class="collapse" id="notesCollapse">
+::: {#notesCollapse .collapse style="margin-top: 6px; padding: 12px 16px; background: #ffffff; border: 1px solid #dcdcdc; border-radius: 4px;"}
 
-{{< include ../ref_notes/_references.qmd >}}
+* **Staff Counts & Salaries Notes**: Data Source - Staff data: [PMF Statistical Run](https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf)
+* Data Source - Student enrollment data: [ESSA Financial Reporting](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting)
+* **"All - Administrators"** = Central Administration + Program Administration; **"All Other - Professional Staff"** = every role other than classroom teachers, administrators, and principals & asst. principals.
+* A district is omitted when that year's value is unavailable.
+* Salary change is each role's average salary (weighted by FTE) minus its average salary in the first year shown; a role with no first-year salary is omitted from the salary plot.
+* Charter schools and NYC districts are not included.
 
-</div>
+:::
