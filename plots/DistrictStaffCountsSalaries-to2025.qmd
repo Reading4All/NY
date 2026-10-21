@@ -3,7 +3,7 @@ title: "Salaries & Staff Counts"
 format:
   dashboard:
     orientation: columns
-    expandable: true
+    expandable: false
     scrolling: true
     theme: 
       - minty
@@ -438,7 +438,8 @@ function adminShareCard(data) {
   return htl.html`<div style="min-width:190px;padding:14px 20px;border:1px solid #dcdcdc;border-left:6px solid ${adminColor};border-radius:6px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.08);text-align:center">
     <div style="font-size:0.9rem;font-weight:600;color:#5a5a5a">% to Admins</div>
     <div style="font-size:2.4rem;font-weight:700;line-height:1.2;color:#2c3e50">${pct}</div>
-    <div style="font-size:0.75rem;color:#5a5a5a">of total ${lastYear} salaries (est.)<br>${admins ? `${money0(admins)} of ${money0(total)}` : ""}<br>**Excluding Benefits, Other</div>
+    <div style="font-size:0.75rem;color:#5a5a5a">of total ${lastYear} salaries (est.)<br>**Excluding Benefits, Other</div>
+<!-- removed: <br>${admins ? `${money0(admins)} of ${money0(total)}` : ""} -->
   </div>`;
 }
 // Top table with the "% to Admins" card to its right (wraps below on narrow screens)
@@ -681,9 +682,13 @@ fig2 = {
 :::
 :::
 ## Sourcedata, Notes {#print-footer}
-* Data Source - Staff data: PMF Statistical Run
-* Data Source - Student enrollment data: ESSA Financial Reporting
-* "All - Administrators" = Central Administration + Program Administration; "All Other - Professional Staff" = every role other than classroom teachers, administrators, and principals & asst. principals (nurses, counselors, psychologists, social workers, other non-teaching staff, etc.).
-* A district is omitted when that year's value is unavailable.
-* Salary change is each role's average salary (weighted by FTE) minus its average salary in the first year shown; a role with no first-year salary is omitted from the salary plot.
-* Charter schools and NYC districts are not included.
+
+<a data-bs-toggle="collapse" href="#notesCollapse" role="button" aria-expanded="false" aria-controls="notesCollapse">
+  Data Sources & Notes
+</a>
+
+<div class="collapse" id="notesCollapse">
+
+{{< include ../ref_notes/_references.qmd >}}
+
+</div>

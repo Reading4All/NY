@@ -175,3 +175,33 @@ svg.ELAgrowth-plot {
 html, body {
   overflow-x: hidden;  /* 100vw includes the scrollbar width; avoids a sideways scrollbar */
 }
+
+/* ---------------------------------------------------------------
+   Footer: "Data Sources & Notes" link + collapsible notes
+   (selectors use the link / #notesCollapse themselves instead of #print-footer,
+   because the dashboard may not put the notes inside the element with that id)
+   --------------------------------------------------------------- */
+/* the link: larger, bold, with left padding so it isn't against the page edge */
+a[data-bs-toggle="collapse"][href="#notesCollapse"] {
+  font-size: 1.4rem !important;   // change to taste
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+}
+:is(p, div, span):has(> a[data-bs-toggle="collapse"][href="#notesCollapse"]) {
+  font-size: 1.4rem !important;
+  padding-left: 2rem !important;  // change to taste
+  margin: 0 !important;
+}
+
+/* the notes: no space above the first line, same left padding as the link */
+#notesCollapse {
+  margin-top: 0 !important;
+  padding-left: 2rem !important;
+}
+/* the reference file starts with a "###" heading (Quarto wraps it in a <section>);
+   headings/sections/lists carry their own top margin: remove it at every level */
+#notesCollapse :is(section, h1, h2, h3, h4, h5, h6, p, ul, ol):first-child,
+#notesCollapse :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
