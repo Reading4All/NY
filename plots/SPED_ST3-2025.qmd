@@ -1,5 +1,6 @@
 ---
 title: "Special Ed & Legal Spending (ST-3)"
+subtitle: "excluding Salaries & Benefits"
 format:
   dashboard:
     orientation: rows
@@ -10,9 +11,6 @@ format:
       - minty
       - ../custom.scss
     css: DistrictELAGrowth.css
-nav-buttons:
-  - icon: arrow-left-circle-fill
-    href: ../
 ---
 
 ```{r}
@@ -292,9 +290,7 @@ function guard(fn, options = {}, countyView) {
     submitLabel = "Submit",
     resetLabel = "Reset",
     required = false,
-    resubmit = true,
-    width = "100%",
-    justify = "start"
+    resubmit = true
   } = options;
 
   const onSubmit = () => {
@@ -319,10 +315,11 @@ function guard(fn, options = {}, countyView) {
   };
   const submit = htl.html`<button ${ { disabled: !resubmit && !required, onclick: onSubmit } } class="btn btn-primary btn-sm">${submitLabel}</button>`;
   const reset = htl.html`<button ${ { disabled: true, onclick: onReset } } class="btn btn-secondary btn-sm">${resetLabel}</button>`;
+  // styling for these classes is in custom.scss
   const footer = htl.html`
-    <div>
-      <hr style="padding:0;margin:10px 0">
-      <div style="display:flex;gap:1ch;justify-style: ${justify} ">
+    <div class="guard-footer">
+      <hr class="guard-footer-rule">
+      <div class="guard-footer-buttons">
         ${submit}
       </div>
     </div>
@@ -334,7 +331,7 @@ function guard(fn, options = {}, countyView) {
     (Array.isArray(inputs) ? inputs : Object.values(inputs))
       .forEach(input => row.append(input));
     const container = document.createElement("div");
-    container.style.cssText = "width:100%;max-width:100%;min-width:0;box-sizing:border-box";
+    container.className = "guard-container";
     container.append(row, footer);
     return container;
   };
@@ -344,7 +341,7 @@ function guard(fn, options = {}, countyView) {
   input.addEventListener("input", onInnerInputCapture, { capture: true });
   input.addEventListener("input", onInnerInput);
   let value = required ? undefined : input.value;
-  const wrapper = htl.html`<div style="width: ${width} ">${input}`;
+  const wrapper = htl.html`<div class="guard-wrapper">${input}`;
   wrapper.addEventListener("submit", onSubmit);
   return Object.defineProperty(wrapper, "value", {
     get: () => value,
@@ -387,8 +384,7 @@ viewof inputSels = guard(
   ),
   {
     resetLabel: "Reset",
-    required: true,
-    width: "100%"
+    required: true
   },
   viewof county
 );
@@ -821,14 +817,15 @@ return html`<div style="text-align:left;width:100%;margin-top:0;">${svg.node()}$
 
 ```
 
-#### Row - Print District Selected {height=15%}
+#### Row - Print District Selected
 ```{ojs}
 //| echo: false
-md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Benefits</i></h>`
+//md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Benefits</i></h>`
+md`<span class="section-title-banner">${inputSels ? inputSels.district : ""}</span>`
 
 ```
 
-#### Row - Pie Charts {height=85% .flow}
+#### Row - Pie Charts {height=95% .flow}
 ##### Left Col - Total Chart {width=60% .fill}
 ```{ojs}
 //| title: "Combined: General + Special Aid Funds"
@@ -863,7 +860,17 @@ html`<div style="display:flex;flex-direction:column;justify-content:flex-start;a
 </div>`
 
 ```
+#### Data Sources
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
 
-#### References, Notes {#print-footer}
+::: {#notesCollapse .collapse}
 * Data from: [NYSED ST-3 Financial Report - Year ending 2025](https://stateaid.nysed.gov/st3/st3data/2024-2025_School_Year_2025-2026_SAMS%20ST-3.xlsx)
 * Information: [ST-3 Information](https://stateaid.nysed.gov/st3/)
+:::

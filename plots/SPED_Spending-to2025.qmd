@@ -10,9 +10,6 @@ format:
       - minty
       - ../custom.scss
     css: SPED_Spending.css
-    nav-buttons:
-      - icon: arrow-left-circle-fill
-        href: ../
 ---
 
 ```{r}
@@ -176,9 +173,7 @@ function guard(fn, options = {}, countyView) {
     submitLabel = "Submit",
     resetLabel = "Reset",
     required = false,
-    resubmit = true,
-    width = "100%",
-    justify = "start"
+    resubmit = true
   } = options;
   
   const onSubmit = () => {
@@ -203,10 +198,11 @@ function guard(fn, options = {}, countyView) {
   };
   const submit = htl.html`<button ${ { disabled: !resubmit && !required, onclick: onSubmit } } class="btn btn-primary btn-sm">${submitLabel}</button>`;
   const reset = htl.html`<button ${ { disabled: true, onclick: onReset } } class=\"btn btn-secondary btn-sm\">${resetLabel}</button>`;
+  // styling for these classes is in custom.scss
   const footer = htl.html`
-    <div>
-      <hr style="padding:0;margin:10px 0">
-      <div style="display:flex;gap:1ch;justify-style: ${justify} ">
+    <div class="guard-footer">
+      <hr class="guard-footer-rule">
+      <div class="guard-footer-buttons">
         ${submit}
       </div>
     </div>
@@ -218,7 +214,7 @@ function guard(fn, options = {}, countyView) {
     (Array.isArray(inputs) ? inputs : Object.values(inputs))
       .forEach(input => row.append(input));
     const container = document.createElement("div");
-    container.style.cssText = "width:100%;max-width:100%;min-width:0;box-sizing:border-box";
+    container.className = "guard-container";
     container.append(row, footer);
     return container;
   };
@@ -228,7 +224,7 @@ function guard(fn, options = {}, countyView) {
   input.addEventListener("input", onInnerInputCapture, { capture: true });
   input.addEventListener("input", onInnerInput);
   let value = required ? undefined : input.value;
-  const wrapper = htl.html`<div style="width: ${width} ">${input}`;
+  const wrapper = htl.html`<div class="guard-wrapper">${input}`;
   wrapper.addEventListener("submit", onSubmit);
   return Object.defineProperty(wrapper, "value", {
     get: () => value,
@@ -270,8 +266,7 @@ viewof inputSels = guard(
   ),
   {
     resetLabel: "Reset",
-    required: true,
-    width: "100%"
+    required: true
   },
   viewof county
 );
@@ -486,7 +481,8 @@ function subgroupRows(subgroupName) {
 #### Print District Selected{height=10%}
 ```{ojs}
 //| echo: false
-md`### Special Education Spending:<br>**${inputSels ? inputSels.district : ""}**`
+// md`### Special Education Spending:<br>**${inputSels ? inputSels.district : ""}**`
+md`<span class="section-title-banner">${inputSels ? inputSels.district : ""}</span>`
 
 ```
 #### Print Indicator Cards{height=20%}
@@ -667,8 +663,20 @@ Plot.plot({
 
 ```
 ## References, Notes {#print-footer1}
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
+
+::: {#notesCollapse .collapse}
 * Data Source: [NYSED Financial Transparency](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting): [slsf_financial_data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/slfs_financial_data.xlsx) for 2024+, [essa-financial-data.xlsx](https://www.nysed.gov/sites/default/files/programs/fiscal-analysis-research/essa-financial-data.xlsx) for 2023 and prior
 * ESSA/SLFS Exclusions (items not included): Out-of-District Tuition & Placements, Special Education Transportation, Related Services & Central Administration, Extended School Year (ESY) Programs [NYSED ESSA/SLFS Transparency](https://www.nysed.gov/fiscal-analysis-research/essaslfs-financial-transparency-faq)
+:::
+
 ```{ojs}
 //| title: "SPED ELA Scores: Are gaps closing?"
 //| echo: false
@@ -679,7 +687,17 @@ fig2 = {
 }
 
 ```
-## References, Notes {#print-footer2}
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
+
+::: {#notesCollapse .collapse}
 * ELA data from: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
 * ELA data (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
 * A missing bar indicates that some or all of its data is unavailable
+:::

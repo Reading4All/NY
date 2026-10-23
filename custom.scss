@@ -1,5 +1,11 @@
 /*-- scss:defaults --*/
 
+/*-- scss:rules --*/
+
+/* =========================================================
+   0. GLOBAL SPACING / BSLIB FILL CONTAINERS
+   ========================================================= */
+
 /* Remove margins and padding from the container */
 .html-fill-container.bslib-grid {
   padding: 0 !important;
@@ -8,7 +14,6 @@
 
 /* Remove fill item spacing */
 .html-fill-item {
-  // padding: 0 !important;
   margin: 0 !important;
 }
 
@@ -17,36 +22,443 @@
   margin-bottom: 0 !important;
 }
 
-.btn.btn-quarto {
-  background-color: #5a5a5a; /* #78c2ad; was green color */
-  border-color: #5a5a5a; /* #78c2ad; border, same color as background */
-  color: #ffffff; /* text color for readability */
+/* 100vw includes the scrollbar width; this avoids a sideways scrollbar
+   from the full-bleed bands below (toolbar and plot title) */
+html, body {
+  overflow-x: hidden;
 }
 
-/* Optional: handle hover and active states */
+/* Remove the page padding that sits between the header bar and the toolbar */
+.quarto-dashboard main.quarto-dashboard-content,
+.quarto-dashboard .quarto-dashboard-content,
+.quarto-dashboard .bslib-page-dashboard,
+.quarto-dashboard .bslib-page-fill {
+  padding-top: 0 !important;
+}
+
+/* =========================================================
+   1. TOP NAV (menu) / DASHBOARD HEADER (below menu w page title)
+   ========================================================= */
+
+/* Force the navbar and its background wrappers to be completely edge-to-edge and flat */
+#quarto-header,
+#quarto-header header,
+.navbar,
+.navbar-container,
+.navbar-collapse,
+.navbar-nav,
+.quarto-title-block,
+header.quarto-title-block .description {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-radius: 0 !important; /* Removes any rounded corners */
+  box-sizing: border-box;
+}
+
+/* Ensure container-fluid inner classes inside Quarto's navbar don't box it in */
+#quarto-header .container,
+#quarto-header .container-fluid {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Center the page title text inside the dashboard header banner */
+#quarto-dashboard-header .navbar-nav.navbar-nav-scroll {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#quarto-dashboard-header .navbar-brand {
+  margin: 0 auto !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* Placement of navbar - vertically, under logo */
+.navbar .navbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Responsive navbar: desktop menu stays horizontal */
+@media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex !important;
+  }
+}
+
+/* Mobile/tablet hamburger menu */
+@media (max-width: 991.98px) {
+  #quarto-header .navbar-toggler {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border: 1px solid #5a5a5a !important; //#5a5a5a
+    margin: 10px auto !important;
+  }
+  /* Invert the inner icon lines so they show up dark on your white background */
+  #quarto-header .navbar-toggler-icon {
+    filter: invert(0.6); /* Adjust between 0 (original) and 1 (black) */
+  }
+
+  /* Keep the menu collapsed until the hamburger is clicked */
+  #quarto-header .navbar-collapse:not(.show) {
+    display: none !important;
+  }
+
+  /* Display menu items vertically when opened */
+  #quarto-header .navbar-collapse.show .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+/* Header colors. Dashboard header is gray; any other navbar is white */
+#quarto-header,
+.navbar {
+  background-color: #ffffff !important;  // color around logo
+  transform: none !important;
+  transition: none !important;
+  /* Quarto's headroom class sets will-change: transform, which makes the header
+     its own stacking layer; reset it so the dropdowns aren't trapped under content */
+  will-change: auto !important;
+}
+
+/* The site header: kept in normal document flow (not pinned).
+   "relative" (not "static") so that z-index works: with static, the header's
+   z-index is ignored and page content painted after it covers the dropdown menus.
+   The z-index goes on #quarto-header ONLY. The dashboard header is nested inside it
+   and has its own <nav class="navbar">; giving that nav the same z-index would paint
+   it over the site menu's dropdowns, so .navbar stays static. */
+#quarto-header {
+  position: relative !important;
+  z-index: 1030;
+}
+
+.navbar {
+  position: static !important;
+}
+
+#quarto-dashboard-header,
+#quarto-dashboard-header .navbar {
+  background-color: #5a5a5a !important; // color around page title under nav menu
+  pointer-events: none; /* Disables clicking/interaction */
+}
+
+/* no gap between the header bar and the toolbar */
+#quarto-dashboard-header,
+#quarto-dashboard-header .navbar {
+  margin-bottom: 0 !important;
+}
+
+/* let the full-width bands show past the edges of the cards/containers
+   that hold them (only containers that actually contain one are affected) */
+.quarto-dashboard .card:has(.toolbar),
+.quarto-dashboard .bslib-grid:has(.toolbar),
+.quarto-dashboard .html-fill-container:has(.toolbar),
+.quarto-dashboard .html-fill-item:has(.toolbar),
+.quarto-dashboard .card:has(.section-sub-title),
+.quarto-dashboard .card:has(.footer-bar),
+.quarto-dashboard .card-body:has(.section-sub-title),
+.quarto-dashboard .bslib-grid:has(.section-sub-title),
+.quarto-dashboard .html-fill-container:has(.section-sub-title),
+.quarto-dashboard .card-body:has(.footer-bar),
+.quarto-dashboard .bslib-grid:has(.footer-bar),
+.quarto-dashboard .html-fill-container:has(.footer-bar),
+.quarto-dashboard .html-fill-item:has(.section-sub-title),
+.quarto-dashboard .html-fill-item:has(.footer-bar) {
+  overflow: visible !important;
+}
+
+/* Reset body spacing so there isn't a blank gap left behind by the unpinned header */
+body.nav-fixed {
+  padding: 0 !important;
+}
+
+/* Logo / brand */
+.navbar-brand {
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto;
+}
+
+.navbar-brand img {
+  max-height: 300px !important;   /* see note: a later 55px rule was being overridden by this one */
+  height: auto;
+  width: auto;
+}
+
+/* the center part of the navbar (logo and title text) across the whole width;
+   text wraps instead of being truncated */
+.navbar-brand-container {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto !important;
+/*  flex-wrap: nowrap !important; */
+/*  white-space: nowrap !important; */
+/*  width: max-content !important; */ // Allows the container to expand to fit its contents
+}
+
+.navbar-brand, 
+.navbar-title, 
+.navbar-subtitle {
+  display: block !important;
+  white-space: normal !important;
+  text-align: center !important;
+/*  word-wrap: break-word; */
+  max-width: 100%; // Prevents it from breaking past the screen layout
+}
+
+.navbar-subtitle,
+span.navbar-subtitle {
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+  text-align: center !important;
+}
+
+#quarto-dashboard-header .navbar-toggler.hidden,
+#quarto-dashboard-header .navbar-toggler[hidden] {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.quarto-dashboard-links {
+  flex-shrink: 0;
+  margin-left: auto;
+  align-self: center;   /* keeps the icon anchored center-right as the title bar gets taller */
+}
+
+/* Navigation menu: full width, centered items, minty accent */
+.navbar-collapse {
+  width: 100%;
+/*  display: flex !important; */ //removed to make hamburger menu work on small screens
+}
+
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* was also space-evenly earlier; this later value was the one in effect */
+  gap: 4px;
+  background-color: #78c2ad;
+}
+
+/* menu items */
+.navbar-nav .nav-link {
+  color: #ffffff !important; // white menu text
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 6px 12px !important; //nav bar padding around the menu text
+  border-radius: 3px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* menu items - on hover */
+/* Keep your existing hover block */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  background-color: #78c2ad !important;
+  text-decoration: underline;
+  color: #ffffff !important;
+}
+
+/* Keep items centered on click, keep spacing normal, and keep dropdowns underneath */
+.navbar-nav .nav-item {
+  display: flex !important;
+  flex-direction: column !important; /* Forces submenu to drop down BELOW the item */
+  align-items: center !important;    /* Keeps everything perfectly centered */
+}
+
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link.active {
+  text-align: center !important;
+}
+
+/* Custom styling for dropdown items */
+
+.dropdown-menu {
+  border: 5px solid #78c2ad !important;
+  border-radius: 6px !important;
+}
+
+.dropdown-item {
+  background-color: #ffffff !important;
+  color: #5a5a5a !important;
+}
+
+/* Custom styling for dropdown items when hovered */
+.dropdown-item:hover {
+  background-color: #bcd4e9 !important; /* Adjust background hover color here */
+  color: #1a1a1a !important;            /* Adjust text hover color here */
+}
+
+/* =========================================================
+   2. Input BUTTONS (Submit / Reset) - colors
+   ========================================================= */
+
+.btn.btn-quarto {
+  background-color: #5a5a5a;   /* was green #78c2ad */
+  border-color: #5a5a5a;
+  color: #ffffff;
+}
+
 .btn.btn-quarto:hover {
-  background-color: #a6a6a6; /* was light green #a6d7c9 */
-  border-color: #a6a6a6; /* was light green #a6d7c9 */
+  background-color: #a6a6a6;   /* was light green #a6d7c9 */
+  border-color: #a6a6a6;
 }
 
 .btn.btn-quarto:disabled {
-  background-color: #a6a6a6; /* was same light green #a6d7c9 */
-  border-color: #a6a6a6; /* was same light green #a6d7c9 */
+  background-color: #a6a6a6;   /* was light green #a6d7c9 */
+  border-color: #a6a6a6;
 }
 
-// $h2-font-size: 1.1rem;
-// $h3-font-size: 1.1rem;
 
-// title above plot - size and spacing
-.ela-score-title {
-  font-size: 1.1rem;
-  font-weight: 625;
-  color: #2c3e50;
-  display: block;
-  margin: 0 !important;
+/* =========================================================
+   2b. INPUT TOOLBAR (gray box with County / District / Grade)
+      Full page width, flush against the dashboard header.
+   ========================================================= */
+
+.quarto-dashboard .toolbar,
+.quarto-dashboard div.toolbar.html-fill-container {
+  background-color: #cccecf !important;
+
+  /* full-bleed: as wide as the screen, centered on its column */
+  /* width: 100vw !important;
+  max-width: 100vw !important; */
+  position: relative;
+  left: 50%; 
+  margin: 0 0 0 -50vw !important;   /* top = 0 -> no gap under the header */
+  box-sizing: border-box;
+
+  /* keep the inputs from touching the screen edges*/
+  padding: 8px 2rem !important;
 }
 
-.ela-score-title + * {
+/* Everything between "## {.toolbar}" and the next heading in the .qmd
+   (inputs plus all the hidden output:false cells) is inside .toolbar.
+   Bootstrap/bslib can lay those out side by side, which pushes the
+   inputs off-center. Stack them as full-width blocks instead. */
+.quarto-dashboard .toolbar {
+  display: block !important;
+}
+
+.quarto-dashboard .toolbar > * {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Submit / Reset form built by guard() in the .qmd (classes set there) */
+.guard-wrapper {
+  width: 100%;
+}
+
+.guard-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.guard-footer-rule {
+  padding: 0;
+  margin: 10px 0;
+}
+
+/* Submit button row, left on the page width */
+.guard-footer-buttons {
+  display: flex;
+  gap: 1ch;
+  justify-content: left;
+  width: 100%;
+}
+/* center them on desktop: */
+@media (min-width: 992px) {
+  .guard-footer-buttons {
+    justify-content: left;
+  }
+}
+
+
+/* =========================================================
+   3. title bars below input box - with selected dist, submenu 
+   ========================================================= */
+
+/* ===== Title bar (which shows selected district) - used on most pages == */ 
+
+.section-title-banner,
+.dashboard-section-title {
+  font-family: $headings-font-family; /* Inherits Montserrat */
+  font-size: 1.0rem; // to match dashboard header default size (not specified in this css)
+  color: #ffffff !important; 
+  display: flex; //was block
+  text-align: center;
+  flex-direction: column;
+
+  background-color: #5a5a5a !important; /* Matches #quarto-dashboard-header */
+  padding: 8px 2rem !important;
+  border-radius: 0 !important;
+
+  /* Full-bleed width with zero top/bottom margin gap */
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+  left: 50%;
+  margin: 0 0 0 -50vw !important;
+  box-sizing: border-box; 
+ 
+}
+
+.section-title-banner + * {
+  margin-top: 0 !important;
+}
+
+
+/* Ensure containers holding the title banner don't clip or add whitespace to the edges*/
+.quarto-dashboard .card:has(.section-title-banner),
+.quarto-dashboard .card-body:has(.section-title-banner),
+.quarto-dashboard .cell:has(.section-title-banner),
+.quarto-dashboard .bslib-grid:has(.section-title-banner),
+.quarto-dashboard .html-fill-container:has(.section-title-banner),
+.quarto-dashboard .html-fill-item:has(.section-title-banner) {
+  overflow: visible !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* ===== NOT Used - Sub Title bars - future, can used to updat ugly gray bar. plot titles - currenlty only used for footer/notes bar  === */
+.section-sub-title {
+  background-color: #cccecf !important; // was light green: mix(#ffffff, $primary, 70%) 
+  padding: 8px 2rem !important;
+/*  padding: 8px 14px 8px 2rem !important;   /* 2rem = left padding; change to taste */
+  border-radius: 0 !important;
+  color: #2c3e50; //font folor
+}
+
+.section-sub-title + * {
   margin-top: 0 !important;
 }
 
@@ -55,47 +467,41 @@
   padding-top: 0 !important;
 }
 
-// border around chunk for title above plot
-html-fill-item.html-fill-container.bslib-card,
-.card.html-fill-item.html-fill-container.bslib-card {
-  border: none !important;
-}
 
-/* Corrected selector */
-.card-body.html-fill-item.html-fill-container {
-  border: none !important;
-  padding-bottom: 0 !important;
-}
+/* =========================================================
+   4. CARDS (remove border / shadow around the title + plot chunk)
+   ========================================================= */
 
-// shadow around chunk for title above plot
-html-fill-item.html-fill-container.bslib-card,
 .card.html-fill-item.html-fill-container.bslib-card {
   border: none !important;
   box-shadow: none !important;
 }
 
-// font for ELAGrowth plot
-// ELAGrowth OJS plot
-// ELAGrowth OJS plot
+.card-body.html-fill-item.html-fill-container {
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important; 
+
+  /* font in the reference notes sections */
+  color: #5a5a5a;
+  font-size: .8rem;
+}
+
+
+/* =========================================================
+   5. PLOTS AND TABS
+   ========================================================= */
+
+/* ELAGrowth OJS plot */
 svg.ELAgrowth-plot {
   font-size: 1.1rem;
-
-  // Axis tick labels
- // .tick text {
- //   font-size: 1rem;
- // }
-
-  // Axis labels
- // .label {
- //   font-size: 1.5rem;
- // }
 }
 
-.ELAgrowth-plot-swatches.ELAgrowth-plot-swatches-wrap  {
-    font-size: 0.65rem !important;
+.ELAgrowth-plot-swatches.ELAgrowth-plot-swatches-wrap {
+  font-size: 0.65rem !important;
 }
 
-/* tabsets */
+/* active tab */
 .tabset-primary .nav-tabs .nav-link.active {
   background-color: #5a5a5a;
   color: white;
@@ -112,66 +518,248 @@ svg.ELAgrowth-plot {
 }
 
 
-/*-- scss:rules --*/
+/* =========================================================
+   6. SHARED PAGE RULES - for guard user inputs box
+   ========================================================= */
 
-/* light tint of the header color (theme primary mixed with white); change 70% to lighten/darken.
-   Must live in scss:rules, where $primary is defined. */
-.ela-score-title {
-  background-color: mix(#ffffff, $primary, 70%) !important;
-  padding: 8px 14px 8px 2rem !important;  // 2rem = left padding; change to taste
-  border-radius: 0 !important;
-  // full-bleed: make the band as wide as the screen and center it on its column
-  width: 100vw;
-  max-width: 100vw;
-  position: relative;
-  left: 50%;
-  margin-left: -50vw !important;
+/* gets rid of too much whitespace above plot titles */
+h2 {
+/*  margin-top: 0 !important; */
+  font-size: 1.1rem;
+}
+
+/* Input boxes: 3 columns on desktop, 2 on tablets, 1 on phones.
+   A page with fewer inputs can override grid-template-columns in its own CSS. */
+.input-toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 4px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+.input-toolbar > * {
+  width: 100%;
+  min-width: 0;
   box-sizing: border-box;
 }
 
-.quarto-dashboard .toolbar {
-  background-color: #cccecf !important;
+.input-toolbar > form {
+  margin: 0 !important;
+  padding: 0;
 }
 
-/* topmost header, where page title goes
-#quarto-dashboard-header,
-#quarto-dashboard-header .navbar {
-  background-color: #5a5a5a !important;
-}
-*/
-
-/* topmost header, don't show title */
-#quarto-dashboard-header .navbar-title {
-  display: none !important;
+.input-toolbar input,
+.input-toolbar select {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
-
-/* make the back arrow in header not wrap */
-#quarto-dashboard-header .navbar-container {
-  flex-wrap: nowrap !important;
-  align-items: center; /* keeps icon vertically centered even if title grows to 2+ lines */
-}
-#quarto-dashboard-header .navbar-brand-container {
-  min-width: 0; /* still needed so this can shrink and force text to wrap */
-  white-space: normal; /* was nowrap — this is the actual change: let text wrap */
-  overflow: visible; /* was hidden — no longer truncating, so no need to clip */
-  text-overflow: unset; /* remove the ellipsis behavior */
-}
-.quarto-dashboard-links {
-  flex-shrink: 0;
-  margin-left: auto;
-  align-self: center; /* keeps the icon anchored center-right even as the title bar gets taller */
+@media (max-width: 850px) {
+  .input-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-/* let the full-width title band show past the edges of the cards/containers that hold it
-   (only containers that actually contain a title are affected) */
-.quarto-dashboard .card:has(.ela-score-title),
-.quarto-dashboard .card-body:has(.ela-score-title),
-.quarto-dashboard .bslib-grid:has(.ela-score-title),
-.quarto-dashboard .html-fill-container:has(.ela-score-title),
-.quarto-dashboard .html-fill-item:has(.ela-score-title) {
-  overflow: visible !important;
+@media (max-width: 550px) {
+  .input-toolbar {
+    grid-template-columns: 1fr;
+  }
 }
-html, body {
-  overflow-x: hidden;  /* 100vw includes the scrollbar width; avoids a sideways scrollbar */
+
+/* remove scrollbar under the input header
+   (scoped to the toolbar so it no longer clips the plots) */
+.toolbar .cell-output-display {
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   7. SHARED PRINT RULES
+      Kept last so they win ties with the screen rules above.
+      Page-specific print layout (page size, tab/plot layout)
+      stays in each page's own CSS file.
+   ========================================================= */
+
+@media print {
+
+  /* Tab navigation isn't usable on paper */
+  .panel-tabset .nav-tabs {
+    display: none !important;
+  }
+
+  /* Hide the county/district/grade input toolbar */
+  #print-hide-toolbar,
+  .quarto-dashboard .toolbar,
+  div.toolbar.html-fill-container {
+    display: none !important;
+  }
+
+  /* Hide OJS source code (the .quarto-dashboard prefix keeps this ahead of
+     the pages' "unhide everything" rules) */
+  .quarto-dashboard .cell-code,
+  .quarto-dashboard .sourceCode,
+  .quarto-dashboard pre.sourceCode,
+  .quarto-dashboard details.code-fold {
+    display: none !important;
+  }
+
+  /* Strip the "card" chrome (border / shadow / header bar) */
+  .card,
+  .bslib-card,
+  .panel-tabset .card,
+  #print-footer.card,
+  #print-footer .card {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .card-header,
+  .bslib-card .card-header {
+    display: none !important;
+  }
+
+  .card-body,
+  .bslib-card .card-body {
+    padding: 0 !important;
+  }
+
+  /* Repeat "References, Notes" at the bottom of every printed page
+     (position: fixed repeats per page in Chrome/Edge; Firefox and Safari
+     don't reliably support it) */
+  #print-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    font-size: 9pt;
+    line-height: 1.2;
+    padding: 4pt 12pt;
+    border-top: 0.5pt solid #ccc;
+  }
+
+  #print-footer h2 {
+    font-size: 9pt;
+    margin: 0 0 2pt 0;
+  }
+
+  #print-footer ul {
+    margin: 0;
+    padding-left: 14pt;
+  }
+  
+/* Print: show only a small navbar logo */
+  /* Hide the hamburger and navigation links */
+  #quarto-header .navbar-toggler,
+  #quarto-header .navbar-collapse,
+  #quarto-header .navbar-nav {
+    display: none !important;
+  }
+
+  /* Keep the navbar and its logo */
+  #quarto-header .navbar {
+    display: block !important;
+  }
+
+#quarto-header .navbar-brand img {
+  max-height: 75px !important;
+  height: auto !important;
+  width: auto !important;
+}
+  
+}
+
+
+/* =============
+   HOMEPAGE ONLY 
+   ============= */
+   
+/* Homepage only: keep the navbar expanded on small screens */
+@media (max-width: 991.98px) {
+  body.homepage #quarto-header .navbar-toggler {
+    display: none !important;
+  }
+
+  body.homepage #quarto-header .navbar-collapse {
+    display: flex !important;
+    visibility: visible !important;
+    height: auto !important;
+  }
+
+  body.homepage #quarto-header .navbar-collapse .navbar-nav {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+/* ====== FOOTER styles ==== */
+
+/* ===== footer bar  === */
+.footer-bar {
+  background-color: white !important; // was #ecf0f1, lighter gray: #cccecf, light green: mix(#ffffff, $primary, 70%) 
+  padding: 8px 2rem !important; /* 2rem = left padding
+  border-radius: 0 !important;
+
+/* greeen font */
+  color: $primary; //font folor, was #2c3e50
+  text-decoration: underline;
+}
+
+.footer-bar + * {
+  margin-top: 0 !important;
+}
+
+.panel-tabset {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* text in bar */
+.notes-toggle-link {
+  display: block;
+  background: white; // was light greeen #d9eee8, then gray #ecf0f1
+/*  padding: 6px 12px; */
+/*  border-radius: 4px; */
+  text-decoration: underline;
+  cursor: pointer;
+/*  margin-top: 2.5rem; */
+
+  .toggle-sign {
+    font-weight: bold;
+    margin-right: 8px;
+    display: inline-block;
+    width: 14px;
+  }
+}
+
+#notesCollapse {
+  margin-top: 2px;
+/*  padding: 12px 16px; */
+  background: #ffffff;
+/*  border: 1px solid #dcdcdc;
+  border-radius: 4px; */
+}
+
+/* Toggle icon for + and - on Data Sources & Notes collapse */
+.notes-toggle-link .toggle-sign::before {
+  content: "+";
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.notes-toggle-link[aria-expanded="true"] .toggle-sign::before {
+  content: "−";
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.notes-toggle-link:hover {
+  opacity: 0.9;
 }

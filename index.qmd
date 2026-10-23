@@ -1,68 +1,8 @@
 ---
 sidebar: false
-listing:
-- id: data-listing
-  contents: 
-    - "plots/DistrictELAGrowth-to2025.qmd"
-    - "plots/ELAcountyreport-2025.qmd"
-    - "plots/SPED_ST3-2025.qmd"
-    - "plots/SPED_Spending-to2025.qmd"
-    - "DistrictStaffCountsSalaries-to2025.qmd"
-  type: table
-  sort-ui: false
-  filter-ui: false
-  fields: [title]
-  field-display-names:
-    title: "Student Outcomes and Spending - Plots & Data"
-  table-hover: true
-  table-striped: false
-  categories: false
-  sort: title
-  
-- id: SOR-listing
-  contents: SOR-links.yml
-  type: table
-  sort-ui: false
-  filter-ui: false
-  fields: [title]
-  field-display-names:
-    title: "Science of Reading/Writing/Learning"
-  table-hover: true
-  table-striped: false
-  categories: false
-  sort: false
-  
-- id: Schools-listing
-  contents: Schools-links.yml
-  type: table
-  sort-ui: false
-  filter-ui: false
-  fields: [title]
-  field-display-names:
-    title: "School Districts - RTI/MTSS & SPED, Parental Rights"
-  table-hover: true
-  table-striped: false
-  categories: false
-  sort: false
-
-- id: Resources-listing
-  contents: Resources-links.yml
-  type: table
-  sort-ui: false
-  filter-ui: false
-  fields: [title]
-  field-display-names:
-    title: "Free SOR Resources, Parent Templates, Podcasts"
-  table-hover: true
-  table-striped: false
-  categories: false
-  sort: false
-
+body-classes: homepage
 about:
   template: jolla
-  image: "images/favicon.png"
-  image-width: 250px
-  image-shape: rectangle
   links:
     - icon: envelope
       text: Email
@@ -84,21 +24,28 @@ format:
 ---
 ```{=html}
 <style>
-.quarto-listing-table th,
-.quarto-listing-table td {
-  text-align: left !important;
+/* Hide the entire header container to collapse the whitespace */
+#title-block-header {
+  display: none !important;
 }
-<!-- .quarto-listing-table { -->
-<!--   color: #0e3166; -->
-<!-- } -->
+
+/* Clear any leftover top margin on the main content area */
+.quarto-about-jolla.column-page {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
 </style>
 ```
 
+::: {.v-top}
+### Welcome to Open School Data (NY)
+
 This website contains free, printable plots and visualizations of public data related to student literacy outcomes in our NY public schools.
 
-We hope to help parents, teachers, and community members work together to help make needed change so all students learn to read and write in our public schools.
+We hope to help parents, teachers, and community members work together to help make needed change so all students learn to read and write, equitably.
 
 If you'd like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!
+:::
 
 [*\*\*DISCLAIMER: Nothing on this page should be construed as legal advice.  
 Use at your own discretion, and verify data - mistakes happen, please email any issues.</br></br>*]{style="color:#2676c2"}

@@ -4,14 +4,11 @@ format:
   dashboard: 
     orientation: columns
     expandable: false
-    scrolling: false
+    scrolling: true
     theme: 
       - minty
       - ../custom.scss
     css: ELAcountyreport.css
-    nav-buttons:
-      - icon: arrow-left-circle-fill
-        href: ../
 ---
 
 ```{r}
@@ -83,9 +80,6 @@ function guard(fn, options = {}) {
     resetLabel = "Reset",
     required = false,
     resubmit = true,
-    width = "fit-content", 
-//    width = "min-content",
-    justify = "start",
     valid = input => !input.querySelector(":invalid"),
   } = options;
 
@@ -123,10 +117,11 @@ function guard(fn, options = {}) {
       ${resetLabel}
   `;
 
+  // styling for these classes is in custom.scss
   const footer = htl.html`
-    <div>
-      <hr style="padding:0;margin:10px 0">
-      <div style="display:flex;gap:1ch;justify-content:${justify}">
+    <div class="guard-footer">
+      <hr class="guard-footer-rule">
+      <div class="guard-footer-buttons">
         ${submit}
       </div>
     </div>
@@ -140,8 +135,7 @@ const template = inputs => {
     .forEach(input => row.append(input));
 
   const container = document.createElement("div");
-  container.style.cssText =
-    "width:100%;max-width:100%;min-width:0;box-sizing:border-box";
+  container.className = "guard-container";
 
   container.append(row, footer);
 
@@ -165,7 +159,7 @@ const template = inputs => {
 
   let value = required ? undefined : input.value;
 
-  const wrapper = htl.html`<div style="width:${width}">${input}`;
+  const wrapper = htl.html`<div class="guard-wrapper">${input}`;
 
   wrapper.addEventListener("submit", onSubmit);
 
@@ -346,11 +340,6 @@ fig2 = {
     
     title: cohortPlot2,
         subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
-
-    caption: html`<br>
-    - Sourcedata (download): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card DB</a>, "Annual EM ELA", spring data<br>
-    - Sourcedata (webpage): <a href="https://data.nysed.gov/lists.php?type=district">NYSED Report Card</a><br>
-    - (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort`,
               
     x: {
       label: "% of Students",
@@ -422,9 +411,22 @@ fig2 = {
   });
 }
 ```
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
+
+::: {#notesCollapse .collapse}
+* Sourcedata (download): [NYSED Report Card DB]("https://data.nysed.gov/downloads.php"), "Annual EM ELA", spring data
+* Sourcedata (webpage): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district")
+* (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort
+:::
 
 ## ${cohortPlot1_short}
-
 ```{ojs}
 //| column: screen
 
@@ -481,11 +483,6 @@ fig1 = {
     
     title: cohortPlot1,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
-
-    caption: html`<br>
-    - Data Source (download): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card</a><br>
-    - Data Source (webpage): <a href="https://data.nysed.gov/lists.php?type=district">NYSED Report Card</a><br>
-    - (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort`,
     
     x: {
       label: "% of Students",
@@ -557,9 +554,23 @@ fig1 = {
   });
 }
 ```
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
+
+::: {#notesCollapse .collapse}
+* Sourcedata (download): [NYSED Report Card DB]("https://data.nysed.gov/downloads.php"), "Annual EM ELA", spring data
+* Sourcedata (webpage): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district")
+* (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort
+:::
+
 
 ## Equity Gap
-
 ```{ojs}
 //| column: screen
 html`
@@ -583,12 +594,6 @@ fig3 = {
     style: { fontSize: "14px" },
     title: `Equity Gap, %Proficient (${cohortPlot1_shortshort} - ${cohortPlot2_shortshort})`,
     subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
-
-    caption: html`<br>
-    - Data Source (download): <a href="https://data.nysed.gov/downloads.php">NYSED Report Card</a><br>
-    - Data Source (webpage): <a href="https://data.nysed.gov/lists.php?type=district">NYSED Report Card</a><br>
-    - (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort <br>
-    - Bar opacity reflects ${cohortPlot2_short} test participation — lighter bar = higher opt-out rate`,
     
     x: { label: "Percent Proficient Gap", labelAnchor: "center", labelArrow: "none", domain: [-40, 80] },
     y: { label: null, domain: entityOrder, tickSize: 0 },
@@ -631,6 +636,21 @@ fig3 = {
 }
 
 ```
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
+
+::: {#notesCollapse .collapse}
+* Sourcedata (download): [NYSED Report Card DB]("https://data.nysed.gov/downloads.php"), "Annual EM ELA", spring data
+* Sourcedata (webpage): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district")
+* (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort
+* Bar opacity reflects ${cohortPlot2_short} test participation — lighter bar = higher opt-out rate
+:::
 
 :::
 :::

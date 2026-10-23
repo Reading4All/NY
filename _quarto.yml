@@ -4,18 +4,71 @@ project:
     - CNAME
 
 website:
-  title: "Open School Data (NY)"
+  search: false
   site-url: "https://www.openschooldata.com/"
   open-graph: true
   sidebar: false
+  navbar:
+    pinned: true
+    collapse: true
+    fixed: false
+    background: "#ffffff"
+    logo: images/favicon.png
+    logo-href: /index.html
+    left:
+      - text: "PLOTS & DATA"
+        menu:
+          - text: "ELA Scores, Year-Year Growth"
+            href: plots/DistrictELAGrowth-to2025.html
+          - text: "ELA Scores, by County"
+            href: plots/ELAcountyreport-2025.html
+          - text: "Salaries & Staff Counts"
+            href: plots/DistrictStaffCountsSalaries-to2025.html
+          - text: "SPED ST3 Financials"
+            href: plots/SPED_ST3-2025.html
+          - text: "SPED Spending Trends"
+            href: plots/SPED_Spending-to2025.html
+
+      - text: "SCIENCE OF READING"
+        menu:
+          - text: "Evidence-Based Instruction (Reading Rockets)"
+            href: https://www.readingrockets.org/classroom/evidence-based-instruction/what-is-evidence-based-instruction
+          - text: "Science of Reading (Reading Rockets)"
+            href: https://www.readingrockets.org/classroom/evidence-based-instruction/science-reading
+          - text: "IES Practice Guide - Reading(K-3)"
+            href: https://ies.ed.gov/ncee/WWC/PracticeGuide/21
+          - text: "IES Practice Guide - Writing(Elementary School)"
+            href: https://ies.ed.gov/ncee/WWC/PracticeGuide/17
+          - text: "IES Practice Guide - Writing(Secondary School)"
+            href: https://ies.ed.gov/ncee/wwc/practiceguide/22
+          - text: "Writing to Read (Carnegie Report)"
+            href: https://media.carnegie.org/filer_public/9d/e2/9de20604-a055-42da-bc00-77da949b29d7/ccny_report_2010_writing.pdf
+
+      - text: "SCHOOL SUPPORTS, PARENTAL RIGHTS"
+        menu:
+          - text: "What is MTSS (and RTI)? (Reading Rockets)"
+            href: index.html#Schools-listing
+          - text: "Special Education in NY - Parent’s Guide (NYSED)"
+            href: https://www.nysed.gov/special-education/parents-guide-special-education
+          - text: "OSE - Ed Presentations to improve student outcomes (NYSED)"
+            href: https://osepartnership.org/resources
+
+      - text: "FREE RESOURCES"
+        menu:
+          - text: "Podcast - Sold a Story Podcast (APR, Emily Hanford)"
+            href: https://www.readingrockets.org/classroom/evidence-based-instruction
+          - text: "Reading, Spelling - UFLI Foundations"
+            href: https://ufli.education.ufl.edu/foundations/toolbox/
+          - text: "Writing, Comprehension - GIST instructions"
+            href: https://greatmiddleschools.org/toolkits/reading/get-the-gist/
+          - text: "Writing, Comprehension - GIST template"
+            href: https://greatmiddleschools.org/wp-content/uploads/2018/07/Student_Gist_Log_Interactive.pdf
 
 format:
   html:
+    title: "Open School Data (NY)"
     page-layout: full
-    theme: 
+    theme:
       - minty
       - custom.scss
     toc: false
-
-
-

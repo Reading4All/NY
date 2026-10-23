@@ -1,6 +1,8 @@
+/* ELAcountyreport.qmd - page-specific rules.
+   Shared rules (h2 spacing, input toolbar, notes font) live in ../custom.scss. */
+
 h2 {
-  margin-top: 0 !important;
-  font-size: 1.3rem;
+  font-size: 1.3rem;   /* this page uses a larger h2 than the shared 1.1rem */
 }
 
 h3 {
@@ -13,60 +15,16 @@ html {
 
 figcaption {
   font-size: .8rem;
-/*  line-height: 1.5;
-  color: #555555;
-  margin-top: 8px; */
 }
-
-/* input boxes - formatting so they wrap when screen size decreased */
-.input-toolbar {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 12px;
-  row-gap: 4px;
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-  align-items: start;
-}
-
-.input-toolbar > form {
-  width: 100%;
-  min-width: 0;
-  margin: 0 !important;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.input-toolbar input,
-.input-toolbar select {
-  max-width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-}
-
-@media (max-width: 850px) {
-  .input-toolbar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 550px) {
-  .input-toolbar {
-    grid-template-columns: 1fr;
-    row-gap: 4px;
-  }
-}
-/* end of input boxes - formatting */
 
 /* desktops screens */
 @media (min-width: 768px) {
-  
+
   /* Hide the tab buttons entirely on desktop */
   body .panel-tabset > .nav-tabs {
     display: none !important;
   }
-  
+
   /* Turn the container into a strict 2-column Grid */
   body .panel-tabset > .tab-content {
     display: grid !important;
@@ -75,10 +33,10 @@ figcaption {
     gap: 30px !important;
     width: 100% !important;
   }
-  
+
   /* Force all sections to show up in their assigned columns */
   body .panel-tabset > .tab-content > .tab-pane {
-    display: block !important; 
+    display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     width: 100% !important;
@@ -87,11 +45,11 @@ figcaption {
   }
 
   /* Force the underlying OJS elements to stay within their grid lanes */
-  body .panel-tabset .tab-pane div, 
+  body .panel-tabset .tab-pane div,
   body .panel-tabset .tab-pane svg,
   body .panel-tabset .tab-pane canvas {
     max-width: 100% !important;
-    height: auto !important; 
+    height: auto !important;
   }
 
   /* Center the 3rd plot on the second row at normal width */
@@ -102,18 +60,17 @@ figcaption {
   }
 }
 
-@media print { 
-  /* 0. FORCE DEFAULT BROWSER PRINT LAYOUT TO PORTRAIT */ 
-  @page { 
-    size: portrait; 
-    margin-left: 0.5in; /* Gives your plots a clean border on the paper */ 
+@media print {
+  /* 0. FORCE DEFAULT BROWSER PRINT LAYOUT TO PORTRAIT */
+  @page {
+    size: portrait;
+    margin-left: 0.5in; /* Gives your plots a clean border on the paper */
   }
 
   /* 1. COLLAPSE FIXED HEADERS & INTERACTIVE MENUS TO ZERO PIXELS */
-  header, 
-  #quarto-header, 
-  .toolbar html-fill-container, 
-  .navbar, 
+  header,
+  #quarto-header,
+  .navbar,
   .quarto-dashboard-header,
   .sidebar,
   #quarto-sidebar,
@@ -130,17 +87,17 @@ figcaption {
   body * {
     visibility: hidden !important;
   }
-  
+
    /* SET THE PRINT SCALE TO 0.57 */
   body {
     zoom: 0.57 !important;
   }
-  
+
   /* FORCE PARENT CONTAINER WRAPPERS TO BE VISIBLE AND CALCULATE HEIGHT */
   /* Without this section, the browser refuses to recognize page breaks inside the tabs */
-  html, body, main, .main, 
-  .quarto-dashboard, 
-  .dashboard-page, 
+  html, body, main, .main,
+  .quarto-dashboard,
+  .dashboard-page,
   .quarto-dashboard-content,
   .bslib-grid,
   .bslib-page-fill,
@@ -149,7 +106,7 @@ figcaption {
   .card-body,
   .bslib-card,
   .panel-tabset,
-  .tab-content { 
+  .tab-content {
     display: block !important;
     visibility: visible !important;
     position: static !important;
@@ -168,7 +125,7 @@ figcaption {
   }
 
   /* 3. WHITELIST THE PLOTS, IDS, AND ALL THEIR CHILD ELEMENTS */
-  .plot-d6a7b5-figure, 
+  .plot-d6a7b5-figure,
   .plot-d6a7b5-figure *,
   #tabset-1-1,
   #tabset-1-1 *,
@@ -178,7 +135,7 @@ figcaption {
   #tabset-1-3 * {
     visibility: visible !important;
   }
-  
+
   /* 4. FORCE BOOTSTRAP TO NATIVELY RENDER HIDDEN TAB CONTENTS & FORCE PAGE BREAKS */
   /* Overrides hidden states, allowing them to stack cleanly */
   #tabset-1-1,
@@ -204,11 +161,11 @@ figcaption {
     page-break-after: avoid !important;
     break-after: avoid !important;
   }
-  
+
   /* Document size layout reset */
   html, body {
     width: 100% !important;
     max-width: 100% !important;
     overflow: visible !important;
-  } 
+  }
 }

@@ -9,9 +9,6 @@ format:
       - minty
       - ../custom.scss
     css: DistrictELAGrowth.css
-    nav-buttons:
-      - icon: arrow-left-circle-fill
-        href: ../
 ---
 ```{r}
 #| echo: false
@@ -139,9 +136,7 @@ function guard(fn, options = {}, countyView) {
     submitLabel = "Submit",
     resetLabel = "Reset",
     required = false,
-    resubmit = true,
-    width = "100%",
-    justify = "start"
+    resubmit = true
   } = options;
 
   const onSubmit = () => {
@@ -178,10 +173,11 @@ function guard(fn, options = {}, countyView) {
       ${resetLabel}
   `;
 
+  // styling for these classes is in custom.scss
   const footer = htl.html`
-    <div>
-      <hr style="padding:0;margin:10px 0">
-      <div style="display:flex;gap:1ch;justify-content:${justify}">
+    <div class="guard-footer">
+      <hr class="guard-footer-rule">
+      <div class="guard-footer-buttons">
         ${submit}
       </div>
     </div>
@@ -197,8 +193,7 @@ const template = inputs => {
     .forEach(input => row.append(input));
 
   const container = document.createElement("div");
-  container.style.cssText =
-    "width:100%;max-width:100%;min-width:0;box-sizing:border-box";
+  container.className = "guard-container";
 
   container.append(row, footer);
 
@@ -222,7 +217,7 @@ const template = inputs => {
 
   let value = required ? undefined : input.value;
 
-  const wrapper = htl.html`<div style="width:${width}">${input}`;
+  const wrapper = htl.html`<div class="guard-wrapper">${input}`;
 
   wrapper.addEventListener("submit", onSubmit);
 
@@ -283,8 +278,7 @@ viewof inputSels = guard(
   ),
   {
     resetLabel: "Reset",
-    required: true,
-    width: "100%"
+    required: true
   },
   viewof county
 );
@@ -449,8 +443,7 @@ function subgroupRows(subgroupName) {
 ### Print District Selected
 ```{ojs}
 //| echo: false
-md`<span class="ela-score-title">ELA Scores - ${inputSels ? inputSels.district : ""}</span>`
-
+md`<span class="section-title-banner">${inputSels ? inputSels.district : ""}</span>`
 ```
 ::: {.panel-tabset .tabset-primary}
 ## Students with Disabilities (IEP)
@@ -504,10 +497,19 @@ fig5 = {
   return stackedBarChart(subgroupRows("All Students"), width, height, `All Students`);
 }
 ```
+:::
+:::
+:::
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
 
-:::
-:::
-## Sourcedata, Notes {#print-footer}
+::: {#notesCollapse .collapse}
 * Data Source - ELA data: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
 * ELA data (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
 * A missing bar indicates that some or all of its data is unavailable 
