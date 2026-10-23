@@ -71,7 +71,7 @@ lab_students <- "Students"
 lab_teachers <- "Classroom Teachers"
 lab_admin    <- "All - Administrators"
 lab_princ    <- "Principals & Asst. Principals"
-lab_other    <- "All Other - Professional Staff"
+lab_other   <- "All Other - Professional Staff"
 
 # Enrollment is repeated on every staff row, so take one value per district-year
 students <- raw |>
@@ -418,30 +418,70 @@ function salaryTable(data) {
   </table>`;
 }
 
-// Dashboard-style card: "% to Admins" = share of all estimated total salaries (latest year)
-// that goes to administrators (Central + Program Administration combined)
-function adminShareCard(data) {
+// Dashboard-style cards: share of all estimated total salaries (latest year) that goes to
+// a set of roles. Two cards are shown:
+//   "% to Admins"             = Central Administration + Program Administration
+//   "% to Admins, Principals" = the above + Principals & Asst. Principals
+adminRoles = new Set([
+  "Central Administration",
+  "Program Administration"
+]);
+
+adminPrincipalRoles = new Set([
+  "Central Administration",
+  "Program Administration",
+  "Principals & Asst. Principals"
+]);
+
+function shareCard(data, {title, roles, note, color}) {
   if (!data || !data.length) return htl.html``;
 
   const latest = data.filter(d => Number(d.YEAR) === Number(lastYear) && d.total_salary > 0);
   const total  = d3.sum(latest, d => d.total_salary);
-  const admins = d3.sum(latest.filter(d => staffGroupOf(d.series) === "All - Administrators"), d => d.total_salary);
-  const money0 = n => `$${Math.round(n).toLocaleString()}`;
-  const pct = total > 0 ? `${(100 * admins / total).toFixed(1)}%` : "–";
-  const adminColor = staffGroups.find(g => g.label === "All - Administrators").color;
+  const part   = d3.sum(latest.filter(d => roles.has(d.series)), d => d.total_salary);
+  const pct = total > 0 ? `${(100 * part / total).toFixed(1)}%` : "–";
 
-  return htl.html`<div style="min-width:190px;padding:14px 20px;border:1px solid #dcdcdc;border-left:6px solid ${adminColor};border-radius:6px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.08);text-align:center">
-    <div style="font-size:0.9rem;font-weight:600;color:#5a5a5a">% to Admins</div>
+  // Left stripe: one color, or (if `color` is an array) equal bands top to bottom.
+  // Drawn as a border-box background under a white padding-box layer, so it follows the rounded corners.
+  const colors = [].concat(color);
+  const bands = colors.map((c, i) => `${c} ${100 * i / colors.length}% ${100 * (i + 1) / colors.length}%`).join(", ");
+  const bg = `linear-gradient(#fff, #fff) padding-box, linear-gradient(to bottom, ${bands}) border-box`;
+
+  return htl.html`<div style="box-sizing:border-box;min-width:190px;max-width:230px;padding:14px 20px;border:1px solid #dcdcdc;border-left:6px solid transparent;border-radius:6px;background:${bg};box-shadow:0 1px 3px rgba(0,0,0,0.08);text-align:center">
+    <div style="font-size:0.9rem;font-weight:600;color:#5a5a5a">${title}</div>
     <div style="font-size:2.4rem;font-weight:700;line-height:1.2;color:#2c3e50">${pct}</div>
     <div style="font-size:0.75rem;color:#5a5a5a">of total ${lastYear} salaries (est.)<br>**Excluding Benefits, Other</div>
-<!-- removed: <br>${admins ? `${money0(admins)} of ${money0(total)}` : ""} -->
+    <div style="font-size:0.75rem;color:#5a5a5a;margin-top:6px;padding-top:6px;border-top:1px solid #eee">Includes: ${note}</div>
   </div>`;
 }
-// Top table with the "% to Admins" card to its right (wraps below on narrow screens)
+
+function adminShareCard(data) {
+  return shareCard(data, {
+    title: "% to Admins",
+    roles: adminRoles,
+    note: "Central Administration and Program Administration",
+    color: roleColors.get("Central Administration")
+  });
+}
+
+function adminPrincipalShareCard(data) {
+  return shareCard(data, {
+    title: "% to Admins, Principals",
+    roles: adminPrincipalRoles,
+    note: "Central Administration, Program Administration, and Principals &amp; Asst. Principals",
+    // red (admins) over orange (principals), matching their colors in the plots
+    color: [roleColors.get("Central Administration"), roleColors.get("Principals & Asst. Principals")]
+  });
+}
+
+// Top table with the two "% to" cards to its right (wraps below on narrow screens)
 function salaryTableAndCard(data) {
   return htl.html`<div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-start">
     ${salaryTable(data)}
-    ${adminShareCard(data)}
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:stretch">
+      ${adminShareCard(data)}
+      ${adminPrincipalShareCard(data)}
+    </div>
   </div>`;
 }
 
@@ -616,7 +656,7 @@ md`<span class="section-title-banner">${inputSels ? inputSels.district : ""}</sp
 ```{ojs}
 //| echo: false
 //| title: "Professional Staff Average Salaries"
-// Color key + average salary and total FTE for each staff type in the plot below, with the "% to Admins" card next to it
+// Color key + average salary and total FTE for each staff type in the plot below, with the "% to Admins" and "% to Admins, Principals" cards next to it
 salaryTableAndCard(dd_salary)
 ```
 
@@ -639,6 +679,10 @@ fig1 = {
   return salaryPlot(dd_salary, width, height, salaryView);
 }
 ```
+
+<!-- whitespace between the salary section and the "Total Staff and Students" section -->
+<div style="height:4rem"></div>
+
 ### Print Staff Counts
 ```{ojs}
 //| echo: false
@@ -681,6 +725,7 @@ fig2 = {
 * **Staff Counts & Salaries Notes**: Data Source - Staff data: [PMF Statistical Run](https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf)
 * Data Source - Student enrollment data: [ESSA Financial Reporting](https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting)
 * **"All - Administrators"** = Central Administration + Program Administration; **"All Other - Professional Staff"** = every role other than classroom teachers, administrators, and principals & asst. principals.
+* The **"% to Admins"** card = (Central Administration + Program Administration) salaries as a share of all estimated salaries for the latest year. The **"% to Admins, Principals"** card adds Principals & Asst. Principals.
 * A district is omitted when that year's value is unavailable.
 * Salary change is each role's average salary (weighted by FTE) minus its average salary in the first year shown; a role with no first-year salary is omitted from the salary plot.
 * Charter schools and NYC districts are not included.
