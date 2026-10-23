@@ -18,15 +18,15 @@ website:
     left:
       - text: "PLOTS & DATA"
         menu:
-          - text: "ELA Scores, Year-Year Growth"
+          - text: "ELA Scores, Growth"
             href: plots/DistrictELAGrowth-to2025.html
           - text: "ELA Scores, by County"
             href: plots/ELAcountyreport-2025.html
           - text: "Salaries & Staff Counts"
             href: plots/DistrictStaffCountsSalaries-to2025.html
-          - text: "SPED ST3 Financials"
+          - text: "SPED Spending, ST3 Breakdown"
             href: plots/SPED_ST3-2025.html
-          - text: "SPED Spending Trends"
+          - text: "SPED Spending, SLSF Trends"
             href: plots/SPED_Spending-to2025.html
 
       - text: "SCIENCE OF READING"
