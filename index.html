@@ -31,12 +31,6 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -45,20 +39,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6987cff147fbbb6a17fc5315bf240d8f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b39e2cc77d2703f3732254bbafe20285.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -73,345 +55,172 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-data-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-data-listing'] = new List('listing-data-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-SOR-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-SOR-listing'] = new List('listing-SOR-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-Schools-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-Schools-listing'] = new List('listing-Schools-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-Resources-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-Resources-listing'] = new List('listing-Resources-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="Open School Data (NY)">
 <meta property="og:description" content="">
-<meta property="og:site_name" content="Open School Data (NY)">
 </head>
 
-<body class="quarto-light">
+<body class="nav-fixed homepage quarto-light">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/favicon.png" alt="" class="navbar-logo light-content">
+    <img src="./images/favicon.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-plots--data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">PLOTS &amp; DATA</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-plots--data">    
+        <li>
+    <a class="dropdown-item" href="./plots/DistrictELAGrowth-to2025.html">
+ <span class="dropdown-text">ELA Scores, Year-Year Growth</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./plots/ELAcountyreport-2025.html">
+ <span class="dropdown-text">ELA Scores, by County</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./plots/DistrictStaffCountsSalaries-to2025.html">
+ <span class="dropdown-text">Salaries &amp; Staff Counts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./plots/SPED_ST3-2025.html">
+ <span class="dropdown-text">SPED ST3 Financials</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./plots/SPED_Spending-to2025.html">
+ <span class="dropdown-text">SPED Spending Trends</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-science-of-reading" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">SCIENCE OF READING</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-science-of-reading">    
+        <li>
+    <a class="dropdown-item" href="https://www.readingrockets.org/classroom/evidence-based-instruction/what-is-evidence-based-instruction">
+ <span class="dropdown-text">Evidence-Based Instruction (Reading Rockets)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.readingrockets.org/classroom/evidence-based-instruction/science-reading">
+ <span class="dropdown-text">Science of Reading (Reading Rockets)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ies.ed.gov/ncee/WWC/PracticeGuide/21">
+ <span class="dropdown-text">IES Practice Guide - Reading(K-3)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ies.ed.gov/ncee/WWC/PracticeGuide/17">
+ <span class="dropdown-text">IES Practice Guide - Writing(Elementary School)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ies.ed.gov/ncee/wwc/practiceguide/22">
+ <span class="dropdown-text">IES Practice Guide - Writing(Secondary School)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://media.carnegie.org/filer_public/9d/e2/9de20604-a055-42da-bc00-77da949b29d7/ccny_report_2010_writing.pdf">
+ <span class="dropdown-text">Writing to Read (Carnegie Report)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-school-supports-parental-rights" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">SCHOOL SUPPORTS, PARENTAL RIGHTS</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-school-supports-parental-rights">    
+        <li>
+    <a class="dropdown-item" href="./index.html#Schools-listing">
+ <span class="dropdown-text">What is MTSS (and RTI)? (Reading Rockets)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.nysed.gov/special-education/parents-guide-special-education">
+ <span class="dropdown-text">Special Education in NY - Parent’s Guide (NYSED)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://osepartnership.org/resources">
+ <span class="dropdown-text">OSE - Ed Presentations to improve student outcomes (NYSED)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-free-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">FREE RESOURCES</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-free-resources">    
+        <li>
+    <a class="dropdown-item" href="https://www.readingrockets.org/classroom/evidence-based-instruction">
+ <span class="dropdown-text">Podcast - Sold a Story Podcast (APR, Emily Hanford)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ufli.education.ufl.edu/foundations/toolbox/">
+ <span class="dropdown-text">Reading, Spelling - UFLI Foundations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://greatmiddleschools.org/toolkits/reading/get-the-gist/">
+ <span class="dropdown-text">Writing, Comprehension - GIST instructions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://greatmiddleschools.org/wp-content/uploads/2018/07/Student_Gist_Log_Interactive.pdf">
+ <span class="dropdown-text">Writing, Comprehension - GIST template</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
 <div class="quarto-about-jolla column-page">
-  <img src="images/favicon.png" class="about-image
-  rectangle " style="width: 250px;">
- <header id="title-block-header" class="quarto-title-block"></header><main class="content column-page" id="quarto-document-content">
+ <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Open School Data (NY)</h1>
+</div>
+<div class="quarto-title-meta column-page">
+  </div>
+</header><main class="content column-page" id="quarto-document-content">
 <style>
-.quarto-listing-table th,
-.quarto-listing-table td {
-  text-align: left !important;
+/* Hide the entire header container to collapse the whitespace */
+#title-block-header {
+  display: none !important;
 }
-<!-- .quarto-listing-table { -->
-<!--   color: #0e3166; -->
-<!-- } -->
+/* Clear any leftover top margin on the main content area */
+.quarto-about-jolla.column-page {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
 </style>
+<section id="welcome-to-open-school-data-ny" class="level3 v-top">
+<h3 data-anchor-id="welcome-to-open-school-data-ny">Welcome to Open School Data (NY)</h3>
 <p>This website contains free, printable plots and visualizations of public data related to student literacy outcomes in our NY public schools.</p>
-<p>We hope to help parents, teachers, and community members work together to help make needed change so all students learn to read and write in our public schools.</p>
+<p>We hope to help parents, teachers, and community members work together to help make needed change so all students learn to read and write, equitably.</p>
 <p>If you’d like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!</p>
+</section>
 <p><span style="color:#2676c2"><em>**DISCLAIMER: Nothing on this page should be construed as legal advice.<br>
 Use at your own discretion, and verify data - mistakes happen, please email any issues.<br><br></em></span></p>
 
 
-<div class="quarto-listing quarto-listing-container-table" id="listing-data-listing">
-<table class="quarto-listing-table table table-hover">
-<thead>
-<tr>
-<th>
-Student Outcomes and Spending - Plots &amp; Data
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1792591350682" data-listing-reading-time-sort="13" data-listing-word-count-sort="2418" data-listing-title-sort="ELA scores, Year-Year Growth" data-listing-filename-sort="DistrictELAGrowth-to2025.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/DistrictELAGrowth-to2025.html" class="title listing-title">ELA scores, Year-Year Growth</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1792591350682" data-listing-reading-time-sort="19" data-listing-word-count-sort="3716" data-listing-title-sort="ELA scores, by County" data-listing-filename-sort="ELAcountyreport-2025.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/ELAcountyreport-2025.html" class="title listing-title">ELA scores, by County</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1792591350682" data-listing-reading-time-sort="19" data-listing-word-count-sort="3704" data-listing-title-sort="Salaries &amp; Staff Counts" data-listing-filename-sort="DistrictStaffCountsSalaries-to2025.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/DistrictStaffCountsSalaries-to2025.html" class="title listing-title">Salaries &amp; Staff Counts</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-file-modified-sort="1792591350683" data-listing-reading-time-sort="24" data-listing-word-count-sort="4714" data-listing-title-sort="Special Ed &amp; Legal Spending (ST-3)" data-listing-filename-sort="SPED_ST3-2025.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/SPED_ST3-2025.html" class="title listing-title">Special Ed &amp; Legal Spending (ST-3)</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-file-modified-sort="1792591350683" data-listing-reading-time-sort="18" data-listing-word-count-sort="3470" data-listing-title-sort="Special Ed Spending (ESSA/SLSF)" data-listing-filename-sort="SPED_Spending-to2025.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./plots/SPED_Spending-to2025.html" class="title listing-title">Special Ed Spending (ESSA/SLSF)</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div><div class="quarto-listing quarto-listing-container-table" id="listing-SOR-listing">
-<table class="quarto-listing-table table table-hover">
-<thead>
-<tr>
-<th>
-Science of Reading/Writing/Learning
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-title-sort="The Importance of Evidence-Based Instruction (Reading Rockets)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://www.readingrockets.org/classroom/evidence-based-instruction/what-is-evidence-based-instruction" class="title listing-title">The Importance of Evidence-Based Instruction (Reading Rockets)</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-title-sort="Science of Reading (Reading Rockets)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://www.readingrockets.org/classroom/evidence-based-instruction/science-reading" class="title listing-title">Science of Reading (Reading Rockets)</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-title-sort="IES Practice Guide - Reading(K-3)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://ies.ed.gov/ncee/WWC/PracticeGuide/21" class="title listing-title">IES Practice Guide - Reading(K-3)</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-title-sort="IES Practice Guide - Writing(Elementary School)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://ies.ed.gov/ncee/WWC/PracticeGuide/17" class="title listing-title">IES Practice Guide - Writing(Elementary School)</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-title-sort="IES Practice Guide - Writing(Secondary School)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://ies.ed.gov/ncee/wwc/practiceguide/22" class="title listing-title">IES Practice Guide - Writing(Secondary School)</a>
-</td>
-</tr>
-<tr data-index="5" data-listing-title-sort="Writing to Read - (writing and reading fluency and comprehension go together, like decoding and encoding)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://media.carnegie.org/filer_public/9d/e2/9de20604-a055-42da-bc00-77da949b29d7/ccny_report_2010_writing.pdf" class="title listing-title">Writing to Read - (writing and reading fluency and comprehension go together, like decoding and encoding)</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div><div class="quarto-listing quarto-listing-container-table" id="listing-Schools-listing">
-<table class="quarto-listing-table table table-hover">
-<thead>
-<tr>
-<th>
-School Districts - RTI/MTSS &amp; SPED, Parental Rights
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-title-sort="What is MTSS (and RTI)? (Reading Rockets)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://www.readingrockets.org/classroom/evidence-based-instruction" class="title listing-title">What is MTSS (and RTI)? (Reading Rockets)</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-title-sort="Special Education in NY - Parent’s Guide (NYSED)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://www.nysed.gov/special-education/parents-guide-special-education" class="title listing-title">Special Education in NY - Parent’s Guide (NYSED)</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-title-sort="OSE Ed Partnership - Presentations to improve equity and student outcomes (NYSED)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://osepartnership.org/resources" class="title listing-title">OSE Ed Partnership - Presentations to improve equity and student outcomes (NYSED)</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div><div class="quarto-listing quarto-listing-container-table" id="listing-Resources-listing">
-<table class="quarto-listing-table table table-hover">
-<thead>
-<tr>
-<th>
-Free SOR Resources, Parent Templates, Podcasts
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-title-sort="Podcast - Sold a Story Podcast (APR, Emily Hanford)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://www.readingrockets.org/classroom/evidence-based-instruction" class="title listing-title">Podcast - Sold a Story Podcast (APR, Emily Hanford)</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-title-sort="Reading, Spelling - UFLI Foundations (explicit, systematic phonics program and resources)" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://ufli.education.ufl.edu/foundations/toolbox/" class="title listing-title">Reading, Spelling - UFLI Foundations (explicit, systematic phonics program and resources)</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-title-sort="Writing, Reading Comprehension - GIST instructions" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://greatmiddleschools.org/toolkits/reading/get-the-gist/" class="title listing-title">Writing, Reading Comprehension - GIST instructions</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-title-sort="Writing, Reading Comprehension - GIST template" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="https://greatmiddleschools.org/wp-content/uploads/2018/07/Student_Gist_Log_Interactive.pdf" class="title listing-title">Writing, Reading Comprehension - GIST template</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> 
+</main> 
   <hr class="about-sep">
    <div class="about-links">
   <a href="mailto:support@openschooldata.com" class="about-link" rel="" target="">

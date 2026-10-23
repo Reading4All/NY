@@ -1,18 +1,6 @@
-/* gets rid of too much whitespace above plots */
-h2 {
-  margin-top: 0 !important;
-  font-size: 1.1rem;
-}
-
-/* set min width so the cumulated spending box wraps */
-.indicator-card.half.accent-green {
-  min-width: 300px;
-}
-
-/* set min width so the cumulated spending box wraps */
-.indicator-card.quarter {
-  min-width: 150px;
-}
+/* DistrictStaffCountsSalaries.qmd - page-specific rules.
+   Shared rules (h2, input toolbar, notes font, and the print rules that hide
+   the toolbar/header/tabs/code and strip card chrome) live in ../custom.scss. */
 
 /* decrease whitespace below cards */
 .bslib-grid.html-fill-item.html-fill-container {
@@ -21,34 +9,10 @@ h2 {
   min-height: 0 !important;
 }
 
-/* Input boxes: side by side on wider screens, stacked on narrow screens */
+/* This page only has County + District, so use 2 columns
+   (1 column on narrow screens) instead of the shared 3 */
 .input-toolbar {
-  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 12px;
-  row-gap: 4px;
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-  align-items: start;
-}
-
-.input-toolbar > * {
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-}
-
-.input-toolbar > form {
-  margin: 0 !important;
-  padding: 0;
-}
-
-.input-toolbar input,
-.input-toolbar select {
-  max-width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
 }
 
 @media (max-width: 650px) {
@@ -94,19 +58,6 @@ h2 {
   margin: 0;
 }
 
-/* end of input boxes - formatting */
-
-/* remove scrollbar under input header */
-.cell-output.cell-output-display {
-  overflow-x: hidden;
-}
-
-/* font in the reference notes sections */
-.card-body.html-fill-item.html-fill-container {
-  color: #5a5a5a;
-  font-size: .8rem;
-}
-
 
 /* =========================================================
    PLOTS SIDE-BY-SIDE ON SCREEN
@@ -138,7 +89,7 @@ h2 {
 
 
 /* =========================================================
-   PRINT
+   PRINT (landscape, plots in two columns)
    ========================================================= */
 
 @media print {
@@ -252,20 +203,10 @@ h2 {
 
 
   /* -------------------------------------------------------
-     RESIZE SVG PLOTS
+     RESIZE SVG / CANVAS PLOTS
      ------------------------------------------------------- */
 
-  .panel-tabset svg {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-
-  /* -------------------------------------------------------
-     RESIZE CANVAS PLOTS
-     ------------------------------------------------------- */
-
+  .panel-tabset svg,
   .panel-tabset canvas {
     width: 100% !important;
     max-width: 100% !important;
@@ -282,104 +223,8 @@ h2 {
     width: 100% !important;
     max-width: 100% !important;
   }
-
-
-  /* -------------------------------------------------------
-     HIDE TAB NAVIGATION
-     ------------------------------------------------------- */
-
-  .panel-tabset .nav-tabs {
-    display: none !important;
-  }
-
-
-  /* -------------------------------------------------------
-     HIDE INPUT TOOLBAR
-     ------------------------------------------------------- */
-
-  #print-hide-toolbar,
-  div.toolbar.html-fill-container {
-    display: none !important;
-  }
-
-
-  /* -------------------------------------------------------
-     HIDE WEBSITE HEADER
-     ------------------------------------------------------- */
-
-  #quarto-dashboard-header,
-  div.navbar-container {
-    display: none !important;
-  }
-
-
-  /* -------------------------------------------------------
-     HIDE OJS SOURCE CODE
-     ------------------------------------------------------- */
-
-  .cell-code,
-  .sourceCode,
-  pre.sourceCode,
-  details.code-fold {
-    display: none !important;
-  }
-
-
-  /* -------------------------------------------------------
-     REMOVE CARD CHROME
-     ------------------------------------------------------- */
-
-  .card,
-  .bslib-card,
-  .panel-tabset .card,
-  #print-footer.card,
-  #print-footer .card {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-  }
-
-  .card-header,
-  .bslib-card .card-header {
-    display: none !important;
-  }
-
-  .card-body,
-  .bslib-card .card-body {
-    padding: 0 !important;
-  }
-
-
-  /* -------------------------------------------------------
-     PRINT FOOTER
-     ------------------------------------------------------- */
-
-  #print-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    background: white;
-
-    font-size: 9pt;
-    line-height: 1.2;
-
-    padding: 4pt 12pt;
-
-    border-top: 0.5pt solid #ccc;
-  }
-
-  #print-footer h2 {
-    font-size: 9pt;
-    margin: 0 0 2pt 0;
-  }
-
-  #print-footer ul {
-    margin: 0;
-    padding-left: 14pt;
-  }
 }
+
 @media print and (max-width: 767px) {
   .panel-tabset .tab-pane.active {
     display: grid !important;
@@ -388,19 +233,3 @@ h2 {
   }
 }
 
-/* Toggle icon for + and - on Data Sources & Notes collapse */
-.notes-toggle-link .toggle-sign::before {
-  content: "+";
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.notes-toggle-link[aria-expanded="true"] .toggle-sign::before {
-  content: "−";
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.notes-toggle-link:hover {
-  opacity: 0.9;
-}

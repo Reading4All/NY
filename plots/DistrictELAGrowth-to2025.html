@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ELA scores, Year-Year Growth – Open School Data (NY)</title>
+<title>ELA scores, Year-Year Growth</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -66,10 +66,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -81,9 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6987cff147fbbb6a17fc5315bf240d8f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-6987cff147fbbb6a17fc5315bf240d8f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-6987cff147fbbb6a17fc5315bf240d8f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b39e2cc77d2703f3732254bbafe20285.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b39e2cc77d2703f3732254bbafe20285.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b39e2cc77d2703f3732254bbafe20285.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-dashboard/quarto-dashboard.js"></script>
 <script src="../site_libs/quarto-dashboard/stickythead.js"></script>
 
@@ -93,18 +89,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-dashboard/components.js"></script>
 
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -127,12 +111,133 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="DistrictELAGrowth.css">
-<meta property="og:title" content="ELA scores, Year-Year Growth – Open School Data (NY)">
-<meta property="og:site_name" content="Open School Data (NY)">
+<meta property="og:title" content="ELA scores, Year-Year Growth">
 </head>
 
-<body class="quarto-dashboard dashboard-toolbar fullcontent quarto-light">
+<body class="quarto-dashboard nav-fixed dashboard-toolbar fullcontent quarto-light">
 
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/favicon.png" alt="" class="navbar-logo light-content">
+    <img src="../images/favicon.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-plots--data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">PLOTS &amp; DATA</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-plots--data">    
+        <li>
+    <a class="dropdown-item" href="../plots/DistrictELAGrowth-to2025.html">
+ <span class="dropdown-text">ELA Scores, Year-Year Growth</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../plots/ELAcountyreport-2025.html">
+ <span class="dropdown-text">ELA Scores, by County</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../plots/DistrictStaffCountsSalaries-to2025.html">
+ <span class="dropdown-text">Salaries &amp; Staff Counts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../plots/SPED_ST3-2025.html">
+ <span class="dropdown-text">SPED ST3 Financials</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../plots/SPED_Spending-to2025.html">
+ <span class="dropdown-text">SPED Spending Trends</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-science-of-reading" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">SCIENCE OF READING</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-science-of-reading">    
+        <li>
+    <a class="dropdown-item" href="https://www.readingrockets.org/classroom/evidence-based-instruction/what-is-evidence-based-instruction">
+ <span class="dropdown-text">Evidence-Based Instruction (Reading Rockets)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.readingrockets.org/classroom/evidence-based-instruction/science-reading">
+ <span class="dropdown-text">Science of Reading (Reading Rockets)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ies.ed.gov/ncee/WWC/PracticeGuide/21">
+ <span class="dropdown-text">IES Practice Guide - Reading(K-3)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ies.ed.gov/ncee/WWC/PracticeGuide/17">
+ <span class="dropdown-text">IES Practice Guide - Writing(Elementary School)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ies.ed.gov/ncee/wwc/practiceguide/22">
+ <span class="dropdown-text">IES Practice Guide - Writing(Secondary School)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://media.carnegie.org/filer_public/9d/e2/9de20604-a055-42da-bc00-77da949b29d7/ccny_report_2010_writing.pdf">
+ <span class="dropdown-text">Writing to Read (Carnegie Report)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-school-supports-parental-rights" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">SCHOOL SUPPORTS, PARENTAL RIGHTS</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-school-supports-parental-rights">    
+        <li>
+    <a class="dropdown-item" href="../index.html#Schools-listing">
+ <span class="dropdown-text">What is MTSS (and RTI)? (Reading Rockets)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.nysed.gov/special-education/parents-guide-special-education">
+ <span class="dropdown-text">Special Education in NY - Parent’s Guide (NYSED)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://osepartnership.org/resources">
+ <span class="dropdown-text">OSE - Ed Presentations to improve student outcomes (NYSED)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-free-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">FREE RESOURCES</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-free-resources">    
+        <li>
+    <a class="dropdown-item" href="https://www.readingrockets.org/classroom/evidence-based-instruction">
+ <span class="dropdown-text">Podcast - Sold a Story Podcast (APR, Emily Hanford)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ufli.education.ufl.edu/foundations/toolbox/">
+ <span class="dropdown-text">Reading, Spelling - UFLI Foundations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://greatmiddleschools.org/toolkits/reading/get-the-gist/">
+ <span class="dropdown-text">Writing, Comprehension - GIST instructions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://greatmiddleschools.org/wp-content/uploads/2018/07/Student_Gist_Log_Interactive.pdf">
+ <span class="dropdown-text">Writing, Comprehension - GIST template</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
 <header id="quarto-dashboard-header">
 <nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
   <div class="navbar-container container-fluid">
@@ -150,19 +255,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         
       </div>
     </div>
-<div class="quarto-dashboard-links"><a class="quarto-dashboard-link" href="../"><i class="bi bi-arrow-left-circle-fill"></i></a></div></div>
+</div>
 </nav>
-</header>
-<div id="quarto-search-results"></div>
+</header></header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container dashboard-scrolling">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container dashboard-scrolling">
 <!-- sidebar -->
 <!-- margin-sidebar -->
 <!-- main -->
 
 <div class="cell hidden bslib-grid-item html-fill-item">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="101" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co">// Get the data from R and make it usable (transpose it) in JS </span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>shared_data <span class="op">=</span> <span class="fu">transpose</span>(df_to_js)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="98" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 97;"><span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="co">// Get the data from R and make it usable (transpose it) in JS </span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>shared_data <span class="op">=</span> <span class="fu">transpose</span>(df_to_js)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -170,26 +274,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden bslib-grid-item html-fill-item">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="109" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 108;"><span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>uniqueCounties <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(shared_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span>))<span class="op">;</span> <span class="co">//for popup</span></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="co">// save unique districts (based on unique BEDSCODE)</span></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>districtsInCounty <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(</span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>  shared_data</span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span><span class="op">.</span><span class="fu">toUpperCase</span>() <span class="op">===</span> county<span class="op">.</span><span class="fu">toUpperCase</span>())</span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">ENTITY_NAME</span>)</span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="co">// Set Plot district when page initially loads and after user inputs county</span></span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>districtDefault <span class="op">=</span> {</span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>  county<span class="op">;</span> <span class="co">// Triggers when county changes</span></span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create a persistent state object attached to the cell's execution context</span></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="co">//  const state = this || { initialized: false };</span></span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="co">//  if (!state.initialized) {</span></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a> <span class="co">//   state.initialized = true;</span></span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a> <span class="co">//   return "ALL - BRONX DISTRICTS";</span></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="co">//  }</span></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="st">""</span><span class="op">;</span></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="106" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 105;"><span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>uniqueCounties <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(shared_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span>))<span class="op">;</span> <span class="co">//for popup</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="co">// save unique districts (based on unique BEDSCODE)</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>districtsInCounty <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>  shared_data</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span><span class="op">.</span><span class="fu">toUpperCase</span>() <span class="op">===</span> county<span class="op">.</span><span class="fu">toUpperCase</span>())</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">ENTITY_NAME</span>)</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="co">// Set Plot district when page initially loads and after user inputs county</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>districtDefault <span class="op">=</span> {</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>  county<span class="op">;</span> <span class="co">// Triggers when county changes</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create a persistent state object attached to the cell's execution context</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="co">//  const state = this || { initialized: false };</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="co">//  if (!state.initialized) {</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a> <span class="co">//   state.initialized = true;</span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a> <span class="co">//   return "ALL - BRONX DISTRICTS";</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="co">//  }</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="st">""</span><span class="op">;</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -213,106 +317,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden bslib-grid-item html-fill-item">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="133" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 132;"><span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a><span class="co">// guard function</span></span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="co">// makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit</span></span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">guard</span>(fn<span class="op">,</span> options <span class="op">=</span> {}<span class="op">,</span> countyView) {</span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> {</span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>    submitLabel <span class="op">=</span> <span class="st">"Submit"</span><span class="op">,</span></span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>    resetLabel <span class="op">=</span> <span class="st">"Reset"</span><span class="op">,</span></span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>    required <span class="op">=</span> <span class="kw">false</span><span class="op">,</span></span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>    resubmit <span class="op">=</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> <span class="st">"100%"</span><span class="op">,</span></span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>    justify <span class="op">=</span> <span class="st">"start"</span></span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>  } <span class="op">=</span> options<span class="op">;</span></span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onSubmit <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> input<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> { <span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span> }))<span class="op">;</span></span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onReset <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>    input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="130" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 129;"><span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="co">// guard function</span></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="co">// makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit</span></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">guard</span>(fn<span class="op">,</span> options <span class="op">=</span> {}<span class="op">,</span> countyView) {</span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> {</span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>    submitLabel <span class="op">=</span> <span class="st">"Submit"</span><span class="op">,</span></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>    resetLabel <span class="op">=</span> <span class="st">"Reset"</span><span class="op">,</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>    required <span class="op">=</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>    resubmit <span class="op">=</span> <span class="kw">true</span></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>  } <span class="op">=</span> options<span class="op">;</span></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onSubmit <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> input<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> { <span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span> }))<span class="op">;</span></span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onReset <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>    input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onInnerInputCapture <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>    invalid <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
 <span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
 <span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onInnerInputCapture <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>    invalid <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onInnerInput <span class="op">=</span> e <span class="kw">=&gt;</span> {</span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">stopPropagation</span>()<span class="op">;</span></span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onInnerInput <span class="op">=</span> e <span class="kw">=&gt;</span> {</span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">stopPropagation</span>()<span class="op">;</span></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> submit <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;button </span><span class="sc">${</span>{<span class="dt">disabled</span><span class="op">:</span> <span class="op">!</span>resubmit <span class="op">&amp;&amp;</span> <span class="op">!</span>required<span class="op">,</span> <span class="dt">onclick</span><span class="op">:</span> onSubmit}<span class="sc">}</span><span class="vs">&gt;</span></span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>submitLabel<span class="sc">}</span></span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
 <span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> submit <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;button </span><span class="sc">${</span>{<span class="dt">disabled</span><span class="op">:</span> <span class="op">!</span>resubmit <span class="op">&amp;&amp;</span> <span class="op">!</span>required<span class="op">,</span> <span class="dt">onclick</span><span class="op">:</span> onSubmit}<span class="sc">}</span><span class="vs">&gt;</span></span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>submitLabel<span class="sc">}</span></span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> reset <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;button </span><span class="sc">${</span>{<span class="dt">disabled</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">onclick</span><span class="op">:</span> onReset}<span class="sc">}</span><span class="vs">&gt;</span></span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>resetLabel<span class="sc">}</span></span>
 <span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
 <span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> reset <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;button </span><span class="sc">${</span>{<span class="dt">disabled</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">onclick</span><span class="op">:</span> onReset}<span class="sc">}</span><span class="vs">&gt;</span></span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>resetLabel<span class="sc">}</span></span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> footer <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div&gt;</span></span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;hr style="padding:0;margin:10px 0"&gt;</span></span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div style="display:flex;gap:1ch;justify-content:</span><span class="sc">${</span>justify<span class="sc">}</span><span class="vs">"&gt;</span></span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>submit<span class="sc">}</span></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>  <span class="co">// styling for these classes is in custom.scss</span></span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> footer <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="guard-footer"&gt;</span></span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;hr class="guard-footer-rule"&gt;</span></span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="guard-footer-buttons"&gt;</span></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>submit<span class="sc">}</span></span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> template <span class="op">=</span> inputs <span class="kw">=&gt;</span> {</span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> row <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a>  row<span class="op">.</span><span class="at">className</span> <span class="op">=</span> <span class="st">"input-toolbar"</span><span class="op">;</span></span>
 <span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> template <span class="op">=</span> inputs <span class="kw">=&gt;</span> {</span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> row <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>  row<span class="op">.</span><span class="at">className</span> <span class="op">=</span> <span class="st">"input-toolbar"</span><span class="op">;</span></span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>  row<span class="op">.</span><span class="fu">append</span>(countyView)<span class="op">;</span></span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>  (<span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(inputs) <span class="op">?</span> inputs <span class="op">:</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(inputs))</span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">forEach</span>(input <span class="kw">=&gt;</span> row<span class="op">.</span><span class="fu">append</span>(input))<span class="op">;</span></span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">cssText</span> <span class="op">=</span></span>
-<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>    <span class="st">"width:100%;max-width:100%;min-width:0;box-sizing:border-box"</span><span class="op">;</span></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>  row<span class="op">.</span><span class="fu">append</span>(countyView)<span class="op">;</span></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>  (<span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(inputs) <span class="op">?</span> inputs <span class="op">:</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(inputs))</span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">forEach</span>(input <span class="kw">=&gt;</span> row<span class="op">.</span><span class="fu">append</span>(input))<span class="op">;</span></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="at">className</span> <span class="op">=</span> <span class="st">"guard-container"</span><span class="op">;</span></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">append</span>(row<span class="op">,</span> footer)<span class="op">;</span></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
 <span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">append</span>(row<span class="op">,</span> footer)<span class="op">;</span></span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
-<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> input <span class="op">=</span> <span class="fu">fn</span>({</span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">,</span></span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">,</span></span>
-<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>    footer<span class="op">,</span></span>
-<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>    template<span class="op">,</span></span>
-<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>    onSubmit<span class="op">,</span></span>
-<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>    onReset</span>
-<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> invalid <span class="op">=</span> <span class="op">!!</span>input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">":invalid"</span>)<span class="op">;</span></span>
-<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>  submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> input <span class="op">=</span> <span class="fu">fn</span>({</span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>    submit<span class="op">,</span></span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>    reset<span class="op">,</span></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>    footer<span class="op">,</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>    template<span class="op">,</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>    onSubmit<span class="op">,</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>    onReset</span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> invalid <span class="op">=</span> <span class="op">!!</span>input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">":invalid"</span>)<span class="op">;</span></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>  submit<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="op">!</span>resubmit <span class="op">||</span> invalid<span class="op">;</span></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"input"</span><span class="op">,</span> onInnerInputCapture<span class="op">,</span> {<span class="dt">capture</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">;</span></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"input"</span><span class="op">,</span> onInnerInput)<span class="op">;</span></span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> value <span class="op">=</span> required <span class="op">?</span> <span class="kw">undefined</span> <span class="op">:</span> input<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
 <span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"input"</span><span class="op">,</span> onInnerInputCapture<span class="op">,</span> {<span class="dt">capture</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">;</span></span>
-<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"input"</span><span class="op">,</span> onInnerInput)<span class="op">;</span></span>
-<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> value <span class="op">=</span> required <span class="op">?</span> <span class="kw">undefined</span> <span class="op">:</span> input<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
-<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;div style="width:</span><span class="sc">${</span>width<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>input<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>  wrapper<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"submit"</span><span class="op">,</span> onSubmit)<span class="op">;</span></span>
-<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">defineProperty</span>(wrapper<span class="op">,</span> <span class="st">"value"</span><span class="op">,</span> {</span>
-<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>    <span class="kw">get</span><span class="op">:</span> () <span class="kw">=&gt;</span> value<span class="op">,</span></span>
-<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span><span class="op">:</span> v <span class="kw">=&gt;</span> { input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> v }</span>
-<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;div class="guard-wrapper"&gt;</span><span class="sc">${</span>input<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>  wrapper<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"submit"</span><span class="op">,</span> onSubmit)<span class="op">;</span></span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">defineProperty</span>(wrapper<span class="op">,</span> <span class="st">"value"</span><span class="op">,</span> {</span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>    <span class="kw">get</span><span class="op">:</span> () <span class="kw">=&gt;</span> value<span class="op">,</span></span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>    <span class="kw">set</span><span class="op">:</span> v <span class="kw">=&gt;</span> { input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> v }</span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -321,75 +423,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="html-fill-item html-fill-container dashboard-toolbar-container toolbar-toplevel"><div class="toolbar html-fill-container" data-layout="flow">
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="237" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 236;"><span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a><span class="co">// County stays a standalone, live (non-gated) input so districtsInCounty</span></span>
-<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a><span class="co">// can react to it immediately as the user types/selects.</span></span>
-<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a>viewof county <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">"BRONX"</span><span class="op">,</span></span>
-<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"County: "</span><span class="op">,</span></span>
-<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a><span class="co">//  placeholder: "Enter County…",</span></span>
-<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a>  <span class="dt">datalist</span><span class="op">:</span> uniqueCounties<span class="op">,</span></span>
-<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a>  <span class="dt">unique</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a>  <span class="dt">validate</span><span class="op">:</span> v <span class="kw">=&gt;</span> shared_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span>)<span class="op">.</span><span class="fu">includes</span>(v<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">toUpperCase</span>())<span class="op">,</span></span>
-<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a>  <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a><span class="co">//  width: 75</span></span>
-<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="232" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 231;"><span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a><span class="co">// County stays a standalone, live (non-gated) input so districtsInCounty</span></span>
+<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a><span class="co">// can react to it immediately as the user types/selects.</span></span>
+<span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a>viewof county <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">"BRONX"</span><span class="op">,</span></span>
+<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"County: "</span><span class="op">,</span></span>
+<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a><span class="co">//  placeholder: "Enter County…",</span></span>
+<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a>  <span class="dt">datalist</span><span class="op">:</span> uniqueCounties<span class="op">,</span></span>
+<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a>  <span class="dt">unique</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a>  <span class="dt">validate</span><span class="op">:</span> v <span class="kw">=&gt;</span> shared_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">COUNTY_DESC</span>)<span class="op">.</span><span class="fu">includes</span>(v<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">toUpperCase</span>())<span class="op">,</span></span>
+<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a>  <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a><span class="co">//  width: 75</span></span>
+<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="254" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 253;"><span id="cb5-254"><a href="#cb5-254" aria-hidden="true" tabindex="-1"></a><span class="co">// Woven Inputs Form for District Selection</span></span>
-<span id="cb5-255"><a href="#cb5-255" aria-hidden="true" tabindex="-1"></a>viewof inputSels <span class="op">=</span> <span class="fu">guard</span>(</span>
-<span id="cb5-256"><a href="#cb5-256" aria-hidden="true" tabindex="-1"></a>  ({ template }) <span class="kw">=&gt;</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
-<span id="cb5-257"><a href="#cb5-257" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb5-258"><a href="#cb5-258" aria-hidden="true" tabindex="-1"></a>      <span class="dt">district</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(districtsInCounty<span class="op">,</span> { </span>
-<span id="cb5-259"><a href="#cb5-259" aria-hidden="true" tabindex="-1"></a>        <span class="dt">value</span><span class="op">:</span> districtDefault<span class="op">,</span></span>
-<span id="cb5-260"><a href="#cb5-260" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"District: "</span><span class="op">,</span></span>
-<span id="cb5-261"><a href="#cb5-261" aria-hidden="true" tabindex="-1"></a>        <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb5-262"><a href="#cb5-262" aria-hidden="true" tabindex="-1"></a>        <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb5-263"><a href="#cb5-263" aria-hidden="true" tabindex="-1"></a>      })<span class="op">,</span></span>
-<span id="cb5-264"><a href="#cb5-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-265"><a href="#cb5-265" aria-hidden="true" tabindex="-1"></a>      <span class="dt">grade</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
-<span id="cb5-266"><a href="#cb5-266" aria-hidden="true" tabindex="-1"></a>        <span class="kw">new</span> <span class="bu">Map</span>([</span>
-<span id="cb5-267"><a href="#cb5-267" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 5"</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span></span>
-<span id="cb5-268"><a href="#cb5-268" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 6"</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span></span>
-<span id="cb5-269"><a href="#cb5-269" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 7"</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span></span>
-<span id="cb5-270"><a href="#cb5-270" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 8"</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span></span>
-<span id="cb5-271"><a href="#cb5-271" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"All Grades (3-8)"</span><span class="op">,</span> <span class="st">"ELA3_8"</span>]</span>
-<span id="cb5-272"><a href="#cb5-272" aria-hidden="true" tabindex="-1"></a>        ])<span class="op">,</span></span>
-<span id="cb5-273"><a href="#cb5-273" aria-hidden="true" tabindex="-1"></a>        {</span>
-<span id="cb5-274"><a href="#cb5-274" aria-hidden="true" tabindex="-1"></a>          <span class="dt">value</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span></span>
-<span id="cb5-275"><a href="#cb5-275" aria-hidden="true" tabindex="-1"></a>          <span class="dt">label</span><span class="op">:</span> <span class="st">"Grade, in May2025: "</span><span class="op">,</span></span>
-<span id="cb5-276"><a href="#cb5-276" aria-hidden="true" tabindex="-1"></a>          <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb5-277"><a href="#cb5-277" aria-hidden="true" tabindex="-1"></a>          <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb5-278"><a href="#cb5-278" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb5-279"><a href="#cb5-279" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb5-280"><a href="#cb5-280" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a>    { template }</span>
-<span id="cb5-282"><a href="#cb5-282" aria-hidden="true" tabindex="-1"></a>  )<span class="op">,</span></span>
-<span id="cb5-283"><a href="#cb5-283" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb5-284"><a href="#cb5-284" aria-hidden="true" tabindex="-1"></a>    <span class="dt">resetLabel</span><span class="op">:</span> <span class="st">"Reset"</span><span class="op">,</span></span>
-<span id="cb5-285"><a href="#cb5-285" aria-hidden="true" tabindex="-1"></a>    <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb5-286"><a href="#cb5-286" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="st">"100%"</span></span>
-<span id="cb5-287"><a href="#cb5-287" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb5-288"><a href="#cb5-288" aria-hidden="true" tabindex="-1"></a>  viewof county</span>
-<span id="cb5-289"><a href="#cb5-289" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="249" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 248;"><span id="cb5-249"><a href="#cb5-249" aria-hidden="true" tabindex="-1"></a><span class="co">// Woven Inputs Form for District Selection</span></span>
+<span id="cb5-250"><a href="#cb5-250" aria-hidden="true" tabindex="-1"></a>viewof inputSels <span class="op">=</span> <span class="fu">guard</span>(</span>
+<span id="cb5-251"><a href="#cb5-251" aria-hidden="true" tabindex="-1"></a>  ({ template }) <span class="kw">=&gt;</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
+<span id="cb5-252"><a href="#cb5-252" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb5-253"><a href="#cb5-253" aria-hidden="true" tabindex="-1"></a>      <span class="dt">district</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(districtsInCounty<span class="op">,</span> { </span>
+<span id="cb5-254"><a href="#cb5-254" aria-hidden="true" tabindex="-1"></a>        <span class="dt">value</span><span class="op">:</span> districtDefault<span class="op">,</span></span>
+<span id="cb5-255"><a href="#cb5-255" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"District: "</span><span class="op">,</span></span>
+<span id="cb5-256"><a href="#cb5-256" aria-hidden="true" tabindex="-1"></a>        <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb5-257"><a href="#cb5-257" aria-hidden="true" tabindex="-1"></a>        <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb5-258"><a href="#cb5-258" aria-hidden="true" tabindex="-1"></a>      })<span class="op">,</span></span>
+<span id="cb5-259"><a href="#cb5-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-260"><a href="#cb5-260" aria-hidden="true" tabindex="-1"></a>      <span class="dt">grade</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb5-261"><a href="#cb5-261" aria-hidden="true" tabindex="-1"></a>        <span class="kw">new</span> <span class="bu">Map</span>([</span>
+<span id="cb5-262"><a href="#cb5-262" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 5"</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span></span>
+<span id="cb5-263"><a href="#cb5-263" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 6"</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span></span>
+<span id="cb5-264"><a href="#cb5-264" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 7"</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span></span>
+<span id="cb5-265"><a href="#cb5-265" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"Grade 8"</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span></span>
+<span id="cb5-266"><a href="#cb5-266" aria-hidden="true" tabindex="-1"></a>          [<span class="st">"All Grades (3-8)"</span><span class="op">,</span> <span class="st">"ELA3_8"</span>]</span>
+<span id="cb5-267"><a href="#cb5-267" aria-hidden="true" tabindex="-1"></a>        ])<span class="op">,</span></span>
+<span id="cb5-268"><a href="#cb5-268" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb5-269"><a href="#cb5-269" aria-hidden="true" tabindex="-1"></a>          <span class="dt">value</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span></span>
+<span id="cb5-270"><a href="#cb5-270" aria-hidden="true" tabindex="-1"></a>          <span class="dt">label</span><span class="op">:</span> <span class="st">"Grade, in May2025: "</span><span class="op">,</span></span>
+<span id="cb5-271"><a href="#cb5-271" aria-hidden="true" tabindex="-1"></a>          <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb5-272"><a href="#cb5-272" aria-hidden="true" tabindex="-1"></a>          <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb5-273"><a href="#cb5-273" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-274"><a href="#cb5-274" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb5-275"><a href="#cb5-275" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb5-276"><a href="#cb5-276" aria-hidden="true" tabindex="-1"></a>    { template }</span>
+<span id="cb5-277"><a href="#cb5-277" aria-hidden="true" tabindex="-1"></a>  )<span class="op">,</span></span>
+<span id="cb5-278"><a href="#cb5-278" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb5-279"><a href="#cb5-279" aria-hidden="true" tabindex="-1"></a>    <span class="dt">resetLabel</span><span class="op">:</span> <span class="st">"Reset"</span><span class="op">,</span></span>
+<span id="cb5-280"><a href="#cb5-280" aria-hidden="true" tabindex="-1"></a>    <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-282"><a href="#cb5-282" aria-hidden="true" tabindex="-1"></a>  viewof county</span>
+<span id="cb5-283"><a href="#cb5-283" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="294" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 293;"><span id="cb6-294"><a href="#cb6-294" aria-hidden="true" tabindex="-1"></a><span class="co">// Auto-submit triggers once on page load to draw initial plots instantly</span></span>
-<span id="cb6-295"><a href="#cb6-295" aria-hidden="true" tabindex="-1"></a>_autoSubmit <span class="op">=</span> {</span>
-<span id="cb6-296"><a href="#cb6-296" aria-hidden="true" tabindex="-1"></a>  <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb6-297"><a href="#cb6-297" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> submitBtn <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">"button"</span>))</span>
-<span id="cb6-298"><a href="#cb6-298" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">find</span>(b <span class="kw">=&gt;</span> b<span class="op">.</span><span class="at">textContent</span><span class="op">.</span><span class="fu">trim</span>() <span class="op">===</span> <span class="st">"Submit"</span>)<span class="op">;</span></span>
-<span id="cb6-299"><a href="#cb6-299" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (submitBtn) submitBtn<span class="op">.</span><span class="fu">click</span>()<span class="op">;</span></span>
-<span id="cb6-300"><a href="#cb6-300" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></span>
-<span id="cb6-301"><a href="#cb6-301" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="288" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 287;"><span id="cb6-288"><a href="#cb6-288" aria-hidden="true" tabindex="-1"></a><span class="co">// Auto-submit triggers once on page load to draw initial plots instantly</span></span>
+<span id="cb6-289"><a href="#cb6-289" aria-hidden="true" tabindex="-1"></a>_autoSubmit <span class="op">=</span> {</span>
+<span id="cb6-290"><a href="#cb6-290" aria-hidden="true" tabindex="-1"></a>  <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb6-291"><a href="#cb6-291" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> submitBtn <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">"button"</span>))</span>
+<span id="cb6-292"><a href="#cb6-292" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">find</span>(b <span class="kw">=&gt;</span> b<span class="op">.</span><span class="at">textContent</span><span class="op">.</span><span class="fu">trim</span>() <span class="op">===</span> <span class="st">"Submit"</span>)<span class="op">;</span></span>
+<span id="cb6-293"><a href="#cb6-293" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (submitBtn) submitBtn<span class="op">.</span><span class="fu">click</span>()<span class="op">;</span></span>
+<span id="cb6-294"><a href="#cb6-294" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></span>
+<span id="cb6-295"><a href="#cb6-295" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -397,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="306" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 305;"><span id="cb7-306"><a href="#cb7-306" aria-hidden="true" tabindex="-1"></a>baseYear <span class="op">=</span> <span class="dv">2025</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="300" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 299;"><span id="cb7-300"><a href="#cb7-300" aria-hidden="true" tabindex="-1"></a>baseYear <span class="op">=</span> <span class="dv">2025</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -405,37 +506,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="311" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 310;"><span id="cb8-311"><a href="#cb8-311" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">stackedBarChart</span>(longData<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> chartTitle) {</span>
-<span id="cb8-312"><a href="#cb8-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-313"><a href="#cb8-313" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb8-314"><a href="#cb8-314" aria-hidden="true" tabindex="-1"></a>    <span class="dt">className</span><span class="op">:</span> <span class="st">"ELAgrowth-plot"</span><span class="op">,</span></span>
-<span id="cb8-315"><a href="#cb8-315" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb8-316"><a href="#cb8-316" aria-hidden="true" tabindex="-1"></a>    width<span class="op">,</span></span>
-<span id="cb8-317"><a href="#cb8-317" aria-hidden="true" tabindex="-1"></a>    height<span class="op">,</span></span>
-<span id="cb8-318"><a href="#cb8-318" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
-<span id="cb8-319"><a href="#cb8-319" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
-<span id="cb8-320"><a href="#cb8-320" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> chartTitle<span class="op">,</span></span>
-<span id="cb8-321"><a href="#cb8-321" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-322"><a href="#cb8-322" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(longData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">label</span>))]}<span class="op">,</span></span>
-<span id="cb8-323"><a href="#cb8-323" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"# Students"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">labelArrow</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
-<span id="cb8-324"><a href="#cb8-324" aria-hidden="true" tabindex="-1"></a>  <span class="dt">labelAnchor</span><span class="op">:</span> <span class="st">"center"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">100</span>}<span class="op">,</span></span>
-<span id="cb8-325"><a href="#cb8-325" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
-<span id="cb8-326"><a href="#cb8-326" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Proficient"</span><span class="op">,</span> <span class="st">"Not Proficient"</span><span class="op">,</span> <span class="st">"Not Tested"</span>]<span class="op">,</span></span>
-<span id="cb8-327"><a href="#cb8-327" aria-hidden="true" tabindex="-1"></a>      <span class="dt">range</span><span class="op">:</span> [<span class="st">"#2F7F73"</span><span class="op">,</span> <span class="st">"#D95C5C"</span><span class="op">,</span> <span class="st">"#B7BDC4"</span>]<span class="op">,</span></span>
-<span id="cb8-328"><a href="#cb8-328" aria-hidden="true" tabindex="-1"></a>      <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
-<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">barY</span>(longData<span class="op">,</span> Plot<span class="op">.</span><span class="fu">stackY</span>({</span>
-<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
-<span id="cb8-334"><a href="#cb8-334" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span><span class="op">,</span></span>
-<span id="cb8-335"><a href="#cb8-335" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> <span class="st">"category"</span><span class="op">,</span></span>
-<span id="cb8-336"><a href="#cb8-336" aria-hidden="true" tabindex="-1"></a>        <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb8-337"><a href="#cb8-337" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">category</span><span class="sc">}</span><span class="vs">: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">count</span><span class="sc">}\n${</span>d<span class="op">.</span><span class="at">pct</span> <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> <span class="vs">`(</span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%)</span><span class="sc">\n</span><span class="vs">(</span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct2</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% of Tested only)`</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb8-338"><a href="#cb8-338" aria-hidden="true" tabindex="-1"></a>      }))</span>
-<span id="cb8-339"><a href="#cb8-339" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb8-340"><a href="#cb8-340" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb8-341"><a href="#cb8-341" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="305" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 304;"><span id="cb8-305"><a href="#cb8-305" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">stackedBarChart</span>(longData<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> chartTitle) {</span>
+<span id="cb8-306"><a href="#cb8-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-307"><a href="#cb8-307" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb8-308"><a href="#cb8-308" aria-hidden="true" tabindex="-1"></a>    <span class="dt">className</span><span class="op">:</span> <span class="st">"ELAgrowth-plot"</span><span class="op">,</span></span>
+<span id="cb8-309"><a href="#cb8-309" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-310"><a href="#cb8-310" aria-hidden="true" tabindex="-1"></a>    width<span class="op">,</span></span>
+<span id="cb8-311"><a href="#cb8-311" aria-hidden="true" tabindex="-1"></a>    height<span class="op">,</span></span>
+<span id="cb8-312"><a href="#cb8-312" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
+<span id="cb8-313"><a href="#cb8-313" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
+<span id="cb8-314"><a href="#cb8-314" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> chartTitle<span class="op">,</span></span>
+<span id="cb8-315"><a href="#cb8-315" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-316"><a href="#cb8-316" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(longData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">label</span>))]}<span class="op">,</span></span>
+<span id="cb8-317"><a href="#cb8-317" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"# Students"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">labelArrow</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb8-318"><a href="#cb8-318" aria-hidden="true" tabindex="-1"></a>  <span class="dt">labelAnchor</span><span class="op">:</span> <span class="st">"center"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">100</span>}<span class="op">,</span></span>
+<span id="cb8-319"><a href="#cb8-319" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb8-320"><a href="#cb8-320" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Proficient"</span><span class="op">,</span> <span class="st">"Not Proficient"</span><span class="op">,</span> <span class="st">"Not Tested"</span>]<span class="op">,</span></span>
+<span id="cb8-321"><a href="#cb8-321" aria-hidden="true" tabindex="-1"></a>      <span class="dt">range</span><span class="op">:</span> [<span class="st">"#2F7F73"</span><span class="op">,</span> <span class="st">"#D95C5C"</span><span class="op">,</span> <span class="st">"#B7BDC4"</span>]<span class="op">,</span></span>
+<span id="cb8-322"><a href="#cb8-322" aria-hidden="true" tabindex="-1"></a>      <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb8-323"><a href="#cb8-323" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb8-324"><a href="#cb8-324" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb8-325"><a href="#cb8-325" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
+<span id="cb8-326"><a href="#cb8-326" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">barY</span>(longData<span class="op">,</span> Plot<span class="op">.</span><span class="fu">stackY</span>({</span>
+<span id="cb8-327"><a href="#cb8-327" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb8-328"><a href="#cb8-328" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span><span class="op">,</span></span>
+<span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> <span class="st">"category"</span><span class="op">,</span></span>
+<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a>        <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">category</span><span class="sc">}</span><span class="vs">: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">count</span><span class="sc">}\n${</span>d<span class="op">.</span><span class="at">pct</span> <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> <span class="vs">`(</span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%)</span><span class="sc">\n</span><span class="vs">(</span><span class="sc">${</span>d<span class="op">.</span><span class="at">pct2</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% of Tested only)`</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a>      }))</span>
+<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb8-334"><a href="#cb8-334" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb8-335"><a href="#cb8-335" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-8" data-nodetype="declaration">
 
@@ -443,26 +544,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="346" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 345;"><span id="cb9-346"><a href="#cb9-346" aria-hidden="true" tabindex="-1"></a><span class="co">// Turn the "Grade" selection into a YEAR -&gt; ASSESSMENT_NAME sequence.</span></span>
-<span id="cb9-347"><a href="#cb9-347" aria-hidden="true" tabindex="-1"></a><span class="co">// If "All Grades (3-8)" was picked, every year uses ELA3_8.</span></span>
-<span id="cb9-348"><a href="#cb9-348" aria-hidden="true" tabindex="-1"></a><span class="co">// If a single grade was picked, the newest year (2025) uses that grade,</span></span>
-<span id="cb9-349"><a href="#cb9-349" aria-hidden="true" tabindex="-1"></a><span class="co">//   and each earlier year steps back one grade (2024 = grade-1, 2023 = grade-2,</span></span>
-<span id="cb9-350"><a href="#cb9-350" aria-hidden="true" tabindex="-1"></a><span class="co">//   2022 = grade-4) so we're following the SAME cohort of students back in time.</span></span>
-<span id="cb9-351"><a href="#cb9-351" aria-hidden="true" tabindex="-1"></a><span class="co">// Grade 3 is the youngest tested grade, so any offset that would push the</span></span>
-<span id="cb9-352"><a href="#cb9-352" aria-hidden="true" tabindex="-1"></a><span class="co">//   cohort below Grade 3 (e.g. Grade 2, Grade 1) is dropped entirely -</span></span>
-<span id="cb9-353"><a href="#cb9-353" aria-hidden="true" tabindex="-1"></a><span class="co">//   that data will never exist.</span></span>
-<span id="cb9-354"><a href="#cb9-354" aria-hidden="true" tabindex="-1"></a>gradeSequence <span class="op">=</span> {</span>
-<span id="cb9-355"><a href="#cb9-355" aria-hidden="true" tabindex="-1"></a>  <span class="co">// inputSels is undefined until the form is first Submitted - bail out with</span></span>
-<span id="cb9-356"><a href="#cb9-356" aria-hidden="true" tabindex="-1"></a>  <span class="co">// an empty sequence rather than throwing</span></span>
-<span id="cb9-357"><a href="#cb9-357" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>inputSels) <span class="cf">return</span> []<span class="op">;</span></span>
-<span id="cb9-358"><a href="#cb9-358" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> inputSels<span class="op">.</span><span class="at">grade</span><span class="op">;</span></span>
-<span id="cb9-359"><a href="#cb9-359" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]</span>
-<span id="cb9-360"><a href="#cb9-360" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">filter</span>(offset <span class="kw">=&gt;</span> g <span class="op">===</span> <span class="st">"ELA3_8"</span> <span class="op">||</span> (g <span class="op">-</span> offset) <span class="op">&gt;=</span> <span class="dv">3</span>)</span>
-<span id="cb9-361"><a href="#cb9-361" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(offset <span class="kw">=&gt;</span> ({</span>
-<span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a>      <span class="dt">year</span><span class="op">:</span> baseYear <span class="op">-</span> offset<span class="op">,</span></span>
-<span id="cb9-363"><a href="#cb9-363" aria-hidden="true" tabindex="-1"></a>      <span class="dt">assessment</span><span class="op">:</span> g <span class="op">===</span> <span class="st">"ELA3_8"</span> <span class="op">?</span> <span class="st">"ELA3_8"</span> <span class="op">:</span> <span class="vs">`ELA</span><span class="sc">${</span>g <span class="op">-</span> offset<span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb9-364"><a href="#cb9-364" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
-<span id="cb9-365"><a href="#cb9-365" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="340" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 339;"><span id="cb9-340"><a href="#cb9-340" aria-hidden="true" tabindex="-1"></a><span class="co">// Turn the "Grade" selection into a YEAR -&gt; ASSESSMENT_NAME sequence.</span></span>
+<span id="cb9-341"><a href="#cb9-341" aria-hidden="true" tabindex="-1"></a><span class="co">// If "All Grades (3-8)" was picked, every year uses ELA3_8.</span></span>
+<span id="cb9-342"><a href="#cb9-342" aria-hidden="true" tabindex="-1"></a><span class="co">// If a single grade was picked, the newest year (2025) uses that grade,</span></span>
+<span id="cb9-343"><a href="#cb9-343" aria-hidden="true" tabindex="-1"></a><span class="co">//   and each earlier year steps back one grade (2024 = grade-1, 2023 = grade-2,</span></span>
+<span id="cb9-344"><a href="#cb9-344" aria-hidden="true" tabindex="-1"></a><span class="co">//   2022 = grade-4) so we're following the SAME cohort of students back in time.</span></span>
+<span id="cb9-345"><a href="#cb9-345" aria-hidden="true" tabindex="-1"></a><span class="co">// Grade 3 is the youngest tested grade, so any offset that would push the</span></span>
+<span id="cb9-346"><a href="#cb9-346" aria-hidden="true" tabindex="-1"></a><span class="co">//   cohort below Grade 3 (e.g. Grade 2, Grade 1) is dropped entirely -</span></span>
+<span id="cb9-347"><a href="#cb9-347" aria-hidden="true" tabindex="-1"></a><span class="co">//   that data will never exist.</span></span>
+<span id="cb9-348"><a href="#cb9-348" aria-hidden="true" tabindex="-1"></a>gradeSequence <span class="op">=</span> {</span>
+<span id="cb9-349"><a href="#cb9-349" aria-hidden="true" tabindex="-1"></a>  <span class="co">// inputSels is undefined until the form is first Submitted - bail out with</span></span>
+<span id="cb9-350"><a href="#cb9-350" aria-hidden="true" tabindex="-1"></a>  <span class="co">// an empty sequence rather than throwing</span></span>
+<span id="cb9-351"><a href="#cb9-351" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>inputSels) <span class="cf">return</span> []<span class="op">;</span></span>
+<span id="cb9-352"><a href="#cb9-352" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> inputSels<span class="op">.</span><span class="at">grade</span><span class="op">;</span></span>
+<span id="cb9-353"><a href="#cb9-353" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]</span>
+<span id="cb9-354"><a href="#cb9-354" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">filter</span>(offset <span class="kw">=&gt;</span> g <span class="op">===</span> <span class="st">"ELA3_8"</span> <span class="op">||</span> (g <span class="op">-</span> offset) <span class="op">&gt;=</span> <span class="dv">3</span>)</span>
+<span id="cb9-355"><a href="#cb9-355" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(offset <span class="kw">=&gt;</span> ({</span>
+<span id="cb9-356"><a href="#cb9-356" aria-hidden="true" tabindex="-1"></a>      <span class="dt">year</span><span class="op">:</span> baseYear <span class="op">-</span> offset<span class="op">,</span></span>
+<span id="cb9-357"><a href="#cb9-357" aria-hidden="true" tabindex="-1"></a>      <span class="dt">assessment</span><span class="op">:</span> g <span class="op">===</span> <span class="st">"ELA3_8"</span> <span class="op">?</span> <span class="st">"ELA3_8"</span> <span class="op">:</span> <span class="vs">`ELA</span><span class="sc">${</span>g <span class="op">-</span> offset<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb9-358"><a href="#cb9-358" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb9-359"><a href="#cb9-359" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
@@ -470,18 +571,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="370" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 369;"><span id="cb10-370"><a href="#cb10-370" aria-hidden="true" tabindex="-1"></a>shared_dataFiltered <span class="op">=</span> {</span>
-<span id="cb10-371"><a href="#cb10-371" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>inputSels) <span class="cf">return</span> []<span class="op">;</span></span>
-<span id="cb10-372"><a href="#cb10-372" aria-hidden="true" tabindex="-1"></a><span class="co">//  const county = inputSels.county.trim().toUpperCase();</span></span>
-<span id="cb10-373"><a href="#cb10-373" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> district <span class="op">=</span> inputSels<span class="op">.</span><span class="at">district</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
-<span id="cb10-374"><a href="#cb10-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-375"><a href="#cb10-375" aria-hidden="true" tabindex="-1"></a><span class="co">// filter all data and return District(ENTITY_NAME) Selected and Assessment(ie, ELA3 or 4 based on the grade selected)</span></span>
-<span id="cb10-376"><a href="#cb10-376" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> shared_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span></span>
-<span id="cb10-377"><a href="#cb10-377" aria-hidden="true" tabindex="-1"></a><span class="co">//    d.COUNTY_DESC.toUpperCase() === county &amp;&amp;</span></span>
-<span id="cb10-378"><a href="#cb10-378" aria-hidden="true" tabindex="-1"></a>    d<span class="op">.</span><span class="at">ENTITY_NAME</span><span class="op">.</span><span class="fu">toUpperCase</span>() <span class="op">===</span> district <span class="op">&amp;&amp;</span></span>
-<span id="cb10-379"><a href="#cb10-379" aria-hidden="true" tabindex="-1"></a>    gradeSequence<span class="op">.</span><span class="fu">some</span>(g <span class="kw">=&gt;</span> <span class="bu">Number</span>(g<span class="op">.</span><span class="at">year</span>) <span class="op">===</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">YEAR</span>) <span class="op">&amp;&amp;</span> g<span class="op">.</span><span class="at">assessment</span> <span class="op">===</span> d<span class="op">.</span><span class="at">ASSESSMENT_NAME</span>)</span>
-<span id="cb10-380"><a href="#cb10-380" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
-<span id="cb10-381"><a href="#cb10-381" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="364" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 363;"><span id="cb10-364"><a href="#cb10-364" aria-hidden="true" tabindex="-1"></a>shared_dataFiltered <span class="op">=</span> {</span>
+<span id="cb10-365"><a href="#cb10-365" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>inputSels) <span class="cf">return</span> []<span class="op">;</span></span>
+<span id="cb10-366"><a href="#cb10-366" aria-hidden="true" tabindex="-1"></a><span class="co">//  const county = inputSels.county.trim().toUpperCase();</span></span>
+<span id="cb10-367"><a href="#cb10-367" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> district <span class="op">=</span> inputSels<span class="op">.</span><span class="at">district</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
+<span id="cb10-368"><a href="#cb10-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-369"><a href="#cb10-369" aria-hidden="true" tabindex="-1"></a><span class="co">// filter all data and return District(ENTITY_NAME) Selected and Assessment(ie, ELA3 or 4 based on the grade selected)</span></span>
+<span id="cb10-370"><a href="#cb10-370" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> shared_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span></span>
+<span id="cb10-371"><a href="#cb10-371" aria-hidden="true" tabindex="-1"></a><span class="co">//    d.COUNTY_DESC.toUpperCase() === county &amp;&amp;</span></span>
+<span id="cb10-372"><a href="#cb10-372" aria-hidden="true" tabindex="-1"></a>    d<span class="op">.</span><span class="at">ENTITY_NAME</span><span class="op">.</span><span class="fu">toUpperCase</span>() <span class="op">===</span> district <span class="op">&amp;&amp;</span></span>
+<span id="cb10-373"><a href="#cb10-373" aria-hidden="true" tabindex="-1"></a>    gradeSequence<span class="op">.</span><span class="fu">some</span>(g <span class="kw">=&gt;</span> <span class="bu">Number</span>(g<span class="op">.</span><span class="at">year</span>) <span class="op">===</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">YEAR</span>) <span class="op">&amp;&amp;</span> g<span class="op">.</span><span class="at">assessment</span> <span class="op">===</span> d<span class="op">.</span><span class="at">ASSESSMENT_NAME</span>)</span>
+<span id="cb10-374"><a href="#cb10-374" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb10-375"><a href="#cb10-375" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
@@ -489,10 +590,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="386" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 385;"><span id="cb11-386"><a href="#cb11-386" aria-hidden="true" tabindex="-1"></a><span class="co">// label for the assessment, used on the x-axis</span></span>
-<span id="cb11-387"><a href="#cb11-387" aria-hidden="true" tabindex="-1"></a>gradeLabel <span class="op">=</span> assessment <span class="kw">=&gt;</span> assessment <span class="op">===</span> <span class="st">"ELA3_8"</span></span>
-<span id="cb11-388"><a href="#cb11-388" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="st">"All Grades 3-8"</span></span>
-<span id="cb11-389"><a href="#cb11-389" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="vs">`Grade </span><span class="sc">${</span>assessment<span class="op">.</span><span class="fu">replace</span>(<span class="st">"ELA"</span><span class="op">,</span> <span class="st">""</span>)<span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="380" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 379;"><span id="cb11-380"><a href="#cb11-380" aria-hidden="true" tabindex="-1"></a><span class="co">// label for the assessment, used on the x-axis</span></span>
+<span id="cb11-381"><a href="#cb11-381" aria-hidden="true" tabindex="-1"></a>gradeLabel <span class="op">=</span> assessment <span class="kw">=&gt;</span> assessment <span class="op">===</span> <span class="st">"ELA3_8"</span></span>
+<span id="cb11-382"><a href="#cb11-382" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="st">"All Grades 3-8"</span></span>
+<span id="cb11-383"><a href="#cb11-383" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="vs">`Grade </span><span class="sc">${</span>assessment<span class="op">.</span><span class="fu">replace</span>(<span class="st">"ELA"</span><span class="op">,</span> <span class="st">""</span>)<span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
@@ -500,56 +601,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell hidden">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="394" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 393;"><span id="cb12-394"><a href="#cb12-394" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">subgroupRows</span>(subgroupName) {</span>
-<span id="cb12-395"><a href="#cb12-395" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows called with subgroupName:", subgroupName);</span></span>
-<span id="cb12-396"><a href="#cb12-396" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("gradeSequence:", gradeSequence);</span></span>
-<span id="cb12-397"><a href="#cb12-397" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("shared_dataFiltered length:", shared_dataFiltered.length);</span></span>
-<span id="cb12-398"><a href="#cb12-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-399"><a href="#cb12-399" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> byYear <span class="op">=</span> [<span class="op">...</span>gradeSequence]</span>
-<span id="cb12-400"><a href="#cb12-400" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">year</span> <span class="op">-</span> b<span class="op">.</span><span class="at">year</span>)</span>
-<span id="cb12-401"><a href="#cb12-401" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(({ year<span class="op">,</span> assessment }) <span class="kw">=&gt;</span> {</span>
-<span id="cb12-402"><a href="#cb12-402" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> row <span class="op">=</span> shared_dataFiltered<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span></span>
-<span id="cb12-403"><a href="#cb12-403" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Number</span>(d<span class="op">.</span><span class="at">YEAR</span>) <span class="op">===</span> <span class="bu">Number</span>(year) <span class="op">&amp;&amp;</span></span>
-<span id="cb12-404"><a href="#cb12-404" aria-hidden="true" tabindex="-1"></a>        d<span class="op">.</span><span class="at">ASSESSMENT_NAME</span> <span class="op">===</span> assessment <span class="op">&amp;&amp;</span></span>
-<span id="cb12-405"><a href="#cb12-405" aria-hidden="true" tabindex="-1"></a>        d<span class="op">.</span><span class="at">SUBGROUP_NAME</span> <span class="op">===</span> subgroupName</span>
-<span id="cb12-406"><a href="#cb12-406" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
-<span id="cb12-407"><a href="#cb12-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-408"><a href="#cb12-408" aria-hidden="true" tabindex="-1"></a><span class="co">// Console Logs to troubleshoot</span></span>
-<span id="cb12-409"><a href="#cb12-409" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> <span class="cf">if</span> (<span class="op">!</span>row) { <span class="op">--&gt;</span></span>
-<span id="cb12-410"><a href="#cb12-410" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="op">--&gt;</span></span>
-<span id="cb12-411"><a href="#cb12-411" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     <span class="vs">`No matching row for year=</span><span class="sc">${</span>year<span class="sc">}</span><span class="vs">, assessment=</span><span class="sc">${</span>assessment<span class="sc">}</span><span class="vs">, subgroup=</span><span class="sc">${</span>subgroupName<span class="sc">}</span><span class="vs">`</span> <span class="op">--&gt;</span></span>
-<span id="cb12-412"><a href="#cb12-412" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   )<span class="op">;</span> <span class="op">--&gt;</span></span>
-<span id="cb12-413"><a href="#cb12-413" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> } <span class="cf">else</span> { <span class="op">--&gt;</span></span>
-<span id="cb12-414"><a href="#cb12-414" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="op">--&gt;</span></span>
-<span id="cb12-415"><a href="#cb12-415" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     <span class="vs">`Match found for year=</span><span class="sc">${</span>year<span class="sc">}</span><span class="vs">, assessment=</span><span class="sc">${</span>assessment<span class="sc">}</span><span class="vs">, subgroup=</span><span class="sc">${</span>subgroupName<span class="sc">}</span><span class="vs">:`</span><span class="op">,</span> <span class="op">--&gt;</span></span>
-<span id="cb12-416"><a href="#cb12-416" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     row <span class="op">--&gt;</span></span>
-<span id="cb12-417"><a href="#cb12-417" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   )<span class="op">;</span> <span class="op">--&gt;</span></span>
-<span id="cb12-418"><a href="#cb12-418" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> } <span class="op">--&gt;</span></span>
-<span id="cb12-419"><a href="#cb12-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-420"><a href="#cb12-420" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
-<span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a>        <span class="dt">YEAR</span><span class="op">:</span> year<span class="op">,</span></span>
-<span id="cb12-422"><a href="#cb12-422" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>year<span class="sc">}\n${</span><span class="fu">gradeLabel</span>(assessment)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
-<span id="cb12-423"><a href="#cb12-423" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Prof_Count</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">Prof_Count</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb12-424"><a href="#cb12-424" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NotProf_Count</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NotProf_Count</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb12-425"><a href="#cb12-425" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NOT_TESTED</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NOT_TESTED</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb12-426"><a href="#cb12-426" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Prof_Pct</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">Prof_Pct</span> <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
-<span id="cb12-427"><a href="#cb12-427" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NotProf_Pct</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NotProf_Pct</span> <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
-<span id="cb12-428"><a href="#cb12-428" aria-hidden="true" tabindex="-1"></a>        <span class="dt">PER_PROF</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">PER_PROF</span> <span class="op">:</span> <span class="kw">null</span></span>
-<span id="cb12-429"><a href="#cb12-429" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
-<span id="cb12-430"><a href="#cb12-430" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb12-431"><a href="#cb12-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-432"><a href="#cb12-432" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows - byYear:", byYear);</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="388" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 387;"><span id="cb12-388"><a href="#cb12-388" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">subgroupRows</span>(subgroupName) {</span>
+<span id="cb12-389"><a href="#cb12-389" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows called with subgroupName:", subgroupName);</span></span>
+<span id="cb12-390"><a href="#cb12-390" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("gradeSequence:", gradeSequence);</span></span>
+<span id="cb12-391"><a href="#cb12-391" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("shared_dataFiltered length:", shared_dataFiltered.length);</span></span>
+<span id="cb12-392"><a href="#cb12-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-393"><a href="#cb12-393" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> byYear <span class="op">=</span> [<span class="op">...</span>gradeSequence]</span>
+<span id="cb12-394"><a href="#cb12-394" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">year</span> <span class="op">-</span> b<span class="op">.</span><span class="at">year</span>)</span>
+<span id="cb12-395"><a href="#cb12-395" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(({ year<span class="op">,</span> assessment }) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-396"><a href="#cb12-396" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> row <span class="op">=</span> shared_dataFiltered<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span></span>
+<span id="cb12-397"><a href="#cb12-397" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Number</span>(d<span class="op">.</span><span class="at">YEAR</span>) <span class="op">===</span> <span class="bu">Number</span>(year) <span class="op">&amp;&amp;</span></span>
+<span id="cb12-398"><a href="#cb12-398" aria-hidden="true" tabindex="-1"></a>        d<span class="op">.</span><span class="at">ASSESSMENT_NAME</span> <span class="op">===</span> assessment <span class="op">&amp;&amp;</span></span>
+<span id="cb12-399"><a href="#cb12-399" aria-hidden="true" tabindex="-1"></a>        d<span class="op">.</span><span class="at">SUBGROUP_NAME</span> <span class="op">===</span> subgroupName</span>
+<span id="cb12-400"><a href="#cb12-400" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
+<span id="cb12-401"><a href="#cb12-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-402"><a href="#cb12-402" aria-hidden="true" tabindex="-1"></a><span class="co">// Console Logs to troubleshoot</span></span>
+<span id="cb12-403"><a href="#cb12-403" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> <span class="cf">if</span> (<span class="op">!</span>row) { <span class="op">--&gt;</span></span>
+<span id="cb12-404"><a href="#cb12-404" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="op">--&gt;</span></span>
+<span id="cb12-405"><a href="#cb12-405" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     <span class="vs">`No matching row for year=</span><span class="sc">${</span>year<span class="sc">}</span><span class="vs">, assessment=</span><span class="sc">${</span>assessment<span class="sc">}</span><span class="vs">, subgroup=</span><span class="sc">${</span>subgroupName<span class="sc">}</span><span class="vs">`</span> <span class="op">--&gt;</span></span>
+<span id="cb12-406"><a href="#cb12-406" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   )<span class="op">;</span> <span class="op">--&gt;</span></span>
+<span id="cb12-407"><a href="#cb12-407" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> } <span class="cf">else</span> { <span class="op">--&gt;</span></span>
+<span id="cb12-408"><a href="#cb12-408" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="op">--&gt;</span></span>
+<span id="cb12-409"><a href="#cb12-409" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     <span class="vs">`Match found for year=</span><span class="sc">${</span>year<span class="sc">}</span><span class="vs">, assessment=</span><span class="sc">${</span>assessment<span class="sc">}</span><span class="vs">, subgroup=</span><span class="sc">${</span>subgroupName<span class="sc">}</span><span class="vs">:`</span><span class="op">,</span> <span class="op">--&gt;</span></span>
+<span id="cb12-410"><a href="#cb12-410" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>     row <span class="op">--&gt;</span></span>
+<span id="cb12-411"><a href="#cb12-411" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span>   )<span class="op">;</span> <span class="op">--&gt;</span></span>
+<span id="cb12-412"><a href="#cb12-412" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;!--</span> } <span class="op">--&gt;</span></span>
+<span id="cb12-413"><a href="#cb12-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-414"><a href="#cb12-414" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb12-415"><a href="#cb12-415" aria-hidden="true" tabindex="-1"></a>        <span class="dt">YEAR</span><span class="op">:</span> year<span class="op">,</span></span>
+<span id="cb12-416"><a href="#cb12-416" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>year<span class="sc">}\n${</span><span class="fu">gradeLabel</span>(assessment)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb12-417"><a href="#cb12-417" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Prof_Count</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">Prof_Count</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb12-418"><a href="#cb12-418" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NotProf_Count</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NotProf_Count</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb12-419"><a href="#cb12-419" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NOT_TESTED</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NOT_TESTED</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb12-420"><a href="#cb12-420" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Prof_Pct</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">Prof_Pct</span> <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a>        <span class="dt">NotProf_Pct</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">NotProf_Pct</span> <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb12-422"><a href="#cb12-422" aria-hidden="true" tabindex="-1"></a>        <span class="dt">PER_PROF</span><span class="op">:</span> row <span class="op">?</span> <span class="op">+</span>row<span class="op">.</span><span class="at">PER_PROF</span> <span class="op">:</span> <span class="kw">null</span></span>
+<span id="cb12-423"><a href="#cb12-423" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb12-424"><a href="#cb12-424" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb12-425"><a href="#cb12-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-426"><a href="#cb12-426" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows - byYear:", byYear);</span></span>
+<span id="cb12-427"><a href="#cb12-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-428"><a href="#cb12-428" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> byYear<span class="op">.</span><span class="fu">flatMap</span>(d <span class="kw">=&gt;</span> [</span>
+<span id="cb12-429"><a href="#cb12-429" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Proficient"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">Prof_Count</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> d<span class="op">.</span><span class="at">Prof_Pct</span><span class="op">,</span> <span class="dt">pct2</span><span class="op">:</span> d<span class="op">.</span><span class="at">PER_PROF</span> }<span class="op">,</span></span>
+<span id="cb12-430"><a href="#cb12-430" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Not Proficient"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">NotProf_Count</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span></span>
+<span id="cb12-431"><a href="#cb12-431" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Not Tested"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">NOT_TESTED</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> <span class="kw">null</span> }</span>
+<span id="cb12-432"><a href="#cb12-432" aria-hidden="true" tabindex="-1"></a>  ])<span class="op">;</span></span>
 <span id="cb12-433"><a href="#cb12-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-434"><a href="#cb12-434" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> byYear<span class="op">.</span><span class="fu">flatMap</span>(d <span class="kw">=&gt;</span> [</span>
-<span id="cb12-435"><a href="#cb12-435" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Proficient"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">Prof_Count</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> d<span class="op">.</span><span class="at">Prof_Pct</span><span class="op">,</span> <span class="dt">pct2</span><span class="op">:</span> d<span class="op">.</span><span class="at">PER_PROF</span> }<span class="op">,</span></span>
-<span id="cb12-436"><a href="#cb12-436" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Not Proficient"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">NotProf_Count</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span></span>
-<span id="cb12-437"><a href="#cb12-437" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">label</span><span class="op">:</span> d<span class="op">.</span><span class="at">label</span><span class="op">,</span> <span class="dt">YEAR</span><span class="op">:</span> d<span class="op">.</span><span class="at">YEAR</span><span class="op">,</span> <span class="dt">category</span><span class="op">:</span> <span class="st">"Not Tested"</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> d<span class="op">.</span><span class="at">NOT_TESTED</span><span class="op">,</span> <span class="dt">pct</span><span class="op">:</span> <span class="kw">null</span> }</span>
-<span id="cb12-438"><a href="#cb12-438" aria-hidden="true" tabindex="-1"></a>  ])<span class="op">;</span></span>
-<span id="cb12-439"><a href="#cb12-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-440"><a href="#cb12-440" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows flatMap - result:", result);</span></span>
-<span id="cb12-441"><a href="#cb12-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-442"><a href="#cb12-442" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
-<span id="cb12-443"><a href="#cb12-443" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-434"><a href="#cb12-434" aria-hidden="true" tabindex="-1"></a>  <span class="co">// console.log("subgroupRows flatMap - result:", result);</span></span>
+<span id="cb12-435"><a href="#cb12-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-436"><a href="#cb12-436" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb12-437"><a href="#cb12-437" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
@@ -557,16 +658,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div><div class="toolbar-content html-fill-item html-fill-container">
-<div class="bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-rows: minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
-<div class="card bslib-card html-fill-container html-fill-item" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div class="column-screen html-fill-item html-fill-container">
+<div class="bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
 <div class="flow bslib-grid" data-layout="flow" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card cell bslib-card html-fill-container html-fill-item" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb13" data-startfrom="451" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 450;"><span id="cb13-451"><a href="#cb13-451" aria-hidden="true" tabindex="-1"></a><span class="fu">md</span><span class="vs">`&lt;span class="ela-score-title"&gt;ELA Scores - </span><span class="sc">${</span>inputSels <span class="op">?</span> inputSels<span class="op">.</span><span class="at">district</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb13" data-startfrom="445" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 444;"><span id="cb13-445"><a href="#cb13-445" aria-hidden="true" tabindex="-1"></a><span class="fu">md</span><span class="vs">`&lt;span class="section-title-banner"&gt;</span><span class="sc">${</span>inputSels <span class="op">?</span> inputSels<span class="op">.</span><span class="at">district</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display html-fill-item html-fill-container">
 <div id="ojs-cell-13" data-nodetype="expression" class="html-fill-item html-fill-container">
 
@@ -574,7 +672,7 @@ grid-auto-rows: minmax(0, 1fr);">
 </div>
 </div>
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card bslib-card html-fill-container html-fill-item" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div class="panel-tabset tabset-primary html-fill-item html-fill-container">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Students with Disabilities (IEP)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Economically Disadvantaged</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">All Students</a></li></ul>
@@ -582,11 +680,11 @@ grid-auto-rows: minmax(0, 1fr);">
 <div id="tabset-1-1" class="tab-pane active html-fill-item html-fill-container" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb14" data-startfrom="458" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 457;"><span id="cb14-458"><a href="#cb14-458" aria-hidden="true" tabindex="-1"></a>fig1 <span class="op">=</span> {</span>
-<span id="cb14-459"><a href="#cb14-459" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb14-460"><a href="#cb14-460" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span> <span class="co">//works well for a 4-year x 3-category stacked bar</span></span>
-<span id="cb14-461"><a href="#cb14-461" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"General Education Students"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Gen Ed Students (no IEP)`</span>)<span class="op">;</span></span>
-<span id="cb14-462"><a href="#cb14-462" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb14" data-startfrom="451" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 450;"><span id="cb14-451"><a href="#cb14-451" aria-hidden="true" tabindex="-1"></a>fig1 <span class="op">=</span> {</span>
+<span id="cb14-452"><a href="#cb14-452" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb14-453"><a href="#cb14-453" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span> <span class="co">//works well for a 4-year x 3-category stacked bar</span></span>
+<span id="cb14-454"><a href="#cb14-454" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"General Education Students"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Gen Ed Students (no IEP)`</span>)<span class="op">;</span></span>
+<span id="cb14-455"><a href="#cb14-455" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-14" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
@@ -596,12 +694,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb15" data-startfrom="468" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 467;"><span id="cb15-468"><a href="#cb15-468" aria-hidden="true" tabindex="-1"></a>fig2 <span class="op">=</span> {</span>
-<span id="cb15-469"><a href="#cb15-469" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb15-470"><a href="#cb15-470" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
-<span id="cb15-471"><a href="#cb15-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-472"><a href="#cb15-472" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Students with Disabilities"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Students with Disabilities (IEP)`</span>)<span class="op">;</span></span>
-<span id="cb15-473"><a href="#cb15-473" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb15" data-startfrom="461" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 460;"><span id="cb15-461"><a href="#cb15-461" aria-hidden="true" tabindex="-1"></a>fig2 <span class="op">=</span> {</span>
+<span id="cb15-462"><a href="#cb15-462" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb15-463"><a href="#cb15-463" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
+<span id="cb15-464"><a href="#cb15-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-465"><a href="#cb15-465" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Students with Disabilities"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Students with Disabilities (IEP)`</span>)<span class="op">;</span></span>
+<span id="cb15-466"><a href="#cb15-466" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-15" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
@@ -613,12 +711,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <div id="tabset-1-2" class="tab-pane html-fill-item html-fill-container" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb16" data-startfrom="478" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 477;"><span id="cb16-478"><a href="#cb16-478" aria-hidden="true" tabindex="-1"></a>fig3 <span class="op">=</span> {</span>
-<span id="cb16-479"><a href="#cb16-479" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb16-480"><a href="#cb16-480" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
-<span id="cb16-481"><a href="#cb16-481" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-482"><a href="#cb16-482" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Not Economically Disadvantaged"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Not Economically Disadvantaged`</span>)<span class="op">;</span></span>
-<span id="cb16-483"><a href="#cb16-483" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb16" data-startfrom="471" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 470;"><span id="cb16-471"><a href="#cb16-471" aria-hidden="true" tabindex="-1"></a>fig3 <span class="op">=</span> {</span>
+<span id="cb16-472"><a href="#cb16-472" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb16-473"><a href="#cb16-473" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
+<span id="cb16-474"><a href="#cb16-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-475"><a href="#cb16-475" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Not Economically Disadvantaged"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Not Economically Disadvantaged`</span>)<span class="op">;</span></span>
+<span id="cb16-476"><a href="#cb16-476" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-16" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
@@ -628,12 +726,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb17" data-startfrom="488" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 487;"><span id="cb17-488"><a href="#cb17-488" aria-hidden="true" tabindex="-1"></a>fig4 <span class="op">=</span> {</span>
-<span id="cb17-489"><a href="#cb17-489" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb17-490"><a href="#cb17-490" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
-<span id="cb17-491"><a href="#cb17-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-492"><a href="#cb17-492" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Economically Disadvantaged"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Economically Disadvantaged`</span>)<span class="op">;</span></span>
-<span id="cb17-493"><a href="#cb17-493" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb17" data-startfrom="481" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 480;"><span id="cb17-481"><a href="#cb17-481" aria-hidden="true" tabindex="-1"></a>fig4 <span class="op">=</span> {</span>
+<span id="cb17-482"><a href="#cb17-482" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb17-483"><a href="#cb17-483" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
+<span id="cb17-484"><a href="#cb17-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-485"><a href="#cb17-485" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"Economically Disadvantaged"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`Economically Disadvantaged`</span>)<span class="op">;</span></span>
+<span id="cb17-486"><a href="#cb17-486" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-17" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
@@ -645,12 +743,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <div id="tabset-1-3" class="tab-pane html-fill-item html-fill-container" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb18" data-startfrom="499" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 498;"><span id="cb18-499"><a href="#cb18-499" aria-hidden="true" tabindex="-1"></a>fig5 <span class="op">=</span> {</span>
-<span id="cb18-500"><a href="#cb18-500" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb18-501"><a href="#cb18-501" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
-<span id="cb18-502"><a href="#cb18-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-503"><a href="#cb18-503" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"All Students"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`All Students`</span>)<span class="op">;</span></span>
-<span id="cb18-504"><a href="#cb18-504" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb18" data-startfrom="492" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 491;"><span id="cb18-492"><a href="#cb18-492" aria-hidden="true" tabindex="-1"></a>fig5 <span class="op">=</span> {</span>
+<span id="cb18-493"><a href="#cb18-493" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb18-494"><a href="#cb18-494" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">420</span><span class="op">;</span></span>
+<span id="cb18-495"><a href="#cb18-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-496"><a href="#cb18-496" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">stackedBarChart</span>(<span class="fu">subgroupRows</span>(<span class="st">"All Students"</span>)<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="vs">`All Students`</span>)<span class="op">;</span></span>
+<span id="cb18-497"><a href="#cb18-497" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display column-screen html-fill-item html-fill-container">
 <div id="ojs-cell-18" data-nodetype="declaration" class="html-fill-item html-fill-container">
 
@@ -665,18 +763,15 @@ grid-auto-rows: minmax(0, 1fr);">
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 </div>
 </div>
-<div class="bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card bslib-card html-fill-container html-fill-item" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
+<p><a data-bs-toggle="collapse" href="#notesCollapse" role="button" aria-expanded="false" aria-controls="notesCollapse" class="footer-bar notes-toggle-link"> <span class="toggle-sign"></span>Data Sources &amp; Notes </a></p>
+<div id="notesCollapse" class="collapse html-fill-item html-fill-container">
 <ul>
 <li>Data Source - ELA data: <a href="https://data.nysed.gov/downloads.php">NYSED Report Card DB</a> (Annual EM ELA spring databases)</li>
 <li>ELA data (website): <a href="https://data.nysed.gov/lists.php?type=district">NYSED Report Card</a></li>
 <li>A missing bar indicates that some or all of its data is unavailable</li>
 </ul>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
 </div>
 </div>
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
@@ -690,7 +785,7 @@ grid-auto-rows: minmax(0, 1fr);">
 
 
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gR2V0IHRoZSBkYXRhIGZyb20gUiBhbmQgbWFrZSBpdCB1c2FibGUgKHRyYW5zcG9zZSBpdCkgaW4gSlMgXG5zaGFyZWRfZGF0YSA9IHRyYW5zcG9zZShkZl90b19qcylcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InVuaXF1ZUNvdW50aWVzID0gbmV3IFNldChzaGFyZWRfZGF0YS5tYXAoZCA9PiBkLkNPVU5UWV9ERVNDKSk7IC8vZm9yIHBvcHVwXG5cbi8vIHNhdmUgdW5pcXVlIGRpc3RyaWN0cyAoYmFzZWQgb24gdW5pcXVlIEJFRFNDT0RFKVxuZGlzdHJpY3RzSW5Db3VudHkgPSBuZXcgU2V0KFxuICBzaGFyZWRfZGF0YVxuICAgIC5maWx0ZXIoZCA9PiBkLkNPVU5UWV9ERVNDLnRvVXBwZXJDYXNlKCkgPT09IGNvdW50eS50b1VwcGVyQ2FzZSgpKVxuICAgIC5tYXAoZCA9PiBkLkVOVElUWV9OQU1FKVxuKTtcblxuLy8gU2V0IFBsb3QgZGlzdHJpY3Qgd2hlbiBwYWdlIGluaXRpYWxseSBsb2FkcyBhbmQgYWZ0ZXIgdXNlciBpbnB1dHMgY291bnR5XG5kaXN0cmljdERlZmF1bHQgPSB7XG4gIGNvdW50eTsgLy8gVHJpZ2dlcnMgd2hlbiBjb3VudHkgY2hhbmdlc1xuICAvLyBDcmVhdGUgYSBwZXJzaXN0ZW50IHN0YXRlIG9iamVjdCBhdHRhY2hlZCB0byB0aGUgY2VsbCdzIGV4ZWN1dGlvbiBjb250ZXh0XG4vLyAgY29uc3Qgc3RhdGUgPSB0aGlzIHx8IHsgaW5pdGlhbGl6ZWQ6IGZhbHNlIH07XG4vLyAgaWYgKCFzdGF0ZS5pbml0aWFsaXplZCkge1xuIC8vICAgc3RhdGUuaW5pdGlhbGl6ZWQgPSB0cnVlO1xuIC8vICAgcmV0dXJuIFwiQUxMIC0gQlJPTlggRElTVFJJQ1RTXCI7XG4vLyAgfVxuICByZXR1cm4gXCJcIjtcbn1cblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gZ3VhcmQgZnVuY3Rpb25cbi8vIG1ha2VzIGEgc3VibWl0IGFuZCByZXNldCBidXR0b24gdG8gdXNlIGFmdGVyIG11bHRpcGxlIGlucHV0cyBtYWRlLCBzZWUgaHR0cHM6Ly9vYnNlcnZhYmxlaHEuY29tL0Btb290YXJpL2lucHV0cy1zdWJtaXRcblxuZnVuY3Rpb24gZ3VhcmQoZm4sIG9wdGlvbnMgPSB7fSwgY291bnR5Vmlldykge1xuICBjb25zdCB7XG4gICAgc3VibWl0TGFiZWwgPSBcIlN1Ym1pdFwiLFxuICAgIHJlc2V0TGFiZWwgPSBcIlJlc2V0XCIsXG4gICAgcmVxdWlyZWQgPSBmYWxzZSxcbiAgICByZXN1Ym1pdCA9IHRydWUsXG4gICAgd2lkdGggPSBcIjEwMCVcIixcbiAgICBqdXN0aWZ5ID0gXCJzdGFydFwiXG4gIH0gPSBvcHRpb25zO1xuXG4gIGNvbnN0IG9uU3VibWl0ID0gKCkgPT4ge1xuICAgIHZhbHVlID0gaW5wdXQudmFsdWU7XG4gICAgc3VibWl0LmRpc2FibGVkID0gIXJlc3VibWl0IHx8IGludmFsaWQ7XG4gICAgcmVzZXQuZGlzYWJsZWQgPSB0cnVlO1xuICAgIHdyYXBwZXIuZGlzcGF0Y2hFdmVudChuZXcgRXZlbnQoXCJpbnB1dFwiLCB7IGJ1YmJsZXM6IHRydWUgfSkpO1xuICB9O1xuXG4gIGNvbnN0IG9uUmVzZXQgPSAoKSA9PiB7XG4gICAgaW5wdXQudmFsdWUgPSB2YWx1ZTtcbiAgICBzdWJtaXQuZGlzYWJsZWQgPSAhcmVzdWJtaXQgfHwgaW52YWxpZDtcbiAgICByZXNldC5kaXNhYmxlZCA9IHRydWU7XG4gIH07XG5cbiAgY29uc3Qgb25Jbm5lcklucHV0Q2FwdHVyZSA9ICgpID0+IHtcbiAgICBpbnZhbGlkID0gdHJ1ZTtcbiAgICBzdWJtaXQuZGlzYWJsZWQgPSB0cnVlO1xuICB9O1xuXG4gIGNvbnN0IG9uSW5uZXJJbnB1dCA9IGUgPT4ge1xuICAgIGUuc3RvcFByb3BhZ2F0aW9uKCk7XG4gICAgc3VibWl0LmRpc2FibGVkID0gZmFsc2U7XG4gICAgcmVzZXQuZGlzYWJsZWQgPSBmYWxzZTtcbiAgfTtcblxuICBjb25zdCBzdWJtaXQgPSBodGwuaHRtbGBcbiAgICA8YnV0dG9uICR7e2Rpc2FibGVkOiAhcmVzdWJtaXQgJiYgIXJlcXVpcmVkLCBvbmNsaWNrOiBvblN1Ym1pdH19PlxuICAgICAgJHtzdWJtaXRMYWJlbH1cbiAgYDtcblxuICBjb25zdCByZXNldCA9IGh0bC5odG1sYFxuICAgIDxidXR0b24gJHt7ZGlzYWJsZWQ6IHRydWUsIG9uY2xpY2s6IG9uUmVzZXR9fT5cbiAgICAgICR7cmVzZXRMYWJlbH1cbiAgYDtcblxuICBjb25zdCBmb290ZXIgPSBodGwuaHRtbGBcbiAgICA8ZGl2PlxuICAgICAgPGhyIHN0eWxlPVwicGFkZGluZzowO21hcmdpbjoxMHB4IDBcIj5cbiAgICAgIDxkaXYgc3R5bGU9XCJkaXNwbGF5OmZsZXg7Z2FwOjFjaDtqdXN0aWZ5LWNvbnRlbnQ6JHtqdXN0aWZ5fVwiPlxuICAgICAgICAke3N1Ym1pdH1cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICBgO1xuXG5jb25zdCB0ZW1wbGF0ZSA9IGlucHV0cyA9PiB7XG4gIGNvbnN0IHJvdyA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gIHJvdy5jbGFzc05hbWUgPSBcImlucHV0LXRvb2xiYXJcIjtcblxuICByb3cuYXBwZW5kKGNvdW50eVZpZXcpO1xuXG4gIChBcnJheS5pc0FycmF5KGlucHV0cykgPyBpbnB1dHMgOiBPYmplY3QudmFsdWVzKGlucHV0cykpXG4gICAgLmZvckVhY2goaW5wdXQgPT4gcm93LmFwcGVuZChpbnB1dCkpO1xuXG4gIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gIGNvbnRhaW5lci5zdHlsZS5jc3NUZXh0ID1cbiAgICBcIndpZHRoOjEwMCU7bWF4LXdpZHRoOjEwMCU7bWluLXdpZHRoOjA7Ym94LXNpemluZzpib3JkZXItYm94XCI7XG5cbiAgY29udGFpbmVyLmFwcGVuZChyb3csIGZvb3Rlcik7XG5cbiAgcmV0dXJuIGNvbnRhaW5lcjtcbn07XG5cbiAgY29uc3QgaW5wdXQgPSBmbih7XG4gICAgc3VibWl0LFxuICAgIHJlc2V0LFxuICAgIGZvb3RlcixcbiAgICB0ZW1wbGF0ZSxcbiAgICBvblN1Ym1pdCxcbiAgICBvblJlc2V0XG4gIH0pO1xuXG4gIGxldCBpbnZhbGlkID0gISFpbnB1dC5xdWVyeVNlbGVjdG9yKFwiOmludmFsaWRcIik7XG4gIHN1Ym1pdC5kaXNhYmxlZCA9ICFyZXN1Ym1pdCB8fCBpbnZhbGlkO1xuXG4gIGlucHV0LmFkZEV2ZW50TGlzdGVuZXIoXCJpbnB1dFwiLCBvbklubmVySW5wdXRDYXB0dXJlLCB7Y2FwdHVyZTogdHJ1ZX0pO1xuICBpbnB1dC5hZGRFdmVudExpc3RlbmVyKFwiaW5wdXRcIiwgb25Jbm5lcklucHV0KTtcblxuICBsZXQgdmFsdWUgPSByZXF1aXJlZCA/IHVuZGVmaW5lZCA6IGlucHV0LnZhbHVlO1xuXG4gIGNvbnN0IHdyYXBwZXIgPSBodGwuaHRtbGA8ZGl2IHN0eWxlPVwid2lkdGg6JHt3aWR0aH1cIj4ke2lucHV0fWA7XG5cbiAgd3JhcHBlci5hZGRFdmVudExpc3RlbmVyKFwic3VibWl0XCIsIG9uU3VibWl0KTtcblxuICByZXR1cm4gT2JqZWN0LmRlZmluZVByb3BlcnR5KHdyYXBwZXIsIFwidmFsdWVcIiwge1xuICAgIGdldDogKCkgPT4gdmFsdWUsXG4gICAgc2V0OiB2ID0+IHsgaW5wdXQudmFsdWUgPSB2IH1cbiAgfSk7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBDb3VudHkgc3RheXMgYSBzdGFuZGFsb25lLCBsaXZlIChub24tZ2F0ZWQpIGlucHV0IHNvIGRpc3RyaWN0c0luQ291bnR5XG4vLyBjYW4gcmVhY3QgdG8gaXQgaW1tZWRpYXRlbHkgYXMgdGhlIHVzZXIgdHlwZXMvc2VsZWN0cy5cbnZpZXdvZiBjb3VudHkgPSBJbnB1dHMudGV4dCh7XG4gIHZhbHVlOiBcIkJST05YXCIsXG4gIGxhYmVsOiBcIkNvdW50eTogXCIsXG4vLyAgcGxhY2Vob2xkZXI6IFwiRW50ZXIgQ291bnR54oCmXCIsXG4gIGRhdGFsaXN0OiB1bmlxdWVDb3VudGllcyxcbiAgdW5pcXVlOiB0cnVlLFxuICB2YWxpZGF0ZTogdiA9PiBzaGFyZWRfZGF0YS5tYXAoZCA9PiBkLkNPVU5UWV9ERVNDKS5pbmNsdWRlcyh2LnZhbHVlLnRvVXBwZXJDYXNlKCkpLFxuICBzb3J0OiB0cnVlLFxuICByZXF1aXJlZDogdHJ1ZVxuLy8gIHdpZHRoOiA3NVxufSk7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBXb3ZlbiBJbnB1dHMgRm9ybSBmb3IgRGlzdHJpY3QgU2VsZWN0aW9uXG52aWV3b2YgaW5wdXRTZWxzID0gZ3VhcmQoXG4gICh7IHRlbXBsYXRlIH0pID0+IElucHV0cy5mb3JtKFxuICAgIHtcbiAgICAgIGRpc3RyaWN0OiBJbnB1dHMuc2VsZWN0KGRpc3RyaWN0c0luQ291bnR5LCB7IFxuICAgICAgICB2YWx1ZTogZGlzdHJpY3REZWZhdWx0LFxuICAgICAgICBsYWJlbDogXCJEaXN0cmljdDogXCIsXG4gICAgICAgIHNvcnQ6IHRydWUsXG4gICAgICAgIHJlcXVpcmVkOiB0cnVlXG4gICAgICB9KSxcblxuICAgICAgZ3JhZGU6IElucHV0cy5zZWxlY3QoXG4gICAgICAgIG5ldyBNYXAoW1xuICAgICAgICAgIFtcIkdyYWRlIDVcIiwgNV0sXG4gICAgICAgICAgW1wiR3JhZGUgNlwiLCA2XSxcbiAgICAgICAgICBbXCJHcmFkZSA3XCIsIDddLFxuICAgICAgICAgIFtcIkdyYWRlIDhcIiwgOF0sXG4gICAgICAgICAgW1wiQWxsIEdyYWRlcyAoMy04KVwiLCBcIkVMQTNfOFwiXVxuICAgICAgICBdKSxcbiAgICAgICAge1xuICAgICAgICAgIHZhbHVlOiA4LFxuICAgICAgICAgIGxhYmVsOiBcIkdyYWRlLCBpbiBNYXkyMDI1OiBcIixcbiAgICAgICAgICBzb3J0OiB0cnVlLFxuICAgICAgICAgIHJlcXVpcmVkOiB0cnVlXG4gICAgICAgIH1cbiAgICAgIClcbiAgICB9LFxuICAgIHsgdGVtcGxhdGUgfVxuICApLFxuICB7XG4gICAgcmVzZXRMYWJlbDogXCJSZXNldFwiLFxuICAgIHJlcXVpcmVkOiB0cnVlLFxuICAgIHdpZHRoOiBcIjEwMCVcIlxuICB9LFxuICB2aWV3b2YgY291bnR5XG4pO1xuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gQXV0by1zdWJtaXQgdHJpZ2dlcnMgb25jZSBvbiBwYWdlIGxvYWQgdG8gZHJhdyBpbml0aWFsIHBsb3RzIGluc3RhbnRseVxuX2F1dG9TdWJtaXQgPSB7XG4gIHNldFRpbWVvdXQoKCkgPT4ge1xuICAgIGNvbnN0IHN1Ym1pdEJ0biA9IEFycmF5LmZyb20oZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChcImJ1dHRvblwiKSlcbiAgICAgIC5maW5kKGIgPT4gYi50ZXh0Q29udGVudC50cmltKCkgPT09IFwiU3VibWl0XCIpO1xuICAgIGlmIChzdWJtaXRCdG4pIHN1Ym1pdEJ0bi5jbGljaygpO1xuICB9LCAxMDAwKTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImJhc2VZZWFyID0gMjAyNVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC04IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZnVuY3Rpb24gc3RhY2tlZEJhckNoYXJ0KGxvbmdEYXRhLCB3aWR0aCwgaGVpZ2h0LCBjaGFydFRpdGxlKSB7XG5cbiAgcmV0dXJuIFBsb3QucGxvdCh7XG4gICAgY2xhc3NOYW1lOiBcIkVMQWdyb3d0aC1wbG90XCIsXG4gICAgICAgIFxuICAgIHdpZHRoLFxuICAgIGhlaWdodCxcbiAgICBtYXJnaW5MZWZ0OiA4MCxcbiAgICBtYXJnaW5Cb3R0b206IDUwLFxuICAgIHRpdGxlOiBjaGFydFRpdGxlLFxuICAgIFxuICAgIHg6IHsgbGFiZWw6IG51bGwsIGRvbWFpbjogWy4uLm5ldyBTZXQobG9uZ0RhdGEubWFwKGQgPT4gZC5sYWJlbCkpXX0sXG4gICAgeTogeyBsYWJlbDogXCIjIFN0dWRlbnRzXCIsIGdyaWQ6IHRydWUsIGxhYmVsQXJyb3c6IGZhbHNlLFxuICBsYWJlbEFuY2hvcjogXCJjZW50ZXJcIiwgZHg6IDEwMH0sXG4gICAgY29sb3I6IHtcbiAgICAgIGRvbWFpbjogW1wiUHJvZmljaWVudFwiLCBcIk5vdCBQcm9maWNpZW50XCIsIFwiTm90IFRlc3RlZFwiXSxcbiAgICAgIHJhbmdlOiBbXCIjMkY3RjczXCIsIFwiI0Q5NUM1Q1wiLCBcIiNCN0JEQzRcIl0sXG4gICAgICBsZWdlbmQ6IHRydWVcbiAgICB9LFxuICAgIG1hcmtzOiBbXG4gICAgICBQbG90LnJ1bGVZKFswXSksXG4gICAgICBQbG90LmJhclkobG9uZ0RhdGEsIFBsb3Quc3RhY2tZKHtcbiAgICAgICAgeDogXCJsYWJlbFwiLFxuICAgICAgICB5OiBcImNvdW50XCIsXG4gICAgICAgIGZpbGw6IFwiY2F0ZWdvcnlcIixcbiAgICAgICAgdGlwOiB0cnVlLFxuICAgICAgICB0aXRsZTogZCA9PiBgJHtkLmNhdGVnb3J5fTogJHtkLmNvdW50fVxcbiR7ZC5wY3QgIT0gbnVsbCA/IGAoJHtkLnBjdC50b0ZpeGVkKDEpfSUpXFxuKCR7ZC5wY3QyLnRvRml4ZWQoMSl9JSBvZiBUZXN0ZWQgb25seSlgIDogXCJcIn1gXG4gICAgICB9KSlcbiAgICBdXG4gIH0pO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC05IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gVHVybiB0aGUgXCJHcmFkZVwiIHNlbGVjdGlvbiBpbnRvIGEgWUVBUiAtPiBBU1NFU1NNRU5UX05BTUUgc2VxdWVuY2UuXG4vLyBJZiBcIkFsbCBHcmFkZXMgKDMtOClcIiB3YXMgcGlja2VkLCBldmVyeSB5ZWFyIHVzZXMgRUxBM184LlxuLy8gSWYgYSBzaW5nbGUgZ3JhZGUgd2FzIHBpY2tlZCwgdGhlIG5ld2VzdCB5ZWFyICgyMDI1KSB1c2VzIHRoYXQgZ3JhZGUsXG4vLyAgIGFuZCBlYWNoIGVhcmxpZXIgeWVhciBzdGVwcyBiYWNrIG9uZSBncmFkZSAoMjAyNCA9IGdyYWRlLTEsIDIwMjMgPSBncmFkZS0yLFxuLy8gICAyMDIyID0gZ3JhZGUtNCkgc28gd2UncmUgZm9sbG93aW5nIHRoZSBTQU1FIGNvaG9ydCBvZiBzdHVkZW50cyBiYWNrIGluIHRpbWUuXG4vLyBHcmFkZSAzIGlzIHRoZSB5b3VuZ2VzdCB0ZXN0ZWQgZ3JhZGUsIHNvIGFueSBvZmZzZXQgdGhhdCB3b3VsZCBwdXNoIHRoZVxuLy8gICBjb2hvcnQgYmVsb3cgR3JhZGUgMyAoZS5nLiBHcmFkZSAyLCBHcmFkZSAxKSBpcyBkcm9wcGVkIGVudGlyZWx5IC1cbi8vICAgdGhhdCBkYXRhIHdpbGwgbmV2ZXIgZXhpc3QuXG5ncmFkZVNlcXVlbmNlID0ge1xuICAvLyBpbnB1dFNlbHMgaXMgdW5kZWZpbmVkIHVudGlsIHRoZSBmb3JtIGlzIGZpcnN0IFN1Ym1pdHRlZCAtIGJhaWwgb3V0IHdpdGhcbiAgLy8gYW4gZW1wdHkgc2VxdWVuY2UgcmF0aGVyIHRoYW4gdGhyb3dpbmdcbiAgaWYgKCFpbnB1dFNlbHMpIHJldHVybiBbXTtcbiAgY29uc3QgZyA9IGlucHV0U2Vscy5ncmFkZTtcbiAgcmV0dXJuIFswLCAxLCAyLCAzLCA0XVxuICAgIC5maWx0ZXIob2Zmc2V0ID0+IGcgPT09IFwiRUxBM184XCIgfHwgKGcgLSBvZmZzZXQpID49IDMpXG4gICAgLm1hcChvZmZzZXQgPT4gKHtcbiAgICAgIHllYXI6IGJhc2VZZWFyIC0gb2Zmc2V0LFxuICAgICAgYXNzZXNzbWVudDogZyA9PT0gXCJFTEEzXzhcIiA/IFwiRUxBM184XCIgOiBgRUxBJHtnIC0gb2Zmc2V0fWBcbiAgICB9KSk7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEwIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2hhcmVkX2RhdGFGaWx0ZXJlZCA9IHtcbiAgaWYgKCFpbnB1dFNlbHMpIHJldHVybiBbXTtcbi8vICBjb25zdCBjb3VudHkgPSBpbnB1dFNlbHMuY291bnR5LnRyaW0oKS50b1VwcGVyQ2FzZSgpO1xuICBjb25zdCBkaXN0cmljdCA9IGlucHV0U2Vscy5kaXN0cmljdC50cmltKCkudG9VcHBlckNhc2UoKTtcblxuLy8gZmlsdGVyIGFsbCBkYXRhIGFuZCByZXR1cm4gRGlzdHJpY3QoRU5USVRZX05BTUUpIFNlbGVjdGVkIGFuZCBBc3Nlc3NtZW50KGllLCBFTEEzIG9yIDQgYmFzZWQgb24gdGhlIGdyYWRlIHNlbGVjdGVkKVxuICByZXR1cm4gc2hhcmVkX2RhdGEuZmlsdGVyKGQgPT5cbi8vICAgIGQuQ09VTlRZX0RFU0MudG9VcHBlckNhc2UoKSA9PT0gY291bnR5ICYmXG4gICAgZC5FTlRJVFlfTkFNRS50b1VwcGVyQ2FzZSgpID09PSBkaXN0cmljdCAmJlxuICAgIGdyYWRlU2VxdWVuY2Uuc29tZShnID0+IE51bWJlcihnLnllYXIpID09PSBOdW1iZXIoZC5ZRUFSKSAmJiBnLmFzc2Vzc21lbnQgPT09IGQuQVNTRVNTTUVOVF9OQU1FKVxuICApO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIGxhYmVsIGZvciB0aGUgYXNzZXNzbWVudCwgdXNlZCBvbiB0aGUgeC1heGlzXG5ncmFkZUxhYmVsID0gYXNzZXNzbWVudCA9PiBhc3Nlc3NtZW50ID09PSBcIkVMQTNfOFwiXG4gID8gXCJBbGwgR3JhZGVzIDMtOFwiXG4gIDogYEdyYWRlICR7YXNzZXNzbWVudC5yZXBsYWNlKFwiRUxBXCIsIFwiXCIpfWBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmdW5jdGlvbiBzdWJncm91cFJvd3Moc3ViZ3JvdXBOYW1lKSB7XG4gIC8vIGNvbnNvbGUubG9nKFwic3ViZ3JvdXBSb3dzIGNhbGxlZCB3aXRoIHN1Ymdyb3VwTmFtZTpcIiwgc3ViZ3JvdXBOYW1lKTtcbiAgLy8gY29uc29sZS5sb2coXCJncmFkZVNlcXVlbmNlOlwiLCBncmFkZVNlcXVlbmNlKTtcbiAgLy8gY29uc29sZS5sb2coXCJzaGFyZWRfZGF0YUZpbHRlcmVkIGxlbmd0aDpcIiwgc2hhcmVkX2RhdGFGaWx0ZXJlZC5sZW5ndGgpO1xuXG4gIGNvbnN0IGJ5WWVhciA9IFsuLi5ncmFkZVNlcXVlbmNlXVxuICAgIC5zb3J0KChhLCBiKSA9PiBhLnllYXIgLSBiLnllYXIpXG4gICAgLm1hcCgoeyB5ZWFyLCBhc3Nlc3NtZW50IH0pID0+IHtcbiAgICAgIGNvbnN0IHJvdyA9IHNoYXJlZF9kYXRhRmlsdGVyZWQuZmluZChkID0+XG4gICAgICAgIE51bWJlcihkLllFQVIpID09PSBOdW1iZXIoeWVhcikgJiZcbiAgICAgICAgZC5BU1NFU1NNRU5UX05BTUUgPT09IGFzc2Vzc21lbnQgJiZcbiAgICAgICAgZC5TVUJHUk9VUF9OQU1FID09PSBzdWJncm91cE5hbWVcbiAgICAgICk7XG5cbi8vIENvbnNvbGUgTG9ncyB0byB0cm91Ymxlc2hvb3RcbiAgICAgIDwhLS0gaWYgKCFyb3cpIHsgLS0+XG4gICAgICA8IS0tICAgY29uc29sZS5sb2coIC0tPlxuICAgICAgPCEtLSAgICAgYE5vIG1hdGNoaW5nIHJvdyBmb3IgeWVhcj0ke3llYXJ9LCBhc3Nlc3NtZW50PSR7YXNzZXNzbWVudH0sIHN1Ymdyb3VwPSR7c3ViZ3JvdXBOYW1lfWAgLS0+XG4gICAgICA8IS0tICAgKTsgLS0+XG4gICAgICA8IS0tIH0gZWxzZSB7IC0tPlxuICAgICAgPCEtLSAgIGNvbnNvbGUubG9nKCAtLT5cbiAgICAgIDwhLS0gICAgIGBNYXRjaCBmb3VuZCBmb3IgeWVhcj0ke3llYXJ9LCBhc3Nlc3NtZW50PSR7YXNzZXNzbWVudH0sIHN1Ymdyb3VwPSR7c3ViZ3JvdXBOYW1lfTpgLCAtLT5cbiAgICAgIDwhLS0gICAgIHJvdyAtLT5cbiAgICAgIDwhLS0gICApOyAtLT5cbiAgICAgIDwhLS0gfSAtLT5cblxuICAgICAgcmV0dXJuIHtcbiAgICAgICAgWUVBUjogeWVhcixcbiAgICAgICAgbGFiZWw6IGAke3llYXJ9XFxuJHtncmFkZUxhYmVsKGFzc2Vzc21lbnQpfWAsXG4gICAgICAgIFByb2ZfQ291bnQ6IHJvdyA/ICtyb3cuUHJvZl9Db3VudCA6IDAsXG4gICAgICAgIE5vdFByb2ZfQ291bnQ6IHJvdyA/ICtyb3cuTm90UHJvZl9Db3VudCA6IDAsXG4gICAgICAgIE5PVF9URVNURUQ6IHJvdyA/ICtyb3cuTk9UX1RFU1RFRCA6IDAsXG4gICAgICAgIFByb2ZfUGN0OiByb3cgPyArcm93LlByb2ZfUGN0IDogbnVsbCxcbiAgICAgICAgTm90UHJvZl9QY3Q6IHJvdyA/ICtyb3cuTm90UHJvZl9QY3QgOiBudWxsLFxuICAgICAgICBQRVJfUFJPRjogcm93ID8gK3Jvdy5QRVJfUFJPRiA6IG51bGxcbiAgICAgIH07XG4gICAgfSk7XG5cbiAgLy8gY29uc29sZS5sb2coXCJzdWJncm91cFJvd3MgLSBieVllYXI6XCIsIGJ5WWVhcik7XG5cbiAgY29uc3QgcmVzdWx0ID0gYnlZZWFyLmZsYXRNYXAoZCA9PiBbXG4gICAgeyBsYWJlbDogZC5sYWJlbCwgWUVBUjogZC5ZRUFSLCBjYXRlZ29yeTogXCJQcm9maWNpZW50XCIsIGNvdW50OiBkLlByb2ZfQ291bnQsIHBjdDogZC5Qcm9mX1BjdCwgcGN0MjogZC5QRVJfUFJPRiB9LFxuICAgIHsgbGFiZWw6IGQubGFiZWwsIFlFQVI6IGQuWUVBUiwgY2F0ZWdvcnk6IFwiTm90IFByb2ZpY2llbnRcIiwgY291bnQ6IGQuTm90UHJvZl9Db3VudCwgcGN0OiBudWxsIH0sXG4gICAgeyBsYWJlbDogZC5sYWJlbCwgWUVBUjogZC5ZRUFSLCBjYXRlZ29yeTogXCJOb3QgVGVzdGVkXCIsIGNvdW50OiBkLk5PVF9URVNURUQsIHBjdDogbnVsbCB9XG4gIF0pO1xuXG4gIC8vIGNvbnNvbGUubG9nKFwic3ViZ3JvdXBSb3dzIGZsYXRNYXAgLSByZXN1bHQ6XCIsIHJlc3VsdCk7XG5cbiAgcmV0dXJuIHJlc3VsdDtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJtZGA8c3BhbiBjbGFzcz1cImVsYS1zY29yZS10aXRsZVwiPkVMQSBTY29yZXMgLSAke2lucHV0U2VscyA/IGlucHV0U2Vscy5kaXN0cmljdCA6IFwiXCJ9PC9zcGFuPmBcblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZpZzEgPSB7XG4gIGNvbnN0IHdpZHRoID0gMTAwMDtcbiAgY29uc3QgaGVpZ2h0ID0gNDIwOyAvL3dvcmtzIHdlbGwgZm9yIGEgNC15ZWFyIHggMy1jYXRlZ29yeSBzdGFja2VkIGJhclxuICByZXR1cm4gc3RhY2tlZEJhckNoYXJ0KHN1Ymdyb3VwUm93cyhcIkdlbmVyYWwgRWR1Y2F0aW9uIFN0dWRlbnRzXCIpLCB3aWR0aCwgaGVpZ2h0LCBgR2VuIEVkIFN0dWRlbnRzIChubyBJRVApYCk7XG59XG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmaWcyID0ge1xuICBjb25zdCB3aWR0aCA9IDEwMDA7XG4gIGNvbnN0IGhlaWdodCA9IDQyMDtcblxuICByZXR1cm4gc3RhY2tlZEJhckNoYXJ0KHN1Ymdyb3VwUm93cyhcIlN0dWRlbnRzIHdpdGggRGlzYWJpbGl0aWVzXCIpLCB3aWR0aCwgaGVpZ2h0LCBgU3R1ZGVudHMgd2l0aCBEaXNhYmlsaXRpZXMgKElFUClgKTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmaWczID0ge1xuICBjb25zdCB3aWR0aCA9IDEwMDA7XG4gIGNvbnN0IGhlaWdodCA9IDQyMDtcblxuICByZXR1cm4gc3RhY2tlZEJhckNoYXJ0KHN1Ymdyb3VwUm93cyhcIk5vdCBFY29ub21pY2FsbHkgRGlzYWR2YW50YWdlZFwiKSwgd2lkdGgsIGhlaWdodCwgYE5vdCBFY29ub21pY2FsbHkgRGlzYWR2YW50YWdlZGApO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZpZzQgPSB7XG4gIGNvbnN0IHdpZHRoID0gMTAwMDtcbiAgY29uc3QgaGVpZ2h0ID0gNDIwO1xuXG4gIHJldHVybiBzdGFja2VkQmFyQ2hhcnQoc3ViZ3JvdXBSb3dzKFwiRWNvbm9taWNhbGx5IERpc2FkdmFudGFnZWRcIiksIHdpZHRoLCBoZWlnaHQsIGBFY29ub21pY2FsbHkgRGlzYWR2YW50YWdlZGApO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xOCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZpZzUgPSB7XG4gIGNvbnN0IHdpZHRoID0gMTAwMDtcbiAgY29uc3QgaGVpZ2h0ID0gNDIwO1xuXG4gIHJldHVybiBzdGFja2VkQmFyQ2hhcnQoc3ViZ3JvdXBSb3dzKFwiQWxsIFN0dWRlbnRzXCIpLCB3aWR0aCwgaGVpZ2h0LCBgQWxsIFN0dWRlbnRzYCk7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2NvdW50eScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdpbnB1dFNlbHMnKSJ9XX0=
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gR2V0IHRoZSBkYXRhIGZyb20gUiBhbmQgbWFrZSBpdCB1c2FibGUgKHRyYW5zcG9zZSBpdCkgaW4gSlMgXG5zaGFyZWRfZGF0YSA9IHRyYW5zcG9zZShkZl90b19qcylcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InVuaXF1ZUNvdW50aWVzID0gbmV3IFNldChzaGFyZWRfZGF0YS5tYXAoZCA9PiBkLkNPVU5UWV9ERVNDKSk7IC8vZm9yIHBvcHVwXG5cbi8vIHNhdmUgdW5pcXVlIGRpc3RyaWN0cyAoYmFzZWQgb24gdW5pcXVlIEJFRFNDT0RFKVxuZGlzdHJpY3RzSW5Db3VudHkgPSBuZXcgU2V0KFxuICBzaGFyZWRfZGF0YVxuICAgIC5maWx0ZXIoZCA9PiBkLkNPVU5UWV9ERVNDLnRvVXBwZXJDYXNlKCkgPT09IGNvdW50eS50b1VwcGVyQ2FzZSgpKVxuICAgIC5tYXAoZCA9PiBkLkVOVElUWV9OQU1FKVxuKTtcblxuLy8gU2V0IFBsb3QgZGlzdHJpY3Qgd2hlbiBwYWdlIGluaXRpYWxseSBsb2FkcyBhbmQgYWZ0ZXIgdXNlciBpbnB1dHMgY291bnR5XG5kaXN0cmljdERlZmF1bHQgPSB7XG4gIGNvdW50eTsgLy8gVHJpZ2dlcnMgd2hlbiBjb3VudHkgY2hhbmdlc1xuICAvLyBDcmVhdGUgYSBwZXJzaXN0ZW50IHN0YXRlIG9iamVjdCBhdHRhY2hlZCB0byB0aGUgY2VsbCdzIGV4ZWN1dGlvbiBjb250ZXh0XG4vLyAgY29uc3Qgc3RhdGUgPSB0aGlzIHx8IHsgaW5pdGlhbGl6ZWQ6IGZhbHNlIH07XG4vLyAgaWYgKCFzdGF0ZS5pbml0aWFsaXplZCkge1xuIC8vICAgc3RhdGUuaW5pdGlhbGl6ZWQgPSB0cnVlO1xuIC8vICAgcmV0dXJuIFwiQUxMIC0gQlJPTlggRElTVFJJQ1RTXCI7XG4vLyAgfVxuICByZXR1cm4gXCJcIjtcbn1cblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gZ3VhcmQgZnVuY3Rpb25cbi8vIG1ha2VzIGEgc3VibWl0IGFuZCByZXNldCBidXR0b24gdG8gdXNlIGFmdGVyIG11bHRpcGxlIGlucHV0cyBtYWRlLCBzZWUgaHR0cHM6Ly9vYnNlcnZhYmxlaHEuY29tL0Btb290YXJpL2lucHV0cy1zdWJtaXRcblxuZnVuY3Rpb24gZ3VhcmQoZm4sIG9wdGlvbnMgPSB7fSwgY291bnR5Vmlldykge1xuICBjb25zdCB7XG4gICAgc3VibWl0TGFiZWwgPSBcIlN1Ym1pdFwiLFxuICAgIHJlc2V0TGFiZWwgPSBcIlJlc2V0XCIsXG4gICAgcmVxdWlyZWQgPSBmYWxzZSxcbiAgICByZXN1Ym1pdCA9IHRydWVcbiAgfSA9IG9wdGlvbnM7XG5cbiAgY29uc3Qgb25TdWJtaXQgPSAoKSA9PiB7XG4gICAgdmFsdWUgPSBpbnB1dC52YWx1ZTtcbiAgICBzdWJtaXQuZGlzYWJsZWQgPSAhcmVzdWJtaXQgfHwgaW52YWxpZDtcbiAgICByZXNldC5kaXNhYmxlZCA9IHRydWU7XG4gICAgd3JhcHBlci5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudChcImlucHV0XCIsIHsgYnViYmxlczogdHJ1ZSB9KSk7XG4gIH07XG5cbiAgY29uc3Qgb25SZXNldCA9ICgpID0+IHtcbiAgICBpbnB1dC52YWx1ZSA9IHZhbHVlO1xuICAgIHN1Ym1pdC5kaXNhYmxlZCA9ICFyZXN1Ym1pdCB8fCBpbnZhbGlkO1xuICAgIHJlc2V0LmRpc2FibGVkID0gdHJ1ZTtcbiAgfTtcblxuICBjb25zdCBvbklubmVySW5wdXRDYXB0dXJlID0gKCkgPT4ge1xuICAgIGludmFsaWQgPSB0cnVlO1xuICAgIHN1Ym1pdC5kaXNhYmxlZCA9IHRydWU7XG4gIH07XG5cbiAgY29uc3Qgb25Jbm5lcklucHV0ID0gZSA9PiB7XG4gICAgZS5zdG9wUHJvcGFnYXRpb24oKTtcbiAgICBzdWJtaXQuZGlzYWJsZWQgPSBmYWxzZTtcbiAgICByZXNldC5kaXNhYmxlZCA9IGZhbHNlO1xuICB9O1xuXG4gIGNvbnN0IHN1Ym1pdCA9IGh0bC5odG1sYFxuICAgIDxidXR0b24gJHt7ZGlzYWJsZWQ6ICFyZXN1Ym1pdCAmJiAhcmVxdWlyZWQsIG9uY2xpY2s6IG9uU3VibWl0fX0+XG4gICAgICAke3N1Ym1pdExhYmVsfVxuICBgO1xuXG4gIGNvbnN0IHJlc2V0ID0gaHRsLmh0bWxgXG4gICAgPGJ1dHRvbiAke3tkaXNhYmxlZDogdHJ1ZSwgb25jbGljazogb25SZXNldH19PlxuICAgICAgJHtyZXNldExhYmVsfVxuICBgO1xuXG4gIC8vIHN0eWxpbmcgZm9yIHRoZXNlIGNsYXNzZXMgaXMgaW4gY3VzdG9tLnNjc3NcbiAgY29uc3QgZm9vdGVyID0gaHRsLmh0bWxgXG4gICAgPGRpdiBjbGFzcz1cImd1YXJkLWZvb3RlclwiPlxuICAgICAgPGhyIGNsYXNzPVwiZ3VhcmQtZm9vdGVyLXJ1bGVcIj5cbiAgICAgIDxkaXYgY2xhc3M9XCJndWFyZC1mb290ZXItYnV0dG9uc1wiPlxuICAgICAgICAke3N1Ym1pdH1cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICBgO1xuXG5jb25zdCB0ZW1wbGF0ZSA9IGlucHV0cyA9PiB7XG4gIGNvbnN0IHJvdyA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gIHJvdy5jbGFzc05hbWUgPSBcImlucHV0LXRvb2xiYXJcIjtcblxuICByb3cuYXBwZW5kKGNvdW50eVZpZXcpO1xuXG4gIChBcnJheS5pc0FycmF5KGlucHV0cykgPyBpbnB1dHMgOiBPYmplY3QudmFsdWVzKGlucHV0cykpXG4gICAgLmZvckVhY2goaW5wdXQgPT4gcm93LmFwcGVuZChpbnB1dCkpO1xuXG4gIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcImd1YXJkLWNvbnRhaW5lclwiO1xuXG4gIGNvbnRhaW5lci5hcHBlbmQocm93LCBmb290ZXIpO1xuXG4gIHJldHVybiBjb250YWluZXI7XG59O1xuXG4gIGNvbnN0IGlucHV0ID0gZm4oe1xuICAgIHN1Ym1pdCxcbiAgICByZXNldCxcbiAgICBmb290ZXIsXG4gICAgdGVtcGxhdGUsXG4gICAgb25TdWJtaXQsXG4gICAgb25SZXNldFxuICB9KTtcblxuICBsZXQgaW52YWxpZCA9ICEhaW5wdXQucXVlcnlTZWxlY3RvcihcIjppbnZhbGlkXCIpO1xuICBzdWJtaXQuZGlzYWJsZWQgPSAhcmVzdWJtaXQgfHwgaW52YWxpZDtcblxuICBpbnB1dC5hZGRFdmVudExpc3RlbmVyKFwiaW5wdXRcIiwgb25Jbm5lcklucHV0Q2FwdHVyZSwge2NhcHR1cmU6IHRydWV9KTtcbiAgaW5wdXQuYWRkRXZlbnRMaXN0ZW5lcihcImlucHV0XCIsIG9uSW5uZXJJbnB1dCk7XG5cbiAgbGV0IHZhbHVlID0gcmVxdWlyZWQgPyB1bmRlZmluZWQgOiBpbnB1dC52YWx1ZTtcblxuICBjb25zdCB3cmFwcGVyID0gaHRsLmh0bWxgPGRpdiBjbGFzcz1cImd1YXJkLXdyYXBwZXJcIj4ke2lucHV0fWA7XG5cbiAgd3JhcHBlci5hZGRFdmVudExpc3RlbmVyKFwic3VibWl0XCIsIG9uU3VibWl0KTtcblxuICByZXR1cm4gT2JqZWN0LmRlZmluZVByb3BlcnR5KHdyYXBwZXIsIFwidmFsdWVcIiwge1xuICAgIGdldDogKCkgPT4gdmFsdWUsXG4gICAgc2V0OiB2ID0+IHsgaW5wdXQudmFsdWUgPSB2IH1cbiAgfSk7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBDb3VudHkgc3RheXMgYSBzdGFuZGFsb25lLCBsaXZlIChub24tZ2F0ZWQpIGlucHV0IHNvIGRpc3RyaWN0c0luQ291bnR5XG4vLyBjYW4gcmVhY3QgdG8gaXQgaW1tZWRpYXRlbHkgYXMgdGhlIHVzZXIgdHlwZXMvc2VsZWN0cy5cbnZpZXdvZiBjb3VudHkgPSBJbnB1dHMudGV4dCh7XG4gIHZhbHVlOiBcIkJST05YXCIsXG4gIGxhYmVsOiBcIkNvdW50eTogXCIsXG4vLyAgcGxhY2Vob2xkZXI6IFwiRW50ZXIgQ291bnR54oCmXCIsXG4gIGRhdGFsaXN0OiB1bmlxdWVDb3VudGllcyxcbiAgdW5pcXVlOiB0cnVlLFxuICB2YWxpZGF0ZTogdiA9PiBzaGFyZWRfZGF0YS5tYXAoZCA9PiBkLkNPVU5UWV9ERVNDKS5pbmNsdWRlcyh2LnZhbHVlLnRvVXBwZXJDYXNlKCkpLFxuICBzb3J0OiB0cnVlLFxuICByZXF1aXJlZDogdHJ1ZVxuLy8gIHdpZHRoOiA3NVxufSk7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBXb3ZlbiBJbnB1dHMgRm9ybSBmb3IgRGlzdHJpY3QgU2VsZWN0aW9uXG52aWV3b2YgaW5wdXRTZWxzID0gZ3VhcmQoXG4gICh7IHRlbXBsYXRlIH0pID0+IElucHV0cy5mb3JtKFxuICAgIHtcbiAgICAgIGRpc3RyaWN0OiBJbnB1dHMuc2VsZWN0KGRpc3RyaWN0c0luQ291bnR5LCB7IFxuICAgICAgICB2YWx1ZTogZGlzdHJpY3REZWZhdWx0LFxuICAgICAgICBsYWJlbDogXCJEaXN0cmljdDogXCIsXG4gICAgICAgIHNvcnQ6IHRydWUsXG4gICAgICAgIHJlcXVpcmVkOiB0cnVlXG4gICAgICB9KSxcblxuICAgICAgZ3JhZGU6IElucHV0cy5zZWxlY3QoXG4gICAgICAgIG5ldyBNYXAoW1xuICAgICAgICAgIFtcIkdyYWRlIDVcIiwgNV0sXG4gICAgICAgICAgW1wiR3JhZGUgNlwiLCA2XSxcbiAgICAgICAgICBbXCJHcmFkZSA3XCIsIDddLFxuICAgICAgICAgIFtcIkdyYWRlIDhcIiwgOF0sXG4gICAgICAgICAgW1wiQWxsIEdyYWRlcyAoMy04KVwiLCBcIkVMQTNfOFwiXVxuICAgICAgICBdKSxcbiAgICAgICAge1xuICAgICAgICAgIHZhbHVlOiA4LFxuICAgICAgICAgIGxhYmVsOiBcIkdyYWRlLCBpbiBNYXkyMDI1OiBcIixcbiAgICAgICAgICBzb3J0OiB0cnVlLFxuICAgICAgICAgIHJlcXVpcmVkOiB0cnVlXG4gICAgICAgIH1cbiAgICAgIClcbiAgICB9LFxuICAgIHsgdGVtcGxhdGUgfVxuICApLFxuICB7XG4gICAgcmVzZXRMYWJlbDogXCJSZXNldFwiLFxuICAgIHJlcXVpcmVkOiB0cnVlXG4gIH0sXG4gIHZpZXdvZiBjb3VudHlcbik7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBBdXRvLXN1Ym1pdCB0cmlnZ2VycyBvbmNlIG9uIHBhZ2UgbG9hZCB0byBkcmF3IGluaXRpYWwgcGxvdHMgaW5zdGFudGx5XG5fYXV0b1N1Ym1pdCA9IHtcbiAgc2V0VGltZW91dCgoKSA9PiB7XG4gICAgY29uc3Qgc3VibWl0QnRuID0gQXJyYXkuZnJvbShkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKFwiYnV0dG9uXCIpKVxuICAgICAgLmZpbmQoYiA9PiBiLnRleHRDb250ZW50LnRyaW0oKSA9PT0gXCJTdWJtaXRcIik7XG4gICAgaWYgKHN1Ym1pdEJ0bikgc3VibWl0QnRuLmNsaWNrKCk7XG4gIH0sIDEwMDApO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC03IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYmFzZVllYXIgPSAyMDI1XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmdW5jdGlvbiBzdGFja2VkQmFyQ2hhcnQobG9uZ0RhdGEsIHdpZHRoLCBoZWlnaHQsIGNoYXJ0VGl0bGUpIHtcblxuICByZXR1cm4gUGxvdC5wbG90KHtcbiAgICBjbGFzc05hbWU6IFwiRUxBZ3Jvd3RoLXBsb3RcIixcbiAgICAgICAgXG4gICAgd2lkdGgsXG4gICAgaGVpZ2h0LFxuICAgIG1hcmdpbkxlZnQ6IDgwLFxuICAgIG1hcmdpbkJvdHRvbTogNTAsXG4gICAgdGl0bGU6IGNoYXJ0VGl0bGUsXG4gICAgXG4gICAgeDogeyBsYWJlbDogbnVsbCwgZG9tYWluOiBbLi4ubmV3IFNldChsb25nRGF0YS5tYXAoZCA9PiBkLmxhYmVsKSldfSxcbiAgICB5OiB7IGxhYmVsOiBcIiMgU3R1ZGVudHNcIiwgZ3JpZDogdHJ1ZSwgbGFiZWxBcnJvdzogZmFsc2UsXG4gIGxhYmVsQW5jaG9yOiBcImNlbnRlclwiLCBkeDogMTAwfSxcbiAgICBjb2xvcjoge1xuICAgICAgZG9tYWluOiBbXCJQcm9maWNpZW50XCIsIFwiTm90IFByb2ZpY2llbnRcIiwgXCJOb3QgVGVzdGVkXCJdLFxuICAgICAgcmFuZ2U6IFtcIiMyRjdGNzNcIiwgXCIjRDk1QzVDXCIsIFwiI0I3QkRDNFwiXSxcbiAgICAgIGxlZ2VuZDogdHJ1ZVxuICAgIH0sXG4gICAgbWFya3M6IFtcbiAgICAgIFBsb3QucnVsZVkoWzBdKSxcbiAgICAgIFBsb3QuYmFyWShsb25nRGF0YSwgUGxvdC5zdGFja1koe1xuICAgICAgICB4OiBcImxhYmVsXCIsXG4gICAgICAgIHk6IFwiY291bnRcIixcbiAgICAgICAgZmlsbDogXCJjYXRlZ29yeVwiLFxuICAgICAgICB0aXA6IHRydWUsXG4gICAgICAgIHRpdGxlOiBkID0+IGAke2QuY2F0ZWdvcnl9OiAke2QuY291bnR9XFxuJHtkLnBjdCAhPSBudWxsID8gYCgke2QucGN0LnRvRml4ZWQoMSl9JSlcXG4oJHtkLnBjdDIudG9GaXhlZCgxKX0lIG9mIFRlc3RlZCBvbmx5KWAgOiBcIlwifWBcbiAgICAgIH0pKVxuICAgIF1cbiAgfSk7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTkiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBUdXJuIHRoZSBcIkdyYWRlXCIgc2VsZWN0aW9uIGludG8gYSBZRUFSIC0+IEFTU0VTU01FTlRfTkFNRSBzZXF1ZW5jZS5cbi8vIElmIFwiQWxsIEdyYWRlcyAoMy04KVwiIHdhcyBwaWNrZWQsIGV2ZXJ5IHllYXIgdXNlcyBFTEEzXzguXG4vLyBJZiBhIHNpbmdsZSBncmFkZSB3YXMgcGlja2VkLCB0aGUgbmV3ZXN0IHllYXIgKDIwMjUpIHVzZXMgdGhhdCBncmFkZSxcbi8vICAgYW5kIGVhY2ggZWFybGllciB5ZWFyIHN0ZXBzIGJhY2sgb25lIGdyYWRlICgyMDI0ID0gZ3JhZGUtMSwgMjAyMyA9IGdyYWRlLTIsXG4vLyAgIDIwMjIgPSBncmFkZS00KSBzbyB3ZSdyZSBmb2xsb3dpbmcgdGhlIFNBTUUgY29ob3J0IG9mIHN0dWRlbnRzIGJhY2sgaW4gdGltZS5cbi8vIEdyYWRlIDMgaXMgdGhlIHlvdW5nZXN0IHRlc3RlZCBncmFkZSwgc28gYW55IG9mZnNldCB0aGF0IHdvdWxkIHB1c2ggdGhlXG4vLyAgIGNvaG9ydCBiZWxvdyBHcmFkZSAzIChlLmcuIEdyYWRlIDIsIEdyYWRlIDEpIGlzIGRyb3BwZWQgZW50aXJlbHkgLVxuLy8gICB0aGF0IGRhdGEgd2lsbCBuZXZlciBleGlzdC5cbmdyYWRlU2VxdWVuY2UgPSB7XG4gIC8vIGlucHV0U2VscyBpcyB1bmRlZmluZWQgdW50aWwgdGhlIGZvcm0gaXMgZmlyc3QgU3VibWl0dGVkIC0gYmFpbCBvdXQgd2l0aFxuICAvLyBhbiBlbXB0eSBzZXF1ZW5jZSByYXRoZXIgdGhhbiB0aHJvd2luZ1xuICBpZiAoIWlucHV0U2VscykgcmV0dXJuIFtdO1xuICBjb25zdCBnID0gaW5wdXRTZWxzLmdyYWRlO1xuICByZXR1cm4gWzAsIDEsIDIsIDMsIDRdXG4gICAgLmZpbHRlcihvZmZzZXQgPT4gZyA9PT0gXCJFTEEzXzhcIiB8fCAoZyAtIG9mZnNldCkgPj0gMylcbiAgICAubWFwKG9mZnNldCA9PiAoe1xuICAgICAgeWVhcjogYmFzZVllYXIgLSBvZmZzZXQsXG4gICAgICBhc3Nlc3NtZW50OiBnID09PSBcIkVMQTNfOFwiID8gXCJFTEEzXzhcIiA6IGBFTEEke2cgLSBvZmZzZXR9YFxuICAgIH0pKTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJzaGFyZWRfZGF0YUZpbHRlcmVkID0ge1xuICBpZiAoIWlucHV0U2VscykgcmV0dXJuIFtdO1xuLy8gIGNvbnN0IGNvdW50eSA9IGlucHV0U2Vscy5jb3VudHkudHJpbSgpLnRvVXBwZXJDYXNlKCk7XG4gIGNvbnN0IGRpc3RyaWN0ID0gaW5wdXRTZWxzLmRpc3RyaWN0LnRyaW0oKS50b1VwcGVyQ2FzZSgpO1xuXG4vLyBmaWx0ZXIgYWxsIGRhdGEgYW5kIHJldHVybiBEaXN0cmljdChFTlRJVFlfTkFNRSkgU2VsZWN0ZWQgYW5kIEFzc2Vzc21lbnQoaWUsIEVMQTMgb3IgNCBiYXNlZCBvbiB0aGUgZ3JhZGUgc2VsZWN0ZWQpXG4gIHJldHVybiBzaGFyZWRfZGF0YS5maWx0ZXIoZCA9PlxuLy8gICAgZC5DT1VOVFlfREVTQy50b1VwcGVyQ2FzZSgpID09PSBjb3VudHkgJiZcbiAgICBkLkVOVElUWV9OQU1FLnRvVXBwZXJDYXNlKCkgPT09IGRpc3RyaWN0ICYmXG4gICAgZ3JhZGVTZXF1ZW5jZS5zb21lKGcgPT4gTnVtYmVyKGcueWVhcikgPT09IE51bWJlcihkLllFQVIpICYmIGcuYXNzZXNzbWVudCA9PT0gZC5BU1NFU1NNRU5UX05BTUUpXG4gICk7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTExIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gbGFiZWwgZm9yIHRoZSBhc3Nlc3NtZW50LCB1c2VkIG9uIHRoZSB4LWF4aXNcbmdyYWRlTGFiZWwgPSBhc3Nlc3NtZW50ID0+IGFzc2Vzc21lbnQgPT09IFwiRUxBM184XCJcbiAgPyBcIkFsbCBHcmFkZXMgMy04XCJcbiAgOiBgR3JhZGUgJHthc3Nlc3NtZW50LnJlcGxhY2UoXCJFTEFcIiwgXCJcIil9YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIHN1Ymdyb3VwUm93cyhzdWJncm91cE5hbWUpIHtcbiAgLy8gY29uc29sZS5sb2coXCJzdWJncm91cFJvd3MgY2FsbGVkIHdpdGggc3ViZ3JvdXBOYW1lOlwiLCBzdWJncm91cE5hbWUpO1xuICAvLyBjb25zb2xlLmxvZyhcImdyYWRlU2VxdWVuY2U6XCIsIGdyYWRlU2VxdWVuY2UpO1xuICAvLyBjb25zb2xlLmxvZyhcInNoYXJlZF9kYXRhRmlsdGVyZWQgbGVuZ3RoOlwiLCBzaGFyZWRfZGF0YUZpbHRlcmVkLmxlbmd0aCk7XG5cbiAgY29uc3QgYnlZZWFyID0gWy4uLmdyYWRlU2VxdWVuY2VdXG4gICAgLnNvcnQoKGEsIGIpID0+IGEueWVhciAtIGIueWVhcilcbiAgICAubWFwKCh7IHllYXIsIGFzc2Vzc21lbnQgfSkgPT4ge1xuICAgICAgY29uc3Qgcm93ID0gc2hhcmVkX2RhdGFGaWx0ZXJlZC5maW5kKGQgPT5cbiAgICAgICAgTnVtYmVyKGQuWUVBUikgPT09IE51bWJlcih5ZWFyKSAmJlxuICAgICAgICBkLkFTU0VTU01FTlRfTkFNRSA9PT0gYXNzZXNzbWVudCAmJlxuICAgICAgICBkLlNVQkdST1VQX05BTUUgPT09IHN1Ymdyb3VwTmFtZVxuICAgICAgKTtcblxuLy8gQ29uc29sZSBMb2dzIHRvIHRyb3VibGVzaG9vdFxuICAgICAgPCEtLSBpZiAoIXJvdykgeyAtLT5cbiAgICAgIDwhLS0gICBjb25zb2xlLmxvZyggLS0+XG4gICAgICA8IS0tICAgICBgTm8gbWF0Y2hpbmcgcm93IGZvciB5ZWFyPSR7eWVhcn0sIGFzc2Vzc21lbnQ9JHthc3Nlc3NtZW50fSwgc3ViZ3JvdXA9JHtzdWJncm91cE5hbWV9YCAtLT5cbiAgICAgIDwhLS0gICApOyAtLT5cbiAgICAgIDwhLS0gfSBlbHNlIHsgLS0+XG4gICAgICA8IS0tICAgY29uc29sZS5sb2coIC0tPlxuICAgICAgPCEtLSAgICAgYE1hdGNoIGZvdW5kIGZvciB5ZWFyPSR7eWVhcn0sIGFzc2Vzc21lbnQ9JHthc3Nlc3NtZW50fSwgc3ViZ3JvdXA9JHtzdWJncm91cE5hbWV9OmAsIC0tPlxuICAgICAgPCEtLSAgICAgcm93IC0tPlxuICAgICAgPCEtLSAgICk7IC0tPlxuICAgICAgPCEtLSB9IC0tPlxuXG4gICAgICByZXR1cm4ge1xuICAgICAgICBZRUFSOiB5ZWFyLFxuICAgICAgICBsYWJlbDogYCR7eWVhcn1cXG4ke2dyYWRlTGFiZWwoYXNzZXNzbWVudCl9YCxcbiAgICAgICAgUHJvZl9Db3VudDogcm93ID8gK3Jvdy5Qcm9mX0NvdW50IDogMCxcbiAgICAgICAgTm90UHJvZl9Db3VudDogcm93ID8gK3Jvdy5Ob3RQcm9mX0NvdW50IDogMCxcbiAgICAgICAgTk9UX1RFU1RFRDogcm93ID8gK3Jvdy5OT1RfVEVTVEVEIDogMCxcbiAgICAgICAgUHJvZl9QY3Q6IHJvdyA/ICtyb3cuUHJvZl9QY3QgOiBudWxsLFxuICAgICAgICBOb3RQcm9mX1BjdDogcm93ID8gK3Jvdy5Ob3RQcm9mX1BjdCA6IG51bGwsXG4gICAgICAgIFBFUl9QUk9GOiByb3cgPyArcm93LlBFUl9QUk9GIDogbnVsbFxuICAgICAgfTtcbiAgICB9KTtcblxuICAvLyBjb25zb2xlLmxvZyhcInN1Ymdyb3VwUm93cyAtIGJ5WWVhcjpcIiwgYnlZZWFyKTtcblxuICBjb25zdCByZXN1bHQgPSBieVllYXIuZmxhdE1hcChkID0+IFtcbiAgICB7IGxhYmVsOiBkLmxhYmVsLCBZRUFSOiBkLllFQVIsIGNhdGVnb3J5OiBcIlByb2ZpY2llbnRcIiwgY291bnQ6IGQuUHJvZl9Db3VudCwgcGN0OiBkLlByb2ZfUGN0LCBwY3QyOiBkLlBFUl9QUk9GIH0sXG4gICAgeyBsYWJlbDogZC5sYWJlbCwgWUVBUjogZC5ZRUFSLCBjYXRlZ29yeTogXCJOb3QgUHJvZmljaWVudFwiLCBjb3VudDogZC5Ob3RQcm9mX0NvdW50LCBwY3Q6IG51bGwgfSxcbiAgICB7IGxhYmVsOiBkLmxhYmVsLCBZRUFSOiBkLllFQVIsIGNhdGVnb3J5OiBcIk5vdCBUZXN0ZWRcIiwgY291bnQ6IGQuTk9UX1RFU1RFRCwgcGN0OiBudWxsIH1cbiAgXSk7XG5cbiAgLy8gY29uc29sZS5sb2coXCJzdWJncm91cFJvd3MgZmxhdE1hcCAtIHJlc3VsdDpcIiwgcmVzdWx0KTtcblxuICByZXR1cm4gcmVzdWx0O1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1kYDxzcGFuIGNsYXNzPVwic2VjdGlvbi10aXRsZS1iYW5uZXJcIj4ke2lucHV0U2VscyA/IGlucHV0U2Vscy5kaXN0cmljdCA6IFwiXCJ9PC9zcGFuPmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmaWcxID0ge1xuICBjb25zdCB3aWR0aCA9IDEwMDA7XG4gIGNvbnN0IGhlaWdodCA9IDQyMDsgLy93b3JrcyB3ZWxsIGZvciBhIDQteWVhciB4IDMtY2F0ZWdvcnkgc3RhY2tlZCBiYXJcbiAgcmV0dXJuIHN0YWNrZWRCYXJDaGFydChzdWJncm91cFJvd3MoXCJHZW5lcmFsIEVkdWNhdGlvbiBTdHVkZW50c1wiKSwgd2lkdGgsIGhlaWdodCwgYEdlbiBFZCBTdHVkZW50cyAobm8gSUVQKWApO1xufVxuXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTE1IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZmlnMiA9IHtcbiAgY29uc3Qgd2lkdGggPSAxMDAwO1xuICBjb25zdCBoZWlnaHQgPSA0MjA7XG5cbiAgcmV0dXJuIHN0YWNrZWRCYXJDaGFydChzdWJncm91cFJvd3MoXCJTdHVkZW50cyB3aXRoIERpc2FiaWxpdGllc1wiKSwgd2lkdGgsIGhlaWdodCwgYFN0dWRlbnRzIHdpdGggRGlzYWJpbGl0aWVzIChJRVApYCk7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTE2IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZmlnMyA9IHtcbiAgY29uc3Qgd2lkdGggPSAxMDAwO1xuICBjb25zdCBoZWlnaHQgPSA0MjA7XG5cbiAgcmV0dXJuIHN0YWNrZWRCYXJDaGFydChzdWJncm91cFJvd3MoXCJOb3QgRWNvbm9taWNhbGx5IERpc2FkdmFudGFnZWRcIiksIHdpZHRoLCBoZWlnaHQsIGBOb3QgRWNvbm9taWNhbGx5IERpc2FkdmFudGFnZWRgKTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmaWc0ID0ge1xuICBjb25zdCB3aWR0aCA9IDEwMDA7XG4gIGNvbnN0IGhlaWdodCA9IDQyMDtcblxuICByZXR1cm4gc3RhY2tlZEJhckNoYXJ0KHN1Ymdyb3VwUm93cyhcIkVjb25vbWljYWxseSBEaXNhZHZhbnRhZ2VkXCIpLCB3aWR0aCwgaGVpZ2h0LCBgRWNvbm9taWNhbGx5IERpc2FkdmFudGFnZWRgKTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmaWc1ID0ge1xuICBjb25zdCB3aWR0aCA9IDEwMDA7XG4gIGNvbnN0IGhlaWdodCA9IDQyMDtcblxuICByZXR1cm4gc3RhY2tlZEJhckNoYXJ0KHN1Ymdyb3VwUm93cyhcIkFsbCBTdHVkZW50c1wiKSwgd2lkdGgsIGhlaWdodCwgYEFsbCBTdHVkZW50c2ApO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjb3VudHknKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnaW5wdXRTZWxzJykifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

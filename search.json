@@ -9,49 +9,49 @@
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html",
     "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html",
-    "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
+    "title": "Open School Data (NY)",
     "section": "",
     "text": "raw data files: “slfs_financial_data.xlsx” (2024 on), “essa-financial-data.xlsx” (2023 and prior)\n\nraw data files from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting\n\nR Script to merge/clean them: slfs_essa_financial_merge.R"
   },
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file",
     "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file",
-    "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
+    "title": "Open School Data (NY)",
     "section": "",
     "text": "raw data files: “slfs_financial_data.xlsx” (2024 on), “essa-financial-data.xlsx” (2023 and prior)\n\nraw data files from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting\n\nR Script to merge/clean them: slfs_essa_financial_merge.R"
   },
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file-1",
     "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file-1",
-    "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
+    "title": "Open School Data (NY)",
     "section": "SOURCE DATA, R script to Create the Clean DATA file:",
     "text": "SOURCE DATA, R script to Create the Clean DATA file:\n\nraw data files: 2024-2025_School_Year_2025-2026_SAMS ST-3.xlsx (one per year)\n\nraw data files from: https://stateaid.nysed.gov/st3/st3data.htm\n\nR Script to merge/clean them: Clean_ST3-SPED.R"
   },
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file-2",
     "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#source-data-r-script-to-create-the-clean-data-file-2",
-    "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
+    "title": "Open School Data (NY)",
     "section": "SOURCE DATA, R script to Create the Clean DATA file:",
     "text": "SOURCE DATA, R script to Create the Clean DATA file:\n\nraw data files: personnel-master-file-statistical-run-202X-2X.xlsx (one per year)\n\nraw data files from: https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf\n\nR Script to merge/clean them: personnel-master-Clean_Merge.R"
   },
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#st3-info-classroom-teacher-teacher-salaries-mainly-the-.15-codes-e.g.-a2110.11-to-a2110.14-and-a2250.15",
     "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#st3-info-classroom-teacher-teacher-salaries-mainly-the-.15-codes-e.g.-a2110.11-to-a2110.14-and-a2250.15",
-    "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
+    "title": "Open School Data (NY)",
     "section": "ST3 info: Classroom Teacher Teacher Salaries Mainly the .15 codes, e.g. A2110.11 to A2110.14 and A2250.15",
     "text": "ST3 info: Classroom Teacher Teacher Salaries Mainly the .15 codes, e.g. A2110.11 to A2110.14 and A2250.15\n\nGuidance, Nurses, Psychologists, Social Workers Instructional Salaries for Pupil Personnel Services A2805.15 to A2830.15\nPrincipals, Program Administration Curriculum Development and Supervision (my best match, see below) A2010.15, A2020.15, A2040.15\nCentral Administration Central Administration A1240, A1310, A1345, A1430, A1460, A1480, and others\nOther Non-Teaching Staff Other Instructional Salaries .15 and .16 codes (pre-K teachers, librarians, paraprofessionals, secretaries)"
   },
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#essaslfs-school-level-finance-survey-special-ed-spending-info",
     "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#essaslfs-school-level-finance-survey-special-ed-spending-info",
-    "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
+    "title": "Open School Data (NY)",
     "section": "ESSA/SLFS (School-Level Finance Survey) Special Ed Spending info:",
     "text": "ESSA/SLFS (School-Level Finance Survey) Special Ed Spending info:\n\nIt reflects direct classroom instruction (A2250 operating lines and F2250 school-age IDEA Part B grant lines).\nIt excludes four major special education spending areas: Out-of-District Tuition & Placements (Categorized under “Exclusions”): A2250.471: Public school district tuition A2250.472: Approved private 853 school and Special Act district tuition A2250.473: Direct special education payments to charter schools Why excluded: These tuition checks are stripped out of school building totals so they do not artificially distort individual school per-pupil averages. Special Education Transportation (Categorized under “Transportation”): General Fund Busing: Special education bus drivers/monitors (A5510.160/.161), contracted vendors (A5510.400), and BOCES busing (A5581.49) Summer ESY Busing: Section 4408 July/August special education transit (F5511, F5541, F5582) Related Services & Central Administration (Categorized under “Instructional Support” or “Central Overhead”): School Psychologists (A2820): Evaluators, test protocols, and certified psychologist salaries School Social Workers (A2825): Certified social workers and counseling services Pupil Personnel Services Directors (A2830): Special education administrators and central PPS office staff Special Education Legal Counsel (A1420.400): Retainers, attorneys, and impartial hearing costs (charged to central board legal) Summer Extended School Year Programs (Categorized under “Summer Programs”): F2253: July/August Section 4408 summer special education instructional costs\nIt also excludes: School legal spending\nThe website has a spreadsheet to show each ST3 code that’s included as SLSF “Special Ed”"
   },
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#st-3",
     "href": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html#st-3",
-    "title": "Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv",
+    "title": "Open School Data (NY)",
     "section": "ST-3:",
     "text": "ST-3:\n\nIt relects all spending (SPED (from A(gen ed) and F(special funding) and SPED exclusions, and non SPED spending too\nIt is the root source of all finanical data - the ESS/SLFS spreadsheet, MOE, etc (which each excluding different things in their Special Ed totals and exclusions)."
   },
@@ -60,7 +60,7 @@
     "href": "index.html",
     "title": "Open School Data (NY)",
     "section": "",
-    "text": "This website contains free, printable plots and visualizations of public data related to student literacy outcomes in our NY public schools.\nWe hope to help parents, teachers, and community members work together to help make needed change so all students learn to read and write in our public schools.\nIf you’d like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!\n**DISCLAIMER: Nothing on this page should be construed as legal advice.\nUse at your own discretion, and verify data - mistakes happen, please email any issues.\n\n\n\n\n\n\n\nStudent Outcomes and Spending - Plots & Data\n\n\n\n\n\n\nELA scores, Year-Year Growth\n\n\n\n\nELA scores, by County\n\n\n\n\nSalaries & Staff Counts\n\n\n\n\nSpecial Ed & Legal Spending (ST-3)\n\n\n\n\nSpecial Ed Spending (ESSA/SLSF)\n\n\n\n\nNo matching items\n\n\n\n\n\nScience of Reading/Writing/Learning\n\n\n\n\n\n\nThe Importance of Evidence-Based Instruction (Reading Rockets)\n\n\n\n\nScience of Reading (Reading Rockets)\n\n\n\n\nIES Practice Guide - Reading(K-3)\n\n\n\n\nIES Practice Guide - Writing(Elementary School)\n\n\n\n\nIES Practice Guide - Writing(Secondary School)\n\n\n\n\nWriting to Read - (writing and reading fluency and comprehension go together, like decoding and encoding)\n\n\n\n\nNo matching items\n\n\n\n\n\nSchool Districts - RTI/MTSS & SPED, Parental Rights\n\n\n\n\n\n\nWhat is MTSS (and RTI)? (Reading Rockets)\n\n\n\n\nSpecial Education in NY - Parent’s Guide (NYSED)\n\n\n\n\nOSE Ed Partnership - Presentations to improve equity and student outcomes (NYSED)\n\n\n\n\nNo matching items\n\n\n\n\n\nFree SOR Resources, Parent Templates, Podcasts\n\n\n\n\n\n\nPodcast - Sold a Story Podcast (APR, Emily Hanford)\n\n\n\n\nReading, Spelling - UFLI Foundations (explicit, systematic phonics program and resources)\n\n\n\n\nWriting, Reading Comprehension - GIST instructions\n\n\n\n\nWriting, Reading Comprehension - GIST template\n\n\n\n\nNo matching items"
+    "text": "Welcome to Open School Data (NY)\nThis website contains free, printable plots and visualizations of public data related to student literacy outcomes in our NY public schools.\nWe hope to help parents, teachers, and community members work together to help make needed change so all students learn to read and write, equitably.\nIf you’d like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!\n\n**DISCLAIMER: Nothing on this page should be construed as legal advice.\nUse at your own discretion, and verify data - mistakes happen, please email any issues."
   },
   {
     "objectID": "data/Future/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",

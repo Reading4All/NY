@@ -1,62 +1,7 @@
-/* gets rid of too much whitespace above plots */
-h2 {
-  margin-top: 0 !important;
-  font-size: 1.1rem;
-}
-
-/* input boxes - formatting so they wrap when screen size decreased */
-.input-toolbar {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 12px;
-  row-gap: 4px;
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-  align-items: start;
-}
-
-.input-toolbar > form {
-  width: 100%;
-  min-width: 0;
-  margin: 0 !important;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.input-toolbar input,
-.input-toolbar select {
-  max-width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-}
-
-@media (max-width: 850px) {
-  .input-toolbar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 550px) {
-  .input-toolbar {
-    grid-template-columns: 1fr;
-    row-gap: 4px;
-  }
-}
-
-
-/* end of input boxes - formatting */
-
-/* remove scrollbar under input header */
-.cell-output.cell-output-display {
-  overflow-x: hidden;
-}
-
-/* font in the reference notes sections */
-.card-body.html-fill-item.html-fill-container {
-  color: #5a5a5a;
-  font-size: .8rem;
-}
+/* DistrictELAGrowth.qmd - page-specific rules.
+   Shared rules (h2, input toolbar, notes font, and the print rules that hide
+   the toolbar/header/tabs/code, strip card chrome and repeat the footer)
+   live in ../custom.scss. */
 
 /* Put plots side-by-side on desktop */
 @media (min-width: 768px) {
@@ -79,13 +24,14 @@ h2 {
   }
 }
 
-@media print {
+/* Print: portrait, with room at the bottom for the fixed footer */
+@page {
+  size: portrait;
+  margin-left: 0.5in;     /* gives the plots a clean border on the paper */
+  margin-bottom: 0.9in;   /* reserves space so plots aren't hidden behind the footer */
+}
 
-  /* 0. FORCE DEFAULT BROWSER PRINT LAYOUT TO PORTRAIT */ 
-  @page { 
-    size: portrait; 
-    margin-left: 0.5in; /* Gives your plots a clean border on the paper */ 
-  }
+@media print {
 
   /* --- Show ALL tabs, not just the currently active one ---
      Bootstrap tabsets hide inactive .tab-pane elements on screen;
@@ -108,15 +54,11 @@ h2 {
 
   /* --- Flatten every ancestor of the tabset too ---
      Quarto dashboards (bslib) lay out the WHOLE page with nested
-     flex/grid "fillable" containers (.bslib-grid, .bslib-gap-spacing,
-     .html-fill-container, .html-fill-item, .quarto-dashboard content
-     wrappers, .column-screen, .column-page, etc). break-before/after/
-     inside are only honored inside a normal block flow: if ANY
-     ancestor between the page root and .tab-pane is still flex or
-     grid, the whole subtree is treated as one unbreakable unit and
-     page breaks are silently ignored, even though .tab-content and
-     .tab-pane themselves are already block above. So reset the
-     ancestor chain too, not just the tabset's own internals. */
+     flex/grid "fillable" containers. break-before/after/inside are only
+     honored inside a normal block flow: if ANY ancestor between the page
+     root and .tab-pane is still flex or grid, page breaks are silently
+     ignored. So reset the ancestor chain too, not just the tabset's own
+     internals. */
   body,
   .quarto-dashboard,
   .quarto-dashboard-content,
@@ -138,39 +80,23 @@ h2 {
     overflow: visible !important;
   }
 
-  /* Tab navigation isn't usable on paper, so hide it when printing */
-  .panel-tabset .nav-tabs {
-    display: none !important;
-  }
-
-  /* --- Hide the county/district/grade input toolbar when printing */
-  #print-hide-toolbar,
-  div.toolbar.html-fill-container {
-    display: none !important;
-  }
-  
-  /* --- Hide the website header when printing */
-  #quarto-dashboard-header,
-  div.navbar-container {
-    display: none !important;
-  }
-
   /* --- One tab (its 2 plots) per printed page --- */
   .panel-tabset .tab-pane {
-    break-after: page !important;      /* modern property */
+    break-after: page !important;        /* modern property */
     page-break-after: always !important; /* legacy fallback for older print engines */
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
+
   /* Don't force a blank page after the very last tab */
   .panel-tabset .tab-pane:last-child {
     break-after: auto !important;
     page-break-after: auto !important;
   }
+
   /* Belt-and-suspenders: also force a break BEFORE every tab-pane
-     except the first. break-before on the element itself is often
-     honored more reliably than break-after on the sibling before it,
-     especially once margins/whitespace are involved. */
+     except the first (break-before on the element itself is often
+     honored more reliably than break-after on the sibling before it). */
   .panel-tabset .tab-pane:not(:first-child) {
     break-before: page !important;
     page-break-before: always !important;
@@ -182,72 +108,5 @@ h2 {
   .panel-tabset .tab-pane svg {
     break-inside: avoid;
     page-break-inside: avoid;
-  }
-
-  /* --- Re-hide OJS source code ---
-     The broad "unhide everything" rules above (targeting .card,
-     .bslib-card, .card-body, .html-fill-container, etc.) also
-     reverse the display:none that Quarto normally uses to hide
-     each OJS cell's source code (shown/toggled via a code-fold
-     control). Explicitly re-hide it here, after the unhide rules,
-     so this wins the cascade and code stays hidden in print. */
-  .cell-code,
-  .sourceCode,
-  pre.sourceCode,
-  details.code-fold {
-    display: none !important;
-  }
-
-  /* --- Strip the visible "card" chrome (border/shadow/header bar) ---
-     Quarto dashboards wrap each plot, each tab-pane, and each
-     section (like References) in a Bootstrap/bslib "card" for the
-     on-screen boxed/light-box look. For print we want just the
-     content, no boxes. This removes the chrome but keeps spacing. */
-  .card,
-  .bslib-card,
-  .panel-tabset .card,
-  #print-footer.card,
-  #print-footer .card {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-  }
-  .card-header,
-  .bslib-card .card-header {
-    display: none !important; /* remove the little title bar above each plot box */
-  }
-  .card-body,
-  .bslib-card .card-body {
-    padding: 0 !important;
-  }
-
-  /* --- Repeat "References, Notes" on every page ---
-     position: fixed elements re-render on every printed page in
-     Chrome/Edge. (Firefox and Safari print engines don't reliably
-     support this; see note below the code block.) */
-  #print-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    font-size: 9pt;
-    line-height: 1.2;
-    padding: 4pt 12pt;
-    border-top: 0.5pt solid #ccc;
-  }
-  #print-footer h2 {
-    font-size: 9pt;
-    margin: 0 0 2pt 0;
-  }
-  #print-footer ul {
-    margin: 0;
-    padding-left: 14pt;
-  }
-
-  /* Reserve space at the bottom of every page so plot content
-     doesn't get hidden behind the fixed footer */
-  @page {
-    margin-bottom: 0.9in;
   }
 }
