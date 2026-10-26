@@ -821,18 +821,19 @@ return html`<div style="text-align:left;width:100%;margin-top:0;">${svg.node()}$
 ```{ojs}
 //| echo: false
 //md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Benefits</i></h>`
-md`<span class="section-title-banner">${inputSels ? inputSels.district : ""}</span>`
+md`<span class="section-title-banner" style="padding: 0px !important;">${inputSels ? inputSels.district : ""}</span>`
 
+md`<span class="section-title-banner" style="background-color: darkgray !important; color: black !important; display: block; padding: 0px;">Each district spends MILLION$ on Special Ed (SPED) each year - <br> but most (besides salaries) is spent supporing out-of-distict placements.<br><br>Support in-district SPED teachers & student outcomes!</span>`
 ```
 
-#### Row - Pie Charts {height=95% .flow}
+#### Row - Pie Charts {height=90% .flow}
 ##### Left Col - Total Chart {width=60% .fill}
 ```{ojs}
 //| title: "Combined: General + Special Aid Funds"
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_combined_total_str}</strong></div>
-  <div style="font-size:0.9em;color:#555;margin-bottom:6px;font-style:italic;">Salary & Benefits (excluded): <strong>${total_combined_sal_str}</strong></div>
+  <div style="font-size:0.9em;color:#555;margin-bottom:6px;font-style:italic;">SPED Salary & Benefits (excluded): <strong>${total_combined_sal_str}</strong></div>
   ${pieChart(combinedChartData, { title: "", color: itemColor })}
 </div>`
 
@@ -844,7 +845,7 @@ html`<div style="display:flex;flex-direction:column;justify-content:flex-start;a
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_sped_total_str}</strong></div>
-  <div style="font-size:0.9em;color:#555;margin-bottom:6px;font-style:italic;">Salary & Benefits (excluded): <strong>${total_sped_sal_str}</strong></div>
+  <div style="font-size:0.9em;color:#555;margin-bottom:6px;font-style:italic;">SPED Salary & Benefits (excluded): <strong>${total_sped_sal_str}</strong></div>
   ${pieChart(spedChartData, { title: "", maxHeight: 250 })}
 </div>`
 
@@ -855,7 +856,7 @@ html`<div style="display:flex;flex-direction:column;justify-content:flex-start;a
 //| echo: false
 html`<div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;">
   <div style="font-size:1em;margin-bottom:2px;">Total: <strong>${total_sf_total_str}</strong></div>
-  <div style="font-size:0.9em;color:#555;margin-bottom:6px;font-style:italic;">Salary & Benefits (excluded): <strong>${total_sf_sal_str}</strong></div>
+  <div style="font-size:0.9em;color:#555;margin-bottom:6px;font-style:italic;">SPED Salary & Benefits (excluded): <strong>${total_sf_sal_str}</strong></div>
   ${pieChart(sfChartData, { title: "", color: sfColor, maxHeight: 250 })}
 </div>`
 
