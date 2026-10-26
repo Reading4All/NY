@@ -823,7 +823,7 @@ return html`<div style="text-align:left;width:100%;margin-top:0;">${svg.node()}$
 //md`### SPED & Legal Spending - 2025:<br>**${inputSels ? inputSels.district : ""}**<br><i><h6>excluding Salaries & Benefits</i></h>`
 md`<span class="section-title-banner" style="padding: 0px !important;">${inputSels ? inputSels.district : ""}</span>`
 
-md`<span class="section-title-banner" style="background-color: darkgray !important; color: black !important; display: block; padding: 0px;">Each district spends MILLION$ on Special Ed (SPED) each year - <br> but most (besides salaries) is spent supporing out-of-distict placements.<br><br>Support in-district SPED teachers & student outcomes!</span>`
+md`<span class="section-title-banner" style="background-color: darkgray !important; color: black !important; display: block; padding: 0px;">School districts invest millions in Special Education annually, but outside of salaries, it mainly pays for out-of-district placements. Explore the data below to see your distict's SPED spending.<br><br>We need to better support our local SPED classrooms.</span>`
 ```
 
 #### Row - Pie Charts {height=90% .flow}
