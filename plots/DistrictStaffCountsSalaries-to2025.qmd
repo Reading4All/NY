@@ -350,6 +350,8 @@ roleColors = new Map([
 
 fallbackColor = "#8c8c8c";  // any role not listed above
 
+studentColor = "#4f81a8";   // Students line in the Staff Counts plot (and its table row)
+
 // Roles drawn with a thinner line in the salary plot
 thinRoles = new Set([
   "Other Non-Teaching Staff",
@@ -404,7 +406,7 @@ function salaryTable(data) {
         <th style="${cell}">Color</th>
         <th style="${cell}">Staff type</th>
         <th style="${cell}text-align:right">Average salary, ${lastYear}</th>
-        <th style="${cell}text-align:right">Total (FT)</th>
+        <th style="${cell}text-align:right"># Full-Time</th>
       </tr>
     </thead>
     <tbody>
@@ -485,13 +487,21 @@ function salaryTableAndCard(data) {
   </div>`;
 }
 
-// Second table (staff counts section): color, staff group, total FTE, estimated total salaries
-// (most recent year, lastYear), using the same four staff groups as the Staff Counts plot
-function staffTable(data) {
+// Second table (staff counts section): color, group, number of students / full-time staff
+// (most recent year, lastYear), using the same series as the Staff Counts plot.
+// studentData = the district's rows from the Staff Counts data (series "Students" = enrollment)
+function staffTable(data, studentData = []) {
   if (!data || !data.length) return htl.html``;
 
   const latest = data.filter(d => Number(d.YEAR) === Number(lastYear));
-  const rows = staffGroups.map(g => {
+  const studentsLatest = (studentData || []).find(d => d.series === "Students" && Number(d.YEAR) === Number(lastYear));
+  const studentRow = {
+    label: "Students (enrollment)",
+    color: studentColor,
+    isStudents: true,
+    count: studentsLatest ? studentsLatest.value : null
+  };
+  const rows = [studentRow, ...staffGroups.map(g => {
     const members = latest.filter(d => staffGroupOf(d.series) === g.label);
     return {
       label: g.label,
@@ -499,7 +509,8 @@ function staffTable(data) {
       fte: members.length ? d3.sum(members, d => d.fte) : null,
       total_salary: members.length ? d3.sum(members, d => d.total_salary) : null
     };
-  });
+  })];
+  const fmtCount = n => n != null ? Math.round(n).toLocaleString() : "–";
   const money = n => n != null ? `$${Math.round(n).toLocaleString()}` : "–";
   const fmtFte = n => n != null ? n.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1}) : "–";
   const cell = "padding:3px 16px 3px 0;border:0;";
@@ -509,16 +520,16 @@ function staffTable(data) {
       <tr style="border-bottom:1px solid #ccc;text-align:left">
         <th style="${cell}">Color</th>
         <th style="${cell}">Staff type</th>
-        <th style="${cell}text-align:right">Total (FT)</th>
-        <th style="${cell}text-align:right">Total Salaries (Est.), ${lastYear}</th>
+        <th style="${cell}text-align:right"># Full-Time</th>
+        <!-- <th style="${cell}text-align:right">Total Salaries (Est.), ${lastYear}</th>  -->
       </tr>
     </thead>
     <tbody>
       ${rows.map(r => htl.html`<tr>
         <td style="${cell}"><span style="display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:middle;background:${r.color}"></span></td>
         <td style="${cell}">${r.label}</td>
-        <td style="${cell}text-align:right">${fmtFte(r.fte)}</td>
-        <td style="${cell}text-align:right">${money(r.total_salary)}</td>
+        <td style="${cell}text-align:right">${r.isStudents ? fmtCount(r.count) : fmtFte(r.fte)}</td>
+        <!-- <td style="${cell}text-align:right">${money(r.total_salary)}</td> -->
       </tr>`)}
     </tbody>
   </table>`;
@@ -617,12 +628,12 @@ function changePlot(data, width, height, view = "Change Over Time") {
 
     x: { label: "School year (ending)", tickFormat: "d", ticks: yearTicks, labelAnchor: "center", labelArrow: false },
     y: {
-      label: annual ? "Students (head count) and staff (FTE)" : `Change since ${firstYear}`,
+      label: annual ? "Students (head count) and staff (#FT)" : `Change since ${firstYear}`,
       grid: true, labelAnchor: "center", ticks: 7, labelArrow: false
     },
     color: {
       domain: ["Students", ...staffGroups.map(g => g.label)],
-      range: ["#4f81a8", ...staffGroups.map(g => g.color)],
+      range: [studentColor, ...staffGroups.map(g => g.color)],
       legend: true
     },
     marks: [
@@ -687,8 +698,8 @@ fig1 = {
 ```{ojs}
 //| echo: false
 //| title: "Total Staff and Students"
-// Staff group, total FTE, and estimated total salaries (latest year)
-staffTable(dd_salary)
+// Students (enrollment) and staff group totals (latest year)
+staffTable(dd_salary, dd)
 ```
 
 ```{ojs}
