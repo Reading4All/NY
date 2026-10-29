@@ -39,7 +39,7 @@ format:
 
 ::: {.v-top}
 ### Public Data. Better Outcomes for All.
-
+<br>
 This website provides free, printable visualizations of public data on district operations and student literacy outcomes in New York's public schools.
 
 Our goal is to help parents, teachers, and community members use data to work together and advocate for evidence-based practices and teacher support that reach classrooms and improve outcomes for all students.
