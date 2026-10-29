@@ -38,7 +38,7 @@ format:
 ```
 
 ::: {.v-top}
-### Better Outcomes for All.
+### Transparency + Evidence-based Practices + Teacher Support<br><br>Better Outcomes for All.
 <br>
 This website provides free, printable visualizations of public data on district operations and student literacy outcomes in New York's public schools.
 
