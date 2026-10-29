@@ -38,13 +38,15 @@ format:
 ```
 
 ::: {.v-top}
-### Welcome to Open School Data (NY)
+### Public Data for Better Schools. Better Outcomes for All.
 
-This website contains free, printable plots and visualizations of public data related to student literacy outcomes in our NY public schools.
+This website provides free, printable visualizations of public data on district operations and student literacy outcomes in New York's public schools.
 
-We hope to help parents, teachers, and community members work together to help make needed change so all students learn to read and write, equitably.
+Our goal is to help parents, teachers, and community members use data to work together and advocate for evidence-based practices and teacher support that reach classrooms and improve outcomes for all students.
 
-If you'd like to contribute, and care more about improving equity and student outcomes over profiting off of them, your ideas and contributions are welcome!
+FAPE is not optional. Every student deserves the opportunity to learn to read and write. Teachers deserve a supportive and safe workplace, too.
+
+If you share our commitment to improving equity and student outcomes rather than profiting at their expense, we welcome your ideas, feedback, and contributions.
 :::
 
 [*\*\*DISCLAIMER: Nothing on this page should be construed as legal advice.  
