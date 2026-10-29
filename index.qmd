@@ -38,7 +38,7 @@ format:
 ```
 
 ::: {.v-top}
-### Public Data for Better Schools. Better Outcomes for All.
+### Public Data. Better Outcomes for All.
 
 This website provides free, printable visualizations of public data on district operations and student literacy outcomes in New York's public schools.
 
