@@ -2,50 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.openschooldata.com/support-us.html</loc>
-    <lastmod>2026-11-20T16:35:13.063Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/LICENSE.html</loc>
-    <lastmod>2026-11-20T16:35:12.837Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/Future/MATH/SOURCEDATA-MATH.html</loc>
-    <lastmod>2026-11-20T16:35:13.045Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html</loc>
-    <lastmod>2026-11-20T16:35:13.046Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/plots/SPED_Spending-to2025.html</loc>
-    <lastmod>2026-11-20T16:35:13.061Z</lastmod>
+    <lastmod>2026-11-20T22:06:29.826Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/plots/ELAcountyreport-2025.html</loc>
-    <lastmod>2026-11-20T16:35:13.061Z</lastmod>
+    <lastmod>2026-11-20T22:06:29.824Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/plots/SPED_ST3-2025.html</loc>
-    <lastmod>2026-11-20T16:35:13.061Z</lastmod>
+    <lastmod>2026-11-20T22:06:29.824Z</lastmod>
   </url>
   <url>
-    <loc>https://www.openschooldata.com/plots/DistrictELAGrowth-to2025.html</loc>
-    <lastmod>2026-11-20T16:35:13.061Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.openschooldata.com/plots/DistrictStaffCountsSalaries-to2025.html</loc>
-    <lastmod>2026-11-20T16:35:13.061Z</lastmod>
+    <loc>https://www.openschooldata.com/LICENSE.html</loc>
+    <lastmod>2026-11-20T22:06:29.573Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/data/ELA/SOURCEDATA-ELA.html</loc>
-    <lastmod>2026-11-20T16:35:13.024Z</lastmod>
+    <lastmod>2026-11-20T22:06:29.792Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/Future/MATH/SOURCEDATA-MATH.html</loc>
+    <lastmod>2026-11-20T22:06:29.809Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/data/Future/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html</loc>
-    <lastmod>2026-11-20T16:35:13.034Z</lastmod>
+    <lastmod>2026-11-20T22:06:29.799Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html</loc>
+    <lastmod>2026-11-20T22:06:29.809Z</lastmod>
   </url>
   <url>
     <loc>https://www.openschooldata.com/index.html</loc>
-    <lastmod>2026-11-20T16:35:13.060Z</lastmod>
+    <lastmod>2026-11-20T22:06:29.822Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/plots/DistrictStaffCountsSalaries-to2025.html</loc>
+    <lastmod>2026-11-20T22:06:29.824Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/plots/SPED_Spending-to2025.html</loc>
+    <lastmod>2026-11-20T22:06:29.824Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.openschooldata.com/plots/DistrictELAGrowth-to2025.html</loc>
+    <lastmod>2026-11-20T22:06:29.824Z</lastmod>
   </url>
 </urlset>
