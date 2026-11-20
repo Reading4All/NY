@@ -38,7 +38,7 @@ format:
 ```
 
 ::: {.v-top}
-### Better Outcomes. Better Schools.
+### Better Practices. Better Schools.
 <br>
 This website provides free information and resources to help parents, educators, and community members collaborate to improve practices across NY public schools. We want people to share and understand issues from all perspectives so we can advocate together for effective change—including evidence-based practices, strong teacher support, and meaningful family engagement—to improve outcomes for all students.
 
