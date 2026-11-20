@@ -40,7 +40,7 @@ format:
 ::: {.v-top}
 ### Better Practices. Better NY Schools.
 <br>
-This website provides free information and printable data to help parents, educators, and community members collaborate to improve practices across NY public schools. We want people to share and understand issues from all perspectives so we can advocate together for effective change—including evidence-based practices, strong teacher support, and meaningful family engagement—to improve outcomes for all students.
+This website provides free information and printable data to help parents, educators, and community members collaborate to improve practices across NY public schools. Our goal is to empower communities to share, learn, and advocate together for evidence-based practices, strong teacher support, and meaningful family engagement that improve outcomes for all students.
 
 A Least Restrictive Environment is only possible when teachers have strong leaders who support them with quality programs, scaffolds, accommodations, and resources to facilitate their teaching and use of progress data. FAPE is not optional. Every student deserves the opportunity to learn to read and write, and every teacher deserves a safe, supportive workplace.
 
