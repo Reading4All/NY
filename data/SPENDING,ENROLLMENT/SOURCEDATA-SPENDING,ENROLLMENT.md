@@ -1,28 +1,27 @@
-# Cleaned DATA file: slfs_essa_financial_merged_thru2025.csv  
-  
+# CLEAN DATA FILE: slfs_essa_financial_merged_thru2025.csv  
 ## SOURCE DATA, R script to Create the Clean DATA file:  
 - raw data files: "slfs_financial_data.xlsx" (2024 on), "essa-financial-data.xlsx" (2023 and prior)  
 - raw data files from: https://www.nysed.gov/fiscal-analysis-research/essa-and-slfs-financial-reporting  
 - R Script to merge/clean them: slfs_essa_financial_merge.R  
+-- contains - per district since 2019 - spending per gened and swd, enrollment for each
  
- 
-# Cleaned DATA file: ST3-SPED-202X.csv  (one per year)  
-  
+
+# CLEAN DATA FILE: ST3-SPED-202X.csv  (one per year)  
 ## SOURCE DATA, R script to Create the Clean DATA file:  
 - raw data files: 2024-2025_School_Year_2025-2026_SAMS ST-3.xlsx  (one per year)  
 - raw data files from: https://stateaid.nysed.gov/st3/st3data.htm  
 - R Script to merge/clean them: Clean_ST3-SPED.R  
  
  
-# Cleaned DATA file: personnel-master-thru2025.csv  
-  
+
+### CLEAN DATA FILE: personnel-master-thru2025.csv  
 ## SOURCE DATA, R script to Create the Clean DATA file:  
 - raw data files: personnel-master-file-statistical-run-202X-2X.xlsx  (one per year)  
 - raw data files from: https://www.nysed.gov/information-reporting-services/personnel-master-file-pmf  
 - R Script to merge/clean them: personnel-master-Clean_Merge.R  
   
   
-# OTHER - Teacher info:  
+# OTHER - Teacher Notes:  
 ## ST3 info: Classroom Teacher	Teacher Salaries	Mainly the .15 codes, e.g. A2110.11 to A2110.14 and A2250.15
 - Guidance, Nurses, Psychologists, Social Workers	Instructional Salaries for Pupil Personnel Services	A2805.15 to A2830.15
 - Principals, Program Administration	Curriculum Development and Supervision (my best match, see below)	A2010.15, A2020.15, A2040.15
@@ -30,7 +29,7 @@
 - Other Non-Teaching Staff	Other Instructional Salaries	.15 and .16 codes (pre-K teachers, librarians, paraprofessionals, secretaries)
 
 
-# OTHER - GENERAL SPENDING NOTES:  
+# OTHER - GENERAL SPENDING Notes:  
 ## ESSA/SLFS (School-Level Finance Survey) Special Ed Spending info:
 - It reflects direct classroom instruction (A2250 operating lines and F2250 school-age IDEA Part B grant lines).
 - It excludes four major special education spending areas:
