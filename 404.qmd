@@ -9,11 +9,23 @@ format:
     theme: 
       - minty
       - custom.scss
-    #css: DistrictELAGrowth.css
-    nav-buttons:
-      - icon: arrow-left-circle-fill
-        href: ../
+
 ---
+
+<style>
+.card {
+  border: none !important;
+  box-shadow: none !important;
+}
+.card-header {
+  border-bottom: none !important;
+}
+.nav-tabs, .tab-content {
+  border: none !important;
+}
+</style>
+
+<br>
 **404**
 <br><br>
 The page you requested cannot be found.

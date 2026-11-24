@@ -30,7 +30,7 @@ website:
             href: plots/SPED_Spending-to2025.html
           - text: "---"
           - text: "Archive"
-            href: plots/ELAcountyreport-2025.html
+            href: archive.html
 
       - text: "SCIENCE OF READING"
         menu:
