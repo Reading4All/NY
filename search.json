@@ -1,24 +1,10 @@
 [
   {
-    "objectID": "data/ELA/SOURCEDATA-ELA.html#source-data-r-script-to-create-the-clean-data-file",
-    "href": "data/ELA/SOURCEDATA-ELA.html#source-data-r-script-to-create-the-clean-data-file",
-    "title": "Open School Data (NY)",
-    "section": "SOURCE DATA, R script to Create the Clean DATA file:",
-    "text": "SOURCE DATA, R script to Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
-  },
-  {
-    "objectID": "data/Future/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
-    "href": "data/Future/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
-    "title": "Open School Data (NY)",
-    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
-    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_MATH_ANYYEAR-filePerSeason.R"
-  },
-  {
-    "objectID": "data/Future/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
-    "href": "data/Future/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "Open School Data (NY)",
     "section": "",
-    "text": "**Cleaned DATA file: enrollment-by-district-of-residence-nonpublic.csv * with school years (ending): 2021-2025\n**SOURCE DATA, and Steps to Clean:\n* Source Data: annual “enrollment-by-districts-of-residence-and-attendance-nonpublic-20XX-XX.xlsx” files, from: https://www.p12.nysed.gov/irs/statistics/nonpublic/home.html\n* R Script to clean and merge them: enrollment-by-districts-of-residence-nonpublic–MergeClean.R"
+    "text": "Advocacy for Effective Practices — Stronger Outcomes for All\n This website provides free information and printable data to help parents, educators, and community members collaborate to improve policies and practices across NY public schools. Our goal is to empower communities to share, learn, and advocate together for evidence-based instruction, strong teacher support, and meaningful family engagement to improve outcomes for all students.\nA Least Restrictive Environment is only possible when teachers have strong leaders who support them with quality programs, scaffolds, accommodations, and resources to facilitate their teaching and use of progress data. FAPE is not optional. Every student deserves the opportunity to learn to read and write, and every teacher deserves a safe, supportive workplace.\nIf you share our commitment to improving public school practices for the sake of better outcomes for all students and supporting teachers in achieving them, we welcome your ideas and contributions to this project.\n\n**DISCLAIMER: Nothing on this page should be construed as legal advice.\nUse at your own discretion, and verify data - mistakes happen, please email any issues."
   },
   {
     "objectID": "data/SPENDING,ENROLLMENT/SOURCEDATA-SPENDING,ENROLLMENT.html",
@@ -70,10 +56,24 @@
     "text": "ST-3:\n\nIt relects all spending (SPED (from A(gen ed) and F(special funding) and SPED exclusions, and non SPED spending too\nIt is the root source of all finanical data - the ESS/SLFS spreadsheet, MOE, etc (which each excluding different things in their Special Ed totals and exclusions)."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
+    "objectID": "data/Future/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
+    "href": "data/Future/LRE,PLACEMENT/SOURCEDATA---enrollment-nonpublic.html",
     "title": "Open School Data (NY)",
     "section": "",
-    "text": "Advocacy for Effective Practices — Stronger Outcomes for All\n This website provides free information and printable data to help parents, educators, and community members collaborate to improve policies and practices across NY public schools. Our goal is to empower communities to share, learn, and advocate together for evidence-based instruction, strong teacher support, and meaningful family engagement to improve outcomes for all students.\nA Least Restrictive Environment is only possible when teachers have strong leaders who support them with quality programs, scaffolds, accommodations, and resources to facilitate their teaching and use of progress data. FAPE is not optional. Every student deserves the opportunity to learn to read and write, and every teacher deserves a safe, supportive workplace.\nIf you share our commitment to improving public school practices for the sake of better outcomes for all students and supporting teachers in achieving them, we welcome your ideas and contributions to this project.\n\n**DISCLAIMER: Nothing on this page should be construed as legal advice.\nUse at your own discretion, and verify data - mistakes happen, please email any issues."
+    "text": "**Cleaned DATA file: enrollment-by-district-of-residence-nonpublic.csv * with school years (ending): 2021-2025\n**SOURCE DATA, and Steps to Clean:\n* Source Data: annual “enrollment-by-districts-of-residence-and-attendance-nonpublic-20XX-XX.xlsx” files, from: https://www.p12.nysed.gov/irs/statistics/nonpublic/home.html\n* R Script to clean and merge them: enrollment-by-districts-of-residence-nonpublic–MergeClean.R"
+  },
+  {
+    "objectID": "data/Future/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "href": "data/Future/MATH/SOURCEDATA-MATH.html#source-data-steps-to-clean-and-create-the-clean-data-file",
+    "title": "Open School Data (NY)",
+    "section": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:",
+    "text": "SOURCE DATA, Steps to Clean and Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\n\nR Script to clean it: Clean_MATH_ANYYEAR-filePerSeason.R"
+  },
+  {
+    "objectID": "data/ELA/SOURCEDATA-ELA.html#source-data-r-script-to-create-the-clean-data-file",
+    "href": "data/ELA/SOURCEDATA-ELA.html#source-data-r-script-to-create-the-clean-data-file",
+    "title": "Open School Data (NY)",
+    "section": "SOURCE DATA, R script to Create the Clean DATA file:",
+    "text": "SOURCE DATA, R script to Create the Clean DATA file:\n\nSource Data, “Report Card Database” from: https://data.nysed.gov/downloads.php\n\nR Script to clean it: Clean_ELA_ANYYEAR-filePerSeason.R"
   }
 ]
