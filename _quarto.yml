@@ -18,8 +18,8 @@ website:
     left:
       - text: "PLOTS & DATA"
         menu:
-          - text: "ELA Scores, Growth"
-            href: plots/DistrictELAGrowth-to2025.html
+          - text: "ELA Scores, Growth, to 2026"
+            href: plots/DistrictELAGrowth-to2026.html
           - text: "ELA Scores, byCounty, 2026"
             href: plots/ELAcountyreport-2026.html
           - text: "Salaries & Staff Counts"

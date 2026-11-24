@@ -1,0 +1,521 @@
+---
+title: "ELA scores, Year-Year Growth"
+format: 
+  dashboard: 
+    orientation: columns
+    expandable: false
+    scrolling: true
+    theme: 
+      - minty
+      - ../custom.scss
+    css: DistrictELAGrowth.css
+---
+```{r}
+#| echo: false
+#| include: false
+library(tidyverse)
+library(tidyr)
+
+### READ, KEEP DATA NEEDED FOR ALL THE PLOTS, for all user inputs #####
+
+###### {r, read csv, format df}
+YEAR <-  2026 #YEAR ENDING SPRING DATA, so CSV with same year as selected
+
+###### read csv data
+data_local <- 0 #change as needed, 1= data is on computer, 0=online
+
+if (data_local == 0) {
+  csv_file1 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
+  csv_file2 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-1, ".csv")
+  csv_file3 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-2, ".csv")
+  csv_file4 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-3, ".csv")
+  csv_file5 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-4, ".csv")
+  csv_file6 <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR-5, ".csv")
+} else if (data_local == 1) {
+  csv_file1 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR, ".csv")
+  csv_file2 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-1, ".csv")
+  csv_file3 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-2, ".csv")
+  csv_file4 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-3, ".csv")
+  csv_file5 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-4, ".csv")
+  csv_file6 <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR-5, ".csv")
+} else {
+  print("Error: fix link(s) to data files")
+}
+
+df1 <- read_csv(csv_file1)
+df2 <- read_csv(csv_file2)
+df3 <- read_csv(csv_file3)
+df4 <- read_csv(csv_file4)
+df5 <- read_csv(csv_file5)
+df6 <- read_csv(csv_file5)
+
+# combine
+shared_data <- rbind(df1, df2, df3, df4, df5, df6)
+
+
+###### KEEP ONLY NEEDED Data
+
+## Only Keep Spring (year-end) Data
+shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
+
+# Keep District and County Data
+## (old) Only Keep District Data
+## shared_data<-shared_data[(shared_data$ENTITY_TYPE == "DISTRICT"),]
+shared_data <- shared_data[
+  shared_data$ENTITY_TYPE == "DISTRICT" |
+  shared_data$ENTITY_TYPE == "COUNTY",
+]
+
+## Only Keep Subgroups to be used
+shared_data<-shared_data[(shared_data$SUBGROUP_NAME == "Students with Disabilities" |
+                          shared_data$SUBGROUP_NAME == "General Education Students" |
+                          shared_data$SUBGROUP_NAME == "Economically Disadvantaged" |  
+                          shared_data$SUBGROUP_NAME == "Not Economically Disadvantaged" |
+                          shared_data$SUBGROUP_NAME == "All Students"
+                          ),]
+
+## Remove rows with NA Prof_Pct rates (to prevent rows with missing counts from being included but NA on plots)
+shared_data <- shared_data %>% 
+  filter(!is.na(Prof_Pct)) %>% 
+  dplyr::arrange(Prof_Pct, NotProf_Pct)
+
+## Remove all columns not used - lessen load to frontend/users, reduce html output size
+shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, NotProf_Pct, NotTested_Pct, SEASON, TOTAL_COUNT))
+
+## Remove NYC districts for this plot - because HMTL is already to large (NYC county/all will still be available), plus as it it will fail because it's $COUNTY_DESC is null)
+shared_data <- shared_data[!startsWith(tolower(shared_data$ENTITY_NAME), "nyc geo"), ]
+
+
+###### FORMATTING
+### format ENTITY_CD
+shared_data$ENTITY_CD <- format(shared_data$ENTITY_CD, scientific = FALSE)
+
+
+##### Make df available to OJS chunk
+# df to ojs
+ojs_define(df_to_js = shared_data) 
+# ojs_define(year_to_js = YEAR)
+
+```
+
+```{ojs}
+//| output: false
+
+// Get the data from R and make it usable (transpose it) in JS 
+shared_data = transpose(df_to_js)
+// baseyear = transpose(year_to_js)
+```
+
+```{ojs}
+//| output: false
+uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC)); //for popup
+
+// save unique districts (based on unique BEDSCODE)
+districtsInCounty = new Set(
+  shared_data
+    .filter(d => d.COUNTY_DESC.toUpperCase() === county.toUpperCase())
+    .map(d => d.ENTITY_NAME)
+);
+
+// Set Plot district when page initially loads and after user inputs county
+districtDefault = {
+  county; // Triggers when county changes
+  // Create a persistent state object attached to the cell's execution context
+//  const state = this || { initialized: false };
+//  if (!state.initialized) {
+ //   state.initialized = true;
+ //   return "ALL - BRONX DISTRICTS";
+//  }
+  return "";
+}
+
+```
+
+```{ojs}
+//| output: false
+// guard function
+// makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit
+
+function guard(fn, options = {}, countyView) {
+  const {
+    submitLabel = "Submit",
+    resetLabel = "Reset",
+    required = false,
+    resubmit = true
+  } = options;
+
+  const onSubmit = () => {
+    value = input.value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+    wrapper.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+
+  const onReset = () => {
+    input.value = value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+  };
+
+  const onInnerInputCapture = () => {
+    invalid = true;
+    submit.disabled = true;
+  };
+
+  const onInnerInput = e => {
+    e.stopPropagation();
+    submit.disabled = false;
+    reset.disabled = false;
+  };
+
+  const submit = htl.html`
+    <button ${{disabled: !resubmit && !required, onclick: onSubmit}}>
+      ${submitLabel}
+  `;
+
+  const reset = htl.html`
+    <button ${{disabled: true, onclick: onReset}}>
+      ${resetLabel}
+  `;
+
+  // styling for these classes is in custom.scss
+  const footer = htl.html`
+    <div class="guard-footer">
+      <hr class="guard-footer-rule">
+      <div class="guard-footer-buttons">
+        ${submit}
+      </div>
+    </div>
+  `;
+
+const template = inputs => {
+  const row = document.createElement("div");
+  row.className = "input-toolbar";
+
+  row.append(countyView);
+
+  (Array.isArray(inputs) ? inputs : Object.values(inputs))
+    .forEach(input => row.append(input));
+
+  const container = document.createElement("div");
+  container.className = "guard-container";
+
+  container.append(row, footer);
+
+  return container;
+};
+
+  const input = fn({
+    submit,
+    reset,
+    footer,
+    template,
+    onSubmit,
+    onReset
+  });
+
+  let invalid = !!input.querySelector(":invalid");
+  submit.disabled = !resubmit || invalid;
+
+  input.addEventListener("input", onInnerInputCapture, {capture: true});
+  input.addEventListener("input", onInnerInput);
+
+  let value = required ? undefined : input.value;
+
+  const wrapper = htl.html`<div class="guard-wrapper">${input}`;
+
+  wrapper.addEventListener("submit", onSubmit);
+
+  return Object.defineProperty(wrapper, "value", {
+    get: () => value,
+    set: v => { input.value = v }
+  });
+}
+```
+## {.toolbar #print-hide-toolbar}
+```{ojs}
+//| output: false
+// County stays a standalone, live (non-gated) input so districtsInCounty
+// can react to it immediately as the user types/selects.
+viewof county = Inputs.text({
+  value: "BRONX",
+  label: "County: ",
+//  placeholder: "Enter County…",
+  datalist: uniqueCounties,
+  unique: true,
+  validate: v => shared_data.map(d => d.COUNTY_DESC).includes(v.value.toUpperCase()),
+  sort: true,
+  required: true
+//  width: 75
+});
+```
+
+```{ojs}
+//| output: true
+// Woven Inputs Form for District Selection
+viewof inputSels = guard(
+  ({ template }) => Inputs.form(
+    {
+      district: Inputs.select(districtsInCounty, { 
+        value: districtDefault,
+        label: "District: ",
+        sort: true,
+        required: true
+      }),
+
+      grade: Inputs.select(
+        new Map([
+          ["Grade 5", 5],
+          ["Grade 6", 6],
+          ["Grade 7", 7],
+          ["Grade 8", 8],
+          ["All Grades (3-8)", "ELA3_8"]
+        ]),
+        {
+          value: 8,
+          label: "Grade, in May2026: ",
+          sort: true,
+          required: true
+        }
+      )
+    },
+    { template }
+  ),
+  {
+    resetLabel: "Reset",
+    required: true
+  },
+  viewof county
+);
+```
+
+```{ojs}
+//| output: false
+// Auto-submit triggers once on page load to draw initial plots instantly
+_autoSubmit = {
+  setTimeout(() => {
+    const submitBtn = Array.from(document.querySelectorAll("button"))
+      .find(b => b.textContent.trim() === "Submit");
+    if (submitBtn) submitBtn.click();
+  }, 1000);
+}
+```
+
+```{ojs}
+//| output: false
+baseYear = 2026
+```
+
+```{ojs}
+//| output: false
+function stackedBarChart(longData, width, height, chartTitle) {
+
+  return Plot.plot({
+    className: "ELAgrowth-plot",
+        
+    width,
+    height,
+    marginLeft: 80,
+    marginBottom: 50,
+    title: chartTitle,
+    
+    x: { label: null, domain: [...new Set(longData.map(d => d.label))]},
+    y: { label: "# Students", grid: true, labelArrow: false,
+  labelAnchor: "center", dx: 100},
+    color: {
+      domain: ["Proficient", "Not Proficient", "Not Tested"],
+      range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
+      legend: true
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.barY(longData, Plot.stackY({
+        x: "label",
+        y: "count",
+        fill: "category",
+        tip: true,
+        title: d => `${d.category}: ${d.count}\n${d.pct != null ? `(${d.pct.toFixed(1)}%)\n(${d.pct2.toFixed(1)}% of Tested only)` : ""}`
+      }))
+    ]
+  });
+}
+```
+
+```{ojs}
+//| output: false
+// Turn the "Grade" selection into a YEAR -> ASSESSMENT_NAME sequence.
+// If "All Grades (3-8)" was picked, every year uses ELA3_8.
+// If a single grade was picked, the newest year (2025) uses that grade,
+//   and each earlier year steps back one grade (2024 = grade-1, 2023 = grade-2,
+//   2022 = grade-4) so we're following the SAME cohort of students back in time.
+// Grade 3 is the youngest tested grade, so any offset that would push the
+//   cohort below Grade 3 (e.g. Grade 2, Grade 1) is dropped entirely -
+//   that data will never exist.
+gradeSequence = {
+  // inputSels is undefined until the form is first Submitted - bail out with
+  // an empty sequence rather than throwing
+  if (!inputSels) return [];
+  const g = inputSels.grade;
+  return [0, 1, 2, 3, 4]
+    .filter(offset => g === "ELA3_8" || (g - offset) >= 3)
+    .map(offset => ({
+      year: baseYear - offset,
+      assessment: g === "ELA3_8" ? "ELA3_8" : `ELA${g - offset}`
+    }));
+}
+```
+
+```{ojs}
+//| output: false
+shared_dataFiltered = {
+  if (!inputSels) return [];
+//  const county = inputSels.county.trim().toUpperCase();
+  const district = inputSels.district.trim().toUpperCase();
+
+// filter all data and return District(ENTITY_NAME) Selected and Assessment(ie, ELA3 or 4 based on the grade selected)
+  return shared_data.filter(d =>
+//    d.COUNTY_DESC.toUpperCase() === county &&
+    d.ENTITY_NAME.toUpperCase() === district &&
+    gradeSequence.some(g => Number(g.year) === Number(d.YEAR) && g.assessment === d.ASSESSMENT_NAME)
+  );
+}
+```
+
+```{ojs}
+//| output: false
+// label for the assessment, used on the x-axis
+gradeLabel = assessment => assessment === "ELA3_8"
+  ? "All Grades 3-8"
+  : `Grade ${assessment.replace("ELA", "")}`
+```
+
+```{ojs}
+//| output: false
+function subgroupRows(subgroupName) {
+  // console.log("subgroupRows called with subgroupName:", subgroupName);
+  // console.log("gradeSequence:", gradeSequence);
+  // console.log("shared_dataFiltered length:", shared_dataFiltered.length);
+
+  const byYear = [...gradeSequence]
+    .sort((a, b) => a.year - b.year)
+    .map(({ year, assessment }) => {
+      const row = shared_dataFiltered.find(d =>
+        Number(d.YEAR) === Number(year) &&
+        d.ASSESSMENT_NAME === assessment &&
+        d.SUBGROUP_NAME === subgroupName
+      );
+
+// Console Logs to troubleshoot
+      <!-- if (!row) { -->
+      <!--   console.log( -->
+      <!--     `No matching row for year=${year}, assessment=${assessment}, subgroup=${subgroupName}` -->
+      <!--   ); -->
+      <!-- } else { -->
+      <!--   console.log( -->
+      <!--     `Match found for year=${year}, assessment=${assessment}, subgroup=${subgroupName}:`, -->
+      <!--     row -->
+      <!--   ); -->
+      <!-- } -->
+
+      return {
+        YEAR: year,
+        label: `${year}\n${gradeLabel(assessment)}`,
+        Prof_Count: row ? +row.Prof_Count : 0,
+        NotProf_Count: row ? +row.NotProf_Count : 0,
+        NOT_TESTED: row ? +row.NOT_TESTED : 0,
+        Prof_Pct: row ? +row.Prof_Pct : null,
+        NotProf_Pct: row ? +row.NotProf_Pct : null,
+        PER_PROF: row ? +row.PER_PROF : null
+      };
+    });
+
+  // console.log("subgroupRows - byYear:", byYear);
+
+  const result = byYear.flatMap(d => [
+    { label: d.label, YEAR: d.YEAR, category: "Proficient", count: d.Prof_Count, pct: d.Prof_Pct, pct2: d.PER_PROF },
+    { label: d.label, YEAR: d.YEAR, category: "Not Proficient", count: d.NotProf_Count, pct: null },
+    { label: d.label, YEAR: d.YEAR, category: "Not Tested", count: d.NOT_TESTED, pct: null }
+  ]);
+
+  // console.log("subgroupRows flatMap - result:", result);
+
+  return result;
+}
+```
+::: {.column-screen}
+## Plots {.flow}
+::: {.column-screen}
+### Print District Selected
+```{ojs}
+//| echo: false
+md`<span class="section-title-banner">${inputSels ? inputSels.district : ""}</span>`
+```
+::: {.panel-tabset .tabset-primary}
+## Students with Disabilities (IEP)
+```{ojs}
+//| column: screen
+fig1 = {
+  const width = 1000;
+  const height = 420; //works well for a 4-year x 3-category stacked bar
+  return stackedBarChart(subgroupRows("General Education Students"), width, height, `Gen Ed Students (no IEP)`);
+}
+
+```
+
+```{ojs}
+//| column: screen
+fig2 = {
+  const width = 1000;
+  const height = 420;
+
+  return stackedBarChart(subgroupRows("Students with Disabilities"), width, height, `Students with Disabilities (IEP)`);
+}
+```
+## Economically Disadvantaged
+```{ojs}
+//| column: screen
+fig3 = {
+  const width = 1000;
+  const height = 420;
+
+  return stackedBarChart(subgroupRows("Not Economically Disadvantaged"), width, height, `Not Economically Disadvantaged`);
+}
+```
+
+```{ojs}
+//| column: screen
+fig4 = {
+  const width = 1000;
+  const height = 420;
+
+  return stackedBarChart(subgroupRows("Economically Disadvantaged"), width, height, `Economically Disadvantaged`);
+}
+```
+
+## All Students
+```{ojs}
+//| column: screen
+fig5 = {
+  const width = 1000;
+  const height = 420;
+
+  return stackedBarChart(subgroupRows("All Students"), width, height, `All Students`);
+}
+```
+:::
+:::
+:::
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
+
+::: {#notesCollapse .collapse}
+* Data Source - ELA data: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
+* ELA data (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
+* A missing bar indicates that some or all of its data is unavailable 
+:::

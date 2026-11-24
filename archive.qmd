@@ -24,6 +24,7 @@ format:
 ::: {.card}
 ### ELA Scores, Growth
 
+* [2022-2026](plots/DistrictELAGrowth-to2026.html)
 * [2021-2025](plots/DistrictELAGrowth-to2025.html)
 
 ### ELA Scores, by County
