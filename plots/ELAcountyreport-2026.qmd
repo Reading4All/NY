@@ -1,0 +1,657 @@
+---
+title: "ELA scores, by County"
+format: 
+  dashboard: 
+    orientation: columns
+    expandable: false
+    scrolling: true
+    theme: 
+      - minty
+      - ../custom.scss
+    css: ELAcountyreport.css
+---
+
+```{r}
+#| echo: false
+#| include: false
+library(tidyverse)
+library(tidyr)
+
+
+###### {r, read csv, format df}
+YEAR <-  2026 #YEAR ENDING SPRING DATA, so CSV with same year as selected
+
+###### read csv data
+data_local <- 0 #change as needed, 1= data is on computer, 0=online
+
+if (data_local == 0) {
+csv_file <- paste0("https://raw.githubusercontent.com/Reading4All/NY/refs/heads/main/data/ELA/DATA_ELA-SPRING-", YEAR, ".csv")
+} else if (data_local == 1) {
+  csv_file <- paste0("C:/Users/Public/Documents/DATA_ELA-SPRING-", YEAR, ".csv")
+} else {
+  print("Error: fix link(s) to data files")
+}
+
+shared_data <- read_csv(csv_file)
+
+
+###### KEEP ONLY NEEDED Data
+
+## Only Keep District Data
+shared_data<-shared_data[(shared_data$ENTITY_TYPE == "DISTRICT"),]
+## Only Keep Spring (year-end) Data
+shared_data<-shared_data[(shared_data$SEASON == "Spring"),]
+
+## Only Keep Subgroups to be used
+shared_data<-shared_data[(shared_data$SUBGROUP_NAME == "Students with Disabilities" |
+                          shared_data$SUBGROUP_NAME == "General Education Students" |
+                          shared_data$SUBGROUP_NAME == "Economically Disadvantaged" |  
+                          shared_data$SUBGROUP_NAME == "Not Economically Disadvantaged" |
+                          shared_data$SUBGROUP_NAME == "All Students"
+                          ),]
+
+## Get rid of rows with NA Prof_Pct rates (to prevent rows with missing counts from being included but NA on plots)
+shared_data <- shared_data %>% 
+  filter(!is.na(Prof_Pct)) %>% 
+  dplyr::arrange(Prof_Pct, NotProf_Pct)
+
+## Remove all columns not used - lessen load to frontend/users, reduce html output size
+shared_data <- shared_data %>% select(-c(PCT_NOT_TESTED, SEASON))
+
+######################################################
+
+# df to ojs
+ojs_define(df_to_js = shared_data) 
+
+```
+
+```{ojs}
+//| output: false
+
+// Get the data from R and make it usable (transpose it) in JS 
+shared_data = transpose(df_to_js)
+
+// guard function
+// makes a submit and reset button to use after multiple inputs made, see https://observablehq.com/@mootari/inputs-submit
+
+function guard(fn, options = {}) {
+  const {
+    submitLabel = "Submit",
+    resetLabel = "Reset",
+    required = false,
+    resubmit = true,
+    valid = input => !input.querySelector(":invalid"),
+  } = options;
+
+  const onSubmit = () => {
+    value = input.value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+    wrapper.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+
+  const onReset = () => {
+    input.value = value;
+    submit.disabled = !resubmit || invalid;
+    reset.disabled = true;
+  };
+
+  const onInnerInputCapture = () => {
+    invalid = true;
+    submit.disabled = true;
+  };
+
+  const onInnerInput = e => {
+    e.stopPropagation();
+    submit.disabled = false;
+    reset.disabled = false;
+  };
+
+  const submit = htl.html`
+    <button ${{disabled: !resubmit && !required, onclick: onSubmit}}>
+      ${submitLabel}
+  `;
+
+  const reset = htl.html`
+    <button ${{disabled: true, onclick: onReset}}>
+      ${resetLabel}
+  `;
+
+  // styling for these classes is in custom.scss
+  const footer = htl.html`
+    <div class="guard-footer">
+      <hr class="guard-footer-rule">
+      <div class="guard-footer-buttons">
+        ${submit}
+      </div>
+    </div>
+  `;
+
+const template = inputs => {
+  const row = document.createElement("div");
+  row.className = "input-toolbar";
+
+  (Array.isArray(inputs) ? inputs : Object.values(inputs))
+    .forEach(input => row.append(input));
+
+  const container = document.createElement("div");
+  container.className = "guard-container";
+
+  container.append(row, footer);
+
+  return container;
+};
+
+  const input = fn({
+    submit,
+    reset,
+    footer,
+    template,
+    onSubmit,
+    onReset
+  });
+
+  let invalid = !!input.querySelector(":invalid");
+  submit.disabled = !resubmit || invalid;
+
+  input.addEventListener("input", onInnerInputCapture, {capture: true});
+  input.addEventListener("input", onInnerInput);
+
+  let value = required ? undefined : input.value;
+
+  const wrapper = htl.html`<div class="guard-wrapper">${input}`;
+
+  wrapper.addEventListener("submit", onSubmit);
+
+  return Object.defineProperty(wrapper, "value", {
+    get: () => value,
+    set: v => { input.value = v }
+  });
+}
+
+// save unique Counties so I can use these in select popup
+uniqueCounties = new Set(shared_data.map(d => d.COUNTY_DESC));
+```
+
+## {.toolbar}
+
+```{ojs}
+
+viewof inputSels = guard(
+  ({ template }) => Inputs.form(
+    {
+      county: Inputs.text({ 
+        value: "SUFFOLK",
+        label: "County:",
+ //       placeholder: "Enter County…",
+        datalist: uniqueCounties,
+        unique: true,
+        validate: v => shared_data.map(d => d.COUNTY_DESC).includes(v.value.toUpperCase()),
+        sort: true,
+        required: true
+//        width: 75
+        }),
+      grade: Inputs.select(new Map([ ["Grade 3", "ELA3"], ["Grade 4", "ELA4"], ["Grade 5", "ELA5"], ["Grade 6", "ELA6"], ["Grade 7", "ELA7"], ["Grade 8", "ELA8"], ["All Grades (3-8)", "ELA3_8"] ]), {
+        value: "ELA3", 
+        label: "Grade:",
+        sort: true,
+        required: true
+//        width: 75
+      }),
+      
+      cohort: Inputs.select(new Map([ ["IEP / no IEP", "SWD"], ["Econ.Disadvantaged / not", "Econ"] ]), {
+        value: "SWD",   // ← was "SWD", which doesn't exist in the map
+        label: "Cohorts:",
+        required: true
+//        width: 75
+      })
+    },
+    { template }
+  ),
+  // Options. Override the label of the reset button, require inputs pass validation
+  { resetLabel: "Reset", required: true }
+);
+```
+
+```{ojs}
+//| output: false
+_autoSubmit = {
+  setTimeout(() => {
+    const submitBtn = Array.from(document.querySelectorAll("button"))
+      .find(b => b.textContent.trim() === "Submit");
+    if (submitBtn) submitBtn.click();
+  }, 1000);
+}
+```
+
+```{ojs}
+//| output: false
+cohortPlot1 = inputSels.cohort == "SWD" ? "General Education Students" : "Not Economically Disadvantaged"
+cohortPlot1_short = inputSels.cohort == "SWD" ? "no IEP (Gen Ed)" : "Not EconDis."
+cohortPlot1_shortshort = inputSels.cohort == "SWD" ? "no IEP" : "Not EconDis."
+
+```
+
+```{ojs}
+//| output: false
+cohortPlot2 = inputSels.cohort == "SWD" ? "Students with Disabilities" : "Economically Disadvantaged"
+cohortPlot2_short = inputSels.cohort == "SWD" ? "IEP (SWD)" : "EconDis."
+cohortPlot2_shortshort = inputSels.cohort == "SWD" ? "IEP" : "EconDis."
+
+```
+
+```{ojs}
+//| output: false
+shared_dataFiltered1 = shared_data.filter(d =>
+  inputSels.county.toUpperCase() == d.COUNTY_DESC &&
+  inputSels.grade  == d.ASSESSMENT_NAME &&
+  cohortPlot1      == d.SUBGROUP_NAME
+)
+```
+
+```{ojs}
+//| output: false
+shared_dataFiltered2 = shared_data.filter(d =>
+  inputSels.county.toUpperCase() == d.COUNTY_DESC &&
+  inputSels.grade  == d.ASSESSMENT_NAME &&
+  cohortPlot2      == d.SUBGROUP_NAME
+)
+```
+
+```{ojs}
+//| output: false
+gapData = shared_dataFiltered1
+  .map(d1 => {
+    const d2 = shared_dataFiltered2.find(x => x.ENTITY_NAME === d1.ENTITY_NAME);
+    if (!d2) return null; // district missing from SWD cohort — skip rather than crash
+    return {
+      entity: d1.ENTITY_NAME,
+      gap: d1.Prof_Pct - d2.Prof_Pct,
+      optOutPct: Math.min(100, Math.max(0, d2.NotTested_Pct)), // clamp to [0,100] against rounding/data issues
+      Perc_prof_plot1: d1.Prof_Pct, //GenEd or Not EconDis 
+      Perc_prof_plot2: d2.Prof_Pct  //SWD or Econ Dis
+    };
+  })
+  .filter(d => d !== null)
+  .sort((a, b) => b.gap - a.gap);
+```
+
+::: {.column-screen}
+
+## Plots {.flow}
+
+::: {.column-screen}
+
+::: {.panel-tabset .tabset-primary}
+
+## ${cohortPlot2_short}
+
+```{ojs}
+//| column: screen
+
+fig2 = {
+  const width = 1000;
+  const barHeight = 24;
+  const height = 150 + shared_dataFiltered2.length * barHeight;
+
+  // Build stacked segments for each row
+  const proficient = shared_dataFiltered2.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: 0,
+    x2: d.Prof_Pct,
+    category: "Proficient",
+    label: String(d.Prof_Count),
+    color: "#2F7F73"
+  }));
+
+  const notProficient = shared_dataFiltered2.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: d.Prof_Pct,
+    x2: d.Prof_Pct + d.NotProf_Pct,
+    category: "Not Proficient",
+    label: String(d.NotProf_Count),
+    color: "#D95C5C"
+  }));
+
+  const notTested = shared_dataFiltered2.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: d.Prof_Pct + d.NotProf_Pct,
+    x2: d.Prof_Pct + d.NotProf_Pct + d.NotTested_Pct,
+    category: "Not Tested",
+    label: String(d.NOT_TESTED),
+    color: "#B7BDC4"
+  }));
+
+  const segments = [...proficient, ...notProficient, ...notTested];
+
+  const entityOrder = shared_dataFiltered2.map(d => d.ENTITY_NAME).reverse();
+
+  return Plot.plot({
+    width: width,
+    height,
+    marginLeft: 175,   // adjust to fit longest entity name
+    marginRight: 60,
+    marginTop: 15,
+    marginBottom: 40,
+    
+    style: {
+      fontSize: "14px" // Changes all plot text sizes
+    },
+    
+    title: cohortPlot2,
+        subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
+              
+    x: {
+      label: "% of Students",
+      labelAnchor: "center",
+      labelArrow: "none",
+      domain: [0, 100]
+    },
+    y: {
+      label: null,
+      domain: entityOrder,   // preserves original row order
+      tickSize: 0
+    },
+    color: {
+      domain: ["#Proficient", "#Not Proficient", "#Not Tested"],
+      range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
+      legend: true
+    },
+
+    marks: [
+      // Stacked bars
+      Plot.barX(segments, {
+        x1: d => d.x1,
+        x2: d => d.x2,
+        y: d => d.entity,
+        fill: d => d.color,
+        stroke: "black",
+        strokeWidth: 0.5
+      }),
+
+    // Text (#s) inside each bar segment
+      Plot.text(segments, {
+        // x: d => d.x1 + (d.x2 - d.x1) / 2,  // center of each segment
+        x: d => d.x1 + 1,  // start of each segment
+        y: d => d.entity,
+        text: d => {
+          return d.x2 - d.x1 > 2 ? d.label : ""; // hide label if segment too narrow
+          },
+        textAnchor: "start",
+         fill: (d, i) => d.category === "Not Tested" ? "#333333" : "#FFFFFF"  // text font white but dark for "last bar"Not Tested" segment
+      }),
+
+      // %Prof at end in ()
+      Plot.text(shared_dataFiltered2, {
+        x: 100,
+        y: d => d.ENTITY_NAME,
+        // text: d => `(${d.TOTAL_COUNT})`,
+        text: d =>`(${d.Prof_Pct.toFixed(1)}%)`,
+        fill: "#2F7F73",
+        fontSize: "10px", 
+        textAnchor: "start",
+        dx: 5
+      }),
+
+      // Vertical reference line at 95%
+      Plot.ruleX([95], {
+        stroke: "black",
+        strokeWidth: 1,
+        strokeDasharray: "4,3"
+      }),
+
+      // Annotation label at top of the 95% line
+      Plot.text([">95%, nearly everyone CAN!"], {
+        frameAnchor: "top-right", 
+        dy: -12, // Adjust vertical offset to move it slightly
+        dx: +50, // Adjust horizontal offset to move it slightly
+        fill: "#2F7F73"
+    }),
+    ]
+  });
+}
+```
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
+
+::: {#notesCollapse .collapse}
+* Sourcedata (download): [NYSED Report Card DB]("https://data.nysed.gov/downloads.php"), "Annual EM ELA", spring data
+* Sourcedata (webpage): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district")
+* (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort
+:::
+
+## ${cohortPlot1_short}
+```{ojs}
+//| column: screen
+
+fig1 = {
+  const width = 1000;
+  const barHeight = 24;
+  const height = 150 + shared_dataFiltered1.length * barHeight;
+
+  // Build stacked segments for each row
+  const proficient = shared_dataFiltered1.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: 0,
+    x2: d.Prof_Pct,
+    category: "Proficient",
+    label: String(d.Prof_Count),
+    color: "#2F7F73",
+    fill: "#FFFFFF"
+  }));
+
+  const notProficient = shared_dataFiltered1.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: d.Prof_Pct,
+    x2: d.Prof_Pct + d.NotProf_Pct,
+    category: "Not Proficient",
+    label: String(d.NotProf_Count),
+    color: "#D95C5C",
+    fill: "white"
+  }));
+
+  const notTested = shared_dataFiltered1.map(d => ({
+    entity: d.ENTITY_NAME,
+    x1: d.Prof_Pct + d.NotProf_Pct,
+    x2: d.Prof_Pct + d.NotProf_Pct + d.NotTested_Pct,
+    category: "Not Tested",
+    label: String(d.NOT_TESTED),
+    color: "#B7BDC4"
+  }));
+
+  const segments = [...proficient, ...notProficient, ...notTested];
+
+  const entityOrder = shared_dataFiltered1.map(d => d.ENTITY_NAME).reverse();
+
+  return Plot.plot({
+    width: width,
+    height,
+    marginLeft: 175,   // adjust to fit longest entity name
+    marginRight: 60,
+    marginTop: 15,
+    marginBottom: 60,
+    
+    style: {
+      fontSize: "14px" // Changes all plot text sizes
+    },
+    
+    title: cohortPlot1,
+    subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
+    
+    x: {
+      label: "% of Students",
+      labelAnchor: "center",
+      labelArrow: "none",
+      domain: [0, 100]
+    },
+    y: {
+      label: null,
+      domain: entityOrder,   // preserves original row order
+      tickSize: 0
+    },
+    color: {
+      domain: ["#Proficient", "#Not Proficient", "#Not Tested"],
+      range: ["#2F7F73", "#D95C5C", "#B7BDC4"],
+      legend: true
+    },
+
+    marks: [
+      // Stacked bars
+      Plot.barX(segments, {
+        x1: d => d.x1,
+        x2: d => d.x2,
+        y: d => d.entity,
+        fill: d => d.color,
+        stroke: "black",
+        strokeWidth: 0.5
+      }),
+
+      // Text (#s) inside each bar segment
+      Plot.text(segments, {
+        // x: d => d.x1 + (d.x2 - d.x1) / 2,  // center of each segment
+        x: d => d.x1 + 1,  // start of each segment
+        y: d => d.entity,
+        text: d => {
+          return d.x2 - d.x1 > 2 ? d.label : ""; // hide label if segment too narrow
+          },
+        textAnchor: "start",
+        fill: (d, i) => d.category === "Not Tested" ? "#333333" : "#FFFFFF"  // text font white but dark for "last bar"Not Tested" segment
+      }),
+
+      // %Prof at end in ()
+      Plot.text(shared_dataFiltered1, {
+        x: 100,
+        y: d => d.ENTITY_NAME,
+        // text: d => `(${d.TOTAL_COUNT})`,
+        text: d =>`(${d.Prof_Pct.toFixed(1)}%)`,
+        fontSize: "10px",
+        fill: "#2F7F73",
+        textAnchor: "start",
+        dx: 5
+      }),
+
+      // Vertical reference line at 95%
+      Plot.ruleX([95], {
+        stroke: "black",
+        strokeWidth: 1,
+        strokeDasharray: "4,3"
+      }),
+
+      // Annotation label at top of the 95% line
+      Plot.text([">95%, nearly everyone CAN!"], {
+        frameAnchor: "top-right", 
+        dy: -12, // Adjust vertical offset to move it slightly
+        dx: +50, // Adjust horizontal offset to move it slightly
+        fill: "#2F7F73"
+    }),
+    ]
+  });
+}
+```
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
+
+::: {#notesCollapse .collapse}
+* Sourcedata (download): [NYSED Report Card DB]("https://data.nysed.gov/downloads.php"), "Annual EM ELA", spring data
+* Sourcedata (webpage): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district")
+* (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort
+:::
+
+
+## Equity Gap
+```{ojs}
+//| column: screen
+html`
+  <div>
+    <div style="break-after: page; page-break-after: always;"></div>
+  </div>
+`
+
+fig3 = {
+  const width = 1000;
+  const barHeight = 24;
+  const height = 150 + gapData.length * barHeight;
+  const entityOrder = gapData.map(d => d.entity).reverse();
+
+  return Plot.plot({
+    width, height,
+    marginLeft: 175,
+    marginRight: 90,
+    marginTop: 15,
+    marginBottom: 40,
+    style: { fontSize: "14px" },
+    title: `Equity Gap, %Proficient (${cohortPlot1_shortshort} - ${cohortPlot2_shortshort})`,
+    subtitle: `County: ${inputSels.county}, Grade: ${inputSels.grade.slice(3)}, Year-ending: ${shared_data[0].YEAR}`,
+    
+    x: { label: "Percent Proficient Gap", labelAnchor: "center", labelArrow: "none", domain: [-40, 80] },
+    y: { label: null, domain: entityOrder, tickSize: 0 },
+    
+    marks: [
+      Plot.ruleX([0], { stroke: "black", strokeWidth: 1 }),
+      
+      Plot.barX(gapData, {
+        x1: 0,
+        x2: d => d.gap,
+        y: d => d.entity,
+        fill: d => d.gap >= 0 ? "#D95C5C" : "#2F7F73",
+        fillOpacity: d => Math.max(0.15, 0.35 + 0.65 * ((100 - d.optOutPct) / 100)),
+        stroke: "black",
+        strokeWidth: 0.5}),
+
+// Text in bar, %Gap
+      Plot.text(gapData, {
+        x: d => d.gap >= 0 ? 3 : -3,
+        y: d => d.entity,
+        text: d => `${d.gap.toFixed(1)}%`,
+        textAnchor: d => d.gap >= 0 ? "start" : "end",
+        fontSize: "11px",
+        fill: "white"
+      }),
+      
+// Text at end of bar, % Prof (SWD, or low econ)
+      Plot.text(gapData, {
+        x: d => d.gap,
+        y: d => d.entity,
+        text: d => `(${d.Perc_prof_plot1.toFixed(0)}%-${d.Perc_prof_plot2.toFixed(0)}%)`,
+        fontSize: "10px",
+        fill: "#333333",
+        textAnchor: d => d.gap >= 0 ? "start" : "end",
+        dx: 28
+      })
+      
+    ] 
+  }); 
+}
+
+```
+<a data-bs-toggle="collapse"
+   href="#notesCollapse"
+   role="button"
+   aria-expanded="false"
+   aria-controls="notesCollapse"
+   class="footer-bar notes-toggle-link">
+  <span class="toggle-sign"></span>Data Sources &amp; Notes
+</a>
+
+::: {#notesCollapse .collapse}
+* Sourcedata (download): [NYSED Report Card DB]("https://data.nysed.gov/downloads.php"), "Annual EM ELA", spring data
+* Sourcedata (webpage): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district")
+* (X%) = % of Students Proficient = 100 x #Proficient/Total# in Cohort
+* Bar opacity reflects ${cohortPlot2_short} test participation — lighter bar = higher opt-out rate
+:::
+
+:::
+:::
+:::
