@@ -517,5 +517,6 @@ fig5 = {
 ::: {#notesCollapse .collapse}
 * Data Source - ELA data: [NYSED Report Card DB](https://data.nysed.gov/downloads.php) (Annual EM ELA spring databases)
 * ELA data (website): [NYSED Report Card](https://data.nysed.gov/lists.php?type=district)
-* A missing bar indicates that some or all of its data is unavailable 
+  or update [this direct link](https://data.nysed.gov/essa.php?instid=800000038068&year=2026&createreport=1&38ELA=1) with the year(2026) and district code(800000038068) you'd like<br>
+* A missing bar indicates data is unavailable (likely due to small cohort size)
 :::
